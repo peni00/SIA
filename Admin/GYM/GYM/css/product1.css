@@ -291,6 +291,7 @@ label{
 	font-family:'lato', sans-serif;
 	line-height: 0;
 	width: 300px;
+	color:black;
 }
 .prod1 button img{
 	width: 15px;
@@ -364,6 +365,7 @@ label{
 	border: none;
 	color: white;
 	border-radius: 10px;
+	font-family: 'lato', sans-serif;
 }
 .edit-modal-dialog label{
 	display: inline-block;
@@ -424,3 +426,49 @@ label{
 .fade:not(.show) {
     opacity: 0;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    top: -15px !important; 
+    left:10px;
+  }
+  
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: -70px; /* adjust this value to move the dropdown list up */
+    float: center;
+    min-width: 141px;
+    padding: 5px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+  }
+  
+
+  .dropdown-content a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+
+  .dropdown-content a:hover {
+    background-color:#D9D9D9;
+    color:#004385;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
+  }

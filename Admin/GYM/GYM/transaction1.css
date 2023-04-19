@@ -5,6 +5,7 @@
 	position: absolute;
 	top: 170px;
 	left: 300px;
+
 }
 .table-container table {
   border-collapse: collapse;
@@ -16,6 +17,7 @@
   padding: 8px;
   text-align: left;
   font-family: 'lato', sans-serif;
+  color:black;
 }
 
 .table-container th {
@@ -236,4 +238,12 @@
  }
 
 
+ .clsbtn{
+  position: absolute;
+  width: 33px;
+  height: 26px;
+  left: 10px;
+  top: 4px;
+  background: url('ekis.png');
+ }
  
