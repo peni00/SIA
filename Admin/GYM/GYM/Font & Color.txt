@@ -1,0 +1,6 @@
+Black - 0C0C0C
+Blue - 349EFF & 004385
+Gray - d0d0d0
+
+Font:
+LATO
