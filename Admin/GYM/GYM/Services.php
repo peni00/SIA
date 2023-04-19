@@ -103,8 +103,9 @@
                         <label>Details: </label>
                         <input type="text" class="txt"><br />
                         <div class="buttons">
+                            <button type="button" class="edit-confirm4">Add</button>
                             <button type="button" class="close-btn4" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="edit-confirm2">Add</button>
+
                         </div>
                     </div>
                 </div>
@@ -129,9 +130,8 @@
                                     <input type="text" class="txt"><br />
                                 </div>
                                 <div class="edit-confirmation1">
-                                    <button type="button" class="close-btn5"
-                                        data-bs-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button
-                                        type="button" class="edit-confirm1">Confirm</button>
+                                    <button type="button" class="edit-confirm1">Confirm</button>
+                                    <button type="button" class="close-btn5" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                         </div>

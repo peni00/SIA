@@ -114,8 +114,9 @@
                         </label>
                     </div>
                     <div class="buttons">
-                        <button type="button" class="close-btn7" data-bs-dismiss="modal">Cancel</button>
                         <button type="button" class="add-btn1">Confirm</button>
+                        <button type="button" class="close-btn7" data-bs-dismiss="modal">Cancel</button>
+
                     </div>
                 </div>
             </div>
@@ -170,7 +171,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"

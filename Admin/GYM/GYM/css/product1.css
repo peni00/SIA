@@ -178,8 +178,8 @@ ul li{
 	color: white;
 	border-radius: 10px;
 	line-height: 30px;
-
 }
+
 .prod-content h1{
 	font-size: 20px;
 	text-align: center;
@@ -255,7 +255,7 @@ label{
 	padding: 10px;
 	border: 1px solid #1265b3;
 	transition: .4s ease;
-	transform: translateX(-10%) translateY(18%);
+	transform: translateX(-30%) translateY(18%);
 }
 .add-btn1:hover{
 	background-color: #1265b3;
@@ -417,7 +417,8 @@ label{
 	padding: 10px;
 	border: none;
 	transition: .4s ease;
-	transform: translateX(-30%) translateY(-40%);
+	transform: translateX(160%) translateY(-55%);
+	
 }
 .close-btn6:hover{
 	background-color: gray;
@@ -495,15 +496,30 @@ label{
 	
 }
 
+
 .edit-confirm3{	
 	background-color: transparent;
 	color: white;
 	padding: 10px;
 	border: 1px solid #1265b3;
 	transition: .4s ease;
-	transform: translateX(50%) translateY(-135%);
+	transform: translateX(-20%) translateY(-150%);
 }
 .edit-confirm3:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm4{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-40%) translateY(20%);
+}
+.edit-confirm4:hover{
 	background-color: #1265b3;
 	color: white;
 	
