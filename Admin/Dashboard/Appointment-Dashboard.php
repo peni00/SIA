@@ -29,6 +29,16 @@ $data1 = array(
     )
 );
 
+
+$query = "SELECT COUNT(*) AS total, Message FROM membertbl GROUP BY Message";
+$result = mysqli_query($conn, $query);
+
+$labels = array();
+$data = array();
+while ($row = mysqli_fetch_assoc($result)) {
+    $labels[] = $row['Message'];
+    $data[] = $row['total'];
+}
 // Close the database connection
 $conn->close();
 
@@ -46,6 +56,7 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <script>let data1 = <?php echo json_encode($data1) ?>;</script>
+    <script>let data2 = <?php echo json_encode($data2) ?>;</script>
 
 </head>
 

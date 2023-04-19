@@ -1,27 +1,28 @@
 var ctx = document.getElementById('doughnut-chart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'pie',
-    data: {
-        labels: ['Silver', 'Platinum', 'Gold', 'Diamond'],
-        datasets: [{
-            label: 'Data',
-            data: [100, 19, 34, 5,],
-            backgroundColor: [
-                'rgba(0, 67, 133, 1)',
-                'rgba(52, 158, 255, 1)',
-                'rgba(52, 176, 210, 1)',
-                'rgba(181, 219, 241, 1)'
+    // data: {
+    //     labels: ['Silver', 'Platinum', 'Gold', 'Diamond'],
+    //     datasets: [{
+    //         label: 'Data',
+    //         data: [100, 19, 34, 5,],
+    //         backgroundColor: [
+    //             'rgba(0, 67, 133, 1)',
+    //             'rgba(52, 158, 255, 1)',
+    //             'rgba(52, 176, 210, 1)',
+    //             'rgba(181, 219, 241, 1)'
            
-            ],
-            borderColor: [
-                'rgba(0, 67, 133, 1)',
-                'rgba(52, 158, 255, 1)',
-                'rgba(52, 176, 210, 1)',
-                'rgba(181, 219, 241, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
+    //         ],
+    //         borderColor: [
+    //             'rgba(0, 67, 133, 1)',
+    //             'rgba(52, 158, 255, 1)',
+    //             'rgba(52, 176, 210, 1)',
+    //             'rgba(181, 219, 241, 1)'
+    //         ],
+    //         borderWidth: 1
+    //     }]
+    // },
+    data: data2,
     options: {
         responsive: true,
         maintainAspectRatio: false,
