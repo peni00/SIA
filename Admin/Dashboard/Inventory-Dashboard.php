@@ -38,7 +38,7 @@
             <div class="container">
                 <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
-                <h3>Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
+                <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
                 <div class="ARCHIVE">
                     <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php"><button
                             class="serbtn1">APPOINTMENT</button></a>

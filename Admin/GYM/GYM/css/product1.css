@@ -173,11 +173,12 @@ ul li{
 	right: 100px;
 	background-color: #0C0C0C;
 	width: 500px;
-	height: 300px;
+	height: 330px;
 	font-family:'lato', sans-serif;
 	color: white;
 	border-radius: 10px;
 	line-height: 30px;
+
 }
 .prod-content h1{
 	font-size: 20px;
@@ -194,11 +195,11 @@ label{
 	line-height: 40px;
 }
 .prod-info .txt{
-	border-radius: 5px;
-	border: none;
 	width: 180px;
 	padding: 5px;
-}
+	border: none;
+	border-radius: 5px;
+	}
 .prod-info .upload-photo{
 	background-color: white;
 	width: 100px;
@@ -247,6 +248,20 @@ label{
 	color: white;
 	transition: .4s ease;
 }
+
+.add-btn1{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-10%) translateY(18%);
+}
+.add-btn1:hover{
+	background-color: #1265b3;
+	color: white;
+}
+
 
 
 /*product*/
@@ -323,7 +338,7 @@ label{
 .modal-body p{
 	font-family: 'lato', sans-serif;
 	font-size: 13px;
-	margin-top: 5px;
+	margin-top: 10px;
 	text-align: center;
 	color: white;
 }
@@ -336,8 +351,38 @@ label{
 	padding: 10px;
 	border: 1px solid #1265b3 ;
 	transition: .4s ease;
+	transform: translateX(-10%) translateY(20%);
 }
+
 .dlt-confirm:hover{
+	background-color: #1265b3;
+	color: white;
+}
+
+.dlt-confirm1{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3 ;
+	transition: .4s ease;
+	transform: translateX(-10%) translateY(0%);
+}
+
+.dlt-confirm1:hover{
+	background-color: #1265b3;
+	color: white;
+}
+
+.dlt-confirm2{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3 ;
+	transition: .4s ease;
+	transform: translateX(-10%) translateY(0%);
+}
+
+.dlt-confirm2:hover{
 	background-color: #1265b3;
 	color: white;
 }
@@ -349,6 +394,32 @@ label{
 	transition: .4s ease;
 }
 .close-btn:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn5{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	transform: translateY(-20%);
+}
+.close-btn5:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn6{
+	background-color: white;	
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	transform: translateX(-30%) translateY(-40%);
+}
+.close-btn6:hover{
 	background-color: gray;
 	color: white;
 }
@@ -402,8 +473,37 @@ label{
 	padding: 10px;
 	border: 1px solid #1265b3;
 	transition: .4s ease;
+	transform: translateX(-15%) translateY(-20%);
 }
 .edit-confirm1:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm2{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-15%) translateY(20%);
+}
+.edit-confirm2:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm3{	
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(50%) translateY(-135%);
+}
+.edit-confirm3:hover{
 	background-color: #1265b3;
 	color: white;
 	
@@ -415,13 +515,70 @@ label{
 	padding: 10px;
 	border: none;
 	transition: .4s ease;
-	top:30px;
+	top:50px;
+	transform: translateX(-15%) translateY(20%);
 }
 .close-btn1:hover{
 	background-color: gray;
 	color: white;
 }
 
+.close-btn2{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:30px;
+}
+.close-btn2:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn3{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:50px;
+	transform: translateX(20%) translateY(-20%);
+}
+.close-btn3:hover{
+	background-color: gray;
+	color: white;	
+}
+
+.close-btn4{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:30px;
+	transform: translateX(-20%) translateY(20%);
+}
+
+.close-btn4:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn7{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:30px;
+	transform: translateX(-20%) translateY(20%);
+}
+
+.close-btn7:hover{
+	background-color: gray;
+	color: white;
+}
 /*fade*/
 .fade:not(.show) {
     opacity: 0;

@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
         $total[] = $row['total'];
     }
 }
-
+    
 // Construct the $data array
 $data1 = array(
     'labels' => $month,
@@ -90,7 +90,7 @@ $conn->close();
             <div class="container">
                 <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
-                <h3>Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
+                <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
                 <div class="ARCHIVE">
                     <a href="#"><button class="serbtn">APPOINTMENT</button></a>
                     <a href="http://localhost/SIA/Admin/Dashboard/E-commerce-Dashboard.php"><Button

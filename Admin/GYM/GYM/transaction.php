@@ -79,7 +79,7 @@
                                         <p><b>Are you sure you want to delete the selected transaction/s?</b></p>
                                     </div>
                                     <div class="delete-confirmation">
-                                        <button type="button" class="dlt-confirm">Confirm</button>
+                                        <button type="button" class="dlt-confirm2">Confirm</button>
                                         <button type="button" class="close-btn" data-bs-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>

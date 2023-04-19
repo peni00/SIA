@@ -143,13 +143,13 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
-                    <div class="delete-modal-dialog">>
+                    <div class="delete-modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <p><b>Are you sure you want to delete this product?</b></p>
                             </div>
                             <div class="delete-confirmation">
-                                <button type="button" class="dlt-confirm">Confirm</button>
+                                <button type="button" class="dlt-confirm1">Confirm</button>
                                 <button type="button" class="close-btn" data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                                 </div>
                                 <div class="edit-confirmation1">
                                     <button type="button" class="edit-confirm1">Confirm</button>
-                                    <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="close-btn3" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -203,6 +203,10 @@
             </script>
 
 
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+                crossorigin="anonymous">
+            </script>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
                 crossorigin="anonymous">

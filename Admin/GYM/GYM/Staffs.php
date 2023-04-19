@@ -93,18 +93,14 @@
 
             <!--Add-product-->
 
-            <div class="Add-product">
+            <div class="Add-product" aria-hidden="true">
                 <input type="checkbox" id="click">
-                <label for="click" type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
-                    for="click">
+                <label class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" for="click">
                     <img src="images/add.png">
                 </label>
                 <div class="prod-content">
                     <h1>STAFF DETAILS</h1>
                     <div class="prod-info">
-                        <label class="upload-photo">
-                            <p><img src="Image/photo.png"></p><input type="file" name="myImage" accept="image/*">
-                        </label></br>
                         <label>Staff ID: </label>
                         <input type="text" class="txt"><br />
                         <label>Name: </label>
@@ -113,73 +109,82 @@
                         <input type="text" class="txt"><br />
                         <label>Service Category: </label>
                         <input type="text" class="txt">
+                        <label class="upload-photo">
+                            <input type="file" name="myImage" accept="image/*">
+                        </label>
                     </div>
                     <div class="buttons">
-                        <button type="button" class="close-btn1" data-bs-dismiss="modal">CANCEL</button>
-                        <button type="button" class="add-btn">CONFIRM</button>
+                        <button type="button" class="close-btn7" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="add-btn1">Confirm</button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--Delete-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="delete-modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <p><b>you sure you want to delete this product?</b></p>
-                        </div>
-                        <div class="delete-confirmation">
-                            <button type="button" class="dlt-confirm">Confirm</button>
-                            <button type="button" class="close-btn" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Edit -->
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel1"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="edit-modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <h1>STAFF DETAILS</h1>
-                            <div class="prod-info">
-                                <label class="upload-photo">
-                                    <p><img src="Image/photo.png"></p><input type="file" name="myImage"
-                                        accept="image/*">
-                                </label></br>
-                                <label>Staff ID: </label>
-                                <input type="text" class="txt"><br />
-                                <label>Name: </label>
-                                <input type="text" class="txt"><br />
-                                <label>Position: </label>
-                                <input type="text" class="txt"><br />
-                                <label>Service Category: </label>
-                                <input type="text" class="txt">
+
+            <!--Delete-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="delete-modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <p><b>you sure you want to delete this product?</b></p>
                             </div>
-                            <div class="edit-confirmation1">
-                                <button type="button" class="edit-confirm1">SAVE CHANGES</button>
+                            <div class="delete-confirmation">
+                                <button type="button" class="dlt-confirm">Confirm</button>
+                                <button type="button" class="close-btn" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div>
+            <!-- Edit -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="edit-modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h1>STAFF DETAILS</h1>
+                                <div class="prod-info">
+                                    <label class="upload-photo">
+                                        <p><img src="Image/photo.png"></p><input type="file" name="myImage"
+                                            accept="image/*">
+                                    </label></br>
+                                    <label>Staff ID: </label>
+                                    <input type="text" class="txt"><br />
+                                    <label>Name: </label>
+                                    <input type="text" class="txt"><br />
+                                    <label>Position: </label>
+                                    <input type="text" class="txt"><br />
+                                    <label>Service Category: </label>
+                                    <input type="text" class="txt">
+                                </div>
+                                <div class="edit-confirmation1">
+                                    <button type="button" class="close-btn6" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="edit-confirm3">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-        </script>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+                crossorigin="anonymous">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+                crossorigin="anonymous">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+                crossorigin="anonymous">
+            </script>
 </body>
 
 </html>

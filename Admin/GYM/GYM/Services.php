@@ -62,6 +62,7 @@
             </div>
             <!--container-->
             <div class="table-container">
+                <button type="button" class="unbtn">DELETE</button>
                 <table>
                     <thead>
                         <tr>
@@ -96,14 +97,14 @@
                 <div class="prod-content">
                     <h1>DETAILS</h1>
                     <div class="prod-info">
-                        <label>Service ID: </label>#001 <br />
+                        <label>Service ID: </label><br />
                         <label>Service: </label>
                         <input type="text" class="txt"><br />
                         <label>Details: </label>
                         <input type="text" class="txt"><br />
                         <div class="buttons">
-                            <button type="button" class="close-btn1" data-bs-dismiss="modal">CANCEL</button>
-                            <button type="button" class="edit-confirm1">ADD</button>
+                            <button type="button" class="close-btn4" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="edit-confirm2">Add</button>
                         </div>
                     </div>
                 </div>
@@ -128,7 +129,7 @@
                                     <input type="text" class="txt"><br />
                                 </div>
                                 <div class="edit-confirmation1">
-                                    <button type="button" class="close-btn1"
+                                    <button type="button" class="close-btn5"
                                         data-bs-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button
                                         type="button" class="edit-confirm1">Confirm</button>
                                 </div>
