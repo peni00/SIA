@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
 
@@ -51,43 +50,50 @@
         <div class="u-clearfix u-group-elements u-hover-feature u-group-elements-1">
             <div class="u-custom-color-5 u-expanded u-radius-15 u-shape u-shape-round">
             </div>
-            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3"
-                src="images/image7.png" alt="" data-image-width="400" data-image-height="400"
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1"
                 href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
-            <p class="u-text u-text-body-color u-text-3">
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1"
-                    href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">E-COMMERCE</a>
-            </p>
+                <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3"
+                    src="images/image7.png" alt="" data-image-width="400" data-image-height="400"
+                    href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
+                <p class="u-text u-text-body-color u-text-3">
+                    E-COMMERCE
+                </p>
+            </a>
         </div>
         <div class="u-clearfix u-group-elements u-hover-feature u-group-elements-2">
             <div class="u-custom-color-5 u-expanded u-radius-15 u-shape u-shape-round">
             </div>
-            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-4"
-                src="images/image6.png" alt="" data-image-width="400" data-image-height="400"
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-2"
                 href="http://localhost/SIA/Admin/GYM/GYM/services.php">
-            <p class="u-text u-text-body-color u-text-4">
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-2"
-                    href="http://localhost/SIA/Admin/GYM/GYM/services.php">APPOINTMENT</a>
-            </p>
+                <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-4"
+                    src="images/image6.png" alt="" data-image-width="400" data-image-height="400"
+                    href="http://localhost/SIA/Admin/GYM/GYM/services.php">
+                <p class="u-text u-text-body-color u-text-4">
+                    APPOINTMENT
+                </p>
+            </a>
         </div>
         <div class="u-clearfix u-group-elements u-hover-feature u-group-elements-3">
             <div class="u-custom-color-5 u-expanded u-radius-15 u-shape u-shape-round u-shape-3"></div>
-            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-5"
-                src="images/image5.png" alt="" data-image-width="200" data-image-height="200">
-            <p class="u-text u-text-body-color u-text-5">
-                <a
-                    class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-3">
-                    INVENTORY </a>
-            </p>
+            <a
+                class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-3">
+                <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-5"
+                    src="images/image5.png" alt="" data-image-width="400" data-image-height="400">
+                <p class="u-text u-text-body-color u-text-5">
+                    INVENTORY
+                </p>
+            </a>
         </div>
         <div class="u-clearfix u-group-elements u-hover-feature u-group-elements-4">
             <div class="u-custom-color-5 u-expanded u-radius-15 u-shape u-shape-round"></div>
-            <img class="u-image u-image-default u-preserve-proportions u-image-6" src="images/dashboard.png" alt=""
-                data-image-width="512" data-image-height="512">
-            <p class="u-text u-text-body-color u-text-6">
-                <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-4"
-                    href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php"> DASHBOARD </a>
-            </p>
+            <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-4"
+                href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php">
+                <img class="u-image u-image-default u-preserve-proportions u-image-6" src="images/dashboard.png" alt=""
+                    data-image-width="400" data-image-height="400">
+                <p class="u-text u-text-body-color u-text-6">
+                    DASHBOARD
+                </p>
+            </a>
         </div>
     </section>
 </body>

@@ -55,8 +55,12 @@ $conn->close();
     <link rel='stylesheet' type='text/css' media='screen' href='Dashboard1.css'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
-    <script>let data1 = <?php echo json_encode($data1) ?>;</script>
-    <script>let data2 = <?php echo json_encode($data2) ?>;</script>
+    <script>
+    let data1 = <?php echo json_encode($data1) ?>;
+    </script>
+    <script>
+    let data2 = <?php echo json_encode($data2) ?>;
+    </script>
 
 </head>
 
