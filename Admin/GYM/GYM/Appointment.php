@@ -11,9 +11,11 @@ if (mysqli_connect_errno())
 
 
 ?>
-
-<?php ob_start()
+<?php
+ob_start()
 ?>
+
+
 
 
 
@@ -136,15 +138,13 @@ if (mysqli_connect_errno())
                     echo "<tr>";
 				echo "<td style='text-align: center;'></td>";
 
-                  echo "<td>" . $row['id'] . "</td>";
-                    echo "<td >" . $row['Name'] . "</td>";
-                    echo "<td>" . $row['staffName'] . "</td>";
+        			          echo "<td>" . $row['id'] . "</td>";
+             			       echo "<td >" . $row['Name'] . "</td>";
+			    		echo "<td>" . $row['staffName'] . "</td>";
 					echo "<td >" . $row['serviceType'] . "</td>";
 					echo "<td>" . $row['start_datetime'] . "</td>";
 					echo "<td >" . $row['status'] . "</td>";
-                    echo "</tr>";
-
-                    header('Location: http://localhost/SIA/Admin/GYM/GYM/Services.php');
+                  			  echo "</tr>";
                 }
             } else {
                 echo "<tr><td colspan='4'>No data found</td></tr>";
