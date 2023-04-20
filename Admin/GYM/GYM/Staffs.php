@@ -108,7 +108,7 @@
                             <form id="staff-details-form">
                                 <div class="modal-body" style="height: 200px;">
                                     <div class="prod-info">
-                                        <label class="upload-photo">
+                                        <label class="upload-photo5">
                                             <input type="file" name="myImage" accept="image/*">
                                         </label>
                                         <label for="staff-id-input">Staff ID: </label>
