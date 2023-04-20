@@ -1,3 +1,30 @@
+<?php
+
+@include 'connection.php';
+
+if(isset($_POST['add_product'])){
+    $p_categ = $_POST['p_categ'];
+    $p_name = $_POST['p_name'];
+    $p_desc = $_POST['p_desc'];
+    $p_slug = $_POST['p_slug'];
+    $p_price = $_POST['p_price'];
+    $p_img = $_FILES['p_img'];
+    $p_img_tmp_name = $_FILES['p_img']['tmp_name'];
+    $p_img_folder = 'images/uploaded/'.$p_img['name'];
+
+    $insert_query = mysqli_prepare($conn, "INSERT INTO products(category_id,name, description, slug, price, photo) 
+    VALUES(?, ?, ?, ?, ?, ?)");
+
+    mysqli_stmt_bind_param($insert_query, "ssssss", $p_categ , $p_name, $p_desc, $p_slug, $p_price, $p_img_folder);
+    mysqli_stmt_execute($insert_query);
+
+    if(mysqli_affected_rows($conn) > 0){
+        move_uploaded_file($p_img_tmp_name, $p_img_folder);
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -114,27 +141,22 @@
             <div class="Add-product">
                 <input type="checkbox" id="click">
                 <label for="click" class="add"><img src="images/add.png"></label>
-                <div class="prod-content">
-                    <h1>ADD PRODUCT</h1>
-                    <div class="prod-info">
-                        <label>Product Name: </label>
-                        <input type="text" class="txt"><br />
-                        <label>Category: </label>
-                        <input type="text" class="txt"><br />
-                        <label>Price: </label>
-                        <input type="text" class="txt"><br />
-                        <label>No. of Stocks: </label>
-                        <input type="text" class="txt">
-                        <label class="upload-photo">
-                            <p><img src="images/photo.png"></p>
-                            <input type="file" name="myImage" accept="image/*">
-                        </label>
-                        <div class="buttons">
-                            <button type="button" class="dlt-confirm">Save Changes</button>
-                            <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
-                        </div>
-                    </div>
-                </div>
+                <form action="" method="post" class="add_product" enctype="multipart/form-data">
+                    <h3>Add new product</h3>
+                    <label>Category Id:</label>
+                    <input type="number" name="p_categ" class="box" required><br/>
+                    <label>Product Name:</label>
+                    <input type="text" name="p_name" class="box" required><br/>
+                    <label>Description:</label>
+                    <input type="text" name="p_desc" class="box" required><br/>
+                    <label>Slug:</label>
+                    <input type="text" name="p_slug" class="box" required><br/>
+                    <label>Price:</label>
+                    <input type="number" name="p_price" class="box" required><br/>
+                    <input type="file" name="p_img" class="box" required><br/>
+                    <input type="submit" value="Add" name="add_product" class="-btn">
+
+                </form>
             </div>
 
 
