@@ -27,9 +27,7 @@
                 <a href="http://localhost/SIA/Admin/GYM/GYM/Archive-Product.php">
                     <li>ARCHIVE</li>
                 </a>
-                <a href="#">
-                    <li>USERS</li>
-                </a>
+
             </ul>
             <div class="admin">
                 <img src="images/image10.png" class="user" style="width: 40px">

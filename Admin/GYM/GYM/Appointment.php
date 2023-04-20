@@ -11,10 +11,6 @@ if (mysqli_connect_errno())
 
 
 ?>
-<?php
-ob_start()
-?>
-
 
 
 
@@ -98,19 +94,19 @@ ob_start()
                     <tr>
                         <th>
                         </th>
-						
+
                         <th>APPOINTMENT ID</th>
                         <th>CLIENT NAME</th>
                         <th>STAFF NAME</th>
-                       
+
                         <th>SERVICE</th>
                         <th>DATE AND TIME</th>
                         <th>APPOINTMENT STATUS</th>
                     </tr>
                 </thead>
                 <tbody>
-				
-				     <?php
+
+                    <?php
             // Query data from database
             $sql = "select
 					appointment_tbl.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tbl.start_datetime, appointment_tbl.status
@@ -138,20 +134,22 @@ ob_start()
                     echo "<tr>";
 				echo "<td style='text-align: center;'></td>";
 
-        			          echo "<td>" . $row['id'] . "</td>";
-             			       echo "<td >" . $row['Name'] . "</td>";
-			    		echo "<td>" . $row['staffName'] . "</td>";
+                  echo "<td>" . $row['id'] . "</td>";
+                    echo "<td >" . $row['Name'] . "</td>";
+                    echo "<td>" . $row['staffName'] . "</td>";
 					echo "<td >" . $row['serviceType'] . "</td>";
 					echo "<td>" . $row['start_datetime'] . "</td>";
 					echo "<td >" . $row['status'] . "</td>";
-                  			  echo "</tr>";
+                    echo "</tr>";
+
+                    header('Location: http://localhost/SIA/Admin/GYM/GYM/Appointment.php');
                 }
             } else {
                 echo "<tr><td colspan='4'>No data found</td></tr>";
             }
            
             ?>
-                   
+
                 </tbody>
             </table>
         </div>
