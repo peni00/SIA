@@ -99,9 +99,10 @@
                     aria-hidden="true" style="transform: translateX(-90%);">
                     <div class="modal-background"></div>
                     <div class="modal-dialog">
-                        <div class="modal-content" style="background-color: black; color: white; border-radius: 10px;">
+                        <div class="modal-content"
+                            style="background-color: black; color: white; border-radius: 10px; width: 420px;">
                             <div class="modal-header">
-                                <h1 class="modal-title" id="exampleModalLabel1">DETAILS</h1></br></br></br>
+                                <h1 class="modal-title3" id="exampleModalLabel1">DETAILS</h1></br></br></br>
                             </div>
                             <div class="modal-body" style="width: 400px; height: 200px;">
                                 <div class="prod-info">

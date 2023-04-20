@@ -112,14 +112,13 @@
                                             <input type="file" name="myImage" accept="image/*">
                                         </label>
                                         <label for="staff-id-input">Staff ID: </label>
-                                        <input type="text" id="staff-id-input" class="form-control" required><br>
+                                        <input type="text" id="staff-id-input" class="txt" required><br>
                                         <label for="staff-name-input">Name: </label>
-                                        <input type="text" id="staff-name-input" class="form-control" required><br>
+                                        <input type="text" id="staff-name-input" class="txt" required><br>
                                         <label for="staff-position-input">Position: </label>
-                                        <input type="text" id="staff-position-input" class="form-control" required><br>
+                                        <input type="text" id="staff-position-input" class="txt" required><br>
                                         <label for="staff-service-category-input">Service Category: </label>
-                                        <input type="text" id="staff-service-category-input" class="form-control"
-                                            required>
+                                        <input type="text" id="staff-service-category-input" class="txt" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
