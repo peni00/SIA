@@ -92,35 +92,45 @@
             </div>
 
             <!--Add-product-->
-
             <div class="Add-product" aria-hidden="true">
                 <input type="checkbox" id="click">
                 <label class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" for="click">
                     <img src="images/add.png">
                 </label>
-                <div class="prod-content">
-                    <h1>STAFF DETAILS</h1>
-                    <div class="prod-info">
-                        <label>Staff ID: </label>
-                        <input type="text" class="txt"><br />
-                        <label>Name: </label>
-                        <input type="text" class="txt"><br />
-                        <label>Position: </label>
-                        <input type="text" class="txt"><br />
-                        <label>Service Category: </label>
-                        <input type="text" class="txt">
-                        <label class="upload-photo">
-                            <input type="file" name="myImage" accept="image/*">
-                        </label>
-                    </div>
-                    <div class="buttons">
-                        <button type="button" class="add-btn1">Confirm</button>
-                        <button type="button" class="close-btn7" data-bs-dismiss="modal">Cancel</button>
-
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                    aria-hidden="true" style="transform: translateX(-100%);">
+                    <div class="modal-dialog">
+                        <div class="modal-content"
+                            style="background-color: black; color: white; border-radius: 10px; width: 490px;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel1">STAFF DETAILS</h5></br></br></br>
+                            </div>
+                            <form id="staff-details-form">
+                                <div class="modal-body" style="height: 200px;">
+                                    <div class="prod-info">
+                                        <label class="upload-photo">
+                                            <input type="file" name="myImage" accept="image/*">
+                                        </label>
+                                        <label for="staff-id-input">Staff ID: </label>
+                                        <input type="text" id="staff-id-input" class="form-control" required><br>
+                                        <label for="staff-name-input">Name: </label>
+                                        <input type="text" id="staff-name-input" class="form-control" required><br>
+                                        <label for="staff-position-input">Position: </label>
+                                        <input type="text" id="staff-position-input" class="form-control" required><br>
+                                        <label for="staff-service-category-input">Service Category: </label>
+                                        <input type="text" id="staff-service-category-input" class="form-control"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="add-btn1">Confirm</button>
+                                    <button type="button" class="close-btn7" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-
 
 
             <!--Delete-->
@@ -150,7 +160,7 @@
                             <div class="modal-body">
                                 <h1>STAFF DETAILS</h1>
                                 <div class="prod-info">
-                                    <label class="upload-photo">
+                                    <label class="upload-photo1">
                                         <p><img src="Image/photo.png"></p><input type="file" name="myImage"
                                             accept="image/*">
                                     </label></br>
@@ -184,6 +194,32 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
                 integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
                 crossorigin="anonymous">
+            </script>
+            <script>
+            // Get the modal
+            var modal = document.getElementById("exampleModal1");
+
+            // Get the buttons
+            var confirmBtn = document.getElementsByClassName("add-btn1")[0];
+            var cancelBtn = document.getElementsByClassName("close-btn7")[0];
+
+            // Add event listeners to the buttons
+            confirmBtn.addEventListener("click", function() {
+                // Functionality to confirm changes
+                // For example, submit form data or make an AJAX request
+                // Here, we just log a message to the console
+                console.log("Changes confirmed!");
+                // Close the modal
+                modal.style.display = "none";
+            });
+
+            cancelBtn.addEventListener("click", function() {
+                // Functionality to cancel changes
+                // Here, we just log a message to the console
+                console.log("Changes cancelled!");
+                // Close the modal
+                modal.style.display = "none";
+            });
             </script>
 </body>
 

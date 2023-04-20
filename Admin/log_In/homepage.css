@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 .u-hidden-block {
   visibility: hidden!important;
@@ -43043,4 +43044,15 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 
+@media only  screen and (max-width: 1197.78px){
+
+  html,body{
+    width: 90%;
+    height:100%;
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+  }
+
+}
 

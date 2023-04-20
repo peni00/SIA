@@ -9,7 +9,10 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/product1.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+        integrity="sha512-6ihPvB8hKjLfquC+ndQ0Z0fuLj8MhWbNQ2OJjKs+Ow/HUNikSVcdT/0fj64Tt39+Tt9PmkjS4JAgTFPm3zg0CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 <body>
     <div class="main">
@@ -87,29 +90,50 @@
             </div>
 
             <!--Add-product-->
-
             <div class="Add-product">
                 <input type="checkbox" id="click">
-                <label for="click" type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
-                    for="click">
+                <label for="click" type="button" class="edit-btn">
                     <img src="images/add.png">
                 </label>
-                <div class="prod-content">
-                    <h1>DETAILS</h1>
-                    <div class="prod-info">
-                        <label>Service ID: </label><br />
-                        <label>Service: </label>
-                        <input type="text" class="txt"><br />
-                        <label>Details: </label>
-                        <input type="text" class="txt"><br />
-                        <div class="buttons">
-                            <button type="button" class="edit-confirm4">Add</button>
-                            <button type="button" class="close-btn4" data-bs-dismiss="modal">Cancel</button>
-
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                    aria-hidden="true" style="transform: translateX(-90%);">
+                    <div class="modal-background"></div>
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="background-color: black; color: white; border-radius: 10px;">
+                            <div class="modal-header">
+                                <h1 class="modal-title" id="exampleModalLabel1">DETAILS</h1></br></br></br>
+                            </div>
+                            <div class="modal-body" style="width: 400px; height: 200px;">
+                                <div class="prod-info">
+                                    <div style="display: inline-block;">
+                                        <label style="display: inline-block;">Service ID:</label>
+                                        <input type="text" class="txt service-id" style="display: inline-block;">
+                                    </div>
+                                    <div style="display: inline-block;">
+                                        <label style="display: inline-block;">Service:</label>
+                                        <input type="text" class="txt service-name" style="display: inline-block;">
+                                    </div>
+                                    <div style="display: inline-block;">
+                                        <label style="display: inline-block;">Details:</label>
+                                        <input type="text" class="txt service-details" style="display: inline-block;">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="edit-confirm4">Add</button>
+                                <button type="button" class="close-btn4" data-bs-dismiss="modal">Cancel</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
 
 
 
@@ -137,17 +161,27 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
                 integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
                 crossorigin="anonymous">
+            < /> <
+            script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+            integrity = "sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+            crossorigin = "anonymous" >
             </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-                crossorigin="anonymous">
+            <!-- Add this JavaScript code after the HTML code for the modal -->
+            <script>
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal1'), {
+                keyboard: false
+            });
+
+            document.querySelector('.edit-btn').addEventListener('click', function() {
+                myModal.show();
+            });
             </script>
+
 </body>
 
 </html>
