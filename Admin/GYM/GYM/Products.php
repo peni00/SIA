@@ -131,7 +131,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< Updated upstream
         </div>
 
 
@@ -178,73 +177,10 @@
                             <div class="edit-confirmation1">
                                 <button type="button" class="edit-confirm1">Confirm</button>
                                 <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
-=======
-
-
-            <!--container-->
-            <div class="products">
-                <div class="prod1">
-                <?php
-                        // Retrieve data from database then it will show in container
-                        $query = mysqli_query($conn, "SELECT * FROM products");
-
-                              
-                        while ($row = mysqli_fetch_assoc($query)) {
-                            echo "<div class='product'>";
-                            echo "<img src='" . $row['photo'] . "' class='product-img'>";
-                            echo "<label><b>Product ID:</b> " . $row['id'] . "</label><br />";
-                            echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
-                            echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
-                            echo "<label><b>Category:</b> " . $row['category_id'] . "</label><br />";
-                            echo "<label><b>Price:</b> " . $row['price'] . "</label><br /><br />";                        
-                            echo "</div>";
-                        ;}
-                    ?>
-                </div>
-
-                <!--Add-product-->
-                <div class="Add-product">
-                    <input type="checkbox" id="click">
-                    <label for="click" class="add"><img src="images/add.png"></label>
-                    <form action="" method="post" class="add_product" enctype="multipart/form-data">
-                        <h3>Add new product</h3>
-                        <label>Category Id:</label>
-                        <input type="number" name="p_categ" class="box" required><br />
-                        <label>Product Name:</label>
-                        <input type="text" name="p_name" class="box" required><br />
-                        <label>Description:</label>
-                        <input type="text" name="p_desc" class="box" required><br />
-                        <label>Slug:</label>
-                        <input type="text" name="p_slug" class="box" required><br />
-                        <label>Price:</label>
-                        <input type="number" name="p_price" class="box" required><br />
-                        <input type="file" name="p_img" class="box" required><br />
-                        <input type="submit" value="Add" name="add_product" class="-btn">
-
-                    </form>
-                </div>
-
-
-                <!-- Delete -->
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="delete-modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <p><b>Are you sure you want to delete this product?</b></p>
-                                </div>
-                                <div class="delete-confirmation">
-                                    <button type="button" class="dlt-confirm1">Confirm</button>
-                                    <button type="button" class="close-btn" data-bs-dismiss="modal">Cancel</button>
-                                </div>
->>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>
                 </div>
-<<<<<<< Updated upstream
             </div>
 
         </div>
@@ -267,68 +203,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
             integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
         </script>
-=======
-
-                <!-- Edit -->
-                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="edit-modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h1>PRODUCT DETAILS</h1>
-                                    <div class="prod-info">
-                                        <label>Product Name: </label>
-                                        <input type="text" class="txt"><br />
-                                        <label>Category: </label>
-                                        <input type="text" class="txt"><br />
-                                        <label>Price: </label>
-                                        <input type="text" class="txt"><br />
-                                        <label>No. of Stocks: </label>
-                                        <input type="text" class="txt">
-                                        <label class="upload-photo">
-                                            <img id="preview-image"></img>
-                                            <input type="file" id="image-input" accept="image/*"
-                                                onchange="previewImage(event)">
-                                        </label>
-                                    </div>
-                                    <div class="edit-confirmation1">
-                                        <button type="button" class="edit-confirm1">Confirm</button>
-                                        <button type="button" class="close-btn3" data-bs-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <script>
-                function previewImage(event) {
-                    var reader = new FileReader();
-                    reader.onload = function() {
-                        var output = document.getElementById('preview-image');
-                        output.src = reader.result;
-                    };
-                    reader.readAsDataURL(event.target.files[0]);
-                }
-                </script>
-
-
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-                    crossorigin="anonymous">
-                </script>
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-                    crossorigin="anonymous">
-                </script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-                    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-                    crossorigin="anonymous">
-                </script>
-
->>>>>>> Stashed changes
 </body>
 
 </html>
