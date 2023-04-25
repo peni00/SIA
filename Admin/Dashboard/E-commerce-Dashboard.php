@@ -1,3 +1,23 @@
+<?php 
+require ('../connection.php');
+
+$sql = "SELECT * FROM sales";
+
+
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+
+  while($row = $result->fetch_assoc()) {
+
+    echo "Sales ID: " . $row["Sales_ID"]. " - Transaction ID: " . $row["Transaction_ID"]. " - Date: " . $row["Date"]. " - Total: $" . $row["Total"]. "<br>";
+  }
+} else {
+  echo "No sales data available";
+}
+?>
+$conn->close();
 <!DOCTYPE html>
 <html>
 
