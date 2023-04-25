@@ -16,7 +16,7 @@ var myChart = new Chart(ctx, {
     //         borderWidth: 1
     //     }]
     // },
-    data: data1, 
+    data: data1,data2, 
     options: {
         responsive: true,
         maintainAspectRatio: false,
