@@ -105,6 +105,8 @@
             </div>
         </div>
 
+
+
         <!--Add-product-->
         <div class="Add-product">
             <input type="checkbox" id="click">
@@ -132,7 +134,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Delete -->
 
