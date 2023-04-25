@@ -25,7 +25,7 @@ if (mysqli_connect_errno())
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Appointments</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product1.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">

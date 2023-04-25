@@ -548,13 +548,13 @@ label{
 }
 
 .close-btn1{
-	background-color: #0C0C0C;
+	background-color: white;
 	color: black;
 	padding: 10px;
 	border: none;
 	transition: .4s ease;
 	top: 50px;
-	transform: -60%, 80%;
+	transform: translateX(-20%) translateY(-20%);
 }
 .close-btn1:hover{
 	background-color: gray;

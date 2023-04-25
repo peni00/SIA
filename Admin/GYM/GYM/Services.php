@@ -17,7 +17,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Services</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product1.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <script>
@@ -220,9 +220,10 @@ if (mysqli_connect_errno()) {
                     <label>Details: </label>
                     <input type="text" class="txt" name="txtdetails"><br /><br />
                     <div class="buttons">
-                    <button type="submit" class="edit-confirm1" name="submit">Add</button>
                         <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
-                       
+                        <button type="submit" class="edit-confirm1" name="submit">Add</button>
+
+
                     </div>
                 </div>
             </div>
