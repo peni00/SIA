@@ -220,8 +220,9 @@ if (mysqli_connect_errno()) {
                     <label>Details: </label>
                     <input type="text" class="txt" name="txtdetails"><br /><br />
                     <div class="buttons">
+                    <button type="submit" class="edit-confirm1" name="submit">Add</button>
                         <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="edit-confirm1" name="submit">Add</button>
+                       
                     </div>
                 </div>
             </div>

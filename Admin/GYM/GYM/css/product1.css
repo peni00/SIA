@@ -172,7 +172,7 @@ ul li{
 	position: absolute;
 	top: 100px;
 	right: 100px;
-	background-color: red;
+	background-color: #0C0C0C;
 	width: 500px;
 	height: 330px;
 	font-family:'lato', sans-serif;
@@ -548,13 +548,13 @@ label{
 }
 
 .close-btn1{
-	background-color: red;
+	background-color: #0C0C0C;
 	color: black;
 	padding: 10px;
 	border: none;
 	transition: .4s ease;
 	top: 50px;
-	transform: -60%, 99%;
+	transform: -60%, 80%;
 }
 .close-btn1:hover{
 	background-color: gray;
