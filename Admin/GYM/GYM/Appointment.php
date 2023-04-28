@@ -12,9 +12,8 @@ if (mysqli_connect_errno())
 
 ?>
 
-
-
-
+<?php ob_start()
+?>
 
 
 <!DOCTYPE html>
@@ -25,10 +24,15 @@ if (mysqli_connect_errno())
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Appointments</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <script>
+ if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+</script>
 </head>
 
 <body>
@@ -73,52 +77,94 @@ if (mysqli_connect_errno())
 
         </div>
         <!--container-->
-
+        <form method="POST">
         <div class="sortby">
 
-            <button for="sort">SORT BY</button>
-            <select class="sort">
+            <button type="submit">SORT BY</button>
+            <select class="sort" name="sort">
                 <option value="option0"></option>
                 <option value="option1">Date and Time</option>
-                <option value="option2">Membership</option>
-                <option value="option3">Appointment Status</option>
+                <option value="option3">PENDING Status</option>
+                <option value="option4">APPROVED Status</option>
+                <option value="option5">CANCELED Status</option>
             </select>
 
         </div>
         <div class="table-container">
 
-            <button type="button" class="unbtn">UNARCHIVE</button>
+        <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO UNARCHIVED THIS ITEM/S!')">UNARCHIVED</button>
+
 
             <table>
                 <thead>
                     <tr>
                         <th>
                         </th>
-
-                        <th>APPOINTMENT ID</th>
-                        <th>CLIENT NAME</th>
-                        <th>STAFF NAME</th>
-
-                        <th>SERVICE</th>
-                        <th>DATE AND TIME</th>
-                        <th>APPOINTMENT STATUS</th>
+                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;">APPOINTMENT ID</th>
+                        <th style="text-align: center;">CLIENT NAME</th>
+                        <th style="text-align: center;">STAFF NAME</th>
+                        <th style="text-align: center;">SERVICE</th>
+                        <th style="text-align: center;">DATE AND TIME</th>
+                        <th style="text-align: center;">APPOINTMENT STATUS</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <?php
-            // Query data from database
-            $sql = "select
-					appointment_tbl.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tbl.start_datetime, appointment_tbl.status
-					FROM appointment_tbl
-					JOIN account
-					ON appointment_tbl.email = account.Email_Add
-					JOIN stafftbl
-					ON appointment_tbl.staffID = stafftbl.staffID 
-					JOIN servicetypetbl
-					ON appointment_tbl.serviceID = servicetypetbl.serviceID
 
-";
+$sortOption = isset($_POST['sort']) ? $_POST['sort'] : '';
+
+// Set the default sort order if no option is selected
+if (empty($sortOption)) {
+    $sortOption = 'appointment_tbl.id ASC';
+}
+
+// Modify the $sql query and $sortOption depending on the selected option
+if ($sortOption == 'option1') {
+    $sortOption = 'appointment_tbl.start_datetime ASC';
+	$sql = "SELECT appointment_tbl.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tbl.start_datetime, appointment_tbl.status
+        FROM appointment_tbl
+        JOIN account ON appointment_tbl.email = account.Email_Add
+        JOIN stafftbl ON appointment_tbl.staffID = stafftbl.staffID 
+        JOIN servicetypetbl ON appointment_tbl.serviceID = servicetypetbl.serviceID
+        ORDER BY $sortOption";
+} elseif ($sortOption == 'option3') {
+    $sortOption = 'appointment_tbl.start_datetime ASC';
+    $sql = "SELECT appointment_tbl.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tbl.start_datetime, appointment_tbl.status
+            FROM appointment_tbl
+            JOIN account ON appointment_tbl.email = account.Email_Add
+            JOIN stafftbl ON appointment_tbl.staffID = stafftbl.staffID 
+            JOIN servicetypetbl ON appointment_tbl.serviceID = servicetypetbl.serviceID
+            WHERE appointment_tbl.status = 'PENDING'
+            ORDER BY $sortOption";
+} elseif ($sortOption == 'option4') {
+    $sortOption = 'appointment_tbl.start_datetime ASC';
+    $sql = "SELECT appointment_tbl.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tbl.start_datetime, appointment_tbl.status
+            FROM appointment_tbl
+            JOIN account ON appointment_tbl.email = account.Email_Add
+            JOIN stafftbl ON appointment_tbl.staffID = stafftbl.staffID 
+            JOIN servicetypetbl ON appointment_tbl.serviceID = servicetypetbl.serviceID
+            WHERE appointment_tbl.status = 'APPROVED'
+            ORDER BY $sortOption";
+} elseif ($sortOption == 'option5') {
+    $sortOption = 'appointment_tbl.start_datetime ASC';
+    $sql = "SELECT appointment_tbl.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tbl.start_datetime, appointment_tbl.status
+            FROM appointment_tbl
+            JOIN account ON appointment_tbl.email = account.Email_Add
+            JOIN stafftbl ON appointment_tbl.staffID = stafftbl.staffID 
+            JOIN servicetypetbl ON appointment_tbl.serviceID = servicetypetbl.serviceID
+            WHERE appointment_tbl.status = 'CANCELED'
+            ORDER BY $sortOption";
+} else {
+    $sortOption = 'appointment_tbl.id ASC';
+    $sql = "SELECT appointment_tbl.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tbl.start_datetime, appointment_tbl.status
+            FROM appointment_tbl
+            JOIN account ON appointment_tbl.email = account.Email_Add
+            JOIN stafftbl ON appointment_tbl.staffID = stafftbl.staffID 
+            JOIN servicetypetbl ON appointment_tbl.serviceID = servicetypetbl.serviceID
+            ORDER BY $sortOption";
+}
             $result = mysqli_query($conn, $sql);
 
             // Display data in HTML table
@@ -131,16 +177,18 @@ if (mysqli_connect_errno())
 					$dnt = $row['start_datetime'];
 					$sname = $row['status'];
                 
-                    echo "<tr>";
-				echo "<td style='text-align: center;'></td>";
+                     echo "<tr>";
+            echo "<td></td>";
+            echo "<td><input type='checkbox' name='check[]' value='" . $row['id'] . "'> &nbsp;&nbsp;&nbsp;";
 
-                  echo "<td>" . $row['id'] . "</td>";
-                    echo "<td >" . $row['Name'] . "</td>";
-                    echo "<td>" . $row['staffName'] . "</td>";
-					echo "<td >" . $row['serviceType'] . "</td>";
-					echo "<td>" . $row['start_datetime'] . "</td>";
-					echo "<td >" . $row['status'] . "</td>";
-                    echo "</tr>";
+            echo "<button type='button' name='editBtn' class='deleteBtn' data-bs-toggle='modal' data-bs-target='#exampleModal2'>EDIT</button></td>";
+            echo "<td style='text-align: center;'>" . $row['id'] . "</td>";
+            echo "<td style='text-align: center;'>" . $row['Name'] . "</td>";
+            echo "<td style='text-align: center;'>" . $row['staffName'] . "</td>";
+            echo "<td style='text-align: center;'>" . $row['serviceType'] . "</td>";
+            echo "<td style='text-align: center;'>" . $row['start_datetime'] . "</td>";
+            echo "<td style='text-align: center;'>"  . $row['status'] . "</td>";
+            echo "</tr>";
 
                    
                 }
@@ -152,7 +200,159 @@ if (mysqli_connect_errno())
 
                 </tbody>
             </table>
+        </form>
+
+      
+
+        <form method="POST">
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="edit-modal-dialog">
+            <div class="modal-content"
+                style="background-color: black; color: white; border-radius: 16px; width: 500px;">
+                    <div class="modal-body">
+                        <h1>DETAILS</h1>
+                        <div class="prod-info">
+
+                            <input type="hidden" class="txt" name="txtid" ><br />
+                            <label>Client Name: </label>
+                            <input type="text" class="txt" name="txtcname" readonly><br />
+                            <label>Staff Name: </label>
+                            <input type="text" class="txt" name="txtsname" readonly><br />
+                            <label>Services: </label>
+                            <input type="text" class="txt" name="txtservices" readonly><br/>
+                            <label>Date and Time: </label>
+                            <input type="text" class="txt" name="txtdt"><br />
+                            <label>Status: </label>
+                            <select class="txt" name="txtstatus">
+                                    <option value="PENDING">PENDING</option>
+                                    <option value="APPROVED">APPROVED</option>
+                                    <option value="CANCELED">CANCELED</option>
+                            </select>
+             
+                        </div>
+                        <div class="edit-confirmation1">
+                            <button type="button" class="close-btn1"
+                                data-bs-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit"
+                                class="edit-confirm1" name="confirm" value="Update Data" >Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        </div>
+		<?php
+	if(isset($_POST['delete'])) {
+    $all_id = $_POST['check'];
+    if(!empty($all_id)) {
+        $extract_id = implode(',' , $all_id);
+
+        // Perform the insert operation
+        $insert_query =  "INSERT INTO appointment_tblarchive (id, email, serviceID,staffID,start_datetime,end_datetime,status,datesubmitted)
+        SELECT id,email, serviceID, staffID,start_datetime,end_datetime,status,datesubmitted
+        FROM appointment_tbl
+        WHERE id IN($extract_id)";
+
+        $insert_query_run = mysqli_query($conn, $insert_query);
+
+        // Check if insert operation was successful
+        if($insert_query_run)
+        {
+            // Perform the delete operation
+            $query = "DELETE FROM appointment_tbl WHERE id IN($extract_id) ";
+            $query_run = mysqli_query($conn, $query);
+
+            // Check if delete operation was successful
+            if($query_run)
+            {
+                echo "Multiple Data Deleted and Archived Successfully";
+                header('Location: http://localhost/SIA/Admin/GYM/GYM/Appointment.php');
+                exit();
+            }
+            else
+            {
+                echo "Delete operation failed: " . mysqli_error($conn);
+            }
+        }
+        else
+        {
+            echo "Insert operation failed: " . mysqli_error($conn);
+        }
+    } else {
+        echo "No data selected to delete";
+    }
+}
+
+		?>
+		
+
+		<?php
+// Check if the confirm button was clicked
+if(isset($_POST['confirm'])) {
+    // Get the values from the form
+    $id = $_POST['txtid'];
+    $dt = $_POST['txtdt'];
+    $status = $_POST['txtstatus'];
+
+    // Prepare the SQL statement
+    $sql = "UPDATE appointment_tbl SET start_datetime='$dt', status='$status' WHERE id='$id'";
+
+    // Execute the SQL statement
+    if(mysqli_query($conn, $sql)) {
+        // If the update was successful, redirect to the appointment page
+        header('Location: http://localhost/SIA/Admin/GYM/GYM/Appointment.php');
+        exit();
+    } else {
+        // If the update failed, display an error message
+        echo "Error updating record: " . mysqli_error($conn);
+    }
+}
+?>
+		
+		
+		
+
+		
+		 <script>
+   // Get all the Edit buttons
+var editBtns = document.getElementsByName('editBtn');
+
+// Add click event listener to each Edit button
+for (var i = 0; i < editBtns.length; i++) {
+    editBtns[i].addEventListener('click', function() {
+        // Get the row associated with the clicked Edit button
+        var row = this.parentNode.parentNode;
+
+        // Get the values of serviceType and serviceDescription from the row
+        var id = row.cells[2].textContent;
+        var name= row.cells[3].textContent;
+        var staffName = row.cells[4].textContent;
+        var serviceType = row.cells[5].textContent;
+        var start_datetime = row.cells[6].textContent;
+        var status  = row.cells[7].textContent;
+
+        // Assign the values to the textboxes in the modal
+        document.getElementsByName('txtid')[0].value = id;
+        document.getElementsByName('txtcname')[0].value = name;
+        document.getElementsByName('txtsname')[0].value = staffName;
+        document.getElementsByName('txtservices')[0].value = serviceType;
+        document.getElementsByName('txtdt')[0].value = start_datetime;
+        document.getElementsByName('txtstatus')[0].value = status;
+		
+		// Auto-select the corresponding option in the status dropdown
+var statusDropdown = document.getElementsByName('txtstatus')[0];
+if (status == 'PENDING') {
+    statusDropdown.querySelector('option[value="option1"]').selected = true;
+} else if (status == 'APPROVED') {
+    statusDropdown.querySelector('option[value="option2"]').selected = true;
+} else if (status == 'CANCELED') {
+    statusDropdown.querySelector('option[value="option3"]').selected = true;
+}
+    });
+}
+
+</script>
+
 
         <script src=" https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
             integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
