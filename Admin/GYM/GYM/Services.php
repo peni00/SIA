@@ -7,10 +7,8 @@ if (mysqli_connect_errno()) {
   exit();
 }
 ?>
-<?php
-ob_start()
+<?php ob_start()
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -63,7 +61,7 @@ ob_start()
         </div>
     </div>
 
-     <!--sidebar-->
+    <!--sidebar-->
 
 <div class="container">
     <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px"> </a>
@@ -142,7 +140,7 @@ ob_start()
     </table>
  <!-- DELETE -->
 
-    <?php
+ <?php
      if(isset($_POST['delete']))
 {
     $all_id = $_POST['check'];
@@ -163,7 +161,9 @@ ob_start()
     // Check if both operations were successful
     if($query_run && $insert_query_run)
     {
-        echo "Multiple Data Deleted and Archived Successfully";
+        echo '<script type ="text/JavaScript">';  
+            echo 'alert(" no found !!!! ")';  
+            echo '</script>';
         header('Location: http://localhost/SIA/Admin/GYM/GYM/Services.php');
         exit();
     }
@@ -184,6 +184,29 @@ ob_start()
        
 </form>
 
+<!-- searchbar -->
+<?php
+    if(isset($_POST['search'])){
+        $searchbar=$_POST['txtsearch'];
+
+        $sql = "SELECT * FROM `servicetypetbl` where `serviceID`='$searchbar'";
+        $result=mysqli_query($conn,$sql);
+        if($result){
+           if($num=mysqli_num_rows($result)>0){
+            $row=mysqli_fetch_assoc($result);
+            
+           }
+        }else{
+            echo '<script type ="text/JavaScript">';  
+            echo 'alert(" no found !!!! ")';  
+            echo '</script>';
+        }
+
+    }
+    ?>
+       
+</form>
+
 </div>
 
 <!-- Add this script at the end of your code -->
@@ -198,10 +221,12 @@ for (var i = 0; i < editBtns.length; i++) {
         var row = this.parentNode.parentNode;
 
         // Get the values of serviceType and serviceDescription from the row
+        var serviceID = row.cells[1].textContent;
         var serviceType = row.cells[2].textContent;
         var serviceDescription = row.cells[3].textContent;
 
         // Assign the values to the textboxes in the modal
+        document.getElementsByName('txtid')[0].value = serviceID;
         document.getElementsByName('txtservice1')[0].value = serviceType;
         document.getElementsByName('txtdetails1')[0].value = serviceDescription;
     });
@@ -216,7 +241,7 @@ for (var i = 0; i < editBtns.length; i++) {
 
 
     <!--Add-product-->
-    <form method="POST" >
+    <form  method="POST" >
     <div class="Add-product">
         <input type="checkbox" id="click">
         <label for="click" type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
@@ -228,16 +253,17 @@ for (var i = 0; i < editBtns.length; i++) {
             <div class="prod-info">
                
                 <label>Service: </label>
-                <input type="text" class="txt" name="txtservice"><br />
+                <input type="text" class="txt" name="txtservice" required><br />
                 <label>Details: </label>
-                <input type="text" class="txt" name="txtdetails"><br />
+                <input type="text" class="txt" name="txtdetails"required><br />
                 <div class="buttons">
-                    <button type="button" class="close-btn1" data-bs-dismiss="modal">CANCEL</button>
+                    <button type="button" class="close-btn1" data-bs-dismiss="modal" onclick="window.location.href='Services.php';">CANCEL</button>
                     <button type="submit" class="edit-confirm1" name="submit">ADD</button>
                 </div>
             </div>
         </div>
     </div>
+</form>
     <?php
                    
                   // Add a new service
@@ -249,7 +275,7 @@ for (var i = 0; i < editBtns.length; i++) {
                 
                     if (mysqli_query($conn, $sql)) {
                         
-                        header('Location: Services.php');
+                        header('Location: http://localhost/SIA/Admin/GYM/GYM/Services.php');
                         
                         exit();
                     } else {
@@ -269,11 +295,11 @@ for (var i = 0; i < editBtns.length; i++) {
                         <h1>DETAILS</h1>
                         <div class="prod-info">
                             
-                            
+                            <input type="hidden" class="txt" name="txtid" ><br />
                             <label>Service: </label>
-                            <input type="text" class="txt" name="txtservice1"><br />
+                            <input type="text" class="txt" name="txtservice1" required><br />
                             <label>Details: </label>
-                            <input type="text" class="txt" name="txtdetails1"><br />
+                            <input type="text" class="txt" name="txtdetails1" re><br />
              
                         </div>
                         <div class="edit-confirmation1">
@@ -292,19 +318,21 @@ for (var i = 0; i < editBtns.length; i++) {
                 
                   // edit a new service
             if (isset($_POST['confirm'])) {
-               
+                $serviceid=$_POST['txtid'];
                 $txtservice = $_POST['txtservice1'];
                 $txtdetails = $_POST['txtdetails1'];
   
                 $sql = "UPDATE `servicetypetbl` SET `serviceID`='$serviceid',`serviceType`='$txtservice',`serviceDescription`='$txtdetails' WHERE `serviceID`='$serviceid'";
                 $query2=mysqli_query($conn, $sql);
                     if ($query2) {
-                        header('Location: Services.php');
+                        
+                        header('Location: http://localhost/SIA/Admin/GYM/GYM/Services.php');
                         exit();
                     } else {
                         echo "Error: " . mysqli_error($conn);
                     }
                 }
+                mysqli_close($conn);
     ?>
         
     </form>
