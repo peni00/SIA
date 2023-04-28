@@ -8,7 +8,8 @@ if (mysqli_connect_errno()) {
 }
 ?>
 
-
+<?php ob_start()
+?>
 
 <!DOCTYPE html>
 <html>
@@ -18,8 +19,8 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Archive</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
@@ -72,12 +73,23 @@ if (mysqli_connect_errno()) {
             </div>
         </div>
        <!--container-->
+      <div class="sortby">
+  <form method="POST">
+   <button type="submit" >SORT BY</button>
+    <select class="sort" name="sort">
+      <option value="option0"></option>
+      <option value="option1">Services</option>
+      <option value="option3">Details</option>
+    </select>
+    
+  </form>
+</div>
 
 <div class="table-container">
 
 <form method="POST">
    <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO UNARCHIVED THIS ITEM/S!')">UNARCHIVED</button>
-
+   <button type="submit" class="unbtn1" name="delete1" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO DELETE THIS ITEM/S!')">DELETE</button>
     <table>
         <thead>
             <tr>
@@ -88,10 +100,32 @@ if (mysqli_connect_errno()) {
             </tr>
         </thead>
         <tbody>
-            <?php
-            // Query to retrieve data from servicetypetbl
-            $sql = "SELECT * FROM servicetypetblarchive";
 
+            <?php
+
+$sortOption = isset($_POST['sort']) ? $_POST['sort'] : '';
+
+// Set the default sort order if no option is selected
+if (empty($sortOption)) {
+    $sortOption = 'servicetypetblarchive.serviceID ASC';
+}
+
+// Modify the $sql query to order by the appropriate column depending on the selected option
+if ($sortOption == 'option1') {
+    $sortOption = 'servicetypetblarchive.serviceType ASC';
+} elseif ($sortOption == 'option3') {
+    $sortOption = 'servicetypetblarchive.serviceDescription ASC';
+} else {
+    $sortOption = 'serviceID ASC';
+}
+
+
+
+
+
+            // Query to retrieve data from servicetypetbl
+            $sql = "SELECT * FROM servicetypetblarchive
+            ORDER BY $sortOption";
             // Execute the query and get the result set
             $result = mysqli_query($conn, $sql);
 
@@ -146,8 +180,31 @@ if (mysqli_connect_errno()) {
     }
 }
 
+ 
+       
+     if(isset($_POST['delete1']))
+{
+    $all_id = $_POST['check'];
+    $extract_id = implode(',' , $all_id);
+    $query = "DELETE FROM servicetypetblarchive WHERE serviceID IN($extract_id) ";
+    $query_run = mysqli_query($conn, $query);
+    if($query_run )
+    {
+        echo "Multiple Data Deleted and Archived Successfully";
+        header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php');
+        exit();
+    }
+    else if(!$query_run)
+    {
+        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
+    }
+    else
+    {
+        echo "Multiple Data Not Deleted or Archived";
+    }
+}
+?>
 
-       ?>  
 </div>
 
 
