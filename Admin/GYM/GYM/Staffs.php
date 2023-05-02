@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
 
 if (mysqli_connect_errno()) 
@@ -14,7 +14,6 @@ if (mysqli_connect_errno())
 <?php ob_start()
 ?>
 
-
 <?php
      if(isset($_POST['delete']))
 {
@@ -22,21 +21,21 @@ if (mysqli_connect_errno())
     $extract_id = implode(',' , $all_id);
 
     // Perform the insert operation
-     $insert_query =  "INSERT INTO stafftblarchive (staffID, staffName, serviceID, staffImage)
-    SELECT staffID,staffName, serviceID, staffImage
-    FROM stafftbl
+     $insert_query =  "INSERT INTO staff_tblarchive (staffID, staffName, serviceID, imageName, staffImage)
+    SELECT staffID, staffName, serviceID, imageName, staffImage
+    FROM staff_tbl
     WHERE staffID IN($extract_id)";
 					 
     $insert_query_run = mysqli_query($conn, $insert_query);	
 	// Perform the delete operation
-    $query = "DELETE FROM stafftbl WHERE stafftbl.staffID IN($extract_id) ";
+    $query = "DELETE FROM staff_tbl WHERE staff_tbl.staffID IN($extract_id) ";
     $query_run = mysqli_query($conn, $query);
 
     // Check if both operations were successful
     if($query_run && $insert_query_run)
     {
         echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Staffs.php');
+        header('Location: Staffs.php');
         exit();
     }
     else if(!$insert_query_run)
@@ -47,6 +46,7 @@ if (mysqli_connect_errno())
     {
         echo "Multiple Data Not Deleted or Archived";
     }
+	 mysqli_close($conn);
 }
 ?>
 <?php
@@ -81,10 +81,10 @@ if(isset($_POST['update'])) {
 
     // Prepare statement
     if(!empty($imageName)) {
-        $stmt = mysqli_prepare($conn, "UPDATE stafftbl SET staffName=?, serviceID=?, imageName=?, staffImage=? WHERE staffID=?");
+        $stmt = mysqli_prepare($conn, "UPDATE staff_tbl SET staffName=?, serviceID=?, imageName=?, staffImage=? WHERE staffID=?");
         mysqli_stmt_bind_param($stmt, "sissi", $newsname, $serviceCategory, $imageName, $imageData, $sid);
     } else {
-        $stmt = mysqli_prepare($conn, "UPDATE stafftbl SET staffName=?, serviceID=? WHERE staffID=?");
+        $stmt = mysqli_prepare($conn, "UPDATE staff_tbl SET staffName=?, serviceID=? WHERE staffID=?");
         mysqli_stmt_bind_param($stmt, "ssi", $newsname, $serviceCategory, $sid);
     }
 
@@ -97,6 +97,7 @@ if(isset($_POST['update'])) {
 
     // Close statement
     mysqli_stmt_close($stmt);
+	
 }
 
 ?>
@@ -170,7 +171,7 @@ if(isset($_POST['update'])) {
             $searchbar=$_POST['txtsearch'];
 			
 
-             $sql = "SELECT * FROM `stafftbl` where `serviceID`='$searchbar'";
+             $sql = "SELECT * FROM `staff_tbl` where `serviceID`='$searchbar'";
             $result=mysqli_query($conn,$sql);
             if($result){
                 if($num=mysqli_num_rows($result)>0){
@@ -208,13 +209,13 @@ if(isset($_POST['update'])) {
             if(isset($_POST['search'])){
                 $searchbar=$_POST['txtsearch'];
 				
-                $sql = "SELECT stafftbl.staffID, stafftbl.staffName, servicetypetbl.serviceType, stafftbl.staffImage
-        FROM stafftbl
-        JOIN servicetypetbl ON stafftbl.serviceID = servicetypetbl.serviceID
-        WHERE stafftbl.staffID LIKE '%$searchbar%' 
-        OR stafftbl.staffName LIKE '%$searchbar%' 
+        $sql = "SELECT staff_tbl.staffID, staff_tbl.staffName, servicetypetbl.serviceType, staff_tbl.staffImage
+        FROM staff_tbl
+        JOIN servicetypetbl ON staff_tbl.serviceID = servicetypetbl.serviceID
+        WHERE staff_tbl.staffID LIKE '%$searchbar%' 
+        OR staff_tbl.staffName LIKE '%$searchbar%' 
         OR servicetypetbl.serviceType LIKE '%$searchbar%' 
-        ORDER BY stafftbl.staffID ASC";
+        ORDER BY staff_tbl.staffID ASC";
 		
 		
 $result = mysqli_query($conn, $sql);
@@ -240,11 +241,11 @@ if (mysqli_num_rows($result) > 0) {
 
             }else{
           
-                // Query data from database
-$sql = "SELECT stafftbl.staffID, stafftbl.staffName,  servicetypetbl.serviceType, stafftbl.staffImage
-        FROM stafftbl
-        JOIN servicetypetbl ON stafftbl.serviceID = servicetypetbl.serviceID
-        ORDER BY stafftbl.staffID ASC";
+        // Query data from database
+$sql = "SELECT staff_tbl.staffID, staff_tbl.staffName,  servicetypetbl.serviceType, staff_tbl.staffImage
+        FROM staff_tbl
+        JOIN servicetypetbl ON staff_tbl.serviceID = servicetypetbl.serviceID
+        ORDER BY staff_tbl.staffID ASC";
 
 $result = mysqli_query($conn, $sql);
 
@@ -271,16 +272,10 @@ if (mysqli_num_rows($result) > 0) {
 }
             }
 ?>
-			
-			
-                            
-                        </tr>
 
+                        </tr>
                     </tbody>
                 </table>
-           
-                
-
             </div>
 			
 
@@ -357,7 +352,7 @@ if(isset($_POST['submit'])) {
         }
 
         // Prepare statement
-        $stmt = mysqli_prepare($conn, "INSERT INTO stafftbl (staffName, serviceID, imageName, staffImage) VALUES (?, ?, ?, ?)");
+        $stmt = mysqli_prepare($conn, "INSERT INTO staff_tbl (staffName, serviceID, imageName, staffImage) VALUES (?, ?, ?, ?)");
 
         // Bind parameters
         mysqli_stmt_bind_param($stmt, "siss", $sname, $serviceCategory, $imageName, $imageData);
@@ -365,7 +360,7 @@ if(isset($_POST['submit'])) {
         // Execute statement
         if(mysqli_stmt_execute($stmt)) {
             echo "Data added successfully.";
-			header('Location: http://localhost/SIA/Admin/GYM/GYM/Staffs.php');
+			header('Location: Staffs.php');
         exit();
         } else {
             echo "Error: " . mysqli_error($conn);
@@ -409,20 +404,20 @@ if(isset($_POST['submit'])) {
                             <input type="text" class="txt" name="newsname" id="newsname"><br />
                             <label>Service Category: </label>
                            <select name="newserviceCategory" class="txt" >
-									<?php
-									// Query data from database
-									$sql = "SELECT * FROM servicetypetbl";
-									$result = mysqli_query($conn, $sql);
-									// Display data in dropdown
-									if (mysqli_num_rows($result) > 0) {
-									while ($row = mysqli_fetch_assoc($result)) {
-									echo "<option value='".$row['serviceID']."'>".$row['serviceType']."</option>";
-									}
-									} else {
-									echo "<option value=''>No service type found</option>";
-									}
-									?>
-								</select>
+			   <?php
+			   // Query data from database
+			   $sql = "SELECT * FROM servicetypetbl";
+			   $result = mysqli_query($conn, $sql);
+			   // Display data in dropdown
+			   if (mysqli_num_rows($result) > 0) {
+			   while ($row = mysqli_fetch_assoc($result)) {
+			   echo "<option value='".$row['serviceID']."'>".$row['serviceType']."</option>";
+			   }
+			   } else {
+			   echo "<option value=''>No service type found</option>";
+			   }
+			   ?>
+			</select>
                         </div>
                         <br>
                         <div class="buttons">
