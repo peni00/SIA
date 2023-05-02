@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
 
 if (mysqli_connect_errno()) {
@@ -53,9 +53,16 @@ if (mysqli_connect_errno()) {
 
             </ul>
             <div class="admin">
-                <img src="images/image10.png" class="user" style="width: 40px">
-                <button style="font-weight: 700">Admin Rod
-                    <img src=" images/dropd.png" style="width:25px">
+                <img src="images/image10.png" class="user" style="width: 40px ">
+                <button type="button" style="font-weight: 700">Admin Rod <div class="dropdown">
+                        <img type="button" src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item"
+                                href="http://localhost/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                            <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
+                                href="logout.php">Logout</a>
+                        </div>
+                    </div>
                 </button>
             </div>
         </div>
