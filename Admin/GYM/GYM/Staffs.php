@@ -512,7 +512,7 @@ function previewImage(event) {
     reader.readAsDataURL(selectedFile);
 }
 </script>
-
+ 
 
 	
 </body>
