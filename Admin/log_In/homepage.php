@@ -7,7 +7,7 @@
     <title>RFG ELITE | Home</title>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="homepage.css" media="screen">
-    
+
 </head>
 
 <body class="u-body u-xl-mode" data-lang="en">
@@ -15,7 +15,7 @@
     <section class="Anton Antonio C1C1C1 D9D9D9 EFF Ellipse FFFFFF Lato Rectangle absolute admin align-items background border border-box border-radius box box-shadow box-sizing calc50 center color copyright display enter-email flex font-family font-size font-style font-weight height identical left line-height normal password position px px2 rfg rgba0 rgba70 show-pass sign-in solid text-align to top u-clearfix width u-section-1" id="sec-d0e7">
         <nav>
             <div class="left-nav">
-                <img class="logo-img" src="images/logo-modified.png" >
+                <img class="logo-img" src="images/logo-modified.png" alt="" data-image-width="362" data-image-height="362">
                 <p> RFG ELITE</p>
             </div>
             <div class="right-icon">
@@ -39,7 +39,7 @@
                 <h2>
                     WELCOME TO ADMIN CONSOLE,
                 </h2>
-                <p class="adminrod">
+                <p>
                     ADMIN ROD!
                 </p>
                 <div class="box-card">
@@ -61,7 +61,7 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="#">
+                            <a>
                                 <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400">
                                 <p>
                                     INVENTORY
@@ -73,7 +73,7 @@
                         <div>
 
                             <a href="http://localhost/SIA/Admin/GYM/GYM/services.php">
-                                <img  src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/services.php">
+                                <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/services.php">
                                 <p class="u-text u-text-body-color u-text-4">
                                     APPOINTMENT
                                 </p>
@@ -83,7 +83,7 @@
                     <div class="boxes">
 
                         <a href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
-                            <img  src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
+                            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
                             <p>
                                 E-COMMERCE
                             </p>
