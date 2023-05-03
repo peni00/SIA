@@ -1,16 +1,13 @@
 <?php
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
-
-if (mysqli_connect_errno()) 
-{
+if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   exit();
 }
-
-
 ?>
+
 
 <?php ob_start()
 ?>
@@ -22,7 +19,7 @@ if (mysqli_connect_errno())
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Archive</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -117,48 +114,48 @@ if (mysqli_connect_errno())
                      
                      // Modify the $sql query and $sortOption depending on the selected option
                      if ($sortOption == 'option1') {
-                         $sortOption = 'appointment_tblarchive.start_datetime ASC';
-                         $sql = "SELECT appointment_tblarchive.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tblarchive.start_datetime, appointment_tblarchive.status
-                             FROM appointment_tblarchive
-                             JOIN account ON appointment_tblarchive.email = account.Email_Add
-                             JOIN stafftbl ON appointment_tblarchive.staffID = stafftbl.staffID 
-                             JOIN servicetypetbl ON appointment_tblarchive.serviceID = servicetypetbl.serviceID
+							 $sortOption = 'appointmenttblarchive.start_datetime ASC';
+							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+                             FROM appointmenttblarchive
+                             JOIN account ON appointmenttblarchive.email = account.Email_Add
+                             JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
+                             JOIN servicetypetbl ON appointmenttblarchive.serviceID = servicetypetbl.serviceID
                              ORDER BY $sortOption";
                      } elseif ($sortOption == 'option3') {
-                         $sortOption = 'appointment_tblarchive.start_datetime ASC';
-                         $sql = "SELECT appointment_tblarchive.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tblarchive.start_datetime, appointment_tblarchive.status
-                         FROM appointment_tblarchive
-                         JOIN account ON appointment_tblarchive.email = account.Email_Add
-                         JOIN stafftbl ON appointment_tblarchive.staffID = stafftbl.staffID 
-                         JOIN servicetypetbl ON appointment_tblarchive.serviceID = servicetypetbl.serviceID
-                                 WHERE appointment_tblarchive.status = 'PENDING'
+                             $sortOption = 'appointmenttblarchive.start_datetime ASC';
+							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+                             FROM appointmenttblarchive
+                             JOIN account ON appointmenttblarchive.email = account.Email_Add
+                             JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
+                             JOIN servicetypetbl ON appointmenttblarchive.serviceID = servicetypetbl.serviceID
+                                 WHERE appointmenttblarchive.status = 'PENDING'
                                  ORDER BY $sortOption";
                      } elseif ($sortOption == 'option4') {
-                         $sortOption = 'appointment_tblarchive.start_datetime ASC';
-                         $sql = "SELECT appointment_tblarchive.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tblarchive.start_datetime, appointment_tblarchive.status
-                         FROM appointment_tblarchive
-                         JOIN account ON appointment_tblarchive.email = account.Email_Add
-                         JOIN stafftbl ON appointment_tblarchive.staffID = stafftbl.staffID 
-                         JOIN servicetypetbl ON appointment_tblarchive.serviceID = servicetypetbl.serviceID
-                                 WHERE appointment_tblarchive.status = 'APPROVED'
+                             $sortOption = 'appointmenttblarchive.start_datetime ASC';
+							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+                             FROM appointmenttblarchive
+                             JOIN account ON appointmenttblarchive.email = account.Email_Add
+                             JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
+                             JOIN servicetypetbl ON appointmenttblarchive.serviceID = servicetypetbl.serviceID
+                                 WHERE appointmenttblarchive.status = 'APPROVED'
                                  ORDER BY $sortOption";
                      } elseif ($sortOption == 'option5') {
-                         $sortOption = 'appointment_tblarchive.start_datetime ASC';
-                         $sql = "SELECT appointment_tblarchive.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tblarchive.start_datetime, appointment_tblarchive.status
-                         FROM appointment_tblarchive
-                         JOIN account ON appointment_tblarchive.email = account.Email_Add
-                         JOIN stafftbl ON appointment_tblarchive.staffID = stafftbl.staffID 
-                         JOIN servicetypetbl ON appointment_tblarchive.serviceID = servicetypetbl.serviceID
-                                 WHERE appointment_tblarchive.status = 'CANCELED'
-                                 ORDER BY $sortOption";
+                             $sortOption = 'appointmenttblarchive.start_datetime ASC';
+							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+                             FROM appointmenttblarchive
+                             JOIN account ON appointmenttblarchive.email = account.Email_Add
+                             JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
+                             JOIN servicetypetbl ON appointmenttblarchive.serviceID = servicetypetbl.serviceID
+                             WHERE appointmenttblarchive.status = 'CANCELED'
+                             ORDER BY $sortOption";
                      } else {
-                        $sortOption = 'appointment_tblarchive.start_datetime ASC';
-                        $sql = "SELECT appointment_tblarchive.id, account.Name, stafftbl.staffName, servicetypetbl.serviceType, appointment_tblarchive.start_datetime, appointment_tblarchive.status
-                        FROM appointment_tblarchive
-                        JOIN account ON appointment_tblarchive.email = account.Email_Add
-                        JOIN stafftbl ON appointment_tblarchive.staffID = stafftbl.staffID 
-                        JOIN servicetypetbl ON appointment_tblarchive.serviceID = servicetypetbl.serviceID
-                                 ORDER BY $sortOption";
+                             $sortOption = 'appointmenttblarchive.id ASC';
+							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+                             FROM appointmenttblarchive
+                             JOIN account ON appointmenttblarchive.email = account.Email_Add
+                             JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
+                             JOIN servicetypetbl ON appointmenttblarchive.serviceID = servicetypetbl.serviceID
+                             ORDER BY $sortOption";
                      }
                     $result = mysqli_query($conn, $sql);
 
@@ -197,9 +194,9 @@ if (mysqli_connect_errno())
         $extract_id = implode(',' , $all_id);
 
         // Perform the insert operation
-        $insert_query =  "INSERT INTO appointment_tbl (id, email, serviceID,staffID,start_datetime,end_datetime,status,datesubmitted)
+        $insert_query =  "INSERT INTO appointmenttbl (id, email, serviceID,staffID,start_datetime,end_datetime,status,datesubmitted)
         SELECT id,email, serviceID, staffID,start_datetime,end_datetime,status,datesubmitted
-        FROM appointment_tblarchive
+        FROM appointmenttblarchive
         WHERE id IN($extract_id)";
 
         $insert_query_run = mysqli_query($conn, $insert_query);
@@ -208,14 +205,14 @@ if (mysqli_connect_errno())
         if($insert_query_run)
         {
             // Perform the delete operation
-            $query = "DELETE FROM appointment_tblarchive WHERE id IN($extract_id) ";
+            $query = "DELETE FROM appointmenttblarchive WHERE id IN($extract_id) ";
             $query_run = mysqli_query($conn, $query);
 
             // Check if delete operation was successful
             if($query_run)
             {
                 echo "Multiple Data Deleted and Archived Successfully";
-                header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Appointment.php');
+                header('Location: Archives-Appointment.php');
                 exit();
             }
             else
@@ -239,14 +236,14 @@ if(isset($_POST['delete1']))
 
 
 	// Perform the delete operation
-    $query = "DELETE FROM appointment_tblarchive WHERE appointment_tblarchive.id IN($extract_id) ";
+    $query = "DELETE FROM appointmenttblarchive WHERE appointmenttblarchive.id IN($extract_id) ";
     $query_run = mysqli_query($conn, $query);
 
     // Check if both operations were successful
     if($query_run )
     {
         echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Appointment.php');
+        header('Location: Archives-Appointment.php');
         exit();
     }
     else if(!$query_run)
@@ -257,6 +254,7 @@ if(isset($_POST['delete1']))
     {
         echo "Multiple Data Not Deleted or Archived";
     }
+	mysqli_close($conn);
 }
 
 		?>

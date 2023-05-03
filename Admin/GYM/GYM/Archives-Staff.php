@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
 
 if (mysqli_connect_errno()) {
@@ -118,12 +118,12 @@ $sortOption = isset($_POST['sort']) ? $_POST['sort'] : '';
 
 // Set the default sort order if no option is selected
 if (empty($sortOption)) {
-    $sortOption = 'stafftblarchive.staffID ASC';
+    $sortOption = 'staff_tblarchive.staffID ASC';
 }
 
 // Modify the $sql query to order by the appropriate column depending on the selected option
 if ($sortOption == 'option1') {
-    $sortOption = 'stafftblarchive.staffName ASC';
+    $sortOption = 'staff_tblarchive.staffName ASC';
 } elseif ($sortOption == 'option3') {
     $sortOption = 'servicetypetbl.serviceType ASC';
 } else {
@@ -131,9 +131,9 @@ if ($sortOption == 'option1') {
 }
 
    // Query data from database
-$sql = "SELECT stafftblarchive.staffID, stafftblarchive.staffName,  servicetypetbl.serviceType, stafftblarchive.staffImage
-        FROM stafftblarchive
-        JOIN servicetypetbl ON stafftblarchive.serviceID = servicetypetbl.serviceID
+$sql = "SELECT staff_tblarchive.staffID, staff_tblarchive.staffName,  servicetypetbl.serviceType, staff_tblarchive.staffImage
+        FROM staff_tblarchive
+        JOIN servicetypetbl ON staff_tblarchive.serviceID = servicetypetbl.serviceID
         ORDER BY $sortOption";
 
 $result = mysqli_query($conn, $sql);
@@ -171,21 +171,21 @@ if (mysqli_num_rows($result) > 0) {
        $extract_id = implode(',' , $all_id);
    
        // Perform the insert operation
-       $insert_query =  "INSERT INTO stafftbl (staffID, staffName, serviceID, staffImage)
-       SELECT staffID,staffName, serviceID, staffImage
-       FROM stafftblarchive
+       $insert_query =  "INSERT INTO staff_tbl (staffID, staffName, serviceID, imageName, staffImage)
+       SELECT staffID,staffName, serviceID, imageName, staffImage
+       FROM staff_tblarchive
        WHERE staffID IN($extract_id)";
                         
        $insert_query_run = mysqli_query($conn, $insert_query);	
        // Perform the delete operation
-       $query = "DELETE FROM stafftblarchive WHERE stafftblarchive.staffID IN($extract_id) ";
+       $query = "DELETE FROM staff_tblarchive WHERE staff_tblarchive.staffID IN($extract_id) ";
        $query_run = mysqli_query($conn, $query);
    
        // Check if both operations were successful
        if($query_run && $insert_query_run)
        {
            echo "Multiple Data Deleted and Archived Successfully";
-           header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Staff.php');
+           header('Location: Archives-Staff.php');
            exit();
        }
        else if(!$insert_query_run)
@@ -205,14 +205,14 @@ if (mysqli_num_rows($result) > 0) {
 
 
 	// Perform the delete operation
-    $query = "DELETE FROM stafftblarchive WHERE stafftblarchive.staffID IN($extract_id) ";
+    $query = "DELETE FROM staff_tblarchive WHERE staff_tblarchive.staffID IN($extract_id) ";
     $query_run = mysqli_query($conn, $query);
 
     // Check if both operations were successful
     if($query_run )
     {
         echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Staff.php');
+        header('Location: Archives-Staff.php');
         exit();
     }
     else if(!$query_run)
@@ -223,6 +223,7 @@ if (mysqli_num_rows($result) > 0) {
     {
         echo "Multiple Data Not Deleted or Archived";
     }
+	mysqli_close($conn);
 }
     ?>
         </div>
