@@ -1,3 +1,4 @@
+@media only screen and (max-width: 8800px){
 .table-container{
     height: 420px;
       width: 1100px;
@@ -551,10 +552,15 @@
   }
 
   .dropdown-content a:hover {
-    background-color:;
+    background-color:#D9D9D9;
     color:#004385;
   }
 
   .dropdown:hover .dropdown-content {
     display: block;
+  }
+
+  
+
+    
   }

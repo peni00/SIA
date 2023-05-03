@@ -1,3 +1,16 @@
+<?php
+$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+
+
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  exit();
+}
+?>
+
+<?php ob_start()
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -59,33 +72,141 @@
                         class="appbtn">APPOINTMENT</Button></a>
             </div>
         </div>
-        <!--container-->
+       <!--container-->
+      <div class="sortby">
+  <form method="POST">
+   <button type="submit" >SORT BY</button>
+    <select class="sort" name="sort">
+      <option value="option0"></option>
+      <option value="option1">Services</option>
+      <option value="option3">Details</option>
+    </select>
+    
+  </form>
+</div>
 
-        <div class="table-container">
+<div class="table-container">
+
+<form method="POST">
+   <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO UNARCHIVED THIS ITEM/S!')">UNARCHIVED</button>
+   <button type="submit" class="unbtn1" name="delete1" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO DELETE THIS ITEM/S!')">DELETE</button>
+    <table>
+        <thead>
+            <tr>
+                <th width="200"></th>
+                <th>SERVICE ID</th>
+                <th>SERVICES</th>
+                <th>DETAILS</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+
+$sortOption = isset($_POST['sort']) ? $_POST['sort'] : '';
+
+// Set the default sort order if no option is selected
+if (empty($sortOption)) {
+    $sortOption = 'servicetypetblarchive.serviceID ASC';
+}
+
+// Modify the $sql query to order by the appropriate column depending on the selected option
+if ($sortOption == 'option1') {
+    $sortOption = 'servicetypetblarchive.serviceType ASC';
+} elseif ($sortOption == 'option3') {
+    $sortOption = 'servicetypetblarchive.serviceDescription ASC';
+} else {
+    $sortOption = 'serviceID ASC';
+}
 
 
-            <button type="button" class="unbtn">UNARCHIVE</button>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th width="200"></th>
-                        <th>SERVICE ID</th>
-                        <th>SERVICES</th>
-                        <th>DETAILS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                        <td>SAMPLE</td>
-                    </tr>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+
+            // Query to retrieve data from servicetypetbl
+            $sql = "SELECT * FROM servicetypetblarchive
+            ORDER BY $sortOption";
+            // Execute the query and get the result set
+            $result = mysqli_query($conn, $sql);
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<tr>';
+                echo "<td><input type='checkbox' name='check[]' value='" . $row['serviceID'] . "'>&nbsp;&nbsp;&nbsp;";
+                echo '<td>' . $row['serviceID'] . '</td>';
+                echo '<td>' . $row['serviceType'] . '</td>';
+                echo '<td>' . $row['serviceDescription'] . '</td>';
+                echo '</tr>';
+            }
+            ?>
+
+        </tbody>
+    </table>
+	</form>
+	
+	 <!-- DELETE -->
+
+    <?php
+     if(isset($_POST['delete']))
+{
+    $all_id = $_POST['check'];
+    $extract_id = implode(',' , $all_id);
+
+    // Perform the insert operation
+    $insert_query = "INSERT INTO servicetypetbl (serviceID, serviceType, serviceDescription)
+                     SELECT serviceID, serviceType, serviceDescription
+                     FROM servicetypetblarchive
+                     WHERE serviceID IN($extract_id)";
+					 
+    $insert_query_run = mysqli_query($conn, $insert_query);
+	
+	// Perform the delete operation
+    $query = "DELETE FROM servicetypetblarchive WHERE serviceID IN($extract_id) ";
+    $query_run = mysqli_query($conn, $query);
+
+    // Check if both operations were successful
+    if($query_run && $insert_query_run)
+    {
+        echo "Multiple Data Deleted and Archived Successfully";
+        header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php');
+        exit();
+    }
+    else if(!$insert_query_run)
+    {
+        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
+    }
+    else
+    {
+        echo "Multiple Data Not Deleted or Archived";
+    }
+}
+
+ 
+       
+     if(isset($_POST['delete1']))
+{
+    $all_id = $_POST['check'];
+    $extract_id = implode(',' , $all_id);
+    $query = "DELETE FROM servicetypetblarchive WHERE serviceID IN($extract_id) ";
+    $query_run = mysqli_query($conn, $query);
+    if($query_run )
+    {
+        echo "Multiple Data Deleted and Archived Successfully";
+        header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php');
+        exit();
+    }
+    else if(!$query_run)
+    {
+        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
+    }
+    else
+    {
+        echo "Multiple Data Not Deleted or Archived";
+    }
+}
+?>
+
+</div>
+
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
             integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

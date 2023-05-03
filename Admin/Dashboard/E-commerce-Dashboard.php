@@ -1,3 +1,27 @@
+<?php 
+require ('../connection.php');
+
+$sql = "SELECT Date, SUM(Total) AS TotalAmount FROM sales GROUP BY Date";
+$result = mysqli_query($conn, $sql);
+
+// Create arrays for chart data
+$labels = array();
+$data = array();
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $labels[] = $row['Date'];
+    $data[] = $row['TotalAmount'];
+}
+
+// Close connection
+mysqli_close($conn);
+
+// Encode arrays to JSON format
+$labels_json = json_encode($labels);
+$data_json = json_encode($data);
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -39,7 +63,7 @@
             <div class="container">
                 <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
-                <h3>Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
+                <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
                 <div class="ARCHIVE">
                     <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php"><button
                             class="serbtn1">APPOINTMENT</button></a>
