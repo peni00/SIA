@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
 
 if (mysqli_connect_errno()) {
@@ -19,7 +19,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Archive</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -167,7 +167,7 @@ if ($sortOption == 'option1') {
     if($query_run && $insert_query_run)
     {
         echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php');
+        header('Location: Archives-Services.php');
         exit();
     }
     else if(!$insert_query_run)
@@ -191,7 +191,7 @@ if ($sortOption == 'option1') {
     if($query_run )
     {
         echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php');
+        header('Location: Archives-Services.php');
         exit();
     }
     else if(!$query_run)
