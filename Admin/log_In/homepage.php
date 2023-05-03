@@ -39,7 +39,7 @@
                 <h2>
                     WELCOME TO ADMIN CONSOLE,
                 </h2>
-                <p>
+                <p class="adminrod">
                     ADMIN ROD!
                 </p>
                 <div class="box-card">
@@ -61,7 +61,7 @@
                     <div class="boxes">
                         <div>
 
-                            <a>
+                            <a href="#">
                                 <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400">
                                 <p>
                                     INVENTORY

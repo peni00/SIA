@@ -108,19 +108,25 @@ nav .left-nav p {
   justify-content: center;
   align-items: center;
   padding: 40px 150px 20px 150px;
-
 }
 
 .container-child h2 {
-  font-size: 35px;
-  font-weight: 500;
-  color: #1f1f1f;
+  font-size: 40px;
+  font-weight: 600;
+  color: #000000;
+  font-family:'lato', sans-serif;
 }
 
 .container-child p {
   font-weight: 600;
   font-size: 25px;
 }
+
+.adminrod{
+  font-weight: 600;
+  font-size: 25px;
+}
+  
 
 .container-child .box-card {
   display: grid;
