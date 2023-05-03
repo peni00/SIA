@@ -1,7 +1,7 @@
 <?php 
 require ('../connection.php');
 
-$sql = "SELECT DATE_FORMAT(start_datetime, '%M') AS month, COUNT(*) AS total FROM appointment_tbl GROUP BY MONTH(start_datetime)";
+$sql = "SELECT DATE_FORMAT(start_datetime, '%M') AS month, COUNT(*) AS total FROM appointmenttbl GROUP BY MONTH(start_datetime)";
 $result = $conn->query($sql);
 
 // Define the $month and $total arrays
