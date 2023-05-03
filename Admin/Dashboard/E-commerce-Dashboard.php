@@ -12,7 +12,18 @@ while ($row = mysqli_fetch_assoc($result)) {
     $labels[] = $row['Date'];
     $data[] = $row['TotalAmount'];
 }
-
+$data1 = array(
+    'labels' => $labels,
+    'datasets' => array(
+        array(
+            'label' => 'Total Sales',
+            'data' => $data,
+            'fill' => false,
+            'borderColor' => 'rgb(75, 192, 192)',
+            'lineTension' => 0.1
+        )
+    )
+);
 // Close connection
 mysqli_close($conn);
 
@@ -32,7 +43,9 @@ $data_json = json_encode($data);
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='Dashboard1.css'>
-
+    <script>
+    let data1 = <?php echo json_encode($data1) ?>;
+    </script>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>

@@ -1,4 +1,5 @@
 var ctx = document.getElementById('lineChart').getContext('2d');
+
 var myChart = new Chart(ctx, {
     type: 'line',
     // data: {
@@ -16,7 +17,7 @@ var myChart = new Chart(ctx, {
     //         borderWidth: 1
     //     }]
     // },
-    data: data1,data2, 
+    data: data1,
     options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -31,3 +32,4 @@ var myChart = new Chart(ctx, {
         
     }
 });
+

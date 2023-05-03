@@ -1,9 +1,12 @@
 <?php
 require('../connection.php');
+session_start();
 if (isset($_SESSION['admin'])) {
     header('location: homepage.php');
 }
 ?>
+
+print_r($_SESSION)
 
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
@@ -23,19 +26,7 @@ if (isset($_SESSION['admin'])) {
         <div class="background-img">
             <img class="u-expanded-height u-image u-image-contain u-image-1" src="images/gym2.png" data-image-width="672" data-image-height="371">
         </div>
-
-
-
-        <?php
-        if (isset($_SESSION['error'])) {
-            echo "
-  				<div class = 'err'>
-			  		<h6>" . $_SESSION['error'] . "</h6> 
-			  	</div>
-  			";
-            unset($_SESSION['error']);
-        }
-        ?>
+        
         <div class="parent-box">
             <div class="box-form ">
                 <div class="box-form-head">
@@ -60,7 +51,9 @@ if (isset($_SESSION['admin'])) {
                     <button class="button-sign u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-3
                             u-custom-font u-font-lato u-radius-3 u-btn-1" type="submit" name="form">SIGN
                         IN</button>
-
+                        <?php if (isset($_SESSION['error'])) { ?>
+                            <h6> <?= $_SESSION['error'] ?>  </h6> 
+                        <?php }?>
                     <input type="hidden" value="" name="recaptchaResponse">
                     <input type="hidden" name="formServices" value="52515aac4bc14354a49765f7416a1252">
                 </form>

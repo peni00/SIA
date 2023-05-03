@@ -1,27 +1,56 @@
 <?php 
 require ('../connection.php');
 
-$sql = "SELECT MONTH(date_created) AS month, stock_type, SUM(qty) AS total_qty FROM inventory GROUP BY MONTH(date_created), stock_type";
-$result = mysqli_query($conn, $sql);
+// $sql = "SELECT MONTH(date_created) AS month, stock_type, SUM(qty) AS total_qty FROM inventory GROUP BY MONTH(date_created), stock_type";
+// $result = mysqli_query($conn, $sql);
 
-$data1 = array(); // For stock in
-$data2 = array(); // For stock out
-$labels = array(); // For month labels
+// $data1 = array(); // For stock in
+// $data2 = array(); // For stock out
+// $labels = array(); // For month labels
 
-while ($row = mysqli_fetch_assoc($result)) {
-    $month = $row['month'];
-    $qty = $row['total_qty'];
-    $stock_type = $row['stock_type'];
+// while ($row = mysqli_fetch_assoc($result)) {
+//     $month = $row['month'];
+//     $qty = $row['total_qty'];
+//     $stock_type = $row['stock_type'];
     
-    if ($stock_type == 1) {
-        $data1[$month] = $qty;
-    } else {
-        $data2[$month] = $qty;
+//     if ($stock_type == 1) {
+//         $data1[$month] = $qty;
+//     } else {
+//         $data2[$month] = $qty;
+//     }
+    
+//     $month_label = date("M", strtotime("2000-$month-01")); // Convert month number to month name
+//     $labels[$month] = $month_label;
+// }
+
+$sql = "SELECT DATE_FORMAT(date_created, '%M') AS month, COUNT(*) AS total FROM inventory GROUP BY MONTH(date_created)";
+$result = $conn->query($sql);
+
+// Define the $month and $total arrays
+$month = array();
+$total = array();
+
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $month[] = $row['month'];
+        $total[] = $row['total'];
     }
-    
-    $month_label = date("M", strtotime("2000-$month-01")); // Convert month number to month name
-    $labels[$month] = $month_label;
 }
+
+$data = array(
+    'labels' => $month,
+    'datasets' => array(
+        array(
+            'label' => 'Total Suppliers',
+            'data' => $total,
+            'fill' => false,
+            'borderColor' => 'rgb(75, 192, 192)',
+            'lineTension' => 0.1
+        )
+    )
+);
+
 mysqli_close($conn);
 
 ?>
@@ -35,7 +64,9 @@ mysqli_close($conn);
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='Dashboard1.css'>
-
+    <script>
+    let data1 = <?php echo json_encode($data) ?>;
+    </script>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
 
