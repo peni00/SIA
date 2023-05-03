@@ -10,7 +10,6 @@
 nav {
   background-color: #0c0c0c;
   width: 100%;
-  height: 120px;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -26,16 +25,15 @@ nav .left-nav {
 }
 
 nav .left-nav img {
-  width: 75px;
+  width: 50px;
   border: 1px solid white;
   border-radius: 100%;
 }
 
 nav .left-nav p {
-  color: #349EFF;
-  font-weight: 800;
-  font-size: 50px;
-  font-family: 'lato', sans-serif;
+  color: #339eff;
+  font-weight: 900;
+  font-size: 30px;
 }
 
 .right-icon {
@@ -52,37 +50,34 @@ nav .left-nav p {
   display: flex;
   padding: 10px;
   cursor: pointer;
-  height: 50px;
-  width: 50px;
 }
 
 .icon .fa-user {
-  font-size: 29px;
+  font-size: 20px;
 
 }
 
 .right-icon .fa-bell {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
   padding: 10px 20px 10px 20px;
-  width: 185px;
-  height:76px;
+  width: 200px;
   z-index: 1;
   top: 12%;
-  background-color: #D9D9D9;
+  background-color: white;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   right: 0;
-  transform: translateX(-28px) translateY(-10px);
-  border-radius: 5px;
+
 }
 
 .dropdown-menu ul {
   list-style: none;
   margin: 0;
+
   text-align: right;
   padding: 0;
 }
@@ -96,14 +91,10 @@ nav .left-nav p {
   padding: 5px 10px;
   text-decoration: none;
   color: #000000;
-  font-family: 'lato', sans-serif;
-  font-weight: 700;
-  text-align: center;
-  font-size:20px;
 }
 
 .dropdown-menu a:hover {
-  color:#004385;
+  background-color: #f1f1f1;
 }
 
 .container {
@@ -117,13 +108,15 @@ nav .left-nav p {
 }
 
 .container-child h2 {
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 500;
   color: #1f1f1f;
-  font-family: 'lato', sans-serif;
 }
 
-
+.container-child p {
+  font-weight: 600;
+  font-size: 25px;
+}
 
 .container-child .box-card {
   display: grid;
@@ -131,21 +124,17 @@ nav .left-nav p {
   padding: 70px 0 70px 0;
   gap: 20px;
   width: 100%;
-}
 
-.adminrod{
-  font-weight: 600;
-  font-size: 40px;
+
 }
 
 .box-card .boxes {
-  width: 300px;
-  height: 410px;
+  width: 100%;
   display: flex;
   padding: 20px;
   justify-content: center;
   align-items: center;
-  background-color: #D0D0D0;
+  background-color: #cccccc;
   border-radius: 20px;
 
 }
@@ -163,16 +152,13 @@ nav .left-nav p {
 }
 
 .box-card .boxes p {
-  padding: 50px 0 0 0;
-  font-weight: 600;
-  font-size: 30px;
+  padding: 20px 0 0 0;
 
 }
 
 .box img {
   width: 200px;
 }
-
 
 @media only screen and (max-width: 900px) {
   .container {
