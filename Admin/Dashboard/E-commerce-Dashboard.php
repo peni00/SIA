@@ -1,23 +1,27 @@
 <?php 
 require ('../connection.php');
 
-$sql = "SELECT * FROM sales";
+$sql = "SELECT Date, SUM(Total) AS TotalAmount FROM sales GROUP BY Date";
+$result = mysqli_query($conn, $sql);
 
+// Create arrays for chart data
+$labels = array();
+$data = array();
 
-$result = $conn->query($sql);
-
-
-if ($result->num_rows > 0) {
-
-  while($row = $result->fetch_assoc()) {
-
-    echo "Sales ID: " . $row["Sales_ID"]. " - Transaction ID: " . $row["Transaction_ID"]. " - Date: " . $row["Date"]. " - Total: $" . $row["Total"]. "<br>";
-  }
-} else {
-  echo "No sales data available";
+while ($row = mysqli_fetch_assoc($result)) {
+    $labels[] = $row['Date'];
+    $data[] = $row['TotalAmount'];
 }
+
+// Close connection
+mysqli_close($conn);
+
+// Encode arrays to JSON format
+$labels_json = json_encode($labels);
+$data_json = json_encode($data);
+
 ?>
-$conn->close();
+
 <!DOCTYPE html>
 <html>
 

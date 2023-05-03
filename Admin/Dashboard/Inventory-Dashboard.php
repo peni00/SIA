@@ -1,3 +1,30 @@
+<?php 
+require ('../connection.php');
+
+$sql = "SELECT MONTH(date_created) AS month, stock_type, SUM(qty) AS total_qty FROM inventory GROUP BY MONTH(date_created), stock_type";
+$result = mysqli_query($conn, $sql);
+
+$data1 = array(); // For stock in
+$data2 = array(); // For stock out
+$labels = array(); // For month labels
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $month = $row['month'];
+    $qty = $row['total_qty'];
+    $stock_type = $row['stock_type'];
+    
+    if ($stock_type == 1) {
+        $data1[$month] = $qty;
+    } else {
+        $data2[$month] = $qty;
+    }
+    
+    $month_label = date("M", strtotime("2000-$month-01")); // Convert month number to month name
+    $labels[$month] = $month_label;
+}
+mysqli_close($conn);
+
+?>
 <!DOCTYPE html>
 <html>
 
