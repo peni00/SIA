@@ -1,19 +1,3 @@
-<?php
-
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
-
-
-if (mysqli_connect_errno()) 
-{
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  exit();
-}
-
-
-?><?php ob_start()
-?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -70,100 +54,48 @@ if (mysqli_connect_errno())
 
         </div>
         <!--container-->
-        <form method="POST">
+
+        <div class="sortby">
+
+            <button for="sort">SORT BY</button>
+            <select class="sort">
+                <option value="option0"></option>
+                <option value="option1">Service Category</option>
+            </select>
+
+        </div>
         <div class="table-container">
 
-        <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete!')">DELETE</button>
+            <button type="button" class="unbtn">DELETE</button>
 
             <table>
                 <thead>
                     <tr>
-                        <th style="text-align: center;">            </th>
-                        <th style="text-align: center;">            </th>
-                        <th style="text-align: center;">            </th>
-                        <th style="text-align: center;">REVIEW ID</th>
-                        <th style="text-align: center;">            </th>
-                        <th style="text-align: center;">ACCOUNT ID</th>
-                        <th style="text-align: center;">            </th>
-                        <th style="text-align: center;">COMMENTS</th>
-                        <th style="text-align: center;">            </th>
-                        <th style="text-align: center;">DATE SUBMITTED</th>                   
+                        <th width="100"></th>
+                        <th>APPOINTMENT ID</th>
+                        <th>CLIENT NAME</th>
+                        <th>STAFF NAME</th>
+                        <th width="100">MEMBERSHIP STATUS</th>
+                        <th>SERVICE</th>
+                        <th>DATE AND TIME</th>
+                        <th>APPOINTMENT STATUS</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <?php
-                        $sql="SELECT *FROM reviewtbl";
-                    $result = mysqli_query($conn, $sql);
-
-    // Display data in HTML table
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $reviewsID = $row['reviewsID'];
-        $accountID = $row['AccountID'];
-        $comments = $row['Comments'];
-        $ds = $row['dateSubmitted'];
-       
-    
-         echo "<tr>";
-echo "<td></td>";
-echo "<td><input type='checkbox' name='check[]' value='" . $row['reviewsID'] . "'> &nbsp;&nbsp;&nbsp;";
-echo "<td></td>";
-echo "<td style='text-align: center;'>" . $row['reviewsID'] . "</td>";
-echo "<td></td>";
-echo "<td style='text-align: center;'>" . $row['AccountID'] . "</td>";
-echo "<td></td>";
-echo "<td style='text-align: center;'>" . $row['Comments'] . "</td>";
-echo "<td></td>";
-echo "<td style='text-align: center;'>" . $row['dateSubmitted'] . "</td>";
-echo "</tr>";
-
-       
-    }
-} else {
-    echo "<tr><td colspan='4'>No data found</td></tr>";
-}
-?>
+                        <td><input type="checkbox"></td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
                     </tr>
                     </tr>
                 </tbody>
-
-            <!-- DELETE -->
-
- <?php
-     if(isset($_POST['delete']))
-{
-    $all_id = $_POST['check'];
-    $extract_id = implode(',' , $all_id);
-  				 
-	// Perform the delete operation
-    $query = "DELETE FROM reviewtbl WHERE reviewsID IN($extract_id) ";
-    $query_run = mysqli_query($conn, $query);
-
-    // Check if both operations were successful
-    if($query_run)
-    {
-        echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Feedback.php');
-        exit();
-    }
-    else if(!$query_run)
-    {
-        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
-    }
-    else
-    {
-        echo "Multiple Data Not Deleted or Archived";
-    }
-}
-
-
-       ?>  
-
-
             </table>
         </div>
-</form>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
             integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

@@ -1,31 +1,3 @@
-<?php
-
-@include 'connection.php';
-
-if(isset($_POST['add_product'])){
-    $p_categ = $_POST['p_categ'];
-    $p_name = $_POST['p_name'];
-    $p_desc = $_POST['p_desc'];
-    $p_slug = $_POST['p_slug'];
-    $p_price = $_POST['p_price'];
-    $p_img = $_FILES['p_img'];
-    $p_img_tmp_name = $_FILES['p_img']['tmp_name'];
-    $p_img_folder = 'images/uploaded/'.$p_img['name'];
-
-    $insert_query = mysqli_prepare($conn, "INSERT INTO products(category_id,name, description, slug, price, photo) 
-    VALUES(?, ?, ?, ?, ?, ?)");
-
-    mysqli_stmt_bind_param($insert_query, "ssssss", $p_categ , $p_name, $p_desc, $p_slug, $p_price, $p_img_folder);
-    mysqli_stmt_execute($insert_query);
-
-    if(mysqli_affected_rows($conn) > 0){
-        move_uploaded_file($p_img_tmp_name, $p_img_folder);
-    }
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -34,7 +6,7 @@ if(isset($_POST['add_product'])){
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Products</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
 
@@ -55,7 +27,9 @@ if(isset($_POST['add_product'])){
                 <a href="http://localhost/SIA/Admin/GYM/GYM/Archive-Product.php">
                     <li>ARCHIVE</li>
                 </a>
-
+                <a href="#">
+                    <li>USERS</li>
+                </a>
             </ul>
             <div class="admin">
                 <img src="images/image10.png" class="user" style="width: 40px">
@@ -75,51 +49,92 @@ if(isset($_POST['add_product'])){
                 <button><img src="images/search.png"></button>
             </div>
         </div>
-       
-    <!--container-->
+        <!--container-->
 
-    <div class="products">
+
+
+        <div class="products">
             <div class="prod1">
-                <?php
-                // Retrieve data from database then it will show in container
-                $query = mysqli_query($conn, "SELECT * FROM products");
-
-                while ($row = mysqli_fetch_assoc($query)) {
-                echo "<div class='product'>";
-                echo "<img src='" . $row['photo'] . "' class='product-img'>";
-                echo "<label><b>Product ID:</b> " . $row['id'] . "</label><br />";
-                echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
-                echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
-                echo "<label><b>Category:</b> " . $row['category_id'] . "</label><br />";
-                echo "<label><b>Price:</b> " . $row['price'] . "</label><br /><br />";                        
-                echo "</div>";
-            ;}  
-            ?>
+                <img src="images/prod1.jpg" class="product-img">
+                <label><b>Product ID:</b> 2303129*******</label><br />
+                <label><b>Product Name:</b> BEEF Protein Isolate</label><br />
+                <label><b>Category:</b> Supplement</label><br />
+                <label><b>Price:</b> ₱1450.00</label>
+                <br /><br />
+                <label>Stocks: 14</label>
+                <button type="button" class="trash-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    for="click">
+                    <img src="images/delete.png">
+                </button>
+                <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                    for="click">
+                    <img src="images/edit.png">
+                </button>
             </div>
-
-
+            <div class="prod1 prod2">
+                <img src="images/prod1.jpg" class="product-img">
+                <label><b>Product ID:</b> 2303130*******</label><br />
+                <label><b>Product Name:</b> BEEF Protein Isolate</label><br />
+                <label><b>Category:</b> Supplement</label><br />
+                <label><b>Price:</b> ₱1450.00</label>
+                <br /><br />
+                <label>Stocks: 14</label>
+                <button type="button" class="trash-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    for="click">
+                    <img src="images/delete.png">
+                </button>
+                <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                    for="click">
+                    <img src="images/edit.png">
+                </button>
+            </div>
+            <div class="prod1 prod3">
+                <img src="images/prod3.jpg" class="product-img">
+                <label><b>Product ID:</b> 2303131*******</label><br />
+                <label><b>Product Name:</b>Fitness Gym Equipment Set</label><br />
+                <label><b>Category:</b> GYM Equipement</label><br />
+                <label><b>Price:</b> ₱5699.00</label>
+                <br /><br />
+                <label>Stocks: 1</label>
+                <button type="button" class="trash-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    for="click">
+                    <img src="images/delete.png">
+                </button>
+                <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+                    for="click">
+                    <img src="images/edit.png">
+                </button>
+            </div>
+        </div>
 
         <!--Add-product-->
-
         <div class="Add-product">
             <input type="checkbox" id="click">
             <label for="click" class="add"><img src="images/add.png"></label>
-                <form action="" method="post" class="add_product" enctype="multipart/form-data">
-                    <h3>Add new product</h3>
-                    <label>Category Id:</label>
-                    <input type="number" name="p_categ" class="box" required><br />
-                    <label>Product Name:</label>
-                    <input type="text" name="p_name" class="box" required><br />
-                    <label>Description:</label>
-                    <input type="text" name="p_desc" class="box" required><br />
-                    <label>Slug:</label>
-                    <input type="text" name="p_slug" class="box" required><br />
-                    <label>Price:</label>
-                    <input type="number" name="p_price" class="box" required><br />
-                    <input type="file" name="p_img" class="box" required><br />
-                    <input type="submit" value="Add" name="add_product" class="-btn">
-                </form>
+
+            <div class="prod-content">
+                <h1>ADD PRODUCT</h1>
+                <div class="prod-info">
+                    <label>Product Name: </label>
+                    <input type="text" class="txt"><br />
+                    <label>Category: </label>
+                    <input type="text" class="txt"><br />
+                    <label>Price: </label>
+                    <input type="text" class="txt"><br />
+                    <label>No. of Stocks: </label>
+                    <input type="text" class="txt">
+                    <label class="upload-photo">
+                        <p><img src="images/photo.png"></p>
+                        <input type="file" name="myImage" accept="image/*">
+                    </label>
+                    <div class="buttons">
+
+                        <button type="button" class="dlt-confirm">Add</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <!-- Delete -->
 
@@ -139,9 +154,7 @@ if(isset($_POST['add_product'])){
             </div>
         </div>
 
-
         <!-- Edit -->
-
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -171,9 +184,8 @@ if(isset($_POST['add_product'])){
                     </div>
                 </div>
             </div>
-       </div>
 
-    
+        </div>
 
         <script>
         function previewImage(event) {

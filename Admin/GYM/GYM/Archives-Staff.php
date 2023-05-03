@@ -1,21 +1,3 @@
-<?php
-$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
-
-
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  exit();
-}
-?>
-
-    
-
-<?php ob_start()
-?>
-
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -24,7 +6,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Archive</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -77,155 +59,46 @@ if (mysqli_connect_errno()) {
                         class="appbtn">APPOINTMENT</Button></a>
             </div>
         </div>
-               <!--container-->
+        <!--container-->
 
-          <div class="sortby">
-  <form method="POST">
-   <button type="submit" >SORT BY</button>
-    <select class="sort" name="sort">
-      <option value="option0"></option>
-      <option value="option1">Name</option>
-      <option value="option3">Service Category</option>
-    </select>
-    
-  </form>
-</div>
+        <div class="sortby">
 
+            <button for="sort">SORT BY</button>
+            <select class="sort">
+                <option value="option0"></option>
+                <option value="option1">Name</option>
+                <option value="option2">Position</option>
+                <option value="option3">Service Category</option>
+            </select>
 
+        </div>
+        <div class="table-container">
 
-</div>
-<div class="table-container">
-<form method="POST">
-<button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO UNARCHIVED THIS ITEM/S!')">UNARCHIVED</button>
-<button type="submit" class="unbtn1" name="delete1" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO DELETE THIS ITEM/S!')">DELETE</button>
-<table>
-    <thead>
-                        <tr>
-                            <th width="100"></th>
-                            <th width="120">STAFF ID</th>
-                            <th width="120">NAME</th>    
-                            <th width="120">SERVICE CATEGORY</th>
-                            <th width="120" style="text-align:center;" >IMAGE</th>
-                        </tr>
-                    </thead>
-      <tbody>
-      
-        <?php
-		
-		
-// Get the value of the selected option in the dropdown
-$sortOption = isset($_POST['sort']) ? $_POST['sort'] : '';
+            <button type="button" class="unbtn">UNARCHIVE</button>
 
-// Set the default sort order if no option is selected
-if (empty($sortOption)) {
-    $sortOption = 'staff_tblarchive.staffID ASC';
-}
-
-// Modify the $sql query to order by the appropriate column depending on the selected option
-if ($sortOption == 'option1') {
-    $sortOption = 'staff_tblarchive.staffName ASC';
-} elseif ($sortOption == 'option3') {
-    $sortOption = 'servicetypetbl.serviceType ASC';
-} else {
-    $sortOption = 'staffID ASC';
-}
-
-   // Query data from database
-$sql = "SELECT staff_tblarchive.staffID, staff_tblarchive.staffName,  servicetypetbl.serviceType, staff_tblarchive.staffImage
-        FROM staff_tblarchive
-        JOIN servicetypetbl ON staff_tblarchive.serviceID = servicetypetbl.serviceID
-        ORDER BY $sortOption";
-
-$result = mysqli_query($conn, $sql);
-// Display data in HTML table
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $sid = $row['staffID'];
-        $sname = $row['staffName'];
-        $service = $row['serviceType'];
-        $simage = base64_encode($row['staffImage']);
-
-        echo "<tr>";
-        echo "<td><input type='checkbox' name='check[]' value='" . $row['staffID'] . "'>&nbsp;&nbsp;&nbsp;";
-        echo "<td>" . $row['staffID'] . "</td>";
-        echo "<td>" . $row['staffName'] . "</td>";
-        echo "<td>" . $row['serviceType'] . "</td>";
-        echo "<td style='text-align: center;'><img src='data:image/jpeg;base64," . $simage . "' width='120'></td>"; // display image using base64
-        echo "</tr>";
-    }
-} else {
-    echo "<tr><td colspan='4'>No data found</td></tr>";
-}
-               
-?>
-
-
+            <table>
+                <thead>
+                    <tr>
+                        <th width="200"></th>
+                        <th>STAFF ID</th>
+                        <th>NAME</th>
+                        <th>POSITION</th>
+                        <th>SERVICE CATEGORY</th>
+                        <th>IMAGE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td>SAMPLE</td>
+                        <td><img src="" alt="thisIsAnImage"></td>
+                    </tr>
+                    </tr>
                 </tbody>
             </table>
-        </form>
-        <?php
-      
-        if(isset($_POST['delete']))
-   {
-       $all_id = $_POST['check'];
-       $extract_id = implode(',' , $all_id);
-   
-       // Perform the insert operation
-       $insert_query =  "INSERT INTO staff_tbl (staffID, staffName, serviceID, imageName, staffImage)
-       SELECT staffID,staffName, serviceID, imageName, staffImage
-       FROM staff_tblarchive
-       WHERE staffID IN($extract_id)";
-                        
-       $insert_query_run = mysqli_query($conn, $insert_query);	
-       // Perform the delete operation
-       $query = "DELETE FROM staff_tblarchive WHERE staff_tblarchive.staffID IN($extract_id) ";
-       $query_run = mysqli_query($conn, $query);
-   
-       // Check if both operations were successful
-       if($query_run && $insert_query_run)
-       {
-           echo "Multiple Data Deleted and Archived Successfully";
-           header('Location: Archives-Staff.php');
-           exit();
-       }
-       else if(!$insert_query_run)
-       {
-           echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
-       }
-       else
-       {
-           echo "Multiple Data Not Deleted or Archived";
-       }
-   }
- 
-        if(isset($_POST['delete1']))
-{
-    $all_id = $_POST['check'];
-    $extract_id = implode(',' , $all_id);
-
-
-	// Perform the delete operation
-    $query = "DELETE FROM staff_tblarchive WHERE staff_tblarchive.staffID IN($extract_id) ";
-    $query_run = mysqli_query($conn, $query);
-
-    // Check if both operations were successful
-    if($query_run )
-    {
-        echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: Archives-Staff.php');
-        exit();
-    }
-    else if(!$query_run)
-    {
-        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
-    }
-    else
-    {
-        echo "Multiple Data Not Deleted or Archived";
-    }
-	mysqli_close($conn);
-}
-    ?>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

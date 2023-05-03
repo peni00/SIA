@@ -1,30 +1,3 @@
-<?php 
-require ('../connection.php');
-
-$sql = "SELECT MONTH(date_created) AS month, stock_type, SUM(qty) AS total_qty FROM inventory GROUP BY MONTH(date_created), stock_type";
-$result = mysqli_query($conn, $sql);
-
-$data1 = array(); // For stock in
-$data2 = array(); // For stock out
-$labels = array(); // For month labels
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $month = $row['month'];
-    $qty = $row['total_qty'];
-    $stock_type = $row['stock_type'];
-    
-    if ($stock_type == 1) {
-        $data1[$month] = $qty;
-    } else {
-        $data2[$month] = $qty;
-    }
-    
-    $month_label = date("M", strtotime("2000-$month-01")); // Convert month number to month name
-    $labels[$month] = $month_label;
-}
-mysqli_close($conn);
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -65,7 +38,7 @@ mysqli_close($conn);
             <div class="container">
                 <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
-                <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
+                <h3>Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
                 <div class="ARCHIVE">
                     <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php"><button
                             class="serbtn1">APPOINTMENT</button></a>
