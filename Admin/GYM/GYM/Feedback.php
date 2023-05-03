@@ -1,16 +1,13 @@
 <?php
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
-
-if (mysqli_connect_errno()) 
-{
+if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   exit();
 }
-
-
-?><?php ob_start()
+?>
+<?php ob_start()
 ?>
 
 
@@ -22,7 +19,7 @@ if (mysqli_connect_errno())
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Feedback</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -144,7 +141,7 @@ echo "</tr>";
     if($query_run)
     {
         echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Feedback.php');
+        header('Location: Feedback.php');
         exit();
     }
     else if(!$query_run)
