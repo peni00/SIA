@@ -11,7 +11,7 @@
 			die("Connection failed: " . $conn->connect_error);
 		}
 
-		$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM category WHERE name=?");
+		$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM category WHERE Ctgry_Name=?");
 		$stmt->bind_param('s', $name);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -23,7 +23,7 @@
 		}
 		else{
 			try{
-				$stmt = $conn->prepare("UPDATE category SET name=? WHERE id=?");
+				$stmt = $conn->prepare("UPDATE category SET Ctgry_Name=? WHERE Category_ID=?");
 				$stmt->bind_param('si', $name, $id);
 				$stmt->execute();
 				$_SESSION['status'] = 'Category updated successfully';

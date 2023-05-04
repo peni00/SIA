@@ -10,7 +10,7 @@
 			die("Connection failed: " . $conn->connect_error);
 		}
 
-		$stmt = $conn->prepare("SELECT * FROM category WHERE id=?");
+		$stmt = $conn->prepare("SELECT * FROM category WHERE Category_ID=?");
 		$stmt->bind_param('i', $id);
 		$stmt->execute();
 		$result = $stmt->get_result();

@@ -10,7 +10,7 @@
 			die("Connection failed: " . $conn->connect_error);
 		}
 
-		$stmt = $conn->prepare("SELECT *, equiparchive.id AS equiparchiveid, equiparchive.name AS equiparchivename, category.name AS catname FROM equiparchive LEFT JOIN category ON category.id=equiparchive.category_id WHERE equiparchive.id=?");
+		$stmt = $conn->prepare("SELECT *, equiparchive.id AS equiparchiveid, equiparchive.name AS equiparchivename, category.Ctgry_Name AS catname FROM equiparchive LEFT JOIN category ON category.Category_ID=equiparchive.category_id WHERE equiparchive.id=?");
 		$stmt->bind_param("i", $id);
 		$stmt->execute();
 		$result = $stmt->get_result();

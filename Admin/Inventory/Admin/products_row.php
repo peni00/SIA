@@ -10,7 +10,7 @@ if(isset($_POST['id'])){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare("SELECT *, products.id AS prodid, products.name AS prodname, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id=?");
+    $stmt = $conn->prepare("SELECT *, products.id AS prodid, products.name AS prodname, category.Ctgry_Name AS catname FROM products LEFT JOIN category ON category.Category_ID=products.category_id WHERE products.id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();

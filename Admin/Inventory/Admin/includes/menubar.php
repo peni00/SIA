@@ -12,6 +12,12 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <div class="navbar">
+                <a href="http://localhost/Online/SIA/SIA-master/Admin/log_In/homepage.php" type="button" class="back-btn float-left">
+                    <img src="images/back-btn-gray.png" style="width: 30px"></a>
+                <h3 style="color:#0C0C0C; margin-left:20px;">Home / <a href="#" style="color:#349EFF">Inventory</a></h3>
+            </div>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -35,19 +41,6 @@
                                 <img class="img-profile rounded-circle"
                                     src="images/logo-modified.jpg">
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
                         </li>
 
                     </ul>

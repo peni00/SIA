@@ -42,9 +42,9 @@ include('includes/menubar.php');
                                 $result = $stmt->get_result();
 
                                 while($crow = $result->fetch_assoc()){
-                                    $selected = ($crow['id'] == $catid) ? 'selected' : '';
+                                    $selected = ($crow['Category_ID'] == $catid) ? 'selected' : '';
                                     echo "
-                                        <option value='".$crow['id']."' ".$selected.">".$crow['name']."</option>
+                                        <option value='".$crow['Category_ID']."' ".$selected.">".$crow['Ctgry_Name']."</option>
                                     ";
                                 }
                                 $stmt->close();
@@ -186,10 +186,10 @@ $(function(){
   $('#select_category').change(function(){
     var val = $(this).val();
     if(val == 0){
-      window.location = 'products.php';
+      window.location = 'archive_products.php';
     }
     else{
-      window.location = 'products.php?category='+val;
+      window.location = 'archive_products.php?category='+val;
     }
   });
 
@@ -342,11 +342,6 @@ function confirmArchive() {
             }
           }
         });
-      } else {
-        // User clicked Cancel, uncheck all checkboxes
-        for (var i = 0; i < checkboxes.length; i++) {
-          checkboxes[i].checked = false;
-        }
       }
     });
     return false;

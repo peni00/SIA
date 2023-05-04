@@ -20,7 +20,7 @@ if(isset($_POST['delete'])){
 			$_SESSION['status'] = 'Cannot delete the category. There are products associated with it.';
             $_SESSION['status_code'] = 'error';
         } else {
-            $stmt = $conn->prepare("DELETE FROM category WHERE id=?");
+            $stmt = $conn->prepare("DELETE FROM category WHERE Category_ID=?");
             $stmt->bind_param('i', $id);
             $stmt->execute();
 

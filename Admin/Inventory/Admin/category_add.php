@@ -10,7 +10,7 @@
 			die("Connection failed: " . $conn->connect_error);
 		}
 
-		$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM category WHERE name=?");
+		$stmt = $conn->prepare("SELECT COUNT(*) AS numrows FROM category WHERE Ctgry_Name=?");
 		$stmt->bind_param('s', $name);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -22,7 +22,7 @@
 		}
 		else{
 			try{
-				$stmt = $conn->prepare("INSERT INTO category (name) VALUES (?)");
+				$stmt = $conn->prepare("INSERT INTO category (Ctgry_Name) VALUES (?)");
 				$stmt->bind_param('s', $name);
 				$stmt->execute();
 				$_SESSION['status'] = 'Category added successfully';

@@ -37,9 +37,9 @@ include('includes/menubar.php');
                                 $result = mysqli_query($conn, $query);
 
                                 while($crow = mysqli_fetch_assoc($result)){
-                                    $selected = ($crow['id'] == $catid) ? 'selected' : '';
+                                    $selected = ($crow['Category_ID'] == $catid) ? 'selected' : '';
                                     echo "
-                                        <option value='".$crow['id']."' ".$selected.">".$crow['name']."</option>
+                                        <option value='".$crow['Category_ID']."' ".$selected.">".$crow['Ctgry_Name']."</option>
                                     ";
                                 }
 
@@ -308,11 +308,6 @@ function confirmArchive() {
             }
           }
         });
-      } else {
-        // User clicked Cancel, uncheck all checkboxes
-        for (var i = 0; i < checkboxes.length; i++) {
-          checkboxes[i].checked = false;
-        }
       }
     });
     return false;

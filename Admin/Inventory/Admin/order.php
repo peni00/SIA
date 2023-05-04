@@ -65,7 +65,7 @@ include('includes/menubar.php');
 										<td class="text-center"><?php echo $address ?></td>
 										<td class="text-center"><?php echo $row['Payment_Method'] ?></td>
 										<td class="text-center"> <span class="badge <?php echo $badge_class ?>"><?php echo $row['Status'] ?></span></td>
-										<td class="text-center"><a href="/Online/Gym/Gym/Admin/updateorder.php?id=<?php echo $row['Order_ID'];?>">Update</a></td>
+										<td class="text-center"><a class="btn btn-primary btn-sm btn-flat" href="/Online/Gym/Gym/Admin/updateorder.php?id=<?php echo $row['Order_ID'];?>">Update</a></td>
                                     </tr>
                                     <?php
                                 	 }

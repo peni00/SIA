@@ -15,7 +15,7 @@ $result = $stmt->get_result();
 
 while($row = $result->fetch_assoc()){
 	$output .= "
-		<option value='".$row['id']."' class='append_items'>".$row['name']."</option>
+		<option value='".$row['Category_ID']."' class='append_items'>".$row['Ctgry_Name']."</option>
 	";
 }
 

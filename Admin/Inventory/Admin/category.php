@@ -37,10 +37,10 @@ include('includes/menubar.php');
                                               while($row = $result->fetch_assoc()){
                                                   echo "
                                                   <tr>
-                                                      <td>".$row['name']."</td>
+                                                      <td>".$row['Ctgry_Name']."</td>
                                                       <td>
-                                                          <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                                                          <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                                                          <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['Category_ID']."'><i class='fa fa-edit'></i> Edit</button>
+                                                          <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['Category_ID']."'><i class='fa fa-trash'></i> Delete</button>
                                                       </td>
                                                   </tr>
                                                   ";
@@ -77,7 +77,7 @@ include('includes/menubar.php');
 
 <script>
 
-  $(function(){
+$(function(){
   $(document).on('click', '.edit', function(e){
     e.preventDefault();
     $('#edit').modal('show');
@@ -101,12 +101,13 @@ function getRow(id){
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.catid').val(response.id);
-      $('#edit_name').val(response.name);
-      $('.catname').html(response.name);
+      $('.catid').val(response.Category_ID);
+      $('#edit_name').val(response.Ctgry_Name);
+      $('.catname').html(response.Ctgry_Name);
     }
   });
 }
+
 
 
 </script>
