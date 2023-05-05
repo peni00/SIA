@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+
+include 'connection.php';
+?>
+
 <html>
 
 <head>
@@ -43,6 +48,7 @@
                     </div>
                 </button>
             </div>
+            
             <!--sidebar-->
 
             <div class="container">
@@ -56,41 +62,46 @@
                             class="appbtn">TRANSACTIONS</Button></a>
                 </div>
             </div>
+
             <!--container-->
             <div class="sortby">
                 <button for="sort">SORT BY</button>
                 <select class="sort">
                     <option value="option0"></option>
                     <option value="option1">Product ID</option>
-                    <option value="option2">Category</option>
                 </select>
-
             </div>
+
             <div class="table-container">
                 <button type="button" class="unbtn">UNARCHIVE</button>
                 <table>
                     <thead>
                         <tr>
                             <th></th>
-                            <th>PRODUCT ID</th>
+                            <th>Category ID</th>
                             <th>PRODUCT NAME</th>
                             <th>CATEGORY</th>
                             <th>PRICE</th>
                             <th>PRODUCT IMAGE</th>
-                            <th>NO. OF STOCKS</th>
+                           <!-- <th>NO. OF STOCKS</th>-->
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>019</td>
-                            <td>Nescafe</td>
-                            <td>Coffee</td>
-                            <td>50</td>
-                            <td><img src="Images/Nescafe.jpg"></td>
-                            <td>500</td>
-                        </tr>
-                        </tr>
+                        <?php
+                        $query = mysqli_query($conn, "SELECT * FROM products");
+
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            echo "<tr>";
+                            echo "<td><input type='checkbox'></td>";
+                            echo "<td>" . $row['category_id'] . "</td>";
+                            echo "<td>" . $row['name'] . "</td>";
+                            echo "<td>" . $row['category_id'] . "</td>";
+                            echo "<td>₱ " . $row['price'] . "</td>";
+                            echo "<td><img src='" . $row['photo'] . "'></td>";
+                            //echo "<td>" . $row['stock'] . "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -98,15 +109,15 @@
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
                 crossorigin="anonymous">
-            </script>
+                </script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
                 integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
                 crossorigin="anonymous">
-            </script>
+                </script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
                 integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
                 crossorigin="anonymous">
-            </script>
+                </script>
 </body>
 
 </html>
