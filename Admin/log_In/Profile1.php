@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>Profile</title>
+    <title>RFG ELITE | Profile</title>
     <link rel="stylesheet" href="Profile1.css" media="screen">
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
 </head>
