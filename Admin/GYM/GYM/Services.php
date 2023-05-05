@@ -38,37 +38,42 @@ if (mysqli_connect_errno()) {
                 <a href="#" style="color:#349EFF">
                     <li>SERVICES</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Staffs.php">
+                <a href="Staffs.php">
                     <li>STAFFS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Appointment.php">
+                <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php">
+                <a href="Archives-Services.php">
                     <li>ARCHIVES</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Feedback.php">
+                <a href="Feedback.php">
                     <li>FEEDBACK</li>
                 </a>
 
             </ul>
-            <div class="admin">
-                <img src="images/image10.png" class="user" style="width: 40px">
-                <button style="font-weight: 700">Admin Rod
-                    <img src=" images/dropd.png" style="width:25px">
-                </button>
-            </div>
+           <div class="admin">
+                <img src="images/image10.png" class="user" style="width: 40px ">
+                <button style="font-weight: 700">Admin Rod <div class="dropdown">
+                        <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item"
+                                href="Profile1.php">View&nbsp;&nbsp;Profile</a>
+                            <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
+                                href="logout.php">Logout</a>
+                        </div>
+                    </div>
         </div>
     </div>
 
     <!--sidebar-->
 
 <div class="container">
-    <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px"> </a>
+    <a href="homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px"> </a>
     <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
     <form method="post">
     <div class="search-bar">
-        <input type="text" placeholder="Search.." name="txtsearch">
+        <input type="text" placeholder="Search.." name="txtsearch" autocomplete="off">
         <button type="submit"  name="search"><img src="images/search.png"></button>
  
     </form>
@@ -252,9 +257,9 @@ for (var i = 0; i < editBtns.length; i++) {
             <div class="prod-info">
                
                 <label>Service: </label>
-                <input type="text" class="txt" name="txtservice" required><br />
+                <input type="text" class="txt" name="txtservice" required autocomplete="off"><br />
                 <label>Details: </label>
-                <input type="text" class="txt" name="txtdetails"required><br /> <br />
+                <input type="text" class="txt" name="txtdetails"required autocomplete="off"><br /> <br />
                 <div class="buttons">
                     <button type="button" class="close-btn1" data-bs-dismiss="modal" onclick="window.location.href='Services.php';">CANCEL</button>
                     <button type="submit" class="edit-confirm1" name="submit">ADD</button>
@@ -297,9 +302,9 @@ for (var i = 0; i < editBtns.length; i++) {
                             
                             <input type="hidden" class="txt" name="txtid" ><br />
                             <label>Service: </label>
-                            <input type="text" class="txt" name="txtservice1" required><br />
+                            <input type="text" class="txt" name="txtservice1" required autocomplete="off"><br />
                             <label>Details: </label>
-                            <input type="text" class="txt" name="txtdetails1" re><br />
+                            <input type="text" class="txt" name="txtdetails1" required autocomplete="off"><br />
              
                         </div>
                         <div class="edit-confirmation1">
