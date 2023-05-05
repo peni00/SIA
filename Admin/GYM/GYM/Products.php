@@ -102,6 +102,8 @@ if (isset($_POST['add_product'])) {
         </div>
 
 
+
+
         <!--Add-product-->
 
         <div class="Add-product">
@@ -136,8 +138,7 @@ if (isset($_POST['add_product'])) {
             </div>
         </div>
 
-
-
+        
         <!-- Delete -->
 
         <!-- Modal for confirmation -->

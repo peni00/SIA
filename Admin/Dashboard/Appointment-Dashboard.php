@@ -1,7 +1,7 @@
 <?php 
 require ('../connection.php');
 
-$sql = "SELECT DATE_FORMAT(start_datetime, '%M') AS month, COUNT(*) AS total FROM appointment_tbl GROUP BY MONTH(start_datetime)";
+$sql = "SELECT DATE_FORMAT(start_datetime, '%M') AS month, COUNT(*) AS total FROM appointmenttbl GROUP BY MONTH(start_datetime)";
 $result = $conn->query($sql);
 
 // Define the $month and $total arrays
@@ -29,16 +29,30 @@ $data1 = array(
     )
 );
 
-
 $query = "SELECT COUNT(*) AS total, Message FROM membertbl GROUP BY Message";
 $result = mysqli_query($conn, $query);
 
 $labels = array();
 $data = array();
+
 while ($row = mysqli_fetch_assoc($result)) {
     $labels[] = $row['Message'];
     $data[] = $row['total'];
 }
+
+$data2 = array(
+    'labels' => $month,
+    'datasets' => array(
+        array(
+            'label' => 'Members',
+            'data' => $total,
+            'fill' => false,
+            'borderColor' => 'rgb(75, 192, 192)',
+            'lineTension' => 0.1
+        )
+    )
+);
+
 // Close the database connection
 $conn->close();
 

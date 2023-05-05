@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("sbit3f-gym.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
 
 if (mysqli_connect_errno()) {
@@ -21,10 +21,10 @@ if (mysqli_connect_errno()) {
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href);
-    }
-    </script>
+ if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+</script>
 </head>
 
 <body>
@@ -63,40 +63,35 @@ if (mysqli_connect_errno()) {
 
     <!--sidebar-->
 
-    <div class="container">
-        <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
-                src="images/back-btn-gray.png" style="width: 30px"> </a>
-        <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
-        <form method="post">
-            <div class="search-bar">
-                <input type="text" placeholder="Search.." name="txtsearch">
-                <button type="submit" name="search"><img src="images/search.png"></button>
-
-        </form>
+<div class="container">
+    <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px"> </a>
+    <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
+    <form method="post">
+    <div class="search-bar">
+        <input type="text" placeholder="Search.." name="txtsearch">
+        <button type="submit"  name="search"><img src="images/search.png"></button>
+ 
+    </form>
     </div>
-    </div>
-    <form method="POST">
-        <div class="table-container">
+</div><form method="POST">
+<div class="table-container">
 
-            <button type="submit" class="unbtn" name="delete" value="Delete"
-                onclick="return confirm('are you sure want to delete!')">DELETE</button>
-            <table>
+<button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete!')">DELETE</button>
+    <table>
+   
+        <thead>
+        
+            <tr>
+                <th width="160"></th>
+                <th>SERVICE ID</th>
+                <th>SERVICES</th>
+                <th>DETAILS</th>
+            </tr>
 
-                <thead>
+        </thead>
 
-                    <tr>
-                        <th width="160"></th>
-                        <th>SERVICE ID</th>
-                        <th>SERVICES</th>
-                        <th>DETAILS</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-                    <?php
-
-
+        <tbody>
+            <?php
             if(isset($_POST['search'])){
                 $searchbar=$_POST['txtsearch'];
                 $query="SELECT * FROM servicetypetbl Where CONCAT(serviceID,serviceType,serviceDescription) LIKE '%$searchbar%'";
@@ -114,12 +109,10 @@ if (mysqli_connect_errno()) {
                 }else{
                     echo "<tr><td colspan='4'>No data found</td></tr>";
                 }
-            }
-
+            }else{
             // Query data from database
             $sql = "SELECT * FROM servicetypetbl";
             $result = mysqli_query($conn, $sql);
-
 
             // Display data in HTML table
             if (mysqli_num_rows($result) > 0) {
@@ -135,100 +128,142 @@ if (mysqli_connect_errno()) {
                     echo "<td>" . $row['serviceType'] . "</td>";
                     echo "<td>" . $row['serviceDescription'] . "</td>";
                     echo "</tr>";
+                    
                 }
             } else {
                 echo "<tr><td colspan='4'>No data found</td></tr>";
             }
-           
+        }
             ?>
-                </tbody>
+        </tbody> 
+        
+    </table>
+ <!-- DELETE -->
 
-            </table>
-            <!-- DELETE -->
-
-            <?php
-        if(isset($_POST['delete']))
+ <?php
+     if(isset($_POST['delete']))
 {
     $all_id = $_POST['check'];
     $extract_id = implode(',' , $all_id);
-    // echo $extract_id;
 
+    // Perform the insert operation
+    $insert_query = "INSERT INTO servicetypetblarchive (serviceID, serviceType, serviceDescription)
+                     SELECT serviceID, serviceType, serviceDescription
+                     FROM servicetypetbl
+                     WHERE serviceID IN($extract_id)";
+					 
+    $insert_query_run = mysqli_query($conn, $insert_query);
+	
+	// Perform the delete operation
     $query = "DELETE FROM servicetypetbl WHERE serviceID IN($extract_id) ";
     $query_run = mysqli_query($conn, $query);
 
-    if($query_run)
+    // Check if both operations were successful
+    if($query_run && $insert_query_run)
     {
-        echo "Multiple Data Deleted Successfully";
-        header('Location: http://localhost/SIA/Admin/GYM/GYM/Services.php');
+        echo "Multiple Data Deleted and Archived Successfully";
+        header('Location: Services.php');
         exit();
+    }
+    else if(!$insert_query_run)
+    {
+        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
     }
     else
     {
-        echo "Multiple Data Not Deleted";
-       
-       
+        echo "Multiple Data Not Deleted or Archived";
     }
 }
-       ?>
 
 
 
-    </form>
+       ?>  
 
-    </div>
 
-    <!-- Add this script at the end of your code -->
-    <script>
-    // Get all the Edit buttons
-    var editBtns = document.getElementsByName('editBtn');
+       
+</form>
 
-    // Add click event listener to each Edit button
-    for (var i = 0; i < editBtns.length; i++) {
-        editBtns[i].addEventListener('click', function() {
-            // Get the row associated with the clicked Edit button
-            var row = this.parentNode.parentNode;
+<!-- searchbar -->
+<?php
+    if(isset($_POST['search'])){
+        $searchbar=$_POST['txtsearch'];
 
-            // Get the values of serviceType and serviceDescription from the row
-            var serviceID = row.cells[1].textContent;
-            var serviceType = row.cells[2].textContent;
-            var serviceDescription = row.cells[3].textContent;
+        $sql = "SELECT * FROM `servicetypetbl` where `serviceID`='$searchbar'";
+        $result=mysqli_query($conn,$sql);
+        if($result){
+           if($num=mysqli_num_rows($result)>0){
+            $row=mysqli_fetch_assoc($result);
+            
+           }
+        }else{
+            echo '<script type ="text/JavaScript">';  
+            echo 'alert(" no found !!!! ")';  
+            echo '</script>';
+        }
 
-            // Assign the values to the textboxes in the modal
-            document.getElementsByName('txtid')[0].value = serviceID;
-            document.getElementsByName('txtservice1')[0].value = serviceType;
-            document.getElementsByName('txtdetails1')[0].value = serviceDescription;
-        });
     }
-    </script>
+    ?>
+       
+</form>
+
+</div>
+
+<!-- Add this script at the end of your code -->
+<script>
+   // Get all the Edit buttons
+var editBtns = document.getElementsByName('editBtn');
+
+// Add click event listener to each Edit button
+for (var i = 0; i < editBtns.length; i++) {
+    editBtns[i].addEventListener('click', function() {
+        // Get the row associated with the clicked Edit button
+        var row = this.parentNode.parentNode;
+
+        // Get the values of serviceType and serviceDescription from the row
+        var serviceID = row.cells[1].textContent;
+        var serviceType = row.cells[2].textContent;
+        var serviceDescription = row.cells[3].textContent;
+
+        // Assign the values to the textboxes in the modal
+        document.getElementsByName('txtid')[0].value = serviceID;
+        document.getElementsByName('txtservice1')[0].value = serviceType;
+        document.getElementsByName('txtdetails1')[0].value = serviceDescription;
+    });
+}
+
+</script>
+
+
+
+
 
 
 
     <!--Add-product-->
-    <form method="POST">
-        <div class="Add-product">
-            <input type="checkbox" id="click">
-            <label for="click" type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
-                for="click">
-                <img src="images/add.png">
-            </label>
-            <div class="prod-content" style="transform: translate(-70%, -20%); height: 250px;">
-                <h1>DETAILS</h1>
-                <div class=" prod-info">
-
-                    <label>Service: </label>
-                    <input type="text" class="txt" name="txtservice"><br />
-                    <label>Details: </label>
-                    <input type="text" class="txt" name="txtdetails"><br /><br />
-                    <div class="buttons">
-                        <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="edit-confirm1" name="submit">Add</button>
-
-
-                    </div>
+    <form  method="POST" >
+    <div class="Add-product">
+        <input type="checkbox" id="click">
+        <label for="click" type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+            for="click">
+            <img src="images/add.png">
+        </label>
+        <div class="prod-content">
+            <h1>DETAILS</h1>
+            <div class="prod-info">
+               
+                <label>Service: </label>
+                <input type="text" class="txt" name="txtservice" required><br />
+                <label>Details: </label>
+                <input type="text" class="txt" name="txtdetails"required><br /> <br />
+                <div class="buttons">
+                    <button type="button" class="close-btn1" data-bs-dismiss="modal" onclick="window.location.href='Services.php';">CANCEL</button>
+                    <button type="submit" class="edit-confirm1" name="submit">ADD</button>
                 </div>
             </div>
         </div>
-        <?php
+    </div>
+</form>
+    <?php
                    
                   // Add a new service
             if (isset($_POST['submit'])) {
@@ -239,45 +274,44 @@ if (mysqli_connect_errno()) {
                 
                     if (mysqli_query($conn, $sql)) {
                         
-                        header('Location: http://localhost/SIA/Admin/GYM/GYM/Services.php');
+                        header('Location: Services.php');
                         
                         exit();
                     } else {
                         echo "Error: " . mysqli_error($conn);
                     }
                 }
+				     
     ?>
-
-
-        <!-- Edit -->
-        <form method="POST">
-            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel1"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="edit-modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <h1>DETAILS</h1>
-                                <div class="prod-info">
-
-                                    <input type="hidden" class="txt" name="txtid"><br />
-                                    <label>Service: </label>
-                                    <input type="text" class="txt" name="txtservice1"><br />
-                                    <label>Details: </label>
-                                    <input type="text" class="txt" name="txtdetails1"><br />
-
-                                </div>
-                                <div class="edit-confirmation1">
-                                    <button type="button" class="close-btn1"
-                                        data-bs-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button
-                                        type="submit" class="edit-confirm1" name="confirm"
-                                        value="Update Data">Confirm</button>
-                                </div>
-                            </div>
+    
+   
+    <!-- Edit -->
+    <form method="POST">
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="edit-modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h1>DETAILS</h1>
+                        <div class="prod-info">
+                            
+                            <input type="hidden" class="txt" name="txtid" ><br />
+                            <label>Service: </label>
+                            <input type="text" class="txt" name="txtservice1" required><br />
+                            <label>Details: </label>
+                            <input type="text" class="txt" name="txtdetails1" re><br />
+             
+                        </div>
+                        <div class="edit-confirmation1">
+                            <button type="button" class="close-btn1"
+                                data-bs-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit"
+                                class="edit-confirm1" name="confirm" value="Update Data" >Confirm</button>
                         </div>
                     </div>
                 </div>
-                <?php
+            </div>
+        </div>
+        <?php
               
            
               
@@ -292,26 +326,26 @@ if (mysqli_connect_errno()) {
                 $query2=mysqli_query($conn, $sql);
                     if ($query2) {
                         
-                        header('Location: http://localhost/SIA/Admin/GYM/GYM/Services.php');
+                        header('Location: Services.php');
                         exit();
                     } else {
                         echo "Error: " . mysqli_error($conn);
                     }
                 }
-                mysqli_close($conn);
+               
     ?>
-
-        </form>
-
-        </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-        </script>
-
+        
+    </form>
+        
+    </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
+    </script>
+    
 </body>
 
 </html>

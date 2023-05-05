@@ -1,3 +1,16 @@
+<?php
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+
+
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  exit();
+}
+?>
+<?php ob_start()
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +20,7 @@
     <title>Feedback</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
@@ -39,82 +52,125 @@
                 </a>
             </ul>
             <div class="admin">
-                <img src="images/image10.png" class="user" style="width: 40px ">
-                <button style="font-weight: 700">Admin Rod <div class="dropdown">
-                        <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
-                        <div class="dropdown-content">
-                            <a class="dropdown-item"
-                                href="http://localhost/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
-                            <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="logout.php">Logout</a>
-                        </div>
-                    </div>
+                <img src="images/image10.png" class="user" style="width: 40px">
+                <button style="font-weight: 700">Admin Rod
+                    <img src=" images/dropd.png" style="width:25px">
                 </button>
             </div>
-            <!--sidebar-->
+        </div>
+        <!--sidebar-->
 
-            <div class="container">
-                <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
-                        src="images/back-btn-gray.png" style="width: 30px"> </a>
-                <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
+        <div class="container">
+            <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
+                    src="images/back-btn-gray.png" style="width: 30px"> </a>
+            <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
 
-            </div>
-            <!--container-->
+        </div>
+        <!--container-->
+        <form method="POST">
+        <div class="table-container">
 
-            <div class="sortby">
+        <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete!')">DELETE</button>
 
-                <button for="sort">SORT BY</button>
-                <select class="sort">
-                    <option value="option0"></option>
-                    <option value="option1">Service Category</option>
-                </select>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;">REVIEW ID</th>
+                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;">ACCOUNT ID</th>
+                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;">COMMENTS</th>
+                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;">DATE SUBMITTED</th>                   
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php
+                        $sql="SELECT *FROM reviewtbl";
+                    $result = mysqli_query($conn, $sql);
 
-            </div>
-            <div class="table-container">
+    // Display data in HTML table
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $reviewsID = $row['reviewsID'];
+        $accountID = $row['AccountID'];
+        $comments = $row['Comments'];
+        $ds = $row['dateSubmitted'];
+       
+    
+         echo "<tr>";
+echo "<td></td>";
+echo "<td><input type='checkbox' name='check[]' value='" . $row['reviewsID'] . "'> &nbsp;&nbsp;&nbsp;";
+echo "<td></td>";
+echo "<td style='text-align: center;'>" . $row['reviewsID'] . "</td>";
+echo "<td></td>";
+echo "<td style='text-align: center;'>" . $row['AccountID'] . "</td>";
+echo "<td></td>";
+echo "<td style='text-align: center;'>" . $row['Comments'] . "</td>";
+echo "<td></td>";
+echo "<td style='text-align: center;'>" . $row['dateSubmitted'] . "</td>";
+echo "</tr>";
 
-                <button type="button" class="unbtn">DELETE</button>
+       
+    }
+} else {
+    echo "<tr><td colspan='4'>No data found</td></tr>";
+}
+?>
+                    </tr>
+                    </tr>
+                </tbody>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th width="100"></th>
-                            <th>APPOINTMENT ID</th>
-                            <th>CLIENT NAME</th>
-                            <th>STAFF NAME</th>
-                            <th width="100">MEMBERSHIP STATUS</th>
-                            <th>SERVICE</th>
-                            <th>DATE AND TIME</th>
-                            <th>APPOINTMENT STATUS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>SAMPLE</td>
-                            <td>SAMPLE</td>
-                            <td>SAMPLE</td>
-                            <td>SAMPLE</td>
-                            <td>SAMPLE</td>
-                            <td>SAMPLE</td>
-                            <td>SAMPLE</td>
-                        </tr>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <!-- DELETE -->
 
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-                crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-                crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-                crossorigin="anonymous">
-            </script>
+ <?php
+     if(isset($_POST['delete']))
+{
+    $all_id = $_POST['check'];
+    $extract_id = implode(',' , $all_id);
+  				 
+	// Perform the delete operation
+    $query = "DELETE FROM reviewtbl WHERE reviewsID IN($extract_id) ";
+    $query_run = mysqli_query($conn, $query);
+
+    // Check if both operations were successful
+    if($query_run)
+    {
+        echo "Multiple Data Deleted and Archived Successfully";
+        header('Location: Feedback.php');
+        exit();
+    }
+    else if(!$query_run)
+    {
+        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
+    }
+    else
+    {
+        echo "Multiple Data Not Deleted or Archived";
+    }
+}
+
+
+       ?>  
+
+
+            </table>
+        </div>
+</form>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>

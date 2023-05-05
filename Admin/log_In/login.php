@@ -1,5 +1,6 @@
 <?php
 require ('../connection.php');
+session_start();
 
 if(isset($_POST['form'])){
     $adminID = $_POST['adminID'];
@@ -10,6 +11,8 @@ if(isset($_POST['form'])){
 
     if(mysqli_num_rows($query) < 1){
         $_SESSION['error'] = 'Cannot find account with the User ID';
+        header('location: log_index.php');
+        return;
     }
     else{
         $row = mysqli_fetch_assoc($query);
@@ -19,11 +22,15 @@ if(isset($_POST['form'])){
         }
         else{
             $_SESSION['error'] = 'Incorrect password';
+            header('location: log_index.php');
+            return;
         }
     }
 }
 else{
     $_SESSION['error'] = 'Input admin credentials first';
+    header('location: log_index.php');
+    return;
 }
 
 header('location: homepage.php');
