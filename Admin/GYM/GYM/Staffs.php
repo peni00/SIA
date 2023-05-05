@@ -146,13 +146,14 @@ if(isset($_POST['update'])) {
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="logout.php">Logout</a>
+                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
             </div>
+        </div>
             <!--sidebar-->
             <form method="POST">
             <div class="container">

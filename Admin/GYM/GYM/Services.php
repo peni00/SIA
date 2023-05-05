@@ -52,19 +52,20 @@ if (mysqli_connect_errno()) {
                 </a>
 
             </ul>
-           <div class="admin">
+            <div class="admin">
                 <img src="images/image10.png" class="user" style="width: 40px ">
                 <button style="font-weight: 700">Admin Rod <div class="dropdown">
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="logout.php">Logout</a>
+                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
+                </button>
+            </div>
         </div>
-    </div>
 
     <!--sidebar-->
 
