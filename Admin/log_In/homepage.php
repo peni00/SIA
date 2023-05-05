@@ -40,7 +40,7 @@
                     WELCOME TO ADMIN CONSOLE,
                 </h2>
                 <p class="adminrod">
-                    ADMIN ROD!
+                    ADMIN ROD!!!
                 </p>
                 <div class="box-card">
 
@@ -49,7 +49,7 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php">
+                            <a href="Appointment-Dashboard.php">
                                 <img src="images/dashboard.png" alt="">
                                 <p>
                                     DASHBOARD
