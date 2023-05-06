@@ -17,7 +17,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Services</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <script>
@@ -82,7 +82,7 @@ if (mysqli_connect_errno()) {
 </div><form method="POST">
 <div class="table-container">
 
-<button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete!')">DELETE</button>
+<button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete?')">DELETE</button>
     <table>
    
         <thead>
@@ -262,8 +262,8 @@ for (var i = 0; i < editBtns.length; i++) {
                 <label>Details: </label>
                 <input type="text" class="txt" name="txtdetails"required autocomplete="off"><br /> <br />
                 <div class="buttons">
-                    <button type="button" class="close-btn1" data-bs-dismiss="modal" onclick="window.location.href='Services.php';">CANCEL</button>
-                    <button type="submit" class="edit-confirm1" name="submit">ADD</button>
+                    <button type="button" class="close-btn01" data-bs-dismiss="modal" onclick="window.location.href='Services.php';">Cancel</button>
+                    <button type="submit" class="edit-confirm01" name="submit">Add</button>
                 </div>
             </div>
         </div>
@@ -309,9 +309,8 @@ for (var i = 0; i < editBtns.length; i++) {
              
                         </div>
                         <div class="edit-confirmation1">
-                            <button type="button" class="close-btn1"
-                                data-bs-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit"
-                                class="edit-confirm1" name="confirm" value="Update Data" >Confirm</button>
+                            <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="edit-confirm0" name="confirm" value="Update Data" >Confirm</button>
                         </div>
                     </div>
                 </div>

@@ -483,9 +483,9 @@ label{
 	background-color: transparent;
 	color: white;
 	padding: 10px;
-	border: 1px solid #1265b3;
+	border: 1px solid red;
 	transition: .4s ease;
-	transform: translateX(50%) translateY(-20%);
+	transform: translateX(-50%) translateY(-20%);
 }
 .edit-confirm1:hover{
 	background-color: #1265b3;
@@ -543,7 +543,7 @@ label{
 	border: none;
 	transition: .4s ease;
 	top: 50px;
-	transform: translateX(20%) translateY(-20%);
+	transform: translateX(-50%) translateY(-20%);
 }
 .close-btn1:hover{
 	background-color: gray;

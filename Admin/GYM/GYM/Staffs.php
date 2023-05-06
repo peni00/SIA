@@ -110,7 +110,7 @@ if(isset($_POST['update'])) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Staffs</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
@@ -332,8 +332,8 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
 					 
                         <div class="buttons">
-                    <button type="button" class="close-btn1" data-bs-dismiss="modal" onclick="resetForm()">CANCEL</button>
-                    <button type="submit" class="edit-confirm1" name="submit">CONFIRM</button>
+                    <button type="button" class="close-btn02" data-bs-dismiss="modal" onclick="resetForm()">Cancel</button>
+                    <button type="submit" class="edit-confirm02" name="submit">Confirm</button>
                     </div>
                 </form>
             </div>
@@ -435,8 +435,8 @@ if(isset($_POST['submit'])) {
                         </div>
                         <br>
                         <div class="buttons">
-                            <button type="button" class="close-btn1" data-bs-dismiss="modal">CANCEL</button>
-                            <button type="submit" class="edit-confirm1" name="update" value="Update Data" style="margin-left: 10px;">CONFIRM</button>
+                            <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="edit-confirm1" name="update" value="Update Data" style="margin-left: 10px;">Confirm</button>
                         </div>
                     </form>
                 </div>
