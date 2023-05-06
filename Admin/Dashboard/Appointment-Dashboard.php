@@ -127,7 +127,7 @@ $conn->close();
             <div class="app-btn">
                 <a href="#"><button class="serbtn">APPOINTMENT</button></a>
             </div>
-            <a href="http://localhost:8080/SIA/Admin/Dashboard/E-commerce-Dashboard.php"><Button class="stabtn">E-COMMERCE</Button></a>
+            <a href="http://localhost/SIA/Admin/Dashboard/E-commerce-Dashboard.php"><Button class="stabtn">E-COMMERCE</Button></a>
             <a href="http://localhost/SIA/Admin/Dashboard/Inventory-Dashboard.php"><Button class="appbtn">INVENTORY</Button></a>
         </div>
         <div>
@@ -136,7 +136,7 @@ $conn->close();
 
                 <div class="charts">
                     <div class="chart">
-                        <!-- <h2>APPOINTMENTS</h2> -->
+                        <h3>APPOINTMENTS</h3>
                         <canvas id="lineChart"></canvas>
                     </div>
 
