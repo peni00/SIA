@@ -42,7 +42,7 @@ $data_json = json_encode($data);
     <title>Dashboard</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='Dashboard1.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/inventory-dashboard.css'>
     <script>
     let data1 = <?php echo json_encode($data1) ?>;
     </script>
