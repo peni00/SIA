@@ -60,10 +60,10 @@ mysqli_close($conn);
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Dashboard</title>
+    <title>RFG ELITE | Dashboard</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/product.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='Dashboard1.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/inventory-dashboard.css'>
     <script>
     let data1 = <?php echo json_encode($data) ?>;
     </script>
