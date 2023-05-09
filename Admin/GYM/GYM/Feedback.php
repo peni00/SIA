@@ -19,7 +19,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Feedback</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -33,18 +33,18 @@ if (mysqli_connect_errno()) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="http://localhost/SIA/Admin/GYM/GYM/services.php">
+                <a href="services.php">
                     <li>SERVICES</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Staffs.php">
+                <a href="Staffs.php">
                     <li>STAFFS</li>
                 </a>
 
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Appointment.php">
+                <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php">
+                <a href="Archives-Services.php">
                     <li>ARCHIVES</li>
                 </a>
                 <a href="#" style="color:#349EFF">
@@ -52,9 +52,16 @@ if (mysqli_connect_errno()) {
                 </a>
             </ul>
             <div class="admin">
-                <img src="images/image10.png" class="user" style="width: 40px">
-                <button style="font-weight: 700">Admin Rod
-                    <img src=" images/dropd.png" style="width:25px">
+                <img src="images/image10.png" class="user" style="width: 40px ">
+                <button style="font-weight: 700">Admin Rod <div class="dropdown">
+                        <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item"
+                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                            <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
+                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
+                        </div>
+                    </div>
                 </button>
             </div>
         </div>
@@ -97,7 +104,7 @@ if (mysqli_connect_errno()) {
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $reviewsID = $row['reviewsID'];
-        $accountID = $row['AccountID'];
+        $accountID = $row['Account_ID'];
         $comments = $row['Comments'];
         $ds = $row['dateSubmitted'];
        
@@ -108,7 +115,7 @@ echo "<td><input type='checkbox' name='check[]' value='" . $row['reviewsID'] . "
 echo "<td></td>";
 echo "<td style='text-align: center;'>" . $row['reviewsID'] . "</td>";
 echo "<td></td>";
-echo "<td style='text-align: center;'>" . $row['AccountID'] . "</td>";
+echo "<td style='text-align: center;'>" . $row['Account_ID'] . "</td>";
 echo "<td></td>";
 echo "<td style='text-align: center;'>" . $row['Comments'] . "</td>";
 echo "<td></td>";

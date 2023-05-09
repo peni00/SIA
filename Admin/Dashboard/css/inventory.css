@@ -1,0 +1,514 @@
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+
+.fa-user {
+  background-color: white;
+  border-radius: 100%;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.box-logout {
+  padding: 0.44rem 1rem 0.44rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #349eff;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 20;
+  bottom: 0;
+  left: 40;
+  right: 0;
+
+  z-index: 1;
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  margin: 0;
+
+  padding: 0;
+  background-color: #d9d9d9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li a {
+  display: block;
+  color: #000000;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #ddd;
+}
+
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+/* Set the height of the sidebar to 100% of the viewport height */
+.sidebar {
+  height: 100vh;
+  width: 250px;
+  /* change the width here */
+  position: fixed;
+  top: 0;
+  left: -250px;
+  background-color: #141414;
+  color: #fff;
+  padding-top: 20px;
+  transition: left 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .side-header {
+  padding: 10px 20px 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.side-header h2 {
+  font-weight: 700;
+  color: #349eff;
+  padding-left: 2px;
+}
+
+/* Show the sidebar when the 'open' class is applied */
+.sidebar.open {
+  left: 0;
+}
+
+/* Style the links in the sidebar */
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Style the main content */
+.main-content {
+  margin-left: 0;
+  padding: 20px;
+
+  z-index: 99;
+  transition: margin-left 0.5s;
+}
+
+/* Expand the main content area when the sidebar is open */
+.sidebar.open ~ .main-content {
+  margin-left: 240px;
+}
+
+/* Style the button to toggle the sidebar */
+.toggle-sidebar {
+  top: 20px;
+  background-color: #141414;
+  cursor: pointer;
+  border-radius: 0.22rem;
+  padding: 4px 10px 4px 10px;
+  right: 20px;
+  font-size: 25px;
+  z-index: 1;
+}
+
+.main-content .location-name {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 1rem 1rem 1rem;
+}
+
+.location-name .disp-name {
+  display: flex;
+}
+
+.disp-name .back-btn {
+  padding-right: 0.66rem;
+}
+
+.button-selection {
+  display: flex;
+  justify-content: end;
+  gap: 0.44rem;
+}
+
+.button-selection .invbtn {
+    background-color: #004385;
+    color: white;
+    border: none;
+    padding: 0.44rem 1rem 0.44rem 1rem;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 0.22rem;
+  }
+  
+  .button-selection .stabtn,
+  .app-btn button {
+    border: none;
+    background-color: #d0d0d0;
+    padding: 0.44rem 1rem 0.44rem 1rem;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 0.22rem;
+  }
+/*dashboard-appointment*/
+.data-chartdag {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/*charts*/
+.charts {
+  height: 390px;
+  padding-top: 0;
+  width: 100%;
+}
+
+.chart {
+  width: 100%;
+  padding: 1rem 1rem 3rem 1rem;
+
+  height: 100%;
+
+  background: #0c0c0c;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+.chart h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
+}
+
+.membership {
+  width: 100%;
+  height: 250px;
+
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  border-radius: 15px;
+}
+
+.trainee {
+  position: absolute;
+  width: 262px;
+  height: 30px;
+  left: 445px;
+  top: 590px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  color: #ffffff;
+}
+
+.num {
+  position: absolute;
+  width: 342px;
+  height: 96px;
+  left: 350px;
+  top: 650px;
+  color: #ffffff;
+  font-family: "lato", sans-serif;
+}
+
+.no2 {
+  position: absolute;
+  width: 35px;
+  height: 24px;
+  left: 660px;
+  top: 450px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.num1 {
+  position: absolute;
+  width: 35px;
+  height: 24px;
+  left: 660px;
+  top: 650px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/*Dashboard-E-commerce*/
+.box-container-com {
+  position: absolute;
+  width: 555px;
+  height: 390px;
+  left: 270px;
+  top: 370px;
+  background: #0c0c0c;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+/*Dashboard-Inventory*/
+
+.inc {
+  position: absolute;
+  width: 262px;
+  height: 30px;
+  left: 445px;
+  top: 390px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  color: #ffffff;
+}
+
+.in {
+  position: absolute;
+  width: 342px;
+  height: 96px;
+  left: 350px;
+  top: 450px;
+  color: #ffffff;
+  font-family: "lato", sans-serif;
+}
+
+.prc {
+  position: absolute;
+  width: 35px;
+  height: 24px;
+  left: 660px;
+  top: 450px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.incm {
+  position: absolute;
+  width: 262px;
+  height: 30px;
+  left: 500px;
+  top: 390px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  color: #ffffff;
+}
+
+.chart h5 {
+  position: absolute;
+  width: 252px;
+  height: 43px;
+  left: 960px;
+  top: 10px;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  color: #ffffff;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  top: -15px !important;
+  left: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: -70px;
+  /* adjust this value to move the dropdown list up */
+  float: center;
+  min-width: 141px;
+  padding: 5px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 5px 0;
+}
+
+.dropdown-content a:hover {
+  background-color: #d9d9d9;
+  color: #004385;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.grid-container {
+  width: 100%;
+  display: grid;
+
+  grid-template-columns: 30% 10% 55%;
+  margin-top: 1rem;
+  gap: 27px;
+}
+
+.left-column {
+  grid-column: 1 / span 2;
+  /* start at column 1 and span 2 columns */
+  display: grid;
+  margin: 0 1px 0 1px;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 1fr;
+  /* create 2 rows */
+  gap: 20px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-column-1-1 {
+  background-color: #0c0c0c;
+  color: white;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.left-column-1-2 {
+  background-color: #0c0c0c;
+  color: white;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.right-column {
+  width: 100%;
+
+  background: #0c0c0c;
+  border-radius: 15px;
+  color: white;
+}
+
+.right-column h3 {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.member {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.member p {
+  font-size: 20px;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.box-gym {
+  padding: 2rem 4rem 2rem 4rem;
+}
+
+.data-gym {
+  display: flex;
+  font-size: 15px;
+  justify-content: space-between;
+}
+
+.data-gym h4 {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    left: -250px;
+    position: fixed;
+    top: 0;
+    width: 250px;
+    /* smaller width for smaller screens */
+    transition: none;
+    background-color: #0c0c0c;
+  }
+
+  .main-content {
+    left: 0;
+
+    z-index: -1;
+  }
+
+  .sidebar.open ~ .main-content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .grid-container {
+    grid-template-columns: 100%;
+  }
+
+  .left-column {
+    grid-column: 1;
+  }
+  .right-column{
+    height: 340px;
+  }
+}

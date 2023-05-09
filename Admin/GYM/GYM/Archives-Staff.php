@@ -24,7 +24,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Archive</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -57,9 +57,16 @@ if (mysqli_connect_errno()) {
                 </a>
             </ul>
             <div class="admin">
-                <img src="images/image10.png" class="user" style="width: 40px">
-                <button style="font-weight: 700">Admin Rod
-                    <img src=" images/dropd.png" style="width:25px">
+                <img src="images/image10.png" class="user" style="width: 40px ">
+                <button style="font-weight: 700">Admin Rod <div class="dropdown">
+                        <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item"
+                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                            <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
+                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
+                        </div>
+                    </div>
                 </button>
             </div>
         </div>

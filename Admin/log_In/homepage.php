@@ -61,8 +61,8 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="#">
-                                <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400">
+                            <a href="http://localhost/SIA/Admin/Inventory/Admin/index.php">
+                                <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/Inventory/Admin/index.php">
                                 <p>
                                     INVENTORY
                                 </p>

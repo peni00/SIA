@@ -485,9 +485,51 @@ label{
 	padding: 10px;
 	border: 1px solid #1265b3;
 	transition: .4s ease;
-	transform: translateX(100%) translateY(-20%);
+	transform: translateX(-10%) translateY(-20%);
 }
 .edit-confirm1:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm01{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(45%) translateY(-20%);
+}
+.edit-confirm01:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm02{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-50%) translateY(-300%);
+}
+.edit-confirm02:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm0{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(10%) translateY(-20%);
+}
+.edit-confirm0:hover{
 	background-color: #1265b3;
 	color: white;
 	
@@ -536,6 +578,8 @@ label{
 	
 }
 
+
+
 .close-btn1{
 	background-color: white;
 	color: black;
@@ -543,9 +587,38 @@ label{
 	border: none;
 	transition: .4s ease;
 	top: 50px;
-	transform: translateX(-50%) translateY(-20%);
+	transform: translateX(-10%) translateY(-20%);
 }
 .close-btn1:hover{
+	background-color: gray;
+	color: white;
+}
+
+
+.close-btn02{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top: 50px;
+	transform: translateX(-65%) translateY(-317%);
+}
+.close-bt02:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn01{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top: 50px;
+	transform: translateX(25%) translateY(-20%);
+}
+.close-btn01:hover{
 	background-color: gray;
 	color: white;
 }
