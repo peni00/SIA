@@ -55,11 +55,12 @@ include('includes/menubar.php');
                                     <thead>
                                         <tr>
                                         <td></td>
-                                        <th>Name</th>
-                                        <th>Photo</th>
-                                        <th>Description</th>
-                                        <th>Quantity</th>
-                                        <th>Tools</th>
+                                        <th class=text-center>Name</th>
+                                        <th class=text-center>Photo</th>
+                                        <th class=text-center>Description</th>
+                                        <th class=text-center>Quantity</th>
+                                        <th class=text-center>Remarks</th>
+                                        <th class=text-center>Tools</th>
 
                                         </tr>
                                     </thead>
@@ -92,6 +93,7 @@ include('includes/menubar.php');
                                                               </td>
                                                               <td><a href='#description' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='" . $row['id'] . "'><i class='fa fa-search'></i> View</a></td>
                                                               <td class='text-center'>" . $row['quantity'] . "</td>
+                                                              <td class='text-center'>" . $row['remarks'] . "</td>
                                                               <td>
                                                                   <button class='btn btn-success btn-sm edit btn-flat' data-id='" . $row['id'] . "'><i class='fa fa-edit'></i> Edit</button>
                                                               </td>

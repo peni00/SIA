@@ -234,20 +234,6 @@ function getRow(id){
     }
   });
 }
-function getCategory(){
-  $.ajax({
-    type: 'POST',
-    url: 'category_fetch.php',
-    dataType: 'json',
-    success:function(response){
-      $('#category').empty();
-
-      $('#category').append(response);
-      $('#edit_category').append(response);
-    }
-  });
-}
-
 function toggleCheckbox(box) {
   var id = $(box).attr("value");
   if ($(box).prop("checked") == true) {
@@ -281,7 +267,7 @@ function confirmArchive() {
   }
   if (!checked) {
     swal({
-      title: "Please select at least one product to archive.",
+      title: "Please select at least one products to archive.",
       icon: "warning",
       confirmButtonText: 'OK',
       dangerMode: false,
@@ -292,7 +278,8 @@ function confirmArchive() {
   } else {
     swal({
       title: "Are you sure you want to archive these products?",
-      icon: "warning",
+      text: "Enter remarks:",
+      content: "input",
       buttons: ["Cancel", "Yes, archive it"],
       dangerMode: true,
       backdrop: false,
@@ -309,11 +296,11 @@ function confirmArchive() {
         $.ajax({
           type: "post",
           url: "products_delete.php",
-          data: { archive_multiple_data: 1, ids: archiveData },
+          data: { archive_multiple_data: 1, ids: archiveData, remarks: willArchive },
           success: function (response) {
             if (response == 'success') {
               swal({
-                title: "Product Archive Failed",
+                title: "Products Archive Failed",
                 icon: "error",
                 confirmButtonText: 'OK',
                 dangerMode: true,
@@ -326,7 +313,7 @@ function confirmArchive() {
               });
             } else {
               swal({
-                title: "Product Archive Successfully",
+                title: "Products Archive Successfully",
                 icon: "success",
                 confirmButtonText: 'OK',
                 dangerMode: false,
@@ -345,7 +332,6 @@ function confirmArchive() {
     return false;
   }
 }
-
 
 </script>
 </body>
