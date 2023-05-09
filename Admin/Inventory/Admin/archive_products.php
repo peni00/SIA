@@ -65,6 +65,7 @@ include('includes/menubar.php');
                                         <th>Description</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Remarks</th>
                                         <td>Tools</td>
 
                                         </tr>
@@ -123,6 +124,7 @@ include('includes/menubar.php');
                                                       <td><a href='#description' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View</a></td>
                                                       <td> ₱ ".number_format($row['price'], 2)."</td>
                                                       <td class='text-center'><span class='badge ".$badge_class."'>".$available."</span></td>
+                                                      <td>".$row['remarks']."</td>
                                                       <td>
                                                           <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
 

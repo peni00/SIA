@@ -261,7 +261,8 @@ function confirmArchive() {
   } else {
     swal({
       title: "Are you sure you want to archive these equipments?",
-      icon: "warning",
+      text: "Enter remarks:",
+      content: "input",
       buttons: ["Cancel", "Yes, archive it"],
       dangerMode: true,
       backdrop: false,
@@ -278,7 +279,7 @@ function confirmArchive() {
         $.ajax({
           type: "post",
           url: "equipments_delete.php",
-          data: { archive_multiple_data: 1, ids: archiveData },
+          data: { archive_multiple_data: 1, ids: archiveData, remarks: willArchive },
           success: function (response) {
             if (response == 'success') {
               swal({
