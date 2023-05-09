@@ -24,6 +24,26 @@ $data1 = array(
         )
     )
 );
+
+$result = mysqli_query($conn, "
+    SELECT p.id, p.name, p.price, SUM(i.qty) AS total_qty
+    FROM products p
+    LEFT JOIN inventory i ON p.id = i.supply_id
+    GROUP BY p.id
+");
+
+// Format the data as a JSON array
+$data = array();
+while ($row = $result->fetch_assoc()) {
+    $data[] = array(
+        "label" => $row["name"],
+        "data" => $row["total_qty"],
+        "price" => $row["price"]
+    );
+}
+$json_data = json_encode($data);
+
+
 // Close connection
 mysqli_close($conn);
 
@@ -46,6 +66,13 @@ $data_json = json_encode($data);
     <link rel='stylesheet' type='text/css' media='screen' href='css/Ecommernce.css'>
     <script>
         let data1 = <?php echo json_encode($data1) ?>;
+    </script>
+    <script>
+        let data2 = <?php echo json_encode($data1) ?>;
+    </script>
+    <script>
+        let barChartLabels = <?php echo $labels_json ?>;
+        let barChartDataset = <?php echo $data_json ?>;
     </script>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
