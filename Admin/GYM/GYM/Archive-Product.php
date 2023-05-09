@@ -48,7 +48,7 @@ include 'connection.php';
                     </div>
                 </button>
             </div>
-            
+
             <!--sidebar-->
 
             <div class="container">
@@ -68,43 +68,82 @@ include 'connection.php';
                 <button for="sort">SORT BY</button>
                 <select class="sort">
                     <option value="option0"></option>
-                    <option value="option1">Product ID</option>
+                    <option value="option1">Category ID</option>
                 </select>
             </div>
 
             <div class="table-container">
-                <button type="button" class="unbtn">UNARCHIVE</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Category ID</th>
-                            <th>PRODUCT NAME</th>
-                            <th>CATEGORY</th>
-                            <th>PRICE</th>
-                            <th>PRODUCT IMAGE</th>
-                           <!-- <th>NO. OF STOCKS</th>-->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $query = mysqli_query($conn, "SELECT * FROM products");
+                <form method="POST" action="">
+                    <button type="submit" name="unarchive" class="unbtn">UNARCHIVE</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Category ID</th>
+                                <th>PRODUCT NAME</th>
+                                <th>CATEGORY</th>
+                                <th>PRICE</th>
+                                <th>PRODUCT IMAGE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = mysqli_query($conn, "SELECT * FROM prodarchive");
 
-                        while ($row = mysqli_fetch_assoc($query)) {
-                            echo "<tr>";
-                            echo "<td><input type='checkbox'></td>";
-                            echo "<td>" . $row['category_id'] . "</td>";
-                            echo "<td>" . $row['name'] . "</td>";
-                            echo "<td>" . $row['category_id'] . "</td>";
-                            echo "<td>₱ " . $row['price'] . "</td>";
-                            echo "<td><img src='" . $row['photo'] . "'></td>";
-                            //echo "<td>" . $row['stock'] . "</td>";
-                            echo "</tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                            while ($row = mysqli_fetch_assoc($query)) {
+                                echo "<tr>";
+                                echo "<td><input type='checkbox' name='ids[]' value='" . $row['id'] . "'></td>";
+                                echo "<td>" . $row['category_id'] . "</td>";
+                                echo "<td>" . $row['name'] . "</td>";
+                                echo "<td>" . $row['category_id'] . "</td>";
+                                echo "<td>₱ " . $row['price'] . "</td>";
+                                $p_img_src = "data:image/jpeg;base64," . $row['photo'];
+                                echo "<td><img src='" . $p_img_src . "' class='product-img'></td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </form>
             </div>
+
+            <?php
+            function delete_post($id, $conn)
+            {
+                $insert_query = mysqli_prepare($conn, "INSERT INTO products SELECT * FROM prodarchive WHERE id = ?");
+                mysqli_stmt_bind_param($insert_query, "i", $id);
+                mysqli_stmt_execute($insert_query);
+            
+                $delete_query = mysqli_prepare($conn, "DELETE FROM prodarchive WHERE id = ?");
+                mysqli_stmt_bind_param($delete_query, "i", $id);
+                mysqli_stmt_execute($delete_query);
+            
+                if (mysqli_affected_rows($conn) > 0) {
+                    return true; // product was deleted successfully
+                } else {
+                    return false; // product was not deleted
+                }
+            }
+            
+            if (isset($_POST['unarchive'])) {
+                if(!isset($_POST['ids']) || !is_array($_POST['ids']) || count($_POST['ids']) == 0){
+                    echo "Error: No product selected for unarchiving";
+                } else {
+                    $ids = $_POST['ids'];
+                
+                    foreach ($ids as $id) {
+                        delete_post($id, $conn);
+                    }
+                
+                    header("Location: archive-product.php");
+                    exit();
+                }
+            }
+            
+            
+   
+            ?>
+
 
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"

@@ -170,11 +170,11 @@ ul li{
 	opacity:  0;
 	visibility: hidden;
 	position: absolute;
-	top: 45px;
-	right: 450px;
+	top: 60px;
+	right: 270px;
 	background-color: #0C0C0C;
-	width: 430px;
-	height: 260px;
+	width: 470px;
+	height: 320px;
 	font-family:'lato', sans-serif;
 	color: white;
 	border-radius: 10px;
@@ -208,8 +208,8 @@ label{
 	width: 100px;
 	height: 100px;
 	position: absolute;
-	top: 100px;
-	right: 30px;
+	top: 115px;
+	right: 20px;
 	color: black;
 }
 .prod-info .upload-photo1{
@@ -238,10 +238,9 @@ label{
 	opacity: 0;
 }
 .upload-photo  img{
-	text-align: center;
-	
-	background-color: white;
-	width: 50px;
+	text-align: center;	
+	background-color: rgb(22, 21, 21);
+	width: 100px;
 
 }
 .buttons{
