@@ -2,40 +2,48 @@
 require('../connection.php');
 
 if(isset($_POST['edit'])){
-	$id = $_POST['id'];
-	$adminId = $_POST['adminId'];
-	$fullname = $_POST['fullname'];
-	$photo = $_POST['photo'];
-	$password = $_POST['password'];
-	$category = $_POST['category'];
-	$status = $_POST['status'];
-	$contactnum = $_POST['contactnum'];
-	$email = $_POST['email'];
+    $id = $_POST['id'];
+    $adminId = $_POST['adminID'];
+    $fullname = $_POST['fullname'];
+    $photo = $_POST['photo'];
+    $password = $_POST['password'];
+    $category = $_POST['category'];
+    $status = $_POST['status'];
+    $contactnum = $_POST['contactnum'];
+    $email = $_POST['email'];
 
-	$sql = "SELECT * FROM admin WHERE id = $adminId";
-	$query = $conn->query($sql);
-	$edit = $query->fetch_assoc();
+    $sql = "SELECT * FROM admin WHERE id = $adminId";
+    $result = $conn->query($sql);
+    $edit = $result->fetch_assoc();
 
-	if($password == $edit['password']){
-		$password = $edit['password'];
-	}
-	else{
-		$password = password_hash($password, PASSWORD_DEFAULT);
-	}
+    if($password == $edit['password']){
+        $password = $edit['password'];
+    }
+    else{
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    }
 
-	$sql = "UPDATE admin SET adminId = '$adminId', fullname = '$fullname', category = '$category', password = '$password', email = '$email', status = '$status', contactnum = '$contactnum', photo = '$photo',  WHERE id = '$id'";
-	if($conn->query($sql)){
-		$_SESSION['success'] = 'Admin Updated Successfully';
-	}
-	else{
-		$_SESSION['error'] = $conn->error;
-	}
+    $sql = "UPDATE admin SET adminID = '$adminId', fullname = '$fullname', category = '$category', password = '$password', email = '$email', status = '$status', contactnum = '$contactnum', photo = '$photo' WHERE id = '$id'";
+    if($conn->query($sql)){
+        $_SESSION['success'] = 'Admin Updated Successfully';
+    }
+    else{
+        $_SESSION['error'] = $conn->error;
+    }
 }
 else{
-	$_SESSION['error'] = 'Fill up edit form first';
+    $_SESSION['error'] = 'Fill up edit form first';
+}
+
+if(isset($adminId)){
+    $sql = "SELECT * FROM admin WHERE adminID = '$adminId'";
+    $result = $conn->query($sql);
+    $edit = $result->fetch_assoc();
 }
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
@@ -95,27 +103,28 @@ else{
                             </div>
                             <div class="name">
                                 <h3 class="fname">Name: </h3>
-                                <input type="text" name="fullname" value="<?php echo $edit['fullname']; ?>">
+                                <input type="text" name="fullname" value="<?php echo isset($edit['fullname']) ? $edit['fullname'] : ''; ?>">
+
                             </div>
                             <div class="position">
                                 <!--php echo $edit['fullname'];-->
                                 <h3 class="pos">Position:</h3>
-                                <input type="text" name="category" value="<?php echo $edit['category']; ?>">
+                                <input type="text" name="category" value="<?php echo isset ($edit['category'])? $edit['category']: ''; ?>">
                             </div>
                             <div class="status">
                                 <!--php echo $edit['category']; -->
                                 <h3 class="stat">Status:</h3>
-                                <input type="text" name="status" value="<?php echo $edit['status']; ?>">
+                                <input type="text" name="status" value="<?php echo isset ($edit['status'])? ($edit['status']): ''; ?>">
                             </div>
                             <!--php echo $edit['status']; -->
                             <div class="contact">
                                 <h3 class="con">Contact&nbsp;Number: </h3>
-                                <input type="text" name="contactnum" value="<?php echo $edit['contactnum']; ?>">
+                                <input type="text" name="contactnum" value="<?php echo isset ($edit['contactnum'])?$edit['contactnum'] :''; ?>">
                             </div>
                             <!--php echo $edit['contactnum']; -->
                             <div class="address">
                                 <h3 class="em">Email&nbsp;Address: </h3>
-                                <input type="text" name="email" value="<?php echo $edit['email']; ?>">
+                                <input type="text" name="email" value="<?php echo isset ($edit['email'])? $edit['email']: ''; ?>">
                             </div>
                             <!--php echo $edit['email']; -->
                             <div class="password">
