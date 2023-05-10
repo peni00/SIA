@@ -1,46 +1,36 @@
 <?php
 require('../connection.php');
 
-if(isset($_POST['edit'])){
-    $id = $_POST['id'];
-    $adminId = $_POST['adminID'];
+$id = $_GET['editid'];
+$sql = "SELECT * FROM admin WHERE id = $id";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$adminID = $row['adminID'];
+$fullname = $row['fullname'];
+$category = $row['category'];
+$status = $row['status'];
+$contactnum = $row['contactnum'];
+$email = $row['email'];
+$password = $row['password'];
+
+if(isset($_POST['edit'])) {
+    $adminID = $_POST['adminID'];
     $fullname = $_POST['fullname'];
-    $photo = $_POST['photo'];
-    $password = $_POST['password'];
     $category = $_POST['category'];
     $status = $_POST['status'];
     $contactnum = $_POST['contactnum'];
     $email = $_POST['email'];
-
-    $sql = "SELECT * FROM admin WHERE id = $adminId";
-    $result = $conn->query($sql);
-    $edit = $result->fetch_assoc();
-
-    if($password == $edit['password']){
-        $password = $edit['password'];
-    }
-    else{
-        $password = password_hash($password, PASSWORD_DEFAULT);
-    }
-
-    $sql = "UPDATE admin SET adminID = '$adminId', fullname = '$fullname', category = '$category', password = '$password', email = '$email', status = '$status', contactnum = '$contactnum', photo = '$photo' WHERE id = '$id'";
-    if($conn->query($sql)){
-        $_SESSION['success'] = 'Admin Updated Successfully';
-    }
-    else{
-        $_SESSION['error'] = $conn->error;
+    $password = $_POST['password'];
+    
+    $sql = "UPDATE admin SET adminID = '$adminID', fullname = '$fullname', category = '$category', status = '$status', contactnum = '$contactnum', email = '$email', password = '$password' WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
+    
+    if($result) {
+        echo "Updated";
+    } else {
+        die(mysqli_error($conn));
     }
 }
-else{
-    $_SESSION['error'] = 'Fill up edit form first';
-}
-
-if(isset($adminId)){
-    $sql = "SELECT * FROM admin WHERE adminID = '$adminId'";
-    $result = $conn->query($sql);
-    $edit = $result->fetch_assoc();
-}
-
 ?>
 
 
@@ -89,51 +79,41 @@ if(isset($adminId)){
 
                     <div class="right-side">
 
-                        <div class="admin-header">
-                            <h3>ADMIN INFORMATION</h3>
-                        </div>
-                        <div class="admininfo">
-                            <div class="userid-box">
-                                <h1 class="adID">ADMIN ID:</h1>
-                                <h2 class="adIDe">#001</h2>
-                                <input type="hidden" name="id" value="<?php echo $edit['id']; ?>">
-                                <input type="hidden" name="adminId" value="<?php echo $edit['adminId']; ?>">
-
-
-                            </div>
-                            <div class="name">
-                                <h3 class="fname">Name: </h3>
-                                <input type="text" name="fullname" value="<?php echo isset($edit['fullname']) ? $edit['fullname'] : ''; ?>">
-
-                            </div>
-                            <div class="position">
-                                <!--php echo $edit['fullname'];-->
-                                <h3 class="pos">Position:</h3>
-                                <input type="text" name="category" value="<?php echo isset ($edit['category'])? $edit['category']: ''; ?>">
-                            </div>
-                            <div class="status">
-                                <!--php echo $edit['category']; -->
-                                <h3 class="stat">Status:</h3>
-                                <input type="text" name="status" value="<?php echo isset ($edit['status'])? ($edit['status']): ''; ?>">
-                            </div>
-                            <!--php echo $edit['status']; -->
-                            <div class="contact">
-                                <h3 class="con">Contact&nbsp;Number: </h3>
-                                <input type="text" name="contactnum" value="<?php echo isset ($edit['contactnum'])?$edit['contactnum'] :''; ?>">
-                            </div>
-                            <!--php echo $edit['contactnum']; -->
-                            <div class="address">
-                                <h3 class="em">Email&nbsp;Address: </h3>
-                                <input type="text" name="email" value="<?php echo isset ($edit['email'])? $edit['email']: ''; ?>">
-                            </div>
-                            <!--php echo $edit['email']; -->
-                            <div class="password">
-                                <h3 class="pas">Password: </h3> <input type="password" id="a-2056" value="pass"></input>
-                                <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
-                            </div>
-                        </div>
-                        <!--php echo $edit['password']; -->
-
+                       <div class="admin-header">
+    <h3>ADMIN INFORMATION</h3>
+</div>
+<div class="admininfo">
+    <div class="userid-box">
+        <h1 class="adID">ADMIN ID:</h1>
+        <input type="text" name="id" value="">
+        <input type="hidden" name="adminId" value="">
+    </div>
+    <div class="name">
+        <h3 class="fname">Name: </h3>
+        <input type="text" name="fullname" value="<?php echo $fullname?>">
+    </div>
+    <div class="position">
+        <h3 class="pos">Position:</h3>
+        <input type="text" name="category" value="<?php echo $category?>">
+    </div>
+    <div class="status">
+        <h3 class="stat">Status:</h3>
+        <input type="text" name="status" value="<?php echo $status?>">
+    </div>
+    <div class="contact">
+        <h3 class="con">Contact&nbsp;Number: </h3>
+        <input type="text" name="contactnum" value="<?php echo $contactnum?>">
+    </div>
+    <div class="address">
+        <h3 class="em">Email&nbsp;Address: </h3>
+        <input type="text" name="email" value="<?php echo $email?>">
+    </div>
+    <div class="password">
+        <h3 class="pas">Password: </h3>
+        <input type="password" id="a-2056" value="">
+        <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
+    </div>
+</div>
 
                     </div>
                     <div class="left-side">

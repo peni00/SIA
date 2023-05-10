@@ -92,7 +92,7 @@ $email = isset($row['email']) ? $row['email'] : '';
 
                             </div>
                             <button>
-                                <a href="editProfile1.php" type="submit" >EDIT</a>
+                            <a href="editProfile1.php?editid=<?php echo $adminID; ?>">EDIT</a>
                             </button>
                         
                         </div>

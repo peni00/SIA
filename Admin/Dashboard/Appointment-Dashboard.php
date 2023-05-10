@@ -141,6 +141,8 @@ $conn->close();
                     </div>
 
                 </div>
+      
+                <form method="post">
                 <div class="grid-container">
                     <div class="left-column">
                         <div class="left-column-1-1">
@@ -151,19 +153,94 @@ $conn->close();
                             <div class="box-gym">
                                 <div class="data-gym">
                                     <h3>Gym</h3>
-                                    <h4>250</h4>
+                                    
+                                    <?php
+                                   
+                                    $conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+                                    
+                                    
+                                    if (mysqli_connect_errno()) {
+                                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                                      exit();
+                                    }
+                                    
+                                    $sql = "SELECT COUNT(*) AS totalservice FROM servicetypetbl WHERE serviceType='GYM'";
+                        $result = $conn->query($sql);
+                        // Check if the query was successful
+                        if ($result) {
+                            // Fetch the count value
+                            $row = $result->fetch_assoc();
+                            $count = $row['totalservice'];
+                            // Display the count in a text box
+                            echo '<label for="txtGym">' . $count . '</label>';
+                        } else {
+                            echo 'Error executing the count query.';
+                        }
+                        ?>
+
                                 </div>
                                 <div class="data-gym">
                                     <h3>Kyokushin</h3>
-                                    <h4>75</h4>
+                                    <?php
+                                   
+                                    $conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+                                    
+                                    
+                                    if (mysqli_connect_errno()) {
+                                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                                      exit();
+                                    }
+                                    
+                                    $sql = "SELECT COUNT(*) AS totalservice FROM servicetypetbl WHERE serviceType='Kyokushin'";
+                        $result = $conn->query($sql);
+                        // Check if the query was successful
+                        if ($result) {
+                            // Fetch the count value
+                            $row = $result->fetch_assoc();
+                            $count = $row['totalservice'];
+                            // Display the count in a text box
+                            echo '<label for="txtkyokushin">' . $count . '</label>';
+                        } else {
+                            echo 'Error executing the count query.';
+                        }
+                        ?>
                                 </div>
                                 <div class="data-gym">
                                     <h3>Dance Studio</h3>
-                                    <h4>200</h4>
+                                    <?php
+                                   
+                                    $conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+                                    
+                                    
+                                    if (mysqli_connect_errno()) {
+                                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                                      exit();
+                                    }
+                                    
+                                    $sql = "SELECT COUNT(*) AS totalservice FROM servicetypetbl WHERE serviceType='Dance Studio'";
+                        $result = $conn->query($sql);
+                        // Check if the query was successful
+                        if ($result) {
+                            // Fetch the count value
+                            $row = $result->fetch_assoc();
+                            $count = $row['totalservice'];
+                            // Display the count in a text box
+                            echo '<label for="txtdance">' . $count . '</label>';
+                        } else {
+                            echo 'Error executing the count query.';
+                        }
+                        ?>
                                 </div>
+
+                               
+                                    
+
+
+                                
                             </div>
                         </div>
                     </div>
+                    </form>
                     <div class="right-column">
                         <div class="membership">
                             <div class="member">

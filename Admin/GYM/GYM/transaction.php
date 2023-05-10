@@ -31,7 +31,7 @@
             </ul>
             <div class="admin">
                 <img src="images/image10.png" class="user" style="width: 40px ">
-                <button style="font-weight: 700">Admin Rod <div class="dropdown">
+                <button style="font-weight: 700"> <?php include 'admin_info.php'; ?><div class="dropdown">
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
