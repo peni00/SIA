@@ -1,7 +1,7 @@
 <?php
 require('../connection.php');
 
-$sql = "SELECT DATE_FORMAT(start_datetime, '%M') AS month, COUNT(*) AS total FROM appointmenttbl GROUP BY MONTH(start_datetime)";
+$sql = "SELECT DATE_FORMAT(supply_datetime, '%M') AS month, COUNT(id) AS total FROM suppliers GROUP BY MONTH(supply_datetime)";
 $result = $conn->query($sql);
 
 // Define the $month and $total arrays
@@ -20,7 +20,7 @@ $data1 = array(
     'labels' => $month,
     'datasets' => array(
         array(
-            'label' => 'Total Appointments',
+            'label' => 'Total Supply',
             'data' => $total,
             'fill' => false,
             'borderColor' => 'rgb(75, 192, 192)',
@@ -119,7 +119,7 @@ $data_json = json_encode($data);
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>
-                <h4>Admin Rod</h4>
+                <h4><?php include 'admin_info.php'; ?></h4>
             </div>
             <div class="dropdown-container">
                 <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
@@ -166,6 +166,7 @@ $data_json = json_encode($data);
                     <div class="chart">
                     <h3>SUPPLIERS</h3>
                     <canvas id="lineChart"></canvas>
+                    
                     </div>
 
                 </div>

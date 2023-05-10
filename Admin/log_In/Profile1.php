@@ -28,13 +28,6 @@ if (!$row) {
     exit('Error: Admin record not found');// handle no results found
 }
 
-// Access admin data from $row variable
-$name = isset($row['fullname']) ? $row['fullname'] : '';
-$category = isset($row['category']) ? $row['category'] : '';
-$status = isset($row['status']) ? $row['status'] : '';
-$contactnum = isset($row['contactnum']) ? $row['contactnum'] : '';
-$email = isset($row['email']) ? $row['email'] : '';
-
 
 ?>
 
@@ -85,7 +78,9 @@ $email = isset($row['email']) ? $row['email'] : '';
                             <h4>ADMIN PROFILE</h4>
                         </div>
                         <div class="adminprof">
-                            <div class="image-preview"></div>
+                            <div class="image-preview">
+							<img id="mypreview"  alt="Preview Image" src="data:image/jpeg;base64,<?php echo $row['photo']; ?>" style="width: 200px; height: 170px;"> </div>
+						
                             <div class="userid-box">
                                 <h1 class="adID">ADMIN ID:</h1>
                                 <h2 class="adIDe"><?php echo $row['adminID']; ?></h2>

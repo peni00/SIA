@@ -91,7 +91,7 @@ $conn->close();
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>
-                <?php include 'admin_info.php'; ?>
+                <h4><?php include 'admin_info.php'; ?></h4>
             </div>
             <div class="dropdown-container">
                 <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
