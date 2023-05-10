@@ -84,9 +84,19 @@ include('includes/menubar.php');
                                           $result = $stmt->get_result();
 
                                           while($row = $result->fetch_assoc()){
-                                              $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/noimage.jpg';
-                                              $supply_id = $row['id'];
 
+
+                                            $image_data = $row['photo'];
+
+                                              if (!empty($image_data)) {
+                                                // decode the base64 string
+                                                $decoded_image = base64_decode($image_data);
+
+                                                // create a data URI for the image
+                                                $image_uri = 'data:image/png;base64,' . base64_encode($decoded_image);
+                                            }
+
+                                              $supply_id = $row['id'];
                                               $inn_stmt = $conn->prepare("SELECT SUM(qty) AS inn FROM inventory WHERE stock_type = 1 AND supply_id = ?");
                                               $inn_stmt->bind_param('i', $supply_id);
                                               $inn_stmt->execute();
@@ -118,7 +128,7 @@ include('includes/menubar.php');
                                                       <td class='text-center'>".$row['id']."</td>
                                                       <td>".$row['name']."</td>
                                                       <td>
-                                                          <img src='".$image."' height='30px' width='30px'>
+                                                          <img src='".$image_uri."' height='30px' width='30px'>
                                                           <span class='pull-right'><a href='#edit_photo' class='photo' data-toggle='modal' data-id='".$row['id']."'><i class='fa fa-edit'></i></a></span>
                                                       </td>
                                                       <td><a href='#description' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View</a></td>

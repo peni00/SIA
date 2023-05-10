@@ -10,7 +10,7 @@ if(isset($_POST['add'])){
     $description = $_POST['description'];
     $filename = $_FILES['photo']['name'];
 
-	$conn = new mysqli("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+    $conn = new mysqli("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -30,14 +30,15 @@ if(isset($_POST['add'])){
         if(!empty($filename)){
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             $new_filename = $slug.'.'.$ext;
-            move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$new_filename);
+            $image_data = file_get_contents($_FILES['photo']['tmp_name']);
+            $base64_string = base64_encode($image_data);
         }
         else{
             $new_filename = '';
+            $base64_string = '';
         }
-
         $stmt = $conn->prepare("INSERT INTO products (category_id, name, description, slug, price, photo) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssds", $category, $name, $description, $slug, $price, $new_filename);
+        $stmt->bind_param("isssds", $category, $name, $description, $slug, $price, $base64_string);
         $stmt->execute();
         $_SESSION['status'] = 'Equipment added successfully';
         $_SESSION['status_code'] = 'success';
