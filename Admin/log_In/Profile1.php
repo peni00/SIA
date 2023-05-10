@@ -1,20 +1,44 @@
 <?php
-require('../connection.php');
 session_start();
+require_once '../connection.php';
 
 // Check if user is logged in, otherwise redirect to login page
 if (!isset($_SESSION['admin'])) {
     header('location: login.php');
+    exit();
 }
 
 // Fetch admin data from database
-$stmt = $conn->prepare("SELECT * FROM admin WHERE adminID = ?");
-$stmt->bind_param("s", $_SESSION['admin']);
+$adminID = substr($_SESSION['admin'], 0, 50);
+
+$stmt = $conn->prepare("SELECT * FROM admin WHERE id = ?");
+if (!$stmt) {
+    exit('Error: ' . $conn->error); // handle prepare error
+}
+
+$stmt->bind_param("s", $adminID);
 $stmt->execute();
 $result = $stmt->get_result();
+if (!$result) {
+    exit('Error: ' . $stmt->error); // handle execute error
+}
+
 $row = $result->fetch_assoc();
+if (!$row) {
+    exit('Error: Admin record not found');// handle no results found
+}
+
+// Access admin data from $row variable
+$name = isset($row['fullname']) ? $row['fullname'] : '';
+$category = isset($row['category']) ? $row['category'] : '';
+$status = isset($row['status']) ? $row['status'] : '';
+$contactnum = isset($row['contactnum']) ? $row['contactnum'] : '';
+$email = isset($row['email']) ? $row['email'] : '';
+
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
@@ -41,7 +65,7 @@ $row = $result->fetch_assoc();
                 <div class="dropdown-menu" id="user-dropdown">
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                        <li><a class="list-item" href="addUser.php">Add&nbsp;New&nbsp;User</a></li>
+                        <li><a class="list-item" href="addaccount.php">Add&nbsp;New&nbsp;User</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>
@@ -104,11 +128,6 @@ $row = $result->fetch_assoc();
                                 <div class="email"><?php echo $row['email']; ?></div>
                             </div>
                             <!--php echo $edit['email']; -->
-                            <div class="password">
-                                <h3 class="pas">Password: </h3> <input type="password" class="passwrd" id="a-2056" value="pass"></input>
-                                <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
-                            </div>
-                        </div>
                         <!--php echo $edit['password']; -->
 
 
