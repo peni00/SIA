@@ -64,13 +64,41 @@ include 'connection.php';
             </div>
 
             <!--container-->
+            <!-- HTML code -->
             <div class="sortby">
                 <button for="sort">SORT BY</button>
-                <select class="sort">
+                <select class="sort" onchange="sortProducts()">
                     <option value="option0"></option>
-                    <option value="option1">Category ID</option>
+                    <option value="category">Category ID</option>
                 </select>
             </div>
+
+            <!-- JavaScript code -->
+            <script>
+                function sortProducts() {
+                    var sortValue = document.querySelector('.sort').value;
+                    if (sortValue) {
+                        window.location.href = '?sort=' + sortValue;
+                    }
+                }
+            </script>
+
+            <!-- PHP code -->
+            <?php
+            if (isset($_GET['sort']) && $_GET['sort'] == 'category') {
+                $query = "SELECT * FROM products ORDER BY category_id";
+                $result = mysqli_query($conn, $query);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // display product details here
+                    }
+                } else {
+                    echo "No products found";
+                }
+            }
+            ?>
+
 
             <div class="table-container">
                 <form method="POST" action="">
@@ -113,35 +141,35 @@ include 'connection.php';
                 $insert_query = mysqli_prepare($conn, "INSERT INTO products SELECT * FROM prodarchive WHERE id = ?");
                 mysqli_stmt_bind_param($insert_query, "i", $id);
                 mysqli_stmt_execute($insert_query);
-            
+
                 $delete_query = mysqli_prepare($conn, "DELETE FROM prodarchive WHERE id = ?");
                 mysqli_stmt_bind_param($delete_query, "i", $id);
                 mysqli_stmt_execute($delete_query);
-            
+
                 if (mysqli_affected_rows($conn) > 0) {
                     return true; // product was deleted successfully
                 } else {
                     return false; // product was not deleted
                 }
             }
-            
+
             if (isset($_POST['unarchive'])) {
-                if(!isset($_POST['ids']) || !is_array($_POST['ids']) || count($_POST['ids']) == 0){
+                if (!isset($_POST['ids']) || !is_array($_POST['ids']) || count($_POST['ids']) == 0) {
                     echo "Error: No product selected for unarchiving";
                 } else {
                     $ids = $_POST['ids'];
-                
+
                     foreach ($ids as $id) {
                         delete_post($id, $conn);
                     }
-                
+
                     header("Location: archive-product.php");
                     exit();
                 }
             }
-            
-            
-   
+
+
+
             ?>
 
 
