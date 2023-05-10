@@ -234,6 +234,21 @@ function getRow(id){
     }
   });
 }
+
+function getCategory(){
+  $.ajax({
+    type: 'POST',
+    url: 'category_fetch.php',
+    dataType: 'json',
+    success:function(response){
+      $('#category').empty();
+
+      $('#category').append(response);
+      $('#edit_category').append(response);
+    }
+  });
+}
+
 function toggleCheckbox(box) {
   var id = $(box).attr("value");
   if ($(box).prop("checked") == true) {
