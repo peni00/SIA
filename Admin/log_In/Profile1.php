@@ -1,3 +1,21 @@
+<?php
+require('../connection.php');
+session_start();
+
+// Check if user is logged in, otherwise redirect to login page
+if (!isset($_SESSION['admin'])) {
+    header('location: login.php');
+}
+
+// Fetch admin data from database
+$stmt = $conn->prepare("SELECT * FROM admin WHERE adminID = ?");
+$stmt->bind_param("s", $_SESSION['admin']);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+?>
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
 
@@ -46,7 +64,7 @@
                             <div class="image-preview"></div>
                             <div class="userid-box">
                                 <h1 class="adID">ADMIN ID:</h1>
-                                <h2 class="adIDe">#001</h2>
+                                <h2 class="adIDe"><?php echo $row['adminID']; ?></h2>
 
                             </div>
                             <button>
@@ -63,27 +81,27 @@
                         <div class="admininfo">
                             <div class="name">
                                 <h3 class="fname">Name: </h3>
-                                <p class="fullname">Rodney&nbsp;&nbsp;&nbsp;Castillo</p>
+                                <div class="fullname"><?php echo $row['fullname']; ?></div>
                             </div>
                             <div class="position">
                                 <!--php echo $edit['fullname'];-->
                                 <h3 class="pos">Position:</h3>
-                                <p class="category">Administrator</p>
+                                <div class="category"><?php echo $row['category']; ?></div>
                             </div>
                             <div class="status">
                                 <!--php echo $edit['category']; -->
                                 <h3 class="stat">Status:</h3>
-                                <p class="status">Active</p>
+                                <div class="status"><?php echo $row['status']; ?></div>
                             </div>
                             <!--php echo $edit['status']; -->
                             <div class="contact">
                                 <h3 class="con">Contact&nbsp;Number: </h3>
-                                <p class="contactnum">0912 345 6789</p>
+                                <div class="contactnum"><?php echo $row['contactnum']; ?></div>
                             </div>
                             <!--php echo $edit['contactnum']; -->
                             <div class="address">
                                 <h3 class="em">Email&nbsp;Address: </h3>
-                                <p class="email"> castillorod@gmail.com</p>
+                                <div class="email"><?php echo $row['email']; ?></div>
                             </div>
                             <!--php echo $edit['email']; -->
                             <div class="password">
