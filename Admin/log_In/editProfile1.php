@@ -71,7 +71,7 @@ if(isset($adminId)){
                 <div class="dropdown-menu" id="user-dropdown">
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                        <li><a class="list-item" href="addUser.php">Add&nbsp;New&nbsp;User</a></li>
+                        <li><a class="list-item" href="addaccount.php">Add&nbsp;New&nbsp;User</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>
