@@ -93,26 +93,31 @@ if (isset($_POST['add_product'])) {
 
             if (isset($_POST['search'])) {
                 $searchbar = $_POST['search'];
-                $query = "SELECT * FROM products WHERE category_id = $searchbar";
-                $query_runs = mysqli_query($conn, $query);
-                if (mysqli_num_rows($query_runs) > 0) {
-                    while ($row = mysqli_fetch_array($query_runs)) {
-                        echo "<div class='product'>";
-                        $p_img_src = "data:image/jpeg;base64," . $row['photo'];
-                        echo "<img src='" . $p_img_src . "' class='product-img'>";
-                        echo "<label><b>Category ID:</b> " . $row['category_id'] . "</label><br />";
-                        echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
-                        echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
-                        echo "<label><b>Price:</b> ₱ " . $row['price'] . "</label><br /><br />";
-                        echo "<button type='button' class='delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-prod-id='" . $row['id'] . "'><img src='images/delete.png'></button>";
-                        echo "<button type='button' class='edit-btn' data-bs-toggle='modal' data-bs-target='#exampleModal1' data-id='" . $row['id'] . "'><img src='images/edit.png'></button>";
-                        echo "</div>";
-                    }
+                if (!$searchbar) {
+                    echo "<script>alert('Please enter a category ID')</script>";
                 } else {
-                    echo "<p>No products found</p>";
+                    $query = "SELECT * FROM products WHERE category_id = $searchbar";
+                    $query_runs = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($query_runs) > 0) {
+                        while ($row = mysqli_fetch_array($query_runs)) {
+                            echo "<div class='product'>";
+                            $p_img_src = "data:image/jpeg;base64," . $row['photo'];
+                            echo "<img src='" . $p_img_src . "' class='product-img'>";
+                            echo "<label><b>Category ID:</b> " . $row['category_id'] . "</label><br />";
+                            echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
+                            echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
+                            echo "<label><b>Price:</b> ₱ " . $row['price'] . "</label><br /><br />";
+                            echo "<button type='button' class='delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-prod-id='" . $row['id'] . "'><img src='images/delete.png'></button>";
+                            echo "<button type='button' class='edit-btn' data-bs-toggle='modal' data-bs-target='#exampleModal1' data-id='" . $row['id'] . "'><img src='images/edit.png'></button>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<script>alert('No products found');</script>";
+                    }
                 }
             }
             ?>
+
 
 
 
@@ -131,7 +136,7 @@ if (isset($_POST['add_product'])) {
                         // Rest of the code
                         echo "<label><b>Category ID:</b> " . $row['category_id'] . "</label><br />";
                         echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
-                        echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
+                        //echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
                         echo "<label><b>Price:</b> ₱ " . $row['price'] . "</label><br /><br />";
                         echo "<button type='button' class='delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-prod-id='" . $row['id'] . "'><img src='images/delete.png'></button>";
                         echo "<button type='button' class='edit-btn' data-bs-toggle='modal' data-bs-target='#exampleModal1' data-id='" . $row['id'] . "'><img src='images/edit.png'></button>";
@@ -175,10 +180,11 @@ if (isset($_POST['add_product'])) {
                     </form>
                 </div>
                 <?php if (!empty($message)) { ?>
-                    <p>
-                        <?php echo $message; ?>
-                    </p>
+                    <script>
+                            alert('<?php echo $message; ?>');
+                    </script>
                 <?php } ?>
+
             </div>
 
             <!-- Delete -->
@@ -229,11 +235,17 @@ if (isset($_POST['add_product'])) {
                 $id = $_POST['id'];
                 $result = delete_post($id, $conn);
                 if ($result) {
-                    echo "Product deleted successfully";
+                    $notification = "Product deleted successfully";
                 } else {
-                    echo "Product could not be deleted";
+                    $notification = "Product could not be deleted";
                 }
             }
+
+            // Output notification if it exists
+            if (isset($notification)) {
+                echo "<script>alert('$notification');</script>";
+            }
+
 
             ?>
 

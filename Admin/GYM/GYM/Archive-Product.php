@@ -63,7 +63,7 @@ include 'connection.php';
             </div>
 
             <!--container-->
-            <!-- HTML code -->
+            
             <div class="sortby">
                 <button for="sort">SORT BY</button>
                 <select class="sort" onchange="sortProducts()">
@@ -72,7 +72,6 @@ include 'connection.php';
                 </select>
             </div>
 
-            <!-- JavaScript code -->
             <script>
                 function sortProducts() {
                     var sortValue = document.querySelector('.sort').value;
@@ -82,7 +81,6 @@ include 'connection.php';
                 }
             </script>
 
-            <!-- PHP code -->
             <?php
             if (isset($_GET['sort']) && $_GET['sort'] == 'category') {
                 $query = "SELECT * FROM products ORDER BY category_id";
@@ -154,20 +152,23 @@ include 'connection.php';
 
             if (isset($_POST['unarchive'])) {
                 if (!isset($_POST['ids']) || !is_array($_POST['ids']) || count($_POST['ids']) == 0) {
-                    echo "Error: No product selected for unarchiving";
+                    $notification = "Error: No product selected for unarchiving";
                 } else {
                     $ids = $_POST['ids'];
-
+            
                     foreach ($ids as $id) {
                         delete_post($id, $conn);
                     }
-
-                    header("Location: archive-product.php");
-                    exit();
+            
+                    $notification = "Products unarchived successfully";
+                    header("Refresh:0");
                 }
             }
-
-
+            
+            // Output notification if it exists
+            if (isset($notification)) {
+                echo "<script>alert('$notification');</script>";
+            }
 
             ?>
 
