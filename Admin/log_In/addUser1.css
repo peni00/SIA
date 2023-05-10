@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=latowght@400;500;600;700;800;900&display=swap');
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'lato', sans-serif;
 }
 
 nav {
@@ -66,7 +66,7 @@ nav .left-nav p {
   position: absolute;
   padding: 10px 20px 10px 20px;
   width: 185px;
-  height: 76px;
+  height: 100px;
   z-index: 1;
   top: 12%;
   background-color: #D9D9D9;
@@ -133,7 +133,7 @@ nav .left-nav p {
   height: 100%;
   gap: 20px;
   background-color: #0C0C0C;
-
+  border-radius: 30px;
 
 
 }
@@ -154,10 +154,9 @@ nav .left-nav p {
   display: flex;
   font-size: 20px;
   color: white;
-
   justify-content: center;
-
   padding: 10px;
+  border-radius: 0px 30px 0px 0px;
 }
 
 .left-side .adminprof {
@@ -167,12 +166,23 @@ nav .left-nav p {
   align-items: center;
 }
 
-.right-side .userid-box {
+.right-side  {
   display: flex;
   color: white;
   font-size: 12px;
   padding: 0 0 20px 0;
 
+}
+
+.adID{
+  transform: translateY(5px) translateX(4px);
+}
+
+.userid-box{
+  display: flex;
+  color: white;
+  font-size: 12px;
+  padding: 0 0 6px 0;
 }
 
 .left-side a {
@@ -222,8 +232,8 @@ nav .left-nav p {
   font-size: 20px;
   color: white;
   justify-content: center;
-
   padding: 10px;
+  border-radius: 30px 0px 0px 0px;
 }
 
 .right-side h3 {

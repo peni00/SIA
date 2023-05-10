@@ -4,8 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>RFG ELITE | Edit Profile</title>
-    <link rel="stylesheet" href="editprofile2.css" media="screen">
+    <title>RFG ELITE | Add User</title>
+    <link rel="stylesheet" href="addUser1.css" media="screen">
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,7 +17,6 @@
                 <p> RFG ELITE</p>
             </div>
             <div class="right-icon">
-                
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>
@@ -47,37 +46,37 @@
                         </div>
                         <div class="admininfo">
                             <div class="userid-box">
-                                <h1 class="adID">ADMIN ID:</h1>
-                                <h2 class="adIDe">#001</h2>
+                                <h1 class="adID">Admin&nbsp;ID:&nbsp; </h1>
+                                <input type="text"></input>
 
                             </div>
                             <div class="name">
                                 <h3 class="fname">Name: </h3>
-                                <input type="text" value="Rodney Castillo"></input>
+                                <input type="text"></input>
                             </div>
                             <div class="position">
                                 <!--php echo $edit['fullname'];-->
                                 <h3 class="pos">Position:</h3>
-                                <input type="text" value="Administrator"></input>
+                                <input type="text" ></input>
                             </div>
                             <div class="status">
                                 <!--php echo $edit['category']; -->
                                 <h3 class="stat">Status:</h3>
-                                <input type="text" value="Active"></input>
+                                <input type="text" ></input>
                             </div>
                             <!--php echo $edit['status']; -->
                             <div class="contact">
                                 <h3 class="con">Contact&nbsp;Number: </h3>
-                                <input type="text" value="0912 345 6789"></input>
+                                <input type="text" ></input>
                             </div>
                             <!--php echo $edit['contactnum']; -->
                             <div class="address">
                                 <h3 class="em">Email&nbsp;Address: </h3>
-                                <input type="text" value="castillorod@gmail.com"></input>
+                                <input type="text" ></input>
                             </div>
                             <!--php echo $edit['email']; -->
                             <div class="password">
-                                <h3 class="pas">Password: </h3> <input type="password" id="a-2056" value="pass"></input>
+                                <h3 class="pas">Password: </h3> <input type="password" id="a-2056" ></input>
                                 <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
                             </div>
                         </div>

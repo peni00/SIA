@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>RFG ELITE | Profile</title>
-    <link rel="stylesheet" href="Profile1.css" media="screen">
+    <link rel="stylesheet" href="Profile3.css" media="screen">
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,13 +17,13 @@
                 <p> RFG ELITE</p>
             </div>
             <div class="right-icon">
-                <i class="fa-solid fa-bell" style="color: #ffff;"></i>
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>
                 <div class="dropdown-menu" id="user-dropdown">
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
+                        <li><a class="list-item" href="addUser.php">Add&nbsp;New&nbsp;User</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>
@@ -50,8 +50,9 @@
 
                             </div>
                             <button>
-                                <a href="editProfile1.php" type="submit" class="subbtn">EDIT</a>
+                                <a href="editProfile1.php" type="submit" >EDIT</a>
                             </button>
+                        
                         </div>
 
                     </div>

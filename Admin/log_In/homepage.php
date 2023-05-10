@@ -19,7 +19,7 @@
                 <p> RFG ELITE</p>
             </div>
             <div class="right-icon">
-                <i class="fa-solid fa-bell" style="color: #ffff;"></i>
+              
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>

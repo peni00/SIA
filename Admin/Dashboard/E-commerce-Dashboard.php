@@ -43,7 +43,7 @@ $data_json = json_encode($data);
     <title>RFG ELITE | E-commerce Dashboard</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/Ecommernce.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/Ecommerce.css'>
     <script>
         let data1 = <?php echo json_encode($data1) ?>;
     </script>

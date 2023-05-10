@@ -66,7 +66,7 @@ $conn->close();
     <title>RFG ELITE | Appointment Dashboard</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='css/Appointment.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/Appointment1.css'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -162,28 +162,7 @@ $conn->close();
                                     <h4>200</h4>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="left-column-1-2">
-                            <div class="member">
-                                <p>NO. OF TRAINERS</p>
-                            </div>
-                            <div class="box-gym">
-                                <div class="data-gym">
-                                    <h3>Gym</h3>
-                                    <h4>10</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Kyokushin</h3>
-                                    <h4>3</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Dance Studio</h3>
-                                    <h4>5</h4>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                     <div class="right-column">
                         <div class="membership">

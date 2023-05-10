@@ -126,7 +126,7 @@ $conn->close();
         </div>
         <div class="button-selection">
             <div class="app-btn">
-                <a href="#"><button class="serbtn">APPOINTMENT</button></a>
+                <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php"><button class="serbtn">APPOINTMENT</button></a>
             </div>
             <a href="http://localhost/SIA/Admin/Dashboard/E-commerce-Dashboard.php"><Button class="stabtn">E-COMMERCE</Button></a>
             <a href="http://localhost/SIA/Admin/Dashboard/Inventory-Dashboard.php"><Button class="invbtn">INVENTORY</Button></a>
@@ -165,25 +165,7 @@ $conn->close();
                             </div>
 
                         </div>
-                        <div class="left-column-1-2">
-                            <div class="member">
-                                <!-- <p>NO </p> -->
-                            </div>
-                            <div class="box-gym">
-                                <!-- <div class="data-gym">
-                                    <h3>Gym</h3>
-                                    <h4>10</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Kyokushin</h3>
-                                    <h4>3</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Dance Studio</h3>
-                                    <h4>5</h4>
-                                </div> -->
-                            </div>
-                        </div>
+      
 
                     </div>
                     <div class="right-column">
