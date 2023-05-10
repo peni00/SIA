@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>RFG ELITE | Home</title>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="homepage.css" media="screen">
+    <link rel="stylesheet" href="homepage1.css" media="screen">
 
 </head>
 
@@ -52,7 +52,7 @@
 
                             <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php">
                                 <img src="images/dashboard.png" alt="">
-                                <p>
+                                <p class="dash">
                                     DASHBOARD
                                 </p>
                             </a>
@@ -64,7 +64,7 @@
 
                             <a href="http://localhost/SIA/Admin/Inventory/Admin/index.php">
                                 <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/Inventory/Admin/index.php">
-                                <p>
+                                <p class="dash">
                                     INVENTORY
                                 </p>
                             </a>
@@ -75,7 +75,7 @@
 
                             <a href="http://localhost/SIA/Admin/GYM/GYM/services.php">
                                 <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/services.php">
-                                <p class="u-text u-text-body-color u-text-4">
+                                <p class="dash">
                                     APPOINTMENT
                                 </p>
                             </a>
@@ -85,7 +85,7 @@
 
                         <a href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
                             <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
-                            <p>
+                            <p class="dash">
                                 E-COMMERCE
                             </p>
                         </a>
@@ -96,6 +96,33 @@
 
         </div>
 
+       <div class="footer">
+            <p>
+                Delantar, Leonard A.</br>
+                Elona, John Andrey U.</br>
+                <p>
+                    <p>
+                    Encabo. James Earl L.</br>
+                    Estanislao, John Paul L.</br>
+                    </p>
+                        <p>
+                        Espiritu, Daniella E.</br>
+                        Mendoza, Larby Jace S.</br>
+                        </p>
+                            <p>
+                            Nacion, Arlene Joy E.</br>
+                            Pausanos, Reymar C.</br>
+                            </p>
+                                <p>
+                                Rañola, Troy D.</br>
+                                Sandique, Ruben Jr. A.</br>
+                                </p>
+                                    <p>
+                                    Santiago, Christian P.</br>
+                                    Takase, Kojie L.</br>
+                                    <p>
+       </div>
+       <div class="crdts">© Copyright 2023, SBIT-3F Group 3 | All Rights Re served.</div>
 
 
     </section>
