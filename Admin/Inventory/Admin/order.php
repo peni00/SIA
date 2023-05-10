@@ -36,7 +36,7 @@ include('includes/menubar.php');
 
 
 
-								 $query = "SELECT * FROM `transaction` Group By Order_ID  order by Date desc;";
+								 $query = "select * from transaction ut inner join account it on it.Account_ID=ut.Account_ID Group By Order_ID  order by Date desc";
 
 								 $result = $conn->query($query);
 
@@ -45,7 +45,10 @@ include('includes/menubar.php');
 								 while($row = $result->fetch_assoc())
 								 {
 
+									$fullname = $row["Fname"] . ", " . $row["Lname"];
+
 									 $orderstatus = $row['Status'];
+
 									 $address = $row["Street"] . ", " . $row["Barangay"] . ", " . $row["City"]. ", " .$row["Zip_Code"]."<br>";
 
 									 if($orderstatus ==  "Delivered"){
@@ -64,7 +67,7 @@ include('includes/menubar.php');
 
                                         <td class="text-center"><?php echo $i++ ?></</td>
                                         <td class="text-center"><a  href="order_details.php?id=<?php echo $row['Order_ID'] ?>"><?php echo $row['Order_ID'] ?></a></td>
-                                        <td class="text-center"><?php echo $row['Name'] ?></td>
+                                        <td class="text-center"><?php echo $fullname ?></td>
                                         <td class="text-center"><?php echo $row['Date'] ?></td>
 										<td class="text-center"><?php echo $address ?></td>
 										<td class="text-center"><?php echo $row['Payment_Method'] ?></td>
