@@ -16,11 +16,12 @@
 }
 
 .box-logout {
-  padding: 0.44rem 1rem 0.44rem 1rem;
+  padding: .44rem 1rem .44rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #349eff;
+  background-color: #349EFF;
+  ;
 }
 
 .user-name {
@@ -31,6 +32,7 @@
 .dropdown-container {
   position: relative;
   display: inline-block;
+
 }
 
 .dropdown-icon {
@@ -42,41 +44,45 @@
 .dropdown-menu {
   display: none;
   position: absolute;
-  padding: 10px 20px 10px 20px;
-  width: 185px;
-  height:76px;
-  z-index: 1;
-  top: 12%;
-  background-color: #D9D9D9;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  top: 20;
+  bottom: 0;
+  left: 40;
   right: 0;
-  transform: translateX(-40px) translateY(-40px);
-  border-radius: 30px;
+
+
+  z-index: 1;
+
 }
 
 .dropdown-menu ul {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
-  text-align: right;
+
   padding: 0;
+  background-color: #D9D9D9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
-.dropdown-menu li {
-  margin: 0;
-}
-
-.dropdown-menu a {
+.dropdown-menu li a {
   display: block;
-  padding: 5px 10px;
-  text-decoration: none;
   color: #000000;
-  text-align: center;
-  font-weight: 700;
+  padding: 12px 16px;
+  text-decoration: none;
 }
 
-.dropdown-menu a:hover {
-  color: #004385;
+.dropdown-menu li a:hover {
+  background-color: #ddd;
 }
+
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
 
 /* Set the height of the sidebar to 100% of the viewport height */
 .sidebar {

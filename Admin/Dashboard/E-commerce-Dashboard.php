@@ -90,7 +90,7 @@ $data_json = json_encode($data);
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>
-                <h4>Admin Rod</h4>
+                <?php include 'admin_info.php'; ?>
             </div>
             <div class="dropdown-container">
                 <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
@@ -140,6 +140,18 @@ $data_json = json_encode($data);
                     </div>
 
                 </div>
+               
+                <style>
+                    .transparent-textbox {
+                     color: #FFF;
+                     background-color: transparent;
+                     border: none;
+                     
+                     border-bottom: 1px solid #000; /* Optional: Add a border to the bottom of the textbox */
+                     text-align: right;
+                    }
+                    
+                </style>
                 <div class="grid-container">
                     <div class="left-column">
 
@@ -150,19 +162,62 @@ $data_json = json_encode($data);
                         <div class="box-gym">
                             <div class="data-gym">
                                 <h3>Daily</h3>
-                                <h4>0,000.00</h4>
+                                <?php
+                                $conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+                                    
+                                    
+                                if (mysqli_connect_errno()) {
+                                  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                                  exit();
+                                }
+                                $today = date('Y-m-d');
+                                $dailySalesQuery = "SELECT SUM(Total) AS dailySales FROM sales WHERE date = '$today'";
+                                $dailySalesResult = $conn->query($dailySalesQuery);
+                                $dailySalesRow = $dailySalesResult->fetch_assoc();
+                                $dailySales = $dailySalesRow['dailySales'];
+                                echo '<label for="txtkyokushin">' . $dailySales . '</label>';
+                                ?>
+
                             </div>
                             <div class="data-gym">
                                 <h3>Weekly</h3>
-                                <h4>0,000.00</h4>
+                                <?php
+                                $conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
+                                    
+                                    
+                                if (mysqli_connect_errno()) {
+                                  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                                  exit();
+                                }
+                                $startDate = date('Y-m-d', strtotime('-1 week'));
+                                $weeklySalesQuery = "SELECT SUM(Total) AS weeklySales FROM sales WHERE date >= '$startDate' AND date <= '$today'";
+                                $weeklySalesResult = $conn->query($weeklySalesQuery);
+                                $weeklySalesRow = $weeklySalesResult->fetch_assoc();
+                                $weeklySales = $weeklySalesRow['weeklySales'];
+                                echo '<label for="txtkyokushin">' . $weeklySales . '</label>';
+                                ?>
                             </div>
                             <div class="data-gym">
                                 <h3>Monthly</h3>
-                                <h4>0,000.00</h4>
+                                <?php
+                                $startDate = date('Y-m-01');
+                                $monthlySalesQuery = "SELECT SUM(Total) AS monthlySales FROM sales WHERE date >= '$startDate' AND date <= '$today'";
+                                $monthlySalesResult = $conn->query($monthlySalesQuery);
+                                $monthlySalesRow = $monthlySalesResult->fetch_assoc();
+                                $monthlySales = $monthlySalesRow['monthlySales'];
+                                echo '<label for="txtkyokushin">' . $monthlySales . '</label>';
+                                ?>
                             </div>
                             <div class="data-gym">
                                 <h3>Annual</h3>
-                                <h4>0,000.00</h4>
+                                <?php
+                                $startDate = date('Y-01-01');
+                                $annualSalesQuery = "SELECT SUM(Total) AS annualSales FROM sales WHERE date >= '$startDate' AND date <= '$today'";
+                                $annualSalesResult = $conn->query($annualSalesQuery);
+                                $annualSalesRow = $annualSalesResult->fetch_assoc();
+                                $annualSales = $annualSalesRow['annualSales'];
+                                echo '<label for="txtkyokushin">' . $annualSales . '</label>';
+                                ?>
                             </div>
                         </div>
 

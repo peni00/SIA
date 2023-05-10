@@ -81,7 +81,7 @@ $conn->close();
 
 <body>
 
-    <div class="sidebar open">
+   <div class="sidebar open">
         <div class="side-header">
             <img src="images/logo.png" style="width:60px; clip-path: circle()">
             <h2>RFG ELITE</h2>
@@ -91,7 +91,7 @@ $conn->close();
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>
-                <h4>Admin Rod</h4>
+                <?php include 'admin_info.php'; ?>
             </div>
             <div class="dropdown-container">
                 <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
