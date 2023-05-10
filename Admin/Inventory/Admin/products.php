@@ -85,7 +85,6 @@ include('includes/menubar.php');
 
                                           while($row = $result->fetch_assoc()){
 
-
                                             $image_data = $row['photo'];
 
                                               if (!empty($image_data)) {

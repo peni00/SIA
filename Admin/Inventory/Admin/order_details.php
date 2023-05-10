@@ -24,8 +24,8 @@ include('includes/menubar.php');
 								<th class="text-center">Quantity</th>
 								<th class="text-center">Price</th>
 								<th class="text-center">Total</th>
-								
-								
+
+
 							</thead>
 							<tbody>
                             <?php
@@ -37,11 +37,11 @@ include('includes/menubar.php');
                                     die("Connection failed: " . $conn->connect_error);
                                 }
 
-								 $query = "SELECT products.*, account.*, transaction.* FROM products INNER JOIN transaction ON products.id = transaction.Product_ID 
+								 $query = "SELECT products.*, account.*, transaction.* FROM products INNER JOIN transaction ON products.id = transaction.Product_ID
 								 INNER JOIN account ON account.Account_ID = transaction.Account_ID
 								 where Order_ID = '$id'  order by Date desc;";
 
-							
+
 
 								 $result = $conn->query($query);
 
@@ -49,13 +49,13 @@ include('includes/menubar.php');
 								 {
 								 while($row = $result->fetch_assoc())
 								 {
-									
-									 
+
+
 									 $orderstatus = $row['Status'];
 									 $address = $row["Street"] . ", " . $row["Barangay"] . ", " . $row["City"]. ", " .$row["Zip_Code"]."<br>";
-									
+
 									 $customer_name = $row['Fname'] . ", " . $row['Lname'];
-									 
+
 									 if($orderstatus ==  "Delivered"){
                                         $badge_class = 'badge-success';
                                     } elseif($orderstatus ==  "To Pack"){
@@ -65,7 +65,7 @@ include('includes/menubar.php');
                                     } elseif($orderstatus ==  "Order Received"){
                                         $badge_class = 'badge-secondary';
 									}
-									
+
                                     ?>
                                     <tr>
 
