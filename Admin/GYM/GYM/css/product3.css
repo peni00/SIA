@@ -160,7 +160,7 @@ ul li{
 .Add-product{
 	position: absolute;
 	top: 50px;
-	left: 1360px;
+	left: 1100px;
 	width: 500px;
 }
 .Add-product img{
@@ -215,7 +215,7 @@ label{
 	width: 100px;
 	height: 100px;
 	position: absolute;
-	top: 100px;
+	top: 110px;
 	right: 15px;
 	color: black;
 }

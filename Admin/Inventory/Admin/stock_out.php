@@ -24,11 +24,13 @@ include('includes/menubar.php');
         $prodarchive_arr[$row['id']] = $row['name'];
     }
 
-    $stmt = $conn->query("SELECT * FROM account ORDER BY Account_ID ASC");
-    $supp_arr = array();
+
+    $stmt = $conn->query("SELECT Account_ID, CONCAT(Fname, ' ', Lname) AS Name FROM account ORDER BY Account_ID ASC");
+    $cust_arr = array();
     while ($row = $stmt->fetch_assoc()){
         $cust_arr[$row['Account_ID']] = $row['Name'];
     }
+
 
     $conn->close();
 ?>
