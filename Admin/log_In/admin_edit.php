@@ -1,6 +1,5 @@
 <?php
-
-	include 'session.php';
+require('../connection.php');
 
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];
