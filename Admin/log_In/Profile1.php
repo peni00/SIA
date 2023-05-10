@@ -25,7 +25,7 @@ if (!$result) {
 
 $row = $result->fetch_assoc();
 if (!$row) {
-    exit('Error: Admin record not found'); // handle no results found
+    exit('Error: Admin record not found');// handle no results found
 }
 
 // Access admin data from $row variable
