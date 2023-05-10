@@ -1,17 +1,20 @@
 <?php
 require('../connection.php');
 
-$id = $_GET['editid'];
-$sql = "SELECT * FROM admin WHERE id = '$id'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-$adminID = $row['adminID'];
-$fullname = $row['fullname'];
-$category = $row['category'];
-$status = $row['status'];
-$contactnum = $row['contactnum'];
-$email = $row['email'];
-$password = $row['password'];
+if(isset($_GET['editid'])) {
+    $id = $_GET['editid'];
+    $sql = "SELECT * FROM admin WHERE id = '$id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $adminID = $row['adminID'];
+    $fullname = $row['fullname'];
+    $category = $row['category'];
+    $status = $row['status'];
+    $contactnum = $row['contactnum'];
+    $email = $row['email'];
+    $password = $row['password'];
+}
+
 
 if(isset($_POST['edit'])) {
     $adminID = $_POST['adminID'];
@@ -26,7 +29,18 @@ if(isset($_POST['edit'])) {
     $result = mysqli_query($conn, $sql);
     
     if($result) {
-        echo "Updated";
+        $sql = "SELECT * FROM admin WHERE id = '$id'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $adminID = $row['adminID'];
+        $fullname = $row['fullname'];
+        $category = $row['category'];
+        $status = $row['status'];
+        $contactnum = $row['contactnum'];
+        $email = $row['email'];
+        $password = $row['password'];
+        
+    
     } else {
         die(mysqli_error($conn));
     }
@@ -75,103 +89,89 @@ if(isset($_POST['edit'])) {
 
         <div class="container">
             <div class="container-box">
-                <form class="edit ">
-
-                    <div class="right-side">
-
-                       <div class="admin-header">
-    <h3>ADMIN INFORMATION</h3>
-</div>
-<div class="admininfo">
-    <div class="userid-box">
-        <h1 class="adID">ADMIN ID:</h1>
-        <input type="text" name="id" value="">
-        <input type="hidden" name="adminId" value="">
-    </div>
-    <div class="name">
-        <h3 class="fname">Name: </h3>
-        <input type="text" name="fullname" value="<?php echo $fullname?>">
-    </div>
-    <div class="position">
-        <h3 class="pos">Position:</h3>
-        <input type="text" name="category" value="<?php echo $category?>">
-    </div>
-    <div class="status">
-        <h3 class="stat">Status:</h3>
-        <input type="text" name="status" value="<?php echo $status?>">
-    </div>
-    <div class="contact">
-        <h3 class="con">Contact&nbsp;Number: </h3>
-        <input type="text" name="contactnum" value="<?php echo $contactnum?>">
-    </div>
-    <div class="address">
-        <h3 class="em">Email&nbsp;Address: </h3>
-        <input type="text" name="email" value="<?php echo $email?>">
-    </div>
-    <div class="password">
-        <h3 class="pas">Password: </h3>
-        <input type="password" id="a-2056" value="">
-        <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
-    </div>
-</div>
-
-                    </div>
-                    <div class="left-side">
-                        <div class="admin-profile">
-                            <h3>ADMIN PROFILE</h3>
-                        </div>
-                        <div class="adminprof">
-
-
-                            <image id="preview-image"> </image>
-
-                            <input class="file-upload" type="file" id="image-input" accept="image/*" onchange="previewImage(event)">
-
-                            <button>
-                                <a href="editProfile1.php" type="submit" name="edit" class="savebtn">SAVE CHANGES</a>
-                            </button>
-                        </div>
-
-                    </div>
-                </form>
+            <form class="edit" method="POST" action="editProfile1.php?editid=<?php echo $id ?>">
+    <div class="right-side">
+        <div class="admin-header">
+            <h3>ADMIN INFORMATION</h3>
+        </div>
+        <div class="admininfo">
+            <div class="userid-box">
+                <h1 class="adID">ADMIN ID:</h1>
+                <input type="text" name="adminID" value="<?php echo $adminID ?? '' ?>">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
+            </div>
+            <div class="name">
+                <h3 class="fname">Name: </h3>
+                <input type="text" name="fullname" value="<?php echo $fullname ?? '' ?>">
+            </div>
+            <div class="position">
+                <h3 class="pos">Position:</h3>
+                <input type="text" name="category" value="<?php echo $category ?? '' ?>">
+            </div>
+            <div class="status">
+                <h3 class="stat">Status:</h3>
+                <input type="text" name="status" value="<?php echo $status ?? '' ?>">
+            </div>
+            <div class="contact">
+                <h3 class="con">Contact&nbsp;Number: </h3>
+                <input type="text" name="contactnum" value="<?php echo $contactnum ?? '' ?>">
+            </div>
+            <div class="address">
+                <h3 class="em">Email&nbsp;Address: </h3>
+                <input type="text" name="email" value="<?php echo $email ?? '' ?>">
+            </div>
+            <div class="password">
+                <h3 class="pas">Password: </h3>
+                <input type="password" id="password-input" name="password" value="">
+                <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
             </div>
         </div>
+    </div>
+    <div class="left-side">
+        <div class="admin-profile">
+            <h3>ADMIN PROFILE</h3>
         </div>
+        <div class="adminprof">
+            <img id="mypreview" alt="Preview Image" src="data:image/jpeg;base64,<?php echo $row['photo']; ?>" style="width: 100%; height: 240px;">
+                </div>
+                <div class="photo-upload">
+                    <input class="file-upload" type="file" id="image-input" name="profile-photo" accept="image/*" onchange="previewImage(event)">
+                    <label for="image-input" class="file-upload-label">Choose a file</label>
+                    <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
+                </div>
+        </div>
+    </div>
+</form>
 
-        <script>
-            function previewImage(event) {
-                var reader = new FileReader();
-                reader.onload = function() {
-                    var output = document.getElementById('preview-image');
-                    output.src = reader.result;
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
-        </script>
-        <script>
-            // Change the type of input to password or text
-            function Toggle() {
-                var temp = document.getElementById("a-2056");
-                if (temp.type === "password") {
-                    temp.type = "text";
-                } else {
-                    temp.type = "password";
-                }
-            }
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('preview-image');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
 
-            var icon = document.getElementById("user-icon");
-            var dropdown = document.getElementById("user-dropdown");
+    // Change the type of input to password or text
+    function Toggle() {
+        var temp = document.getElementById("password-input");
+        if (temp.type === "password") {
+            temp.type = "text";
+        } else {
+            temp.type = "password";
+        }
+    }
 
-            icon.addEventListener("click", function(event) {
-                dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-            });
+    function submitForm() {
+        var passwordInput = document.getElementById("password-input");
+        if (passwordInput.value !== "") {
+            passwordInput.value = document.getElementById("a-2056").value;
+            document.forms[0].submit();
+        }
+    }
+</script>
 
-            document.addEventListener("click", function(event) {
-                if (!icon.contains(event.target) && !dropdown.contains(event.target)) {
-                    dropdown.style.display = "none";
-                }
-            });
-        </script>
 </body>
 
 </html>
