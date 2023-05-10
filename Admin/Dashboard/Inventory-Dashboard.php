@@ -53,8 +53,31 @@ $data2 = array(
     )
 );
 
-// Close the database connection
-$conn->close();
+$result = mysqli_query($conn, "
+    SELECT p.id, p.name, p.price, SUM(i.qty) AS total_qty
+    FROM products p
+    LEFT JOIN inventory i ON p.id = i.supply_id
+    GROUP BY p.id
+");
+
+// Format the data as a JSON array
+$data = array();
+while ($row = $result->fetch_assoc()) {
+    $data[] = array(
+        "label" => $row["name"],
+        "data" => $row["total_qty"],
+        "price" => $row["price"]
+    );
+}
+$json_data = json_encode($data);
+
+
+// Close connection
+mysqli_close($conn);
+
+// Encode arrays to JSON format
+$labels_json = json_encode($labels);
+$data_json = json_encode($data);
 
 ?>
 <!DOCTYPE html>
@@ -76,6 +99,10 @@ $conn->close();
     </script>
     <script>
         let data2 = <?php echo json_encode($data2) ?>;
+    </script>
+    <script>
+        let barChartLabels = <?php echo $labels_json ?>;
+        let barChartDataset = <?php echo $data_json ?>;
     </script>
 
 </head>
@@ -126,7 +153,7 @@ $conn->close();
         </div>
         <div class="button-selection">
             <div class="app-btn">
-                <a href="#"><button class="serbtn">APPOINTMENT</button></a>
+                <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php"><button class="serbtn">APPOINTMENT</button></a>
             </div>
             <a href="http://localhost/SIA/Admin/Dashboard/E-commerce-Dashboard.php"><Button class="stabtn">E-COMMERCE</Button></a>
             <a href="http://localhost/SIA/Admin/Dashboard/Inventory-Dashboard.php"><Button class="invbtn">INVENTORY</Button></a>
@@ -165,25 +192,7 @@ $conn->close();
                             </div>
 
                         </div>
-                        <div class="left-column-1-2">
-                            <div class="member">
-                                <!-- <p>NO </p> -->
-                            </div>
-                            <div class="box-gym">
-                                <!-- <div class="data-gym">
-                                    <h3>Gym</h3>
-                                    <h4>10</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Kyokushin</h3>
-                                    <h4>3</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Dance Studio</h3>
-                                    <h4>5</h4>
-                                </div> -->
-                            </div>
-                        </div>
+      
 
                     </div>
                     <div class="right-column">

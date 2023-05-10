@@ -10,10 +10,11 @@ if(isset($_POST['form'])){
     $query = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($query) < 1){
-        $_SESSION['error'] = 'Cannot find account with the User ID';
+        $_SESSION['error'] = '<span style="color: red;">Cannot find account with the User ID</span>';
         header('location: log_index.php');
         return;
     }
+    
     else{
         $row = mysqli_fetch_assoc($query);
         if(password_verify($password, $row['password'])){
