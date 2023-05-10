@@ -1,3 +1,50 @@
+<?php
+require('../connection.php');
+
+if(isset($_POST['edit'])){
+    $id = $_POST['id'];
+    $adminId = $_POST['adminID'];
+    $fullname = $_POST['fullname'];
+    $photo = $_POST['photo'];
+    $password = $_POST['password'];
+    $category = $_POST['category'];
+    $status = $_POST['status'];
+    $contactnum = $_POST['contactnum'];
+    $email = $_POST['email'];
+
+    $sql = "SELECT * FROM admin WHERE id = $adminId";
+    $result = $conn->query($sql);
+    $edit = $result->fetch_assoc();
+
+    if($password == $edit['password']){
+        $password = $edit['password'];
+    }
+    else{
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    $sql = "UPDATE admin SET adminID = '$adminId', fullname = '$fullname', category = '$category', password = '$password', email = '$email', status = '$status', contactnum = '$contactnum', photo = '$photo' WHERE id = '$id'";
+    if($conn->query($sql)){
+        $_SESSION['success'] = 'Admin Updated Successfully';
+    }
+    else{
+        $_SESSION['error'] = $conn->error;
+    }
+}
+else{
+    $_SESSION['error'] = 'Fill up edit form first';
+}
+
+if(isset($adminId)){
+    $sql = "SELECT * FROM admin WHERE adminID = '$adminId'";
+    $result = $conn->query($sql);
+    $edit = $result->fetch_assoc();
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
 
@@ -24,7 +71,7 @@
                 <div class="dropdown-menu" id="user-dropdown">
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                        <li><a class="list-item" href="addUser.php">Add&nbsp;New&nbsp;User</a></li>
+                        <li><a class="list-item" href="addaccount.php">Add&nbsp;New&nbsp;User</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>
@@ -49,31 +96,35 @@
                             <div class="userid-box">
                                 <h1 class="adID">ADMIN ID:</h1>
                                 <h2 class="adIDe">#001</h2>
+                                <input type="hidden" name="id" value="<?php echo $edit['id']; ?>">
+                                <input type="hidden" name="adminId" value="<?php echo $edit['adminId']; ?>">
+
 
                             </div>
                             <div class="name">
                                 <h3 class="fname">Name: </h3>
-                                <input type="text" value="Rodney Castillo"></input>
+                                <input type="text" name="fullname" value="<?php echo isset($edit['fullname']) ? $edit['fullname'] : ''; ?>">
+
                             </div>
                             <div class="position">
                                 <!--php echo $edit['fullname'];-->
                                 <h3 class="pos">Position:</h3>
-                                <input type="text" value="Administrator"></input>
+                                <input type="text" name="category" value="<?php echo isset ($edit['category'])? $edit['category']: ''; ?>">
                             </div>
                             <div class="status">
                                 <!--php echo $edit['category']; -->
                                 <h3 class="stat">Status:</h3>
-                                <input type="text" value="Active"></input>
+                                <input type="text" name="status" value="<?php echo isset ($edit['status'])? ($edit['status']): ''; ?>">
                             </div>
                             <!--php echo $edit['status']; -->
                             <div class="contact">
                                 <h3 class="con">Contact&nbsp;Number: </h3>
-                                <input type="text" value="0912 345 6789"></input>
+                                <input type="text" name="contactnum" value="<?php echo isset ($edit['contactnum'])?$edit['contactnum'] :''; ?>">
                             </div>
                             <!--php echo $edit['contactnum']; -->
                             <div class="address">
                                 <h3 class="em">Email&nbsp;Address: </h3>
-                                <input type="text" value="castillorod@gmail.com"></input>
+                                <input type="text" name="email" value="<?php echo isset ($edit['email'])? $edit['email']: ''; ?>">
                             </div>
                             <!--php echo $edit['email']; -->
                             <div class="password">
@@ -97,7 +148,7 @@
                             <input class="file-upload" type="file" id="image-input" accept="image/*" onchange="previewImage(event)">
 
                             <button>
-                                <a href="editProfile1.php" type="submit" class="savebtn">SAVE CHANGES</a>
+                                <a href="editProfile1.php" type="submit" name="edit" class="savebtn">SAVE CHANGES</a>
                             </button>
                         </div>
 

@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+
+include 'connection.php';
+?>
+
 <html>
 
 <head>
@@ -45,7 +50,6 @@
             </div>
         </div>
             <!--sidebar-->
-
             <div class="container">
                 <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
@@ -57,57 +61,130 @@
                             class="appbtn">TRANSACTIONS</Button></a>
                 </div>
             </div>
+
             <!--container-->
+            
             <div class="sortby">
                 <button for="sort">SORT BY</button>
-                <select class="sort">
+                <select class="sort" onchange="sortProducts()">
                     <option value="option0"></option>
-                    <option value="option1">Product ID</option>
-                    <option value="option2">Category</option>
+                    <option value="category">Category ID</option>
                 </select>
+            </div>
 
-            </div>
+            <script>
+                function sortProducts() {
+                    var sortValue = document.querySelector('.sort').value;
+                    if (sortValue) {
+                        window.location.href = '?sort=' + sortValue;
+                    }
+                }
+            </script>
+
+            <?php
+            if (isset($_GET['sort']) && $_GET['sort'] == 'category') {
+                $query = "SELECT * FROM products ORDER BY category_id";
+                $result = mysqli_query($conn, $query);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // display product details here
+                    }
+                } else {
+                    echo "No products found";
+                }
+            }
+            ?>
+
+
             <div class="table-container">
-                <button type="button" class="unbtn">UNARCHIVE</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>PRODUCT ID</th>
-                            <th>PRODUCT NAME</th>
-                            <th>CATEGORY</th>
-                            <th>PRICE</th>
-                            <th>PRODUCT IMAGE</th>
-                            <th>NO. OF STOCKS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>019</td>
-                            <td>Nescafe</td>
-                            <td>Coffee</td>
-                            <td>50</td>
-                            <td><img src="Images/Nescafe.jpg"></td>
-                            <td>500</td>
-                        </tr>
-                        </tr>
-                    </tbody>
-                </table>
+                <form method="POST" action="">
+                    <button type="submit" name="unarchive" class="unbtn">UNARCHIVE</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Category ID</th>
+                                <th>PRODUCT NAME</th>
+                                <th>CATEGORY</th>
+                                <th>PRICE</th>
+                                <th>PRODUCT IMAGE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = mysqli_query($conn, "SELECT * FROM prodarchive");
+
+                            while ($row = mysqli_fetch_assoc($query)) {
+                                echo "<tr>";
+                                echo "<td><input type='checkbox' name='ids[]' value='" . $row['id'] . "'></td>";
+                                echo "<td>" . $row['category_id'] . "</td>";
+                                echo "<td>" . $row['name'] . "</td>";
+                                echo "<td>" . $row['category_id'] . "</td>";
+                                echo "<td>₱ " . $row['price'] . "</td>";
+                                $p_img_src = "data:image/jpeg;base64," . $row['photo'];
+                                echo "<td><img src='" . $p_img_src . "' class='product-img'></td>";
+                                echo "</tr>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </form>
             </div>
+
+            <?php
+            function delete_post($id, $conn)
+            {
+                $insert_query = mysqli_prepare($conn, "INSERT INTO products SELECT * FROM prodarchive WHERE id = ?");
+                mysqli_stmt_bind_param($insert_query, "i", $id);
+                mysqli_stmt_execute($insert_query);
+
+                $delete_query = mysqli_prepare($conn, "DELETE FROM prodarchive WHERE id = ?");
+                mysqli_stmt_bind_param($delete_query, "i", $id);
+                mysqli_stmt_execute($delete_query);
+
+                if (mysqli_affected_rows($conn) > 0) {
+                    return true; // product was deleted successfully
+                } else {
+                    return false; // product was not deleted
+                }
+            }
+
+            if (isset($_POST['unarchive'])) {
+                if (!isset($_POST['ids']) || !is_array($_POST['ids']) || count($_POST['ids']) == 0) {
+                    $notification = "Error: No product selected for unarchiving";
+                } else {
+                    $ids = $_POST['ids'];
+            
+                    foreach ($ids as $id) {
+                        delete_post($id, $conn);
+                    }
+            
+                    $notification = "Products unarchived successfully";
+                    header("Refresh:0");
+                }
+            }
+            
+            // Output notification if it exists
+            if (isset($notification)) {
+                echo "<script>alert('$notification');</script>";
+            }
+
+            ?>
+
 
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
                 crossorigin="anonymous">
-            </script>
+                </script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
                 integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
                 crossorigin="anonymous">
-            </script>
+                </script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
                 integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
                 crossorigin="anonymous">
-            </script>
+                </script>
 </body>
 
 </html>

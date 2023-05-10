@@ -1,3 +1,45 @@
+<?php
+session_start();
+require_once '../connection.php';
+
+// Check if user is logged in, otherwise redirect to login page
+if (!isset($_SESSION['admin'])) {
+    header('location: login.php');
+    exit();
+}
+
+// Fetch admin data from database
+$adminID = substr($_SESSION['admin'], 0, 50);
+
+$stmt = $conn->prepare("SELECT * FROM admin WHERE id = ?");
+if (!$stmt) {
+    exit('Error: ' . $conn->error); // handle prepare error
+}
+
+$stmt->bind_param("s", $adminID);
+$stmt->execute();
+$result = $stmt->get_result();
+if (!$result) {
+    exit('Error: ' . $stmt->error); // handle execute error
+}
+
+$row = $result->fetch_assoc();
+if (!$row) {
+    exit('Error: Admin record not found');// handle no results found
+}
+
+// Access admin data from $row variable
+$name = isset($row['fullname']) ? $row['fullname'] : '';
+$category = isset($row['category']) ? $row['category'] : '';
+$status = isset($row['status']) ? $row['status'] : '';
+$contactnum = isset($row['contactnum']) ? $row['contactnum'] : '';
+$email = isset($row['email']) ? $row['email'] : '';
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
 
@@ -23,7 +65,7 @@
                 <div class="dropdown-menu" id="user-dropdown">
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                        <li><a class="list-item" href="addUser.php">Add&nbsp;New&nbsp;User</a></li>
+                        <li><a class="list-item" href="addaccount.php">Add&nbsp;New&nbsp;User</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>
@@ -46,7 +88,7 @@
                             <div class="image-preview"></div>
                             <div class="userid-box">
                                 <h1 class="adID">ADMIN ID:</h1>
-                                <h2 class="adIDe">#001</h2>
+                                <h2 class="adIDe"><?php echo $row['adminID']; ?></h2>
 
                             </div>
                             <button>
@@ -63,34 +105,29 @@
                         <div class="admininfo">
                             <div class="name">
                                 <h3 class="fname">Name: </h3>
-                                <p class="fullname">Rodney&nbsp;&nbsp;&nbsp;Castillo</p>
+                                <div class="fullname"><?php echo $row['fullname']; ?></div>
                             </div>
                             <div class="position">
                                 <!--php echo $edit['fullname'];-->
                                 <h3 class="pos">Position:</h3>
-                                <p class="category">Administrator</p>
+                                <div class="category"><?php echo $row['category']; ?></div>
                             </div>
                             <div class="status">
                                 <!--php echo $edit['category']; -->
                                 <h3 class="stat">Status:</h3>
-                                <p class="status">Active</p>
+                                <div class="status"><?php echo $row['status']; ?></div>
                             </div>
                             <!--php echo $edit['status']; -->
                             <div class="contact">
                                 <h3 class="con">Contact&nbsp;Number: </h3>
-                                <p class="contactnum">0912 345 6789</p>
+                                <div class="contactnum"><?php echo $row['contactnum']; ?></div>
                             </div>
                             <!--php echo $edit['contactnum']; -->
                             <div class="address">
                                 <h3 class="em">Email&nbsp;Address: </h3>
-                                <p class="email"> castillorod@gmail.com</p>
+                                <div class="email"><?php echo $row['email']; ?></div>
                             </div>
                             <!--php echo $edit['email']; -->
-                            <div class="password">
-                                <h3 class="pas">Password: </h3> <input type="password" class="passwrd" id="a-2056" value="pass"></input>
-                                <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
-                            </div>
-                        </div>
                         <!--php echo $edit['password']; -->
 
 
