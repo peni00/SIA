@@ -22,9 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$error = 'Please fill in all fields.';
 	} else {
 		if (mysqli_stmt_execute($stmt)) {
-			// Redirect to success page
-			header('Location: add_account_success.php');
-			exit;
+			//Display success message 
+			echo "<script type='text/javascript'>alert('Register Sucessfully!');
+			window.location='homepage.php';
+			</script>";		
+
 		} else {
 			// Display error message
 			$error = 'Error: ' . mysqli_error($conn);
