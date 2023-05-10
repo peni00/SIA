@@ -105,7 +105,6 @@ if (isset($_POST['add_product'])) {
                             echo "<img src='" . $p_img_src . "' class='product-img'>";
                             echo "<label><b>Category ID:</b> " . $row['category_id'] . "</label><br />";
                             echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
-                            echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
                             echo "<label><b>Price:</b> ₱ " . $row['price'] . "</label><br /><br />";
                             echo "<button type='button' class='delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-prod-id='" . $row['id'] . "'><img src='images/delete.png'></button>";
                             echo "<button type='button' class='edit-btn' data-bs-toggle='modal' data-bs-target='#exampleModal1' data-id='" . $row['id'] . "'><img src='images/edit.png'></button>";
@@ -181,7 +180,7 @@ if (isset($_POST['add_product'])) {
                 </div>
                 <?php if (!empty($message)) { ?>
                     <script>
-                            alert('<?php echo $message; ?>');
+                        alert('<?php echo $message; ?>');
                     </script>
                 <?php } ?>
 
@@ -317,8 +316,9 @@ if (isset($_POST['add_product'])) {
 
                 if (!$query2) {
                     die("Error: " . mysqli_error($conn));
-                }
-
+                } else {
+                    echo "<script>alert('Product updated successfully!');</script>";
+                }                
             }
             ?>
 
