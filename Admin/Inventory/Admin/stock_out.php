@@ -37,7 +37,7 @@ include('includes/menubar.php');
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4><b>Stock Out</b>&nbsp;<a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat" id="managesupplyout"><i class="fa fa-plus"></i> Outcoming Supply</a></h4>
+                <h4><b>Stock Out</b>&nbsp; <!--<a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat" id="managesupplyout"><i class="fa fa-plus"></i> Outcoming Supply</a></h4> -->
             </div>
             <div class="card-body">
                 <table class="table table-bordered" id="example2">

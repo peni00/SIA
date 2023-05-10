@@ -17,7 +17,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Services</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <script>
@@ -38,28 +38,34 @@ if (mysqli_connect_errno()) {
                 <a href="#" style="color:#349EFF">
                     <li>SERVICES</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Staffs.php">
+                <a href="Staffs.php">
                     <li>STAFFS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Appointment.php">
+                <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php">
+                <a href="Archives-Services.php">
                     <li>ARCHIVES</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Feedback.php">
+                <a href="Feedback.php">
                     <li>FEEDBACK</li>
                 </a>
 
             </ul>
             <div class="admin">
-                <img src="images/image10.png" class="user" style="width: 40px">
-                <button style="font-weight: 700">Admin Rod
-                    <img src=" images/dropd.png" style="width:25px">
+                <img src="images/image10.png" class="user" style="width: 40px ">
+                <button style="font-weight: 700">Admin Rod <div class="dropdown">
+                        <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item"
+                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                            <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
+                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
+                        </div>
+                    </div>
                 </button>
             </div>
         </div>
-    </div>
 
     <!--sidebar-->
 
@@ -68,7 +74,7 @@ if (mysqli_connect_errno()) {
     <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
     <form method="post">
     <div class="search-bar">
-        <input type="text" placeholder="Search.." name="txtsearch">
+        <input type="text" placeholder="Search.." name="txtsearch" autocomplete="off">
         <button type="submit"  name="search"><img src="images/search.png"></button>
  
     </form>
@@ -76,7 +82,7 @@ if (mysqli_connect_errno()) {
 </div><form method="POST">
 <div class="table-container">
 
-<button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete!')">DELETE</button>
+<button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete?')">DELETE</button>
     <table>
    
         <thead>
@@ -252,12 +258,12 @@ for (var i = 0; i < editBtns.length; i++) {
             <div class="prod-info">
                
                 <label>Service: </label>
-                <input type="text" class="txt" name="txtservice" required><br />
+                <input type="text" class="txt" name="txtservice" required autocomplete="off"><br />
                 <label>Details: </label>
-                <input type="text" class="txt" name="txtdetails"required><br /> <br />
+                <input type="text" class="txt" name="txtdetails"required autocomplete="off"><br /> <br />
                 <div class="buttons">
-                    <button type="button" class="close-btn1" data-bs-dismiss="modal" onclick="window.location.href='Services.php';">CANCEL</button>
-                    <button type="submit" class="edit-confirm1" name="submit">ADD</button>
+                    <button type="button" class="close-btn01" data-bs-dismiss="modal" onclick="window.location.href='Services.php';">Cancel</button>
+                    <button type="submit" class="edit-confirm01" name="submit">Add</button>
                 </div>
             </div>
         </div>
@@ -297,15 +303,14 @@ for (var i = 0; i < editBtns.length; i++) {
                             
                             <input type="hidden" class="txt" name="txtid" ><br />
                             <label>Service: </label>
-                            <input type="text" class="txt" name="txtservice1" required><br />
+                            <input type="text" class="txt" name="txtservice1" required autocomplete="off"><br />
                             <label>Details: </label>
-                            <input type="text" class="txt" name="txtdetails1" re><br />
+                            <input type="text" class="txt" name="txtdetails1" required autocomplete="off"><br />
              
                         </div>
                         <div class="edit-confirmation1">
-                            <button type="button" class="close-btn1"
-                                data-bs-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit"
-                                class="edit-confirm1" name="confirm" value="Update Data" >Confirm</button>
+                            <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="edit-confirm0" name="confirm" value="Update Data" >Confirm</button>
                         </div>
                     </div>
                 </div>

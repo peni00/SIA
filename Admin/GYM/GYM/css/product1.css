@@ -166,15 +166,22 @@ ul li{
 .Add-product img{
 	width: 35px;
 }
+
+.Add-product .prod-info #mypreview {
+	width: 100%;
+    height: 100%;
+}
+
+
 .prod-content{
 	opacity:  0;
 	visibility: hidden;
 	position: absolute;
-	top: 100px;
-	right: 100px;
+	top: 45px;
+	right: 450px;
 	background-color: #0C0C0C;
-	width: 500px;
-	height: 330px;
+	width: 430px;
+	height: 260px;
 	font-family:'lato', sans-serif;
 	color: white;
 	border-radius: 10px;
@@ -214,21 +221,22 @@ label{
 }
 .prod-info .upload-photo1{
 	background-color: white;
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	position: absolute;
-	top: 100px;
-	right: 30px;
+	top: 70px;
+	right: 10px;
 	color: black;
 }
 .prod-info .upload-photo5{
 	background-color: white;
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
 	position: absolute;
-	top: 100px;
-	right: -60px;
+	top: 50px;
+	right: -140px;
 	color: black;
+	
 }
 .upload-btn{
 	position: absolute;
@@ -298,26 +306,7 @@ label{
 	left: 300px;
 	box-shadow: 0px 0px gray, 0px 1px gray;
 }
-.prod2{
-	background-color: #d8dedf;
-	height: 420px;
-	width: 300px;
-	border-radius: 5px;
-	position: absolute;
-	top: 170px;
-	left: 650px;
-	box-shadow: 0px 0px gray, 0px 1px gray;
-}
-.prod3{
-	background-color: #d8dedf;
-	height: 420px;
-	width: 300px;
-	border-radius: 5px;
-	position: absolute;
-	top: 170px;
-	left: 1000px;
-	box-shadow: 0px 0px gray, 0px 1px gray;
-}
+
 .product-img{
 	max-width: 280px;
 	margin-left: 10px;
@@ -452,7 +441,7 @@ label{
 .edit-modal-dialog{
 	position: absolute;
 	top: 150px;
-	left: 650px;
+	left: 450px;
 	background-color: #0C0C0C;
 	width: 500px;
 	height: 300px;
@@ -496,7 +485,7 @@ label{
 	padding: 10px;
 	border: 1px solid #1265b3;
 	transition: .4s ease;
-	transform: translateX(-15%) translateY(-20%);
+	transform: translateX(100%) translateY(-20%);
 }
 .edit-confirm1:hover{
 	background-color: #1265b3;
@@ -554,7 +543,7 @@ label{
 	border: none;
 	transition: .4s ease;
 	top: 50px;
-	transform: translateX(-20%) translateY(-20%);
+	transform: translateX(-50%) translateY(-20%);
 }
 .close-btn1:hover{
 	background-color: gray;
@@ -682,5 +671,7 @@ label{
  }
 
 
+
+  /*add-product modal*/
 
   

@@ -55,7 +55,7 @@ if(isset($_POST['update'])) {
     // Get other form data
     $sid = $_POST['sid'];
     $newsname = $_POST['newsname'];
-    $serviceCategory = $_POST['newserviceCategory'];
+    $serviceCategory = $_POST['serviceCategory'];
     $imageName = null;
     $imageData = null;
     $imageType = null;
@@ -110,7 +110,7 @@ if(isset($_POST['update'])) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Staffs</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
@@ -123,19 +123,19 @@ if(isset($_POST['update'])) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="http://localhost/SIA/Admin/GYM/GYM/services.php">
+                <a href="services.php">
                     <li>SERVICES</li>
                 </a>
                 <a href="#" style="color:#349EFF">
                     <li>STAFFS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Appointment.php">
+                <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Archives-Services.php">
+                <a href="Archives-Services.php">
                     <li>ARCHIVES</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Feedback.php">
+                <a href="Feedback.php">
                     <li>FEEDBACK</li>
                 </a>
 
@@ -146,13 +146,14 @@ if(isset($_POST['update'])) {
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="http://localhost/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="logout.php">Logout</a>
+                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
             </div>
+        </div>
             <!--sidebar-->
             <form method="POST">
             <div class="container">
@@ -160,7 +161,7 @@ if(isset($_POST['update'])) {
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
                 <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
                 <div class="search-bar">
-                    <input type="text" placeholder="Search.." name="txtsearch">
+                    <input type="text" placeholder="Search.." name="txtsearch" autocomplete="off">
                     <button type="submit" name="search"><img src="images/search.png"></button>
                 </div>
             </div>
@@ -260,7 +261,6 @@ if (mysqli_num_rows($result) > 0) {
         echo "<tr>";
         echo "<td><input type='checkbox' name='check[]' value='" . $row['staffID'] . "'>&nbsp;&nbsp;&nbsp;";
 		echo "<button type='button' class='deleteBtn' data-bs-toggle='modal' data-bs-target='#exampleModal2' data-id='" . $row['staffID'] . "' name='editBtn' value='" . $row['staffID'] . "' onclick=\"populateFields('" . $row['staffID'] . "',  '" . $row['staffName'] . "',   '" . $row['serviceType'] . "',   '" . base64_encode($row['staffImage']) . "')\">EDIT</button>";
-
         echo "<td>" . $row['staffID'] . "</td>";
         echo "<td>" . $row['staffName'] . "</td>";
         echo "<td>" . $row['serviceType'] . "</td>";
@@ -272,25 +272,29 @@ if (mysqli_num_rows($result) > 0) {
 }
             }
 ?>
-
+			
+			
+                            
                         </tr>
+
                     </tbody>
                 </table>
+           
+                
+
             </div>
 			
 
-       <!--Add-product-->
-
-<div class="Add-product" aria-hidden="true">
+      <div class="Add-product" aria-hidden="true">
     <input type="checkbox" id="click">
-    <label class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" for="click">
+    <label class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" for="click" >
         <img src="images/add.png">
     </label>
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
         aria-hidden="true" style="transform: translateX(-100%);">
         <div class="modal-dialog">
             <div class="modal-content"
-                style="background-color: black; color: white; border-radius: 10px; width: 490px;">
+                style="background-color: black; color: white; border-radius: 10px; width: 550px;">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel1">STAFF DETAILS</h5>
                 </div>
@@ -300,10 +304,13 @@ if (mysqli_num_rows($result) > 0) {
                     <div class="modal-body" style="height: 200px;">
                         <div class="prod-info">   
 					<label class="upload-photo5">
-				<input type="file" name="myImage" accept="image/*"></label>
+					<img id="mypreview"  alt="Preview Image" >
+				
+				<input type="file" name="myImage" accept="image/*" onchange="previewImage1(event)" >
+				</label>
                           
                             <label for="staff-name-input">Name: </label>
-                            <input type="text" id="staff-name-input" class="txt" required name="sname"><br>
+                            <input type="text" id="staff-name-input" class="txt" required name="sname" autocomplete="off"><br>
                             <label for="staff-service-category-input">Service Category: </label>
                             <select name="serviceCategory" class="txt">
                                 <?php
@@ -325,14 +332,16 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
 					 
                         <div class="buttons">
-                    <button type="button" class="close-btn1" data-bs-dismiss="modal">CANCEL</button>
-                    <button type="submit" class="edit-confirm1" name="submit">CONFIRM</button>
+                    <button type="button" class="close-btn02" data-bs-dismiss="modal" onclick="resetForm()">Cancel</button>
+                    <button type="submit" class="edit-confirm02" name="submit">Confirm</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
 <?php
 if(isset($_POST['submit'])) {
     // Get image data
@@ -397,32 +406,37 @@ if(isset($_POST['submit'])) {
                     <form method="POST" enctype="multipart/form-data">
                         <div class="prod-info">
                             <label class="upload-photo1">
-                                <p><img id="staffImagePreview" src="Image/photo.png"></p><input type="file" name="newmyImage" accept="image/*">
-                            </label></br>
+							<img id="staffImagePreview"  alt="Preview Image" style="width: 150px; height: 150px;">
+							<input type="file" name="newmyImage" accept="image/*" onchange="previewImage(event)">
+							</label></br>
                             <input type="hidden" name="sid" id="sid">
                             <label>Name: </label>
-                            <input type="text" class="txt" name="newsname" id="newsname"><br />
+                            <input type="text" class="txt" name="newsname" id="newsname" autocomplete="off"><br />
                             <label>Service Category: </label>
-                           <select name="newserviceCategory" class="txt" >
-			   <?php
-			   // Query data from database
-			   $sql = "SELECT * FROM servicetypetbl";
-			   $result = mysqli_query($conn, $sql);
-			   // Display data in dropdown
-			   if (mysqli_num_rows($result) > 0) {
-			   while ($row = mysqli_fetch_assoc($result)) {
-			   echo "<option value='".$row['serviceID']."'>".$row['serviceType']."</option>";
-			   }
-			   } else {
-			   echo "<option value=''>No service type found</option>";
-			   }
-			   ?>
-			</select>
+                 <select name="serviceCategory" class="txt">
+   <?php
+    $sql1 = "SELECT * FROM servicetypetbl";
+    $result1 = mysqli_query($conn, $sql1);
+    
+    $sql2 = "SELECT serviceID FROM staff_tbl WHERE staffID = $sid";
+    $result2 = mysqli_query($conn, $sql2);
+    $serviceID = mysqli_fetch_assoc($result2)['serviceID'];
+    
+    if (mysqli_num_rows($result1) > 0) {
+        while ($row = mysqli_fetch_assoc($result1)) {
+            $selected = ($row['serviceID'] == $serviceID) ? 'selected' : '';
+            echo "<option value='".$row['serviceID']."' $selected>".$row['serviceType']."</option>";
+        }
+    } else {
+        echo "<option value=''>No service type found</option>";
+    }
+?>
+</select>
                         </div>
                         <br>
                         <div class="buttons">
-                            <button type="button" class="close-btn1" data-bs-dismiss="modal">CANCEL</button>
-                            <button type="submit" class="edit-confirm1" name="update" value="Update Data" style="margin-left: 10px;">CONFIRM</button>
+                            <button type="button" class="close-btn1" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="edit-confirm1" name="update" value="Update Data" style="margin-left: 10px;">Confirm</button>
                         </div>
                     </form>
                 </div>
@@ -475,44 +489,52 @@ if(isset($_POST['submit'])) {
                 modal.style.display = "none";
             });
             </script>
+			<script>
+function resetForm() {
+    document.getElementById("staff-details-form").reset();
+}
+</script>
 			
 			
 <script>
-function populateFields(sid, staffName, serviceType, staffImage) {
-    document.getElementById("sid").value = sid;
-    document.getElementById("newsname").value = staffName;
-    document.getElementById("newserviceCategory").value = serviceType;
-    if (staffImage) {
-        // Decode the base64-encoded image data
-        var image = new Image();
-        image.onload = function() {
-            document.getElementById("staffImagePreview").setAttribute("src", image.src);
-        };
-        image.src = 'data:image/png;base64,' + staffImage;
-    } else {
-        // If there's no image data, display a default image
-        document.getElementById("staffImagePreview").setAttribute("src", "Image/photo.png");
+function populateFields(sid, sname, service, simage) {
+  // Set the values of the form fields
+  document.getElementById('sid').value = sid;
+  document.getElementById('newsname').value = sname;
+  document.getElementById('staffImagePreview').src = 'data:image/jpeg;base64,' + simage;
+
+  // Find the option with the matching value and set it as selected
+  var serviceSelect = document.getElementById('newservice');
+  for (var i = 0; i < serviceSelect.options.length; i++) {
+    if (serviceSelect.options[i].value == service) {
+      serviceSelect.selectedIndex = i;
+      break;
     }
-}
-
-function previewImage(event) {
-    // Get the selected file
-    var selectedFile = event.target.files[0];
-
-    // Create a FileReader object
-    var reader = new FileReader();
-
-    // Set the function to execute when the file is loaded
-    reader.onload = function(event) {
-        // Update the src attribute of the img tag
-        document.getElementById("staffImagePreview").setAttribute("src", event.target.result);
-    };
-
-    // Read the selected file as a Data URL
-    reader.readAsDataURL(selectedFile);
+  }
 }
 </script>
- 
+<script>
+function previewImage1(event) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    var output = document.getElementById('mypreview');
+    output.src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
+<script>
+function previewImage(event) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    var output = document.getElementById('staffImagePreview');
+    output.src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
 
 	
 </body>

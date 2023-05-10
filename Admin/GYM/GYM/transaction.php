@@ -6,7 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Transactions</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
@@ -35,13 +35,14 @@
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="http://localhost/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="logout.php">Logout</a>
+                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
             </div>
+        </div>
             <!--sidebar-->
 
             <div class="container">

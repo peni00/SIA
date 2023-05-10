@@ -1,0 +1,750 @@
+*{
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+.main{
+	position: relative;
+}
+.sidebar{
+	background-color: #0C0C0C;
+	height: 100vh;
+	width: 230px;
+	color: #349EFF;
+	font-family: 'lato', sans-serif;
+	position: relative;
+}
+.sidebar a{
+	color: white;
+}
+.sidebar a li:hover{
+	color: #349EFF;
+	text-decoration: none;
+	transition: .3s ease;
+	cursor: pointer;
+}
+header{
+	position: relative;
+}
+header img{
+	margin: 20px 13px;
+}
+header h1{
+	font-size: 22px;
+	position: absolute;
+	top: 40px;
+	left: 85px;
+}
+ul{
+	margin-top: 50px;
+}
+ul li{
+	line-height: 70px;
+	font-size: 13px;
+	text-decoration: none;
+}
+.sidebar .admin{
+	position: absolute;
+	bottom: 0px;
+}
+.admin{
+	background-color: #349EFF;
+	width: 100%;
+	height: 60px;
+}
+.admin button{
+	float: right;
+	height: 100%;
+	width: 70%;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	color: white;
+	font-size: 15px;
+	padding-right: 50px;
+}
+.admin button:hover{
+	background-color: #1777d0;
+	transition: .4s ease;
+}
+.admin button img{
+	position: absolute;
+	right: 15px;
+	top: 17px;
+}
+.admin .user{
+	position: absolute;
+	top: 10px;
+	left: 14px;
+	cursor: pointer;
+}
+.container{
+	position: absolute;
+	top: 0;
+	margin-left: 230px;
+}
+.container .back-btn{
+	background-color: transparent;
+	border: transparent;
+	position: absolute;
+	top: 34px;
+	left: 40px;
+	cursor: pointer;
+}
+.container .back-btn:hover{
+	box-shadow: 1px 1px gray, 1px 1px gray;
+	border-radius: 10px;
+	transition: .3s ease;
+}
+.container h3{
+	font-family:'lato', sans-serif;
+	font-size: 20px;
+	position: absolute;
+	left: 100px;
+	top: 40px;
+	width: 300px;
+}
+.container a:hover{
+	text-decoration: underline;
+	transition: .5 ease;
+}
+.search-bar{
+	position: relative;
+	left: 800px;
+	top: 50px;
+}
+.search-bar input{
+	position: absolute;
+	padding: 7px;
+	width: 250px;
+	
+}
+.search-bar button img{
+	width: 25px;
+	
+}
+.search-bar button{
+	position: absolute;
+	top: 2px;
+	right: -310px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+.Add-prod{
+	position: relative;
+}
+.Add-prod .add img{
+	width: 30px;
+}
+.Add-prod .add{
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	position: absolute;
+	top: 60px;
+	right: 100px;
+}
+
+/*ADD PRODUCT*/
+
+#click{
+	display:none;
+}
+#click:checked ~ .prod-content{
+	opacity: 1;
+	visibility: visible;
+}
+
+.Add-product{
+	position: absolute;
+	top: 50px;
+	left: 1360px;
+	width: 500px;
+}
+.Add-product img{
+	width: 35px;
+}
+
+.Add-product .prod-info #mypreview {
+	width: 100%;
+    height: 100%;
+}
+
+
+.prod-content{
+	opacity:  0;
+	visibility: hidden;
+	position: absolute;
+	top: 45px;
+	right: 450px;
+	background-color: #0C0C0C;
+	width: 430px;
+	height: 260px;
+	font-family:'lato', sans-serif;
+	color: white;
+	border-radius: 10px;
+	line-height: 30px;
+}
+
+.prod-content h1{
+	font-size: 20px;
+	text-align: center;
+	margin-top: 13px;
+	margin-bottom: 20px;
+}
+
+label{
+	display: inline-block;
+	width: 120px;
+	margin-left: 20px;
+	font-size: 15px;
+	line-height: 40px;
+}
+
+.prod-info .txt{
+	width: 180px;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+
+	}
+.prod-info .upload-photo{
+	background-color: white;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 100px;
+	right: 30px;
+	color: black;
+}
+.prod-info .upload-photo1{
+	background-color: white;
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 70px;
+	right: 10px;
+	color: black;
+}
+.prod-info .upload-photo5{
+	background-color: white;
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	top: 50px;
+	right: -140px;
+	color: black;
+	
+}
+.upload-btn{
+	position: absolute;
+	top: 20px;
+}
+.prod-info input[type="file"]{
+	opacity: 0;
+}
+.upload-photo  img{
+	text-align: center;
+	
+	background-color: white;
+	width: 50px;
+
+}
+.buttons{
+	align-items: center;
+	text-align: center;
+}
+.cancel, .confirm{
+	padding: 7px 10px;
+	margin: 25px 30px;
+	border: none;
+	cursor: pointer;
+}
+.cancel:hover{
+	background-color: gray;
+	color: white;
+	transition: .4s ease;
+}
+.add-btn{
+	background-color: #349EFF;
+	color: white;
+	padding: 7px 20px;
+	border: none;
+}
+.add-btn:hover{
+	background-color:#1265b3;
+	color: white;
+	transition: .4s ease;
+}
+
+.add-btn1{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(220%) translateY(-50%);
+}
+.add-btn1:hover{
+	background-color: #1265b3;
+	color: white;
+}
+
+
+
+/*product*/
+
+.prod1{
+	background-color: #d8dedf;
+	height: 420px;
+	width: 300px;
+	border-radius: 5px;
+	position: absolute;
+	top: 170px;
+	left: 300px;
+	box-shadow: 0px 0px gray, 0px 1px gray;
+}
+
+.product-img{
+	max-width: 280px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.prod1 label{
+	font-size: 12px;
+	font-family:'lato', sans-serif;
+	line-height: 0;
+	width: 300px;
+	color:black;
+}
+.prod1 button img{
+	width: 15px;
+}
+.prod1 button{
+	float: right;
+	margin: -10px 7px 5px 1px;
+	border: none;
+	cursor: pointer;
+}
+.prod1 button:hover{
+	box-shadow: 0px 0px gray, 0px 1px gray;
+	transition: .4s ease;
+}
+.edit-btn, .trash-btn{
+	background-color: transparent;
+}
+
+/*delete*/
+.delete-modal-dialog{
+	position: absolute;
+	top: 300px;
+	left: 750px;
+	background-color: #0C0C0C;
+	width: 330px;
+	height: 110px;
+	border: none
+}
+.modal-body p{
+	font-family: 'lato', sans-serif;
+	font-size: 13px;
+	margin-top: 10px;
+	text-align: center;
+	color: white;
+}
+.delete-confirmation{
+	margin: 20px 95px;
+}
+.dlt-confirm{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3 ;
+	transition: .4s ease;
+	transform: translateX(-10%) translateY(0%);
+}
+
+.dlt-confirm:hover{
+	background-color: #1265b3;
+	color: white;
+}
+
+.dlt-confirm1{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3 ;
+	transition: .4s ease;
+	transform: translateX(-10%) translateY(0%);
+}
+
+.dlt-confirm1:hover{
+	background-color: #1265b3;
+	color: white;
+}
+
+.dlt-confirm2{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3 ;
+	transition: .4s ease;
+	transform: translateX(-10%) translateY(0%);
+}
+
+.dlt-confirm2:hover{
+	background-color: #1265b3;
+	color: white;
+}
+.close-btn{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+}
+.close-btn:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn5{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	transform: translateY(-20%);
+}
+.close-btn5:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn6{
+	background-color: white;	
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	transform: translateX(160%) translateY(-55%);
+	
+}
+.close-btn6:hover{
+	background-color: gray;
+	color: white;
+}
+
+/*edit-modal-dialog*/
+
+.edit-modal-dialog{
+	position: absolute;
+	top: 150px;
+	left: 450px;
+	background-color: #0C0C0C;
+	width: 500px;
+	height: 300px;
+	border: none;
+	color: white;
+	border-radius: 10px;
+	font-family: 'lato', sans-serif;
+}
+.edit-modal-dialog label{
+	display: inline-block;
+	width: 120px;
+	margin-left: 20px;
+	font-size: 15px;
+	line-height: 40px;
+}
+.edit-modal-dialog h1{
+	font-size: 20px;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+.edit-modal-dialog .upload-photo p img{
+	text-align: center;
+	margin: 75px 40px;
+	background-color: white;
+	width: 20px;
+}
+
+.edit-confirmation1{
+	margin: 30px 170px;
+
+}
+
+.edit-confirmation0{
+	margin: 30px 170px;
+
+}
+.edit-confirm1{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-10%) translateY(-20%);
+}
+.edit-confirm1:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm01{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(45%) translateY(-20%);
+}
+.edit-confirm01:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm02{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-50%) translateY(-300%);
+}
+.edit-confirm02:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm0{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(10%) translateY(-20%);
+}
+.edit-confirm0:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm2{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-15%) translateY(20%);
+}
+.edit-confirm2:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+
+.edit-confirm3{	
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(-20%) translateY(-150%);
+}
+.edit-confirm3:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+.edit-confirm4{
+	background-color: transparent;
+	color: white;
+	padding: 10px;
+	border: 1px solid #1265b3;
+	transition: .4s ease;
+	transform: translateX(350%) translateY(-150%);
+}
+.edit-confirm4:hover{
+	background-color: #1265b3;
+	color: white;
+	
+}
+
+
+
+.close-btn1{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top: 50px;
+	transform: translateX(-10%) translateY(-20%);
+}
+.close-btn1:hover{
+	background-color: gray;
+	color: white;
+}
+
+
+.close-btn02{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top: 50px;
+	transform: translateX(-65%) translateY(-317%);
+}
+.close-bt02:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn01{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top: 50px;
+	transform: translateX(25%) translateY(-20%);
+}
+.close-btn01:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn2{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:30px;
+}
+.close-btn2:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn3{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:50px;
+	transform: translateX(20%) translateY(-20%);
+}
+.close-btn3:hover{
+	background-color: gray;
+	color: white;	
+}
+
+.close-btn4{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:30px;
+	transform: translateX(300%) translateY(-160%);
+}
+
+.close-btn4:hover{
+	background-color: gray;
+	color: white;
+}
+
+.close-btn7{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border: none;
+	transition: .4s ease;
+	top:30px;
+	transform: translateX(300%) translateY(-50%);
+}
+
+.close-btn7:hover{
+	background-color: gray;
+	color: white;
+}
+/*fade*/
+.fade:not(.show) {
+    opacity: 0;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    top: -15px !important; 
+    left:10px;
+  }
+  
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: -70px; /* adjust this value to move the dropdown list up */
+    float: center;
+    min-width: 141px;
+    padding: 5px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0;
+  }
+
+  .dropdown-content a:hover {
+    background-color:#D9D9D9;
+    color:#004385;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .modal-dialog {
+    margin-left: 20%;
+}
+
+.modal-title{
+	transform: translateX(30%) translateY(100%);
+	font-size: 20px;
+}
+.modal-title3{
+	transform: translateX(46%) translateY(100%);
+	font-size: 20px;
+}
+
+.modal {
+	left: 0;
+ }
+
+
+
+  /*add-product modal*/
+
+  
