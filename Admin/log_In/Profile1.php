@@ -1,20 +1,49 @@
 <?php
-require('../connection.php');
 session_start();
+require_once '../connection.php';
 
 // Check if user is logged in, otherwise redirect to login page
 if (!isset($_SESSION['admin'])) {
     header('location: login.php');
+    exit();
 }
 
 // Fetch admin data from database
+$adminID = substr($_SESSION['admin'], 0, 50);
+
 $stmt = $conn->prepare("SELECT * FROM admin WHERE adminID = ?");
-$stmt->bind_param("s", $_SESSION['admin']);
+if (!$stmt) {
+    exit('Error: ' . $conn->error); // handle prepare error
+}
+
+$stmt->bind_param("s", $adminID);
 $stmt->execute();
 $result = $stmt->get_result();
-$row = $result->fetch_assoc();
+if (!$result) {
+    exit('Error: ' . $stmt->error); // handle execute error
+}
 
+$row = $result->fetch_assoc();
+if (!$row) {
+    exit('Error: Admin record not found'); // handle no results found
+}
+
+// Access admin data from $row variable
+$name = isset($row['fullname']) ? $row['fullname'] : '';
+$category = isset($row['category']) ? $row['category'] : '';
+$status = isset($row['status']) ? $row['status'] : '';
+$contactnum = isset($row['contactnum']) ? $row['contactnum'] : '';
+$email = isset($row['email']) ? $row['email'] : '';
+
+// Debugging messages
+echo 'adminID: ';
+var_dump($adminID);
+
+echo 'row: ';
+var_dump($row);
 ?>
+
+
 
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
