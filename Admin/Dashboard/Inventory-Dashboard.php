@@ -168,31 +168,6 @@ $data_json = json_encode($data);
                     <canvas id="lineChart"></canvas>
                     
                     </div>
-
-                </div>
-                <div class="grid-container">
-                    <div class="left-column">
-                        <div class="left-column-1-1">
-
-                            <div class="member">
-                            <p>EQUIPMENTS</p>
-                            </div>
-                            <div class="box-gym">
-                                <div class="data-gym">
-                                    <h3>Gym</h3>
-                                    <h4>250</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Kyokushin</h3>
-                                    <h4>75</h4>
-                                </div>
-                                <div class="data-gym">
-                                    <h3>Dance Studio</h3>
-                                    <h4>200</h4>
-                                </div>
-                            </div>
-
-                        </div>
       
 
                     </div>
