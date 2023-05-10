@@ -14,7 +14,22 @@ if(isset($_GET['editid'])) {
     $email = $row['email'];
     $password = $row['password'];
 }
+    // Handle the new image upload
+    if(isset($_FILES['newmyImage'])) {
+        $newImage = $_FILES['newmyImage'];
+        if($newImage['error'] == UPLOAD_ERR_OK) {
+            $imageData = file_get_contents($newImage['tmp_name']);
+            $base64Image = base64_encode($imageData);
 
+            // Update the photo in the database
+            $sql = "UPDATE admin SET photo = '$base64Image' WHERE id = $id";
+            $result = mysqli_query($conn, $sql);
+
+            if(!$result) {
+                die(mysqli_error($conn));
+            }
+        }
+    }
 
 if(isset($_POST['edit'])) {
     $adminID = $_POST['adminID'];
@@ -89,7 +104,7 @@ if(isset($_POST['edit'])) {
 
         <div class="container">
             <div class="container-box">
-            <form class="edit" method="POST" action="editProfile1.php?editid=<?php echo $id ?>">
+            <form class="edit" method="POST" action="editProfile1.php?editid=<?php echo $id ?>" enctype="multipart/form-data">
     <div class="right-side">
         <div class="admin-header">
             <h3>ADMIN INFORMATION</h3>
@@ -122,24 +137,21 @@ if(isset($_POST['edit'])) {
             </div>
             <div class="password">
                 <h3 class="pas">Password: </h3>
-                <input type="password" id="password-input" name="password" value="">
+                <input type="password" id="password-input" name="password" value="<?php echo $password ?? '' ?>">
                 <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
             </div>
         </div>
     </div>
     <div class="left-side">
-        <div class="admin-profile">
+    <div class="admin-profile">
             <h3>ADMIN PROFILE</h3>
         </div>
         <div class="adminprof">
-            <img id="mypreview" alt="Preview Image" src="data:image/jpeg;base64,<?php echo $row['photo']; ?>" style="width: 100%; height: 240px;">
-                </div>
-                <div class="photo-upload">
-                    <input class="file-upload" type="file" id="image-input" name="profile-photo" accept="image/*" onchange="previewImage(event)">
-                    <label for="image-input" class="file-upload-label">Choose a file</label>
-                    <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
-                </div>
+        <img id="mypreview"  alt="Preview Image" src="data:image/jpeg;base64,<?php echo $row['photo']; ?>" style="width: 100%; height: 240px;"> </div>
+        <input class="file-upload" type="file" name="newmyImage" id="newmyImage" accept="image/*" onchange="previewImage(event)">
+            <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
         </div>
+    </div>
     </div>
 </form>
 
@@ -147,7 +159,7 @@ if(isset($_POST['edit'])) {
     function previewImage(event) {
         var reader = new FileReader();
         reader.onload = function() {
-            var output = document.getElementById('preview-image');
+            var output = document.getElementById('mypreview');
             output.src = reader.result;
         };
         reader.readAsDataURL(event.target.files[0]);
