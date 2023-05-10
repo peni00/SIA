@@ -18,13 +18,18 @@
 
         if(!empty($filename)){
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
-            $new_filename = $row['slug'].'_'.time().'.'.$ext;
-            move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$new_filename);
+            $new_filename = $slug.'.'.$ext;
+            $image_data = file_get_contents($_FILES['photo']['tmp_name']);
+            $base64_string = base64_encode($image_data);
+        }
+        else{
+            $new_filename = '';
+            $base64_string = '';
         }
 
         try{
             $stmt = $conn->prepare("UPDATE prodarchive SET photo=? WHERE id=?");
-            $stmt->bind_param('si', $new_filename, $id);
+            $stmt->bind_param('si', $base64_string, $id);
             $stmt->execute();
 
             $_SESSION['status'] = 'Product photo updated successfully';

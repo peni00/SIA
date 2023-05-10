@@ -203,6 +203,7 @@ function getRow(id){
     }
   });
 }
+
 function getCategory(){
   $.ajax({
     type: 'POST',

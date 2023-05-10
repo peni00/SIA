@@ -5,7 +5,7 @@
         $id = $_POST['id'];
         $filename = $_FILES['photo']['name'];
 
-		$conn = new mysqli('localhost', 'root', '', 'inventory');
+		$conn = new mysqli("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
         if($conn->connect_error){
             die("Connection failed: " . $conn->connect_error);

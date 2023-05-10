@@ -2,7 +2,7 @@
 	require "includes/mail.php";
 
 	$con = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f") or die(mysqli_error($con));
-	
+
     session_start();
 
 	$Order_ID=$_GET['id'];
@@ -28,60 +28,60 @@
 	if ($Status == "To Pack"){
     $update_query="Update transaction SET Status = 'Ready to Ship' WHERE Order_ID ='$Order_ID'";
     $update_query_result=mysqli_query($con,$update_query) or die(mysqli_error($con));
-	
+
 
 
 	global $con;
-	$email = $Email_Add;			
+	$email = $Email_Add;
 	$email = addslashes($email);
 	//send email here
 	send_mail($email,'Order Status',"Your Order is Ready to Ship");
-										
-	
+
+
     header('location: ../Admin/order.php');
 	}else if ($Status == "Ready to Ship"){
 	$update_query="Update transaction SET Status = 'Out for Delivery' WHERE Order_ID ='$Order_ID'";
     $update_query_result=mysqli_query($con,$update_query) or die(mysqli_error($con));
-	
-	
+
+
 
 	global $con;
-	$email = $Email_Add;				
+	$email = $Email_Add;
 	$email = addslashes($email);
 	//send email here
 	send_mail($email,'Order Status',"Your Order is Out for Delivery");
-										
-	
+
+
     header('location: ../Admin/order.php');
 	}else if ($Status == "Out for Delivery"){
 	$update_query="Update transaction SET Status = 'Delivered' WHERE Order_ID ='$Order_ID'";
     $update_query_result=mysqli_query($con,$update_query) or die(mysqli_error($con));
-	
-	
+
+
 
 	global $con;
-	$email = $Email_Add;			
+	$email = $Email_Add;
 	$email = addslashes($email);
 	//send email here
 	send_mail($email,'Order Status',"Your Order is Delivered");
-										
-	
+
+
     header('location: ../Admin/order.php');
 	}else{
 
 	$update_query="INSERT INTO `sales`(`Account_ID`, `Order_ID`, `Product_ID`, `Date`, `Payment_Method`, `Qty`, `Total`, `Price`)
 	VALUES ('$Account_ID','$Order_ID','$Product_ID','$Date','$Payment_Method','$Qty','$Total','$Price')";
     $update_query_result=mysqli_query($con,$update_query) or die(mysqli_error($con));
-	
-	
+
+
 
 	global $con;
-	$email = $Email_Add;		
+	$email = $Email_Add;
 	$email = addslashes($email);
 	//send email here
 	send_mail($email,'Order Status',"Your Order is Delivered");
-										
-	
+
+
 
 	// $update_query="delete from transaction WHERE Order_ID ='$Order_ID'";
     // $update_query_result=mysqli_query($con,$update_query) or die(mysqli_error($con));
