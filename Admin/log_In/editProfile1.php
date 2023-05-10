@@ -2,7 +2,7 @@
 require('../connection.php');
 
 $id = $_GET['editid'];
-$sql = "SELECT * FROM admin WHERE id = $id";
+$sql = "SELECT * FROM admin WHERE id = '$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $adminID = $row['adminID'];
