@@ -36,7 +36,11 @@ include('includes/menubar.php');
 
 
 
-								 $query = "select * from transaction ut inner join account it on it.Account_ID=ut.Account_ID Group By Order_ID  order by Date desc";
+								 $query = "SELECT transaction.* , account .Fname, account .Lname
+								 FROM transaction transaction
+								 INNER JOIN account account  ON account .Account_ID = transaction.Account_ID
+								 GROUP BY Order_ID
+								 ORDER BY Date DESC";
 
 								 $result = $conn->query($query);
 

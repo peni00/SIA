@@ -38,11 +38,20 @@ include('includes/menubar.php');
                                                 $stmt->execute();
                                                 $result = $stmt->get_result();
                                                 while($row = $result->fetch_assoc()){
-                                                    $image = (!empty($row['Account_Image'])) ? '../images/'.$row['Account_Image'] : '../images/profile.jpg';'';
+                                                    $image_data = $row['Account_Image'];
+
+                                                    if (!empty($image_data)) {
+                                                      // decode the base64 string
+                                                      $decoded_image = base64_decode($image_data);
+
+                                                      // create a data URI for the image
+                                                      $image_uri = 'data:image/png;base64,' . base64_encode($decoded_image);
+                                                  }
+
                                                     echo "
                                                     <tr>
                                                         <td>
-                                                        <img src='".$image."' height='30px' width='30px'>
+                                                        <img src='".$image_uri."' height='30px' width='30px'>
                                                         </td>
                                                         <td>".$row['Email_Add']."</td>
                                                         <td>".$row['Name']."</td>

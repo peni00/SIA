@@ -40,7 +40,7 @@ if(isset($_POST['add'])){
         $stmt = $conn->prepare("INSERT INTO products (category_id, name, description, slug, price, photo) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("isssds", $category, $name, $description, $slug, $price, $base64_string);
         $stmt->execute();
-        $_SESSION['status'] = 'Equipment added successfully';
+        $_SESSION['status'] = 'Products added successfully';
         $_SESSION['status_code'] = 'success';
     }
 
