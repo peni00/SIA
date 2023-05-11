@@ -30,7 +30,7 @@
         $conn->close();
     }
     else{
-        $_SESSION['status'] = 'Fill up edit eqproductuipment form first';
+        $_SESSION['status'] = 'Fill up edit Product form first';
         $_SESSION['status_code'] = 'error';
     }
 
