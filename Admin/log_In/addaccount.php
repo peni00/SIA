@@ -51,34 +51,94 @@ mysqli_close($conn);
 	<title>Add Account</title>
 	<link rel="stylesheet" type="text/css" href="addaccount.css">
 </head>
+
 <body>
+<nav>
+            <div class="left-nav">
+                <img class="logo-img" src="images/logo-modified.png" alt="" data-image-width="362" data-image-height="362">
+                <p> RFG ELITE</p>
+            </div>
+            <div class="right-icon">
+              
+              <span class="icon" id="user-icon">
+                  <i class="fa-solid fa-user" style="color: #000000;"></i>
+              </span>
+              <div class="dropdown-menu" id="user-dropdown">
+                  <ul>
+                      <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
+                      <li><a class="list-item" href="addaccount.php">Add &nbsp;Account</a></li>
+                      <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
+                              Logout</a></li>
+                  </ul>
+              </div>
+          </div>
+
+        </nav>
+
+        <div class="pcon"></div>
+        <div class="pcon1"></div>
+
 	<div class="container">
 		<h1>Add Account</h1>
-		<form method="POST" action="" enctype="multipart/form-data">
+		<div class="container-box">
+		<form class="add" method="POST" action="" enctype="multipart/form-data">
 			<?php if (isset($error)): ?>
 			<p class="error"><?php echo $error ?></p>
 			<?php endif; ?>
-			<label for="adminID">Admin ID</label>
+
+                    <div class="right-side">
+                        <div class="admin-header">
+                            <h3>ADMIN INFORMATION</h3>
+                        </div>
+                        <div class="admininfo">
+                            <div class="userid-box">
+			<label for="adminID">Admin ID: </label>
 			<input type="text" name="adminID" required>
-
-			<label for="password">Password</label>
-			<input type="password" name="password" required>
-
-			<label for="fullname">Full Name</label>
+			</div>
+			
+			<div class="name">
+			<label for="fullname">Name: </label>
 			<input type="text" name="fullname" required>
+			</div>
 
-			<label for="category">Category</label>
+			<div class="position">
+			<label for="category">Position: </label>
 			<input type="text" name="category" required>
+			</div>
 
+			<div class="status">
+			<label for="status">Status: </label>
+			<input type="text" name="status" required>
+			</div>
+
+			<div class="contactnum">
+			<label for="contactnum">Contact Number</label>
+			<input type="text" name="contactnum" required>
+			</div>
+
+			<div class="email">
+			<label for="email">Email</label>
+			<input type="email" name="email" required>
+			</div>
+
+				<div class="password">
+				<label for="password">Password</label>
+			<input type="password" name="password" required>
+			</div>
+
+<div class="left-side">
+<div class="admin-profile">
+                            <h4>ADMIN PROFILE</h4>
+                        </div>
+                        <div class="adminprof">
 			<label for="photo">Photo</label>
 			<img id="mypreview" alt="Preview Image" style="width: 100px; height: 100px;"> </br></br>
 			<input type="file" name="myImage" accept="image/*" onchange="previewImage1(event)" > </br></br>
+			</div>
+			
 
-			<label for="contactnum">Contact Number</label>
-			<input type="text" name="contactnum" required>
 
-			<label for="email">Email</label>
-			<input type="email" name="email" required>
+
 
 			<input type="submit" value="Add Account">
 		</form>
