@@ -136,13 +136,25 @@ if(isset($_POST['edit'])) {
                 <input type="text" name="email" value="<?php echo $email ?? '' ?>">
             </div>
             <div class="password">
+<<<<<<< Updated upstream
                 <h3 class="pas">Password: </h3>
                 <input type="password" id="password-input" name="password" value="<?php echo $password ?? '' ?>">
+=======
+            <h3 class="pas">Password:</h3>
+            <input type="password" id="password-input" name="password" value="">
+           
+        </div>
+        <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
+            <!-- <div class="password">
+                <h3 class="pas">Password:</h3>
+                <input type="password" id="password-input" name="password" value="">
+>>>>>>> Stashed changes
                 <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="left-side">
+<<<<<<< Updated upstream
     <div class="admin-profile">
             <h3>ADMIN PROFILE</h3>
         </div>
@@ -151,6 +163,24 @@ if(isset($_POST['edit'])) {
         <input class="file-upload" type="file" name="newmyImage" id="newmyImage" accept="image/*" onchange="previewImage(event)">
             <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
         </div>
+=======
+                        <div class="admin-profile">
+                            <h4>ADMIN PROFILE</h4>
+                        </div>
+                        <div class="adminprof">
+
+
+                        <img id="mypreview" alt="Preview Image" src="data:image/jpeg;base64,<?php echo $row['photo']; ?>" style="width: 100%; height: 240px;">
+
+                            <input class="file-upload" type="file" id="image-input" accept="image/*" onchange="previewImage(event)">
+
+
+
+
+                            <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
+                        </div>
+     
+>>>>>>> Stashed changes
     </div>
     </div>
 </form>

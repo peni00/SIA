@@ -167,10 +167,14 @@ nav .left-nav p {
 }
 
 .right-side .userid-box {
-  display: flex;
+  
+   
   color: white;
   font-size: 12px;
-  padding: 0 0 20px 0;
+  display: flex;
+  padding: 5px;
+   
+  align-items: center;
 
 }
 
@@ -239,6 +243,7 @@ nav .left-nav p {
   padding: 5px;
   color: white;
   align-items: center;
+  
 }
 
 
@@ -248,7 +253,7 @@ input[type=text],
 input[type=password] {
   width: 100%;
   padding: 10px 20px 10px 20px;
-  width: 100%;
+ 
   outline: none;
   border: none;
 
@@ -257,8 +262,8 @@ input[type=password] {
 .right-side .checkbox {
   color: white;
   font-weight: 600;
-  padding-left: 10px;
-  width: 100%;
+  padding-left: 182px;
+   
   display: flex;
   align-items: center;
   font-size: 15px;
@@ -285,7 +290,10 @@ input[type=password] {
   background-color: #f9f9f9;
   border-radius: 4px;
 }
-
+.adID,.fname,.pos,.stat,.con,.em,.pas{
+   
+  width: 250px;
+}
 @media only screen and (max-width: 1100px) {
   .edit {
     display: grid;
