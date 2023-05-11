@@ -90,7 +90,7 @@ $data_json = json_encode($data);
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     
-    <link rel='stylesheet' type='text/css' media='screen' href='css/inventory.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/inventory2.css'>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
