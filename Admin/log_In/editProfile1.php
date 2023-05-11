@@ -1,46 +1,63 @@
 <?php
 require('../connection.php');
 
-if(isset($_POST['edit'])){
-    $id = $_POST['id'];
-    $adminId = $_POST['adminID'];
+if (isset($_GET['editid'])) {
+    $id = $_GET['editid'];
+    $sql = "SELECT * FROM admin WHERE id = '$id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $adminID = $row['adminID'];
+    $fullname = $row['fullname'];
+    $category = $row['category'];
+    $status = $row['status'];
+    $contactnum = $row['contactnum'];
+    $email = $row['email'];
+    $password = $row['password'];
+}
+// Handle the new image upload
+if (isset($_FILES['newmyImage'])) {
+    $newImage = $_FILES['newmyImage'];
+    if ($newImage['error'] == UPLOAD_ERR_OK) {
+        $imageData = file_get_contents($newImage['tmp_name']);
+        $base64Image = base64_encode($imageData);
+
+        // Update the photo in the database
+        $sql = "UPDATE admin SET photo = '$base64Image' WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result) {
+            die(mysqli_error($conn));
+        }
+    }
+}
+
+if (isset($_POST['edit'])) {
+    $adminID = $_POST['adminID'];
     $fullname = $_POST['fullname'];
-    $photo = $_POST['photo'];
-    $password = $_POST['password'];
     $category = $_POST['category'];
     $status = $_POST['status'];
     $contactnum = $_POST['contactnum'];
     $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    $sql = "SELECT * FROM admin WHERE id = $adminId";
-    $result = $conn->query($sql);
-    $edit = $result->fetch_assoc();
+    $sql = "UPDATE admin SET adminID = '$adminID', fullname = '$fullname', category = '$category', status = '$status', contactnum = '$contactnum', email = '$email', password = '$password' WHERE id = $id";
+    $result = mysqli_query($conn, $sql);
 
-    if($password == $edit['password']){
-        $password = $edit['password'];
-    }
-    else{
-        $password = password_hash($password, PASSWORD_DEFAULT);
-    }
-
-    $sql = "UPDATE admin SET adminID = '$adminId', fullname = '$fullname', category = '$category', password = '$password', email = '$email', status = '$status', contactnum = '$contactnum', photo = '$photo' WHERE id = '$id'";
-    if($conn->query($sql)){
-        $_SESSION['success'] = 'Admin Updated Successfully';
-    }
-    else{
-        $_SESSION['error'] = $conn->error;
+    if ($result) {
+        $sql = "SELECT * FROM admin WHERE id = '$id'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $adminID = $row['adminID'];
+        $fullname = $row['fullname'];
+        $category = $row['category'];
+        $status = $row['status'];
+        $contactnum = $row['contactnum'];
+        $email = $row['email'];
+        $password = $row['password'];
+    } else {
+        die(mysqli_error($conn));
     }
 }
-else{
-    $_SESSION['error'] = 'Fill up edit form first';
-}
-
-if(isset($adminId)){
-    $sql = "SELECT * FROM admin WHERE adminID = '$adminId'";
-    $result = $conn->query($sql);
-    $edit = $result->fetch_assoc();
-}
-
 ?>
 
 
@@ -64,7 +81,7 @@ if(isset($adminId)){
                 <p> RFG ELITE</p>
             </div>
             <div class="right-icon">
-                
+
                 <span class="icon" id="user-icon">
                     <i class="fa-solid fa-user" style="color: #000000;"></i>
                 </span>
@@ -85,93 +102,86 @@ if(isset($adminId)){
 
         <div class="container">
             <div class="container-box">
-                <form class="edit ">
-
+                <form class="edit" method="POST" action="editProfile1.php?editid=<?php echo $id ?>" enctype="multipart/form-data">
                     <div class="right-side">
-
                         <div class="admin-header">
                             <h3>ADMIN INFORMATION</h3>
                         </div>
                         <div class="admininfo">
                             <div class="userid-box">
                                 <h1 class="adID">ADMIN ID:</h1>
-                                <h2 class="adIDe">#001</h2>
-                                <input type="hidden" name="id" value="<?php echo $edit['id']; ?>">
-                                <input type="hidden" name="adminId" value="<?php echo $edit['adminId']; ?>">
-
-
+                                <input type="text" name="adminID" value="<?php echo $adminID ?? '' ?>">
+                                <input type="hidden" name="id" value="<?php echo $id ?>">
                             </div>
                             <div class="name">
                                 <h3 class="fname">Name: </h3>
-                                <input type="text" name="fullname" value="<?php echo isset($edit['fullname']) ? $edit['fullname'] : ''; ?>">
-
+                                <input type="text" name="fullname" value="<?php echo $fullname ?? '' ?>">
                             </div>
                             <div class="position">
-                                <!--php echo $edit['fullname'];-->
                                 <h3 class="pos">Position:</h3>
-                                <input type="text" name="category" value="<?php echo isset ($edit['category'])? $edit['category']: ''; ?>">
+                                <input type="text" name="category" value="<?php echo $category ?? '' ?>">
                             </div>
                             <div class="status">
-                                <!--php echo $edit['category']; -->
                                 <h3 class="stat">Status:</h3>
-                                <input type="text" name="status" value="<?php echo isset ($edit['status'])? ($edit['status']): ''; ?>">
+                                <input type="text" name="status" value="<?php echo $status ?? '' ?>">
                             </div>
-                            <!--php echo $edit['status']; -->
                             <div class="contact">
                                 <h3 class="con">Contact&nbsp;Number: </h3>
-                                <input type="text" name="contactnum" value="<?php echo isset ($edit['contactnum'])?$edit['contactnum'] :''; ?>">
+                                <input type="text" name="contactnum" value="<?php echo $contactnum ?? '' ?>">
                             </div>
-                            <!--php echo $edit['contactnum']; -->
                             <div class="address">
                                 <h3 class="em">Email&nbsp;Address: </h3>
-                                <input type="text" name="email" value="<?php echo isset ($edit['email'])? $edit['email']: ''; ?>">
+                                <input type="text" name="email" value="<?php echo $email ?? '' ?>">
                             </div>
-                            <!--php echo $edit['email']; -->
                             <div class="password">
-                                <h3 class="pas">Password: </h3> <input type="password" id="a-2056" value="pass"></input>
-                                <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
+
+                                <h3 class="pas">Password: </h3>
+                                <input type="password" id="password-input" name="password" value="<?php echo $password ?? '' ?>">
+
+
+
                             </div>
+                            <div class="checkbox"><input type="checkbox" onclick="Toggle()"><span>Show Password</span></input></div>
+
                         </div>
-                        <!--php echo $edit['password']; -->
-
-
                     </div>
                     <div class="left-side">
                         <div class="admin-profile">
-                            <h3>ADMIN PROFILE</h3>
+                            <h4>ADMIN PROFILE</h4>
                         </div>
                         <div class="adminprof">
 
 
-                            <image id="preview-image"> </image>
+                            <img id="mypreview" alt="Preview Image" src="data:image/jpeg;base64,<?php echo $row['photo']; ?>" style="width: 100%; height: 240px;">
+                      
+                        <input class="file-upload" type="file" name="newmyImage" id="newmyImage" accept="image/*" onchange="previewImage(event)">
 
-                            <input class="file-upload" type="file" id="image-input" accept="image/*" onchange="previewImage(event)">
 
-                            <button>
-                                <a href="editProfile1.php" type="submit" name="edit" class="savebtn">SAVE CHANGES</a>
-                            </button>
-                        </div>
 
+
+                        <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
                     </div>
-                </form>
+                    </div>
+
+
             </div>
+
         </div>
-        </div>
+        </form>
 
         <script>
             function previewImage(event) {
                 var reader = new FileReader();
                 reader.onload = function() {
-                    var output = document.getElementById('preview-image');
+                    var output = document.getElementById('mypreview');
                     output.src = reader.result;
                 };
                 reader.readAsDataURL(event.target.files[0]);
             }
-        </script>
-        <script>
+
             // Change the type of input to password or text
             function Toggle() {
-                var temp = document.getElementById("a-2056");
+                var temp = document.getElementById("password-input");
                 if (temp.type === "password") {
                     temp.type = "text";
                 } else {
@@ -179,19 +189,15 @@ if(isset($adminId)){
                 }
             }
 
-            var icon = document.getElementById("user-icon");
-            var dropdown = document.getElementById("user-dropdown");
-
-            icon.addEventListener("click", function(event) {
-                dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-            });
-
-            document.addEventListener("click", function(event) {
-                if (!icon.contains(event.target) && !dropdown.contains(event.target)) {
-                    dropdown.style.display = "none";
+            function submitForm() {
+                var passwordInput = document.getElementById("password-input");
+                if (passwordInput.value !== "") {
+                    passwordInput.value = document.getElementById("a-2056").value;
+                    document.forms[0].submit();
                 }
-            });
+            }
         </script>
+
 </body>
 
 </html>

@@ -37,12 +37,43 @@
 
         <div class="container">
             <div class="container-child">
-                <h2>
-                    WELCOME TO ADMIN CONSOLE,
-                </h2>
-                <p class="adminrod">
-                    ADMIN ROD!
-                </p>
+            <?php
+                // start the session
+                session_start();
+
+                // include the database connection code
+                require('../connection.php');
+                if (!isset($_SESSION['admin'])) {
+                    // redirect to login page or show an error message
+                    header("Location: log_index.php");
+                    exit;
+                }
+                
+                // get the logged-in adminID from the session
+                $adminID = $_SESSION['admin'];
+
+                // select the category and fullname of the logged-in user from the database
+                $sql = "SELECT category, fullname FROM admin WHERE id = '$adminID'";
+                $result = mysqli_query($conn, $sql);
+
+                // check if the query was successful
+                if (mysqli_num_rows($result) > 0) {
+                    // fetch the category and fullname from the result set
+                    $row = mysqli_fetch_assoc($result);
+                    $category = $row['category'];
+                    $fullname = $row['fullname'];
+                } else {
+                    $category = '';
+                    $fullname = '';
+                }
+            ?>
+            <h2>
+                WELCOME TO ADMIN CONSOLE,
+            </h2>
+            <p class="adminrod">
+                <?php echo $category . ' ' . $fullname; ?>!
+            </p>
+
                 <div class="box-card">
 
 

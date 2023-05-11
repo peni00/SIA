@@ -14,10 +14,10 @@ if(isset($_POST['form'])){
         header('location: log_index.php');
         return;
     }
-    
+
     else{
         $row = mysqli_fetch_assoc($query);
-        if(password_verify($password, $row['password'])){
+        if($password === $row['password']){
             $_SESSION['admin'] = $row['id'];
             $_SESSION['category'] = $row['category'];
         }

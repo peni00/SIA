@@ -6,7 +6,6 @@ if (isset($_SESSION['admin'])) {
 }
 ?>
 
-print_r($_SESSION)
 
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
