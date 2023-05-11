@@ -81,19 +81,19 @@ if (isset($_POST['edit'])) {
                 <p> RFG ELITE</p>
             </div>
             <div class="right-icon">
-
-                <span class="icon" id="user-icon">
-                    <i class="fa-solid fa-user" style="color: #000000;"></i>
-                </span>
-                <div class="dropdown-menu" id="user-dropdown">
-                    <ul>
-                        <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                        <li><a class="list-item" href="addaccount.php">Add&nbsp;New&nbsp;User</a></li>
-                        <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
-                                Logout</a></li>
-                    </ul>
-                </div>
-            </div>
+              
+              <span class="icon" id="user-icon">
+                  <i class="fa-solid fa-user" style="color: #000000;"></i>
+              </span>
+              <div class="dropdown-menu" id="user-dropdown">
+                  <ul>
+                      <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
+                      <li><a class="list-item" href="addaccount.php">Add &nbsp;Account</a></li>
+                      <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
+                              Logout</a></li>
+                  </ul>
+              </div>
+          </div>
 
         </nav>
 
@@ -197,6 +197,21 @@ if (isset($_POST['edit'])) {
                 }
             }
         </script>
+
+<script>
+        var icon = document.getElementById("user-icon");
+        var dropdown = document.getElementById("user-dropdown");
+
+        icon.addEventListener("click", function(event) {
+            dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+        });
+
+        document.addEventListener("click", function(event) {
+            if (!icon.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = "none";
+            }
+        });
+    </script>
 
 </body>
 
