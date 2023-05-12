@@ -87,7 +87,7 @@ mysqli_close($conn);
 			<?php endif; ?>
 
                     <div class="right-side">
-                        <div class="admin-header">
+                        <div class="admin-header">  
                             <h3>ADMIN INFORMATION</h3>
                         </div>
                         <div class="admininfo">
@@ -126,8 +126,9 @@ mysqli_close($conn);
 			<input type="password" name="password" required>
 			</div>
 
-<div class="left-side">
-<div class="admin-profile">
+            <div class="left-side">
+            <div class="admin-profile">
+    
                             <h4>ADMIN PROFILE</h4>
                         </div>
                         <div class="adminprof">
@@ -141,9 +142,10 @@ mysqli_close($conn);
 
 
 			<input type="submit" value="Add Account">
-		</form>
-	</div>
-	
+           
+	       </div>
+        </form>
+
 	<script>
 		function previewImage1(event) {
 			var reader = new FileReader();
@@ -153,6 +155,39 @@ mysqli_close($conn);
 			};
 			reader.readAsDataURL(event.target.files[0]);
 		}
+
+          // Change the type of input to password or text
+            function Toggle() {
+                var temp = document.getElementById("password-input");
+                if (temp.type === "password") {
+                    temp.type = "text";
+                } else {
+                    temp.type = "password";
+                }
+            }
+
+            function submitForm() {
+                var passwordInput = document.getElementById("password-input");
+                if (passwordInput.value !== "") {
+                    passwordInput.value = document.getElementById("a-2056").value;
+                    document.forms[0].submit();
+                }
+            }
+        </script>
+
+<script>
+        var icon = document.getElementById("user-icon");
+        var dropdown = document.getElementById("user-dropdown");
+
+        icon.addEventListener("click", function(event) {
+            dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+        });
+
+        document.addEventListener("click", function(event) {
+            if (!icon.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = "none";
+            }
+        });
 	</script>
 </body>
 </html>
