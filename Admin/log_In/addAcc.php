@@ -142,12 +142,12 @@ mysqli_close($conn);
                             <img id="mypreview" alt="Preview Image" src="data:image/jpeg;base64,<?php echo $row['photo']; ?>" style="width: 100%; height: 240px;">
                       
                         <input class="file-upload" type="file" name="myImage" id="newmyImage" accept="image/*" onchange="previewImage1(event)">
-
-
-
-
                         <button type="submit" name="edit" value="Add Account" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
+                        <div class="cancel">
+                    <button><a href="homepage.php">CANCEL</a></button>
                     </div>
+                </div>
+          
                     </div>
 
 

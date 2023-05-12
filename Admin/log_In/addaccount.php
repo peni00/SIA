@@ -136,10 +136,6 @@ mysqli_close($conn);
 			<img id="mypreview" alt="Preview Image" style="width: 100px; height: 100px;"> </br></br>
 			<input type="file" name="myImage" accept="image/*" onchange="previewImage1(event)" > </br></br>
 			</div>
-			
-
-
-
 
 			<input type="submit" value="Add Account">
            

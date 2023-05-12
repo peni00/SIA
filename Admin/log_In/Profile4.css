@@ -188,6 +188,8 @@ nav .left-nav p {
   border: none;
   padding: 10px 20px 10px 20px;
   border-radius: 5px;
+  transform: translateX(-58px);
+
 }
 
 .subbtn{
@@ -286,6 +288,11 @@ input[type=password] {
 .checkbox span {
   padding-left: 3px;
 }
+
+.cancel{
+  color:red;
+}
+
 
 @media only screen and (max-width: 800px) {
   .edit {

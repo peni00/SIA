@@ -88,7 +88,7 @@ if (isset($_POST['edit'])) {
               <div class="dropdown-menu" id="user-dropdown">
                   <ul>
                       <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                      <li><a class="list-item" href="#.php">Add &nbsp;Account</a></li>
+                      <li><a class="list-item" href="addAcc.php">Add &nbsp;Account</a></li>
                       <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                               Logout</a></li>
                   </ul>
@@ -160,15 +160,16 @@ if (isset($_POST['edit'])) {
 
 
                         <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
+                        <div class="cancel"><button><a href="Profile1.php">CANCEL</a></button>
+</div>
+                    </div>
+    
                     </div>
                     </div>
-
-
             </div>
-
         </div>
         </form>
-
+      
         <script>
             function previewImage(event) {
                 var reader = new FileReader();

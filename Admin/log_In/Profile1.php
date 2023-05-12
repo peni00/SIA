@@ -40,7 +40,7 @@ if (!$row) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>RFG ELITE | Profile</title>
-    <link rel="stylesheet" href="Profile3.css" media="screen">
+    <link rel="stylesheet" href="Profile4.css" media="screen">
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
 </head>
 
@@ -58,7 +58,7 @@ if (!$row) {
                 <div class="dropdown-menu" id="user-dropdown">
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                        <li><a class="list-item" href="addAcc.php">Add&nbsp;New&nbsp;User</a></li>
+                        <li><a class="list-item" href="addAcc.php">Add&nbsp;Account</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>
@@ -84,15 +84,17 @@ if (!$row) {
                             <div class="userid-box">
                                 <h1 class="adID">ADMIN ID:</h1>
                                 <h2 class="adIDe"><?php echo $row['adminID']; ?></h2>
-
                             </div>
-                            <button>
+                            <button style="display: inline-block; margin-right: 10px;">
                             <a href="editProfile1.php?editid=<?php echo $adminID; ?>">EDIT</a>
                             </button>
-                        
-                        </div>
+                            <button class="cancel" style="display: inline-block; transform: translateY(-38px) translateX(60px);">
+                            <a href="homepage.php">BACK</a>
+                            </button>
 
                     </div>
+                    </div>
+                        
                     <div class="right-side">
                         <div class="admin-header">
                             <h4>ADMIN INFORMATION</h4>

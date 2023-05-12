@@ -290,6 +290,11 @@ input[type=password] {
    
   width: 250px;
 }
+
+.cancel a{
+  transform: translateY(90px) translateX(60px);
+}
+
 @media only screen and (max-width: 1100px) {
   .edit {
     display: grid;
