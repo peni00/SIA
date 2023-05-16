@@ -78,14 +78,62 @@ if (isset($_POST['add_product'])) {
         <!--sidebar-->
 
         <div class="container">
-            <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
-                    src="images/back-btn-gray.png" style="width: 30px"> </a>
-            <h3>Home / <a href="#" style="color:#349EFF">E-commerce</a></h3>
-            <div class="search-bar">
-                <form action="" method="POST">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><img src="images/search.png"></button>
-                </form>
+            <div class="products-header">
+                <div class="products-header-navigation">
+                    <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn">
+                        <img src="images/back-btn-gray.png" style="width: 30px" />            
+                    </a>
+                    <h3>Home / <a href="#" style="color:#349EFF">E-commerce</a></h3>
+                </div>
+                    
+                <div class="products-header-actions">
+                    <div class="search-bar">
+                        <form action="" method="POST">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit">
+                                <img src="images/search.png">
+                            </button>
+                        </form>
+                    </div>
+
+                    <!--Add-product-->
+
+                    <div class="Add-product">
+                        <input type="checkbox" id="click">
+                        <label for="click" class="add"><img src="images/add.png"></label>
+
+                        <div class="prod-content">
+                            <form action="" method="post" class="add_product" enctype="multipart/form-data">
+                                <h1>ADD PRODUCT</h1>
+                                <div class="prod-info">
+                                    <label>Category ID: </label>
+                                    <input type="text" name="p_categ" class="txt" required><br />
+                                    <label>Product Name: </label>
+                                    <input type="text" name="p_name" class="txt" required><br />
+                                    <label>Description: </label>
+                                    <input type="text" name="p_desc" class="txt" required><br />
+                                    <label>Slug: </label>
+                                    <input type="text" name="p_slug" class="txt" required><br />
+                                    <label>Price: </label>
+                                    <input type="number" name="p_price" class="txt" required><br />
+                                    <label class="upload-photo">
+                                        <p><img src="images/photo.png"></p>
+                                        <input type="file" name="p_img" accept="image/*" required>
+                                    </label>
+                                    <div class="buttons">
+                                        <input type="submit" class="dlt-confirm" value="Add" name="add_product">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <?php if (!empty($message)) { ?>
+                            <script>
+                                alert('<?php echo $message; ?>');
+                            </script>
+                        <?php } ?>
+
+                    </div>
+                </div>
             </div>
 
 
@@ -122,69 +170,44 @@ if (isset($_POST['add_product'])) {
 
             <!--container-->
 
-            <div class="products">
-                <div class="prod1">
-                    <?php
-                    // Retrieve data from database then it will show in container
-                    $query = mysqli_query($conn, "SELECT * FROM products");
+            <div class="products" id="scrollbar1">
+                <?php
+                // Retrieve data from database then it will show in container
+                $query = mysqli_query($conn, "SELECT p.id, p.name, p.price, p.photo, c.Ctgry_Name FROM products p
+                LEFT OUTER JOIN category c
+                ON p.category_id = c.Category_ID");
 
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        echo "<div class='product'>";
-                        $p_img_src = "data:image/jpeg;base64," . $row['photo'];
-                        echo "<img src='" . $p_img_src . "' class='product-img'>";
-                        // Rest of the code
-                        echo "<label><b>Category ID:</b> " . $row['category_id'] . "</label><br />";
-                        echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
-                        //echo "<label><b>Description:</b> " . $row['description'] . "</label><br />";
-                        echo "<label><b>Price:</b> ₱ " . $row['price'] . "</label><br /><br />";
-                        echo "<button type='button' class='delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-prod-id='" . $row['id'] . "'><img src='images/delete.png'></button>";
-                        echo "<button type='button' class='edit-btn' data-bs-toggle='modal' data-bs-target='#exampleModal1' data-id='" . $row['id'] . "'><img src='images/edit.png'></button>";
+                while ($row = mysqli_fetch_assoc($query)) {
+                    echo "<div class='product'>";
+                        echo "<div class='product-details'>";
+                            echo "<label><b>Product ID:</b> " . $row['id'] . "</label><br />";
+                            echo "<label><b>Product Name:</b> " . $row['name'] . "</label><br />";
+                            echo "<label><b>Category:</b> " . $row['Ctgry_Name'] . "</label><br />";
+                            echo "<label><b>Price:</b> ₱ " . $row['price'] . "</label><br />";
+                            echo "<label><b>No. of Stocks:</b> ₱ " . 0 . "</label><br /><br /><br />";
+                            echo "<div class='product-actions'>";
+                            echo "<button type='button' class='delete-btn' data-bs-toggle='modal' data-bs-target='#exampleModal' data-prod-id='" . $row['id'] . "'>
+                                    <img src='images/delete.png'>
+                                </button>";
+                            echo "<button type='button' class='edit-btn' data-bs-toggle='modal' data-bs-target='#exampleModal1' data-id='" . $row['id'] . "'>
+                                    <img src='images/edit.png'>
+                                </button>";
                         echo "</div>";
-                    }
-                    ?>
-                </div>
+                        echo "</div>";
+                        
+                        echo "<div class='product-display'>";
+                            echo "<img src=data:image/jpeg;base64," . $row['photo'] . " class='product-img'>";
+                        echo "</div>";
+                    echo "</div>";
+                }
+                ?>
+            </div>
             </div>
 
 
 
 
-            <!--Add-product-->
-
-            <div class="Add-product">
-                <input type="checkbox" id="click">
-                <label for="click" class="add"><img src="images/add.png"></label>
-
-                <div class="prod-content">
-                    <form action="" method="post" class="add_product" enctype="multipart/form-data">
-                        <h1>ADD PRODUCT</h1>
-                        <div class="prod-info">
-                            <label>Category ID: </label>
-                            <input type="text" name="p_categ" class="txt" required><br />
-                            <label>Product Name: </label>
-                            <input type="text" name="p_name" class="txt" required><br />
-                            <label>Description: </label>
-                            <input type="text" name="p_desc" class="txt" required><br />
-                            <label>Slug: </label>
-                            <input type="text" name="p_slug" class="txt" required><br />
-                            <label>Price: </label>
-                            <input type="number" name="p_price" class="txt" required><br />
-                            <label class="upload-photo">
-                                <p><img src="images/photo.png"></p>
-                                <input type="file" name="p_img" accept="image/*" required>
-                            </label>
-                            <div class="buttons">
-                                <input type="submit" class="dlt-confirm" value="Add" name="add_product">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <?php if (!empty($message)) { ?>
-                    <script>
-                        alert('<?php echo $message; ?>');
-                    </script>
-                <?php } ?>
-
-            </div>
+            
 
             <!-- Delete -->
 
@@ -356,14 +379,13 @@ if (isset($_POST['add_product'])) {
             </script>
 
 
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-                crossorigin="anonymous">
-                </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-                crossorigin="anonymous">
-                </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous">
+    </script>
 </body>
-
 </html>
