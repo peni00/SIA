@@ -123,7 +123,7 @@ if(isset($_POST['update'])) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="services.php">
+                <a href="Services.php">
                     <li>SERVICES</li>
                 </a>
                 <a href="#" style="color:#349EFF">
