@@ -110,7 +110,7 @@ if(isset($_POST['update'])) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Staffs</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product4.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
@@ -123,7 +123,7 @@ if(isset($_POST['update'])) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="services.php">
+                <a href="Services.php">
                     <li>SERVICES</li>
                 </a>
                 <a href="#" style="color:#349EFF">

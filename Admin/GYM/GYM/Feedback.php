@@ -19,7 +19,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Feedback</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product4.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -33,7 +33,7 @@ if (mysqli_connect_errno()) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="services.php">
+                <a href="Services.php">
                     <li>SERVICES</li>
                 </a>
                 <a href="Staffs.php">
