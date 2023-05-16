@@ -38,7 +38,7 @@ if (mysqli_connect_errno()) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/services.php">
+                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Services.php">
                     <li>SERVICES</li>
                 </a>
                 <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Staffs.php">
