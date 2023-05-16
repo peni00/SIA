@@ -105,7 +105,7 @@
                         <div>
 
                             <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/services.php">
-                                <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/services.php">
+                                <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Services.php">
                                 <p class="dash">
                                     APPOINTMENT
                                 </p>
