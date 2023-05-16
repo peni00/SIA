@@ -81,7 +81,7 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="http://18.136.105.108/SIA/Admin/Dashboard/Appointment-Dashboard.php">
+                            <a href="http://18.136.105.108:81/SIA/Admin/Dashboard/Appointment-Dashboard.php">
                                 <img src="images/dashboard.png" alt="">
                                 <p class="dash">
                                     DASHBOARD
@@ -93,8 +93,8 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="http://18.136.105.108/SIA/Admin/Inventory/Admin/index.php">
-                                <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108/SIA/Admin/Inventory/Admin/index.php">
+                            <a href="http://18.136.105.108:81/SIA/Admin/Inventory/Admin/index.php">
+                                <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/Inventory/Admin/index.php">
                                 <p class="dash">
                                     INVENTORY
                                 </p>
@@ -104,8 +104,8 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/services.php">
-                                <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108/SIA/Admin/GYM/GYM/services.php">
+                            <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/services.php">
+                                <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/services.php">
                                 <p class="dash">
                                     APPOINTMENT
                                 </p>
@@ -114,8 +114,8 @@
                     </div>
                     <div class="boxes">
 
-                        <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/Products.php#">
-                            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108/SIA/Admin/GYM/GYM/Products.php#">
+                        <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php#">
+                            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php#">
                             <p class="dash">
                                 E-COMMERCE
                             </p>

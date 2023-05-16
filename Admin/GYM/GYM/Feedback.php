@@ -57,9 +57,9 @@ if (mysqli_connect_errno()) {
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="http://18.136.105.108/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://18.136.105.108:81/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="http://18.136.105.108/SIA/Admin/log_In/logout.php">Logout</a>
+                                href="http://18.136.105.108:81/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
@@ -68,7 +68,7 @@ if (mysqli_connect_errno()) {
         <!--sidebar-->
 
         <div class="container">
-            <a href="http://18.136.105.108/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
+            <a href="http://18.136.105.108:81/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                     src="images/back-btn-gray.png" style="width: 30px"> </a>
             <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
 

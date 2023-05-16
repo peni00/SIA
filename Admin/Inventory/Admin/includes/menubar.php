@@ -13,7 +13,7 @@
                     </button>
 
                     <div class="navbar">
-                <a href="http://18.136.105.108/SIA/Admin/log_In/homepage.php" type="button" class="back-btn float-left">
+                <a href="http://18.136.105.108:81/SIA/Admin/log_In/homepage.php" type="button" class="back-btn float-left">
                 <img src="images/back-btn-gray.png" style="width: 30px"></a>
                 <h3 style="color:#0C0C0C; margin-left:20px;">Home / <a href="#" style="color:#349EFF">Inventory</a></h3>
                 </div>
