@@ -114,7 +114,7 @@
                     </div>
                     <div class="boxes">
 
-                        <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php#">
+                        <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php">
                             <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php#">
                             <p class="dash">
                                 E-COMMERCE
