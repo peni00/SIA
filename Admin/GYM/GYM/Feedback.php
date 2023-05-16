@@ -33,7 +33,7 @@ if (mysqli_connect_errno()) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="services.php">
+                <a href="Services.php">
                     <li>SERVICES</li>
                 </a>
                 <a href="Staffs.php">
