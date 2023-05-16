@@ -39,6 +39,7 @@ if (isset($_POST['add_product'])) {
     <title>Products</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
+    
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
 
@@ -95,7 +96,7 @@ if (isset($_POST['add_product'])) {
                             </button>
                         </form>
                     </div>
-
+    
                     <!--Add-product-->
 
                     <div class="Add-product">
