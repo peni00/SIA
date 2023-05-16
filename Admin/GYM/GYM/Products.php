@@ -53,10 +53,10 @@ if (isset($_POST['add_product'])) {
                 <a href="#" style="color:#349EFF">
                     <li>LIST OF PRODUCT</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/transaction.php">
+                <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/transaction.php">
                     <li>TRANSACTIONS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Archive-Product.php">
+                <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/Archive-Product.php">
                     <li>ARCHIVE</li>
                 </a>
 
@@ -67,9 +67,9 @@ if (isset($_POST['add_product'])) {
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://18.136.105.108/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
+                                href="http://18.136.105.108/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
@@ -80,7 +80,7 @@ if (isset($_POST['add_product'])) {
         <div class="container">
             <div class="products-header">
                 <div class="products-header-navigation">
-                    <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn">
+                    <a href="http://18.136.105.108/SIA/Admin/log_In/homepage.php" type="button" class="back-btn">
                         <img src="images/back-btn-gray.png" style="width: 30px" />            
                     </a>
                     <h3>Home / <a href="#" style="color:#349EFF">E-commerce</a></h3>

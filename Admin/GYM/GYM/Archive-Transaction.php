@@ -19,10 +19,10 @@
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
+                <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/Products.php#">
                     <li>LIST OF PRODUCT</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
+                <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/Products.php#">
                     <li>TRANSACTIONS</li>
                 </a>
                 <a href="#" style="color:#349EFF">
@@ -35,9 +35,9 @@
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://18.136.105.108/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
+                                href="http://18.136.105.108/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
@@ -46,13 +46,13 @@
             <!--sidebar-->
 
             <div class="container">
-                <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
+                <a href="http://18.136.105.108/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
                 <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">E-commerce</a></h3>
                 <div class="ARCHIVE">
-                    <a href="http://localhost/SIA/Admin/GYM/GYM/Archive-Product.php"><button
+                    <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/Archive-Product.php"><button
                             class="stabtn">PRODUCTS</button></a>
-                    <a href="http://localhost/SIA/Admin/GYM/GYM/Archive-Transaction.php"><Button
+                    <a href="http://18.136.105.108/SIA/Admin/GYM/GYM/Archive-Transaction.php"><Button
                             class="appbtn1">TRANSACTIONS</Button></a>
                 </div>
             </div>
