@@ -183,12 +183,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 51px 30px 10px 30px;
+    padding: 45px 0 10px 56px;
     text-align: center;
+    transform: translateY(171px);
   }
 
   .footer p{
-    transform: translateY(-30px);
+    transform: translateY(-30px) translateX(25px);
   }
 
 
@@ -199,8 +200,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0 0 550px;
+    padding: 0 0 0 764px;
     text-align: center;
+    transform: translateY(158px); 
   }
 
 

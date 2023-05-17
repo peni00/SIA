@@ -6,7 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Transactions</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product4.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction1.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
 </head>
@@ -19,13 +19,13 @@
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
+                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php#">
                     <li>LIST OF PRODUCT</li>
                 </a>
                 <a href=" #" style="color:#349EFF">
                     <li>TRANSACTIONS</li>
                 </a>
-                <a href="http://localhost/SIA/Admin/GYM/GYM/Archive-Product.php">
+                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archive-Product.php">
                     <li>ARCHIVE</li>
                 </a>
             </ul>
@@ -35,9 +35,9 @@
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://18.136.105.108:81/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
+                                href="http://18.136.105.108:81/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
@@ -46,7 +46,7 @@
             <!--sidebar-->
 
             <div class="container">
-                <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
+                <a href="http://18.136.105.108:81/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                         src="images/back-btn-gray.png" style="width: 30px"> </a>
                 <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">E-commerce</a></h3>
                 <div class="search-bar">

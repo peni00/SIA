@@ -17,7 +17,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Services</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product3.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product4.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <script>
@@ -58,9 +58,9 @@ if (mysqli_connect_errno()) {
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
-                                href="http://localhost/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
+                                href="http://18.136.105.108:81/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
                             <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a>
+                                href="http://18.136.105.108:81/SIA/Admin/log_In/logout.php">Logout</a>
                         </div>
                     </div>
                 </button>
@@ -70,7 +70,7 @@ if (mysqli_connect_errno()) {
     <!--sidebar-->
 
 <div class="container">
-    <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px"> </a>
+    <a href="http://18.136.105.108:81/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px"> </a>
     <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
     <form method="post">
     <div class="search-bar">

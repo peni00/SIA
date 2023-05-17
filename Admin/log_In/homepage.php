@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>RFG ELITE | Home</title>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="homepage1.css" media="screen">
+    <link rel="stylesheet" href="homepage2.css" media="screen">
 
 </head>
 
@@ -26,7 +26,7 @@
                 <div class="dropdown-menu" id="user-dropdown">
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
-                        <li><a class="list-item" href="addaccount.php">Add &nbsp;Account</a></li>
+                        <li><a class="list-item" href="addAcc.php">Add &nbsp;Account</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>
@@ -81,7 +81,7 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php">
+                            <a href="http://18.136.105.108:81/SIA/Admin/Dashboard/Appointment-Dashboard.php">
                                 <img src="images/dashboard.png" alt="">
                                 <p class="dash">
                                     DASHBOARD
@@ -93,8 +93,8 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="http://localhost/SIA/Admin/Inventory/Admin/index.php">
-                                <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/Inventory/Admin/index.php">
+                            <a href="http://18.136.105.108:81/SIA/Admin/Inventory/Admin/index.php">
+                                <img src="images/image5.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/Inventory/Admin/index.php">
                                 <p class="dash">
                                     INVENTORY
                                 </p>
@@ -104,8 +104,8 @@
                     <div class="boxes">
                         <div>
 
-                            <a href="http://localhost/SIA/Admin/GYM/GYM/services.php">
-                                <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/services.php">
+                            <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Services.php">
+                                <img src="images/image6.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Services.php">
                                 <p class="dash">
                                     APPOINTMENT
                                 </p>
@@ -114,8 +114,8 @@
                     </div>
                     <div class="boxes">
 
-                        <a href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
-                            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://localhost/SIA/Admin/GYM/GYM/Products.php#">
+                        <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php">
+                            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/image7.png" alt="" data-image-width="400" data-image-height="400" href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Products.php#">
                             <p class="dash">
                                 E-COMMERCE
                             </p>
@@ -131,7 +131,7 @@
             <p>
                 Delantar, Leonard A.</br>
                 Elona, John Andrey U.</br>
-                <p>
+            </p>
                     <p>
                     Encabo. James Earl L.</br>
                     Estanislao, John Paul L.</br>
@@ -153,7 +153,7 @@
                                     Takase, Kojie L.</br>
                                     <p>
        </div>
-       <div class="crdts">© Copyright 2023, SBIT-3F Group 3 | All Rights Re served.</div>
+       <div class="crdts">© Copyright 2023, SBIT-3F Group 3 | All Rights Reserved.</div>
 
 
     </section>

@@ -96,8 +96,8 @@ $data_json = json_encode($data);
                 <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                 <div class="dropdown-menu">
                     <ul>
-                        <li><a href="http://localhost/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a></li>
-                        <li><a onclick="return confirm('Are you sure to logout?');" href="http://localhost/SIA/Admin/log_In/logout.php">Logout</a></li>
+                        <li><a href="http://18.136.105.108:81/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a></li>
+                        <li><a onclick="return confirm('Are you sure to logout?');" href="http://18.136.105.108:81/SIA/Admin/log_In/logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -113,7 +113,7 @@ $data_json = json_encode($data);
 
         <div class="location-name">
             <div class="disp-name">
-                <a href="http://localhost/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px">
+                <a href="http://18.136.105.108:81/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img src="images/back-btn-gray.png" style="width: 30px">
                 </a>
 
                 <h3 style="color:#0C0C0C">Home / <a href="#" style="color:#349EFF">Dashboard</a></h3>
@@ -124,10 +124,10 @@ $data_json = json_encode($data);
         </div>
         <div class="button-selection">
             <div class="app-btn">
-                <a href="http://localhost/SIA/Admin/Dashboard/Appointment-Dashboard.php"><button class="serbtn">APPOINTMENT</button></a>
+                <a href="http://18.136.105.108:81/SIA/Admin/Dashboard/Appointment-Dashboard.php"><button class="serbtn">APPOINTMENT</button></a>
             </div>
-            <a href="http://localhost/SIA/Admin/Dashboard/E-commerce-Dashboard.php"><Button class="stabtn">E-COMMERCE</Button></a>
-            <a href="http://localhost/SIA/Admin/Dashboard/Inventory-Dashboard.php"><Button class="invbtn">INVENTORY</Button></a>
+            <a href="http://18.136.105.108:81/SIA/Admin/Dashboard/E-commerce-Dashboard.php"><Button class="stabtn">E-COMMERCE</Button></a>
+            <a href="http://18.136.105.108:81/SIA/Admin/Dashboard/Inventory-Dashboard.php"><Button class="invbtn">INVENTORY</Button></a>
         </div>
         <div>
             <div class="data-chartdag">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=latowght@400;500;600;700;800;900&display=swap');
 
 * {
   padding: 0;
@@ -51,8 +51,6 @@ nav .left-nav p {
   padding: 10px;
   cursor: pointer;
 }
-
-
 
 .icon .fa-user {
   font-size: 20px;
@@ -134,18 +132,21 @@ nav .left-nav p {
   width: 100%;
   height: 100%;
   gap: 20px;
- 
+  background-color: #0C0C0C;
+  border-radius: 30px;
+
+
 }
 
 .left-side {
   display: flex;
   flex-direction: column;
 
+  height: 490px;
 
-  background-color: #D0D0D0;
   border-radius: 20px 0 0 20px;
   width: 50%;
-  height: 400px;
+
 }
 
 .left-side .admin-profile {
@@ -153,15 +154,9 @@ nav .left-nav p {
   display: flex;
   font-size: 20px;
   color: white;
-  border-radius: 20px 0 0 0;
   justify-content: center;
-
   padding: 10px;
-}
-
-.admin-profile h4{
-  font-family:'lato', sans-serif;
-  font-size: 26px;
+  border-radius: 0px 30px 0px 0px;
 }
 
 .left-side .adminprof {
@@ -171,9 +166,16 @@ nav .left-nav p {
   align-items: center;
 }
 
-.left-side .userid-box {
+.right-side .userid-box {
+  
+   
+  color: white;
+  font-size: 12px;
   display: flex;
-  padding: 20px 0 20px 0;
+  padding: 5px;
+   
+  align-items: center;
+
 }
 
 .left-side a {
@@ -183,38 +185,27 @@ nav .left-nav p {
 }
 
 .left-side button {
-  background-color: #5b5b5b;
+  background-color: #004385;
   outline: none;
   border: none;
+  margin-top: 10px;
+  color: white;
+  font-weight: 500;
   padding: 10px 20px 10px 20px;
   border-radius: 5px;
 }
 
-.subbtn{
-  background-color: #5b5b5b;
-  outline: none;
-  border: none;
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-}
 
-
-.left-side .userid-box h1 {
-  font-weight: 900;
-  font-family:'lato', sans-serif;
-}
 
 .userid-box h2 {
-  font-weight: 500; 
-  transform: translateY(4px) translateX(5px);
+  font-weight: 500;
+  padding-left: 10px;
 }
 
 .right-side {
-
-  background-color: #D0D0D0;
   border-radius: 0 20px 20px 0;
   width: 100%;
-  height: 400px;
+  height: 490px;
   display: flex;
 
   flex-direction: column;
@@ -224,7 +215,6 @@ nav .left-nav p {
 
 .right-side .admininfo {
   padding: 40px;
-  font-family: 'lato', sans-serif;
 }
 
 .right-side .admin-header {
@@ -233,20 +223,13 @@ nav .left-nav p {
   font-size: 20px;
   color: white;
   justify-content: center;
-  border-radius: 0 20px 0 0;
   padding: 10px;
-}
-
-.admin-header h4{
-  font-family:'lato', sans-serif;
-  font-size: 26px;
+  border-radius: 30px 0px 0px 0px;
 }
 
 .right-side h3 {
   padding-right: 10px;
 }
-
-
 
 .right-side .name,
 .right-side .position,
@@ -256,28 +239,27 @@ nav .left-nav p {
 .right-side .password {
   display: flex;
   padding: 5px;
-
+  color: white;
   align-items: center;
+  
 }
-
-
 
 
 input[type=text],
 input[type=password] {
   width: 100%;
   padding: 10px 20px 10px 20px;
-  width: 100%;
+ 
   outline: none;
   border: none;
 
 }
 
 .right-side .checkbox {
-  color: #004385;
+  color: white;
   font-weight: 600;
-  padding-left: 10px;
-  width: 100%;
+  padding-left: 205px;
+   
   display: flex;
   align-items: center;
   font-size: 15px;
@@ -287,7 +269,28 @@ input[type=password] {
   padding-left: 3px;
 }
 
-@media only screen and (max-width: 800px) {
+#mypreview {
+
+  width: 100%;
+  height: 240px;
+
+  background-color: #ffff;
+  border-radius: 5px;
+}
+
+.file-upload {
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  padding: 4px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+.adID,.fname,.pos,.stat,.con,.em,.pas{
+   
+  width: 250px;
+}
+@media only screen and (max-width: 1100px) {
   .edit {
     display: grid;
     grid-template-columns: auto;
@@ -304,4 +307,5 @@ input[type=password] {
     width: 100%;
     height: 100%;
   }
+
 }
