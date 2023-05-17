@@ -27,6 +27,32 @@
                     </select>
                     </div>
 
+                    <label for="name" class="col-sm-12 control-label mt-3">Name</label>
+                    <div class="col-sm-12">
+                    <input type="text" min="1" class="form-control" id="name" name="name" required>
+                    </div>
+
+                    <label for="street" class="col-sm-12 control-label mt-3">Street</label>
+                    <div class="col-sm-12">
+                    <input type="text" min="1" class="form-control" id="street" name="street" required>
+                    </div>
+
+                    <label for="barangay" class="col-sm-12 control-label mt-3">Barangay</label>
+                    <div class="col-sm-12">
+                    <input type="text" min="1" class="form-control" id="barangay" name="barangay" required>
+                    </div>
+
+                    <label for="city" class="col-sm-12 control-label mt-3">City</label>
+                    <div class="col-sm-12">
+                    <input type="text" min="1" class="form-control" id="city" name="city" required>
+                    </div>
+
+                    <label for="zip" class="col-sm-12 control-label mt-3">Zip Code</label>
+                    <div class="col-sm-12">
+                    <input type="number" min="1" class="form-control" id="zip" name="zip" required>
+                    </div>
+
+
                     <label for="supply" class="col-sm-12 control-label mt-3">Product Supply</label>
                     <div class="col-sm-12">
                         <select class="form-control" id="supply" name="supply[]" required>
@@ -51,12 +77,18 @@
                     <input type="number" class="form-control" id="total_stock" name="total_stock" disabled>
                     </div>
 
-                    <span id="append-div"></span>
+                    <label for="total_stock" class="col-sm-12 control-label mt-3">Total Amount</label>
+
+                    <div class="col-sm-12">
+                    <input type="number" class="form-control" id="total_price" name="total_price" readonly>
+                    </div>
+
+        <!--             <span id="append-div"></span>
                     <div class="form-group mt-3">
                     <div class="col-sm-9 col-sm-offset-3">
                       <button class="btn btn-primary btn-xs btn-flat" id="append"><i class="fa fa-plus"></i> Stock Out Field</button>
                     </div>
-                </div>
+                </div> -->
 
                 </div>
             </div>

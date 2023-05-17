@@ -57,6 +57,12 @@
                   <div class="col-sm-5 mb-3 mb-sm-0">
                     <input type="text" class="form-control" id="edit_quantity" name="quantity">
                   </div>
+
+                  <label for="edit_remarks" class="col-sm-1 control-label">Remarks</label>
+
+                  <div class="col-sm-5 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" id="edit_remarks" name="remarks">
+                  </div>
                   </div>
 
 
