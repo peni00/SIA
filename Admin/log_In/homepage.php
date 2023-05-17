@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>RFG ELITE | Home</title>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="homepage1.css" media="screen">
+    <link rel="stylesheet" href="homepage2.css" media="screen">
 
 </head>
 
@@ -131,7 +131,7 @@
             <p>
                 Delantar, Leonard A.</br>
                 Elona, John Andrey U.</br>
-                <p>
+            </p>
                     <p>
                     Encabo. James Earl L.</br>
                     Estanislao, John Paul L.</br>
@@ -153,7 +153,7 @@
                                     Takase, Kojie L.</br>
                                     <p>
        </div>
-       <div class="crdts">© Copyright 2023, SBIT-3F Group 3 | All Rights Re served.</div>
+       <div class="crdts">© Copyright 2023, SBIT-3F Group 3 | All Rights Reserved.</div>
 
 
     </section>
