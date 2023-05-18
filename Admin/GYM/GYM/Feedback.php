@@ -77,7 +77,7 @@ if (mysqli_connect_errno()) {
         <form method="POST">
         <div class="table-container">
 
-        <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete!')">DELETE</button>
+        <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to archive!')">Delete</button>
 
             <table>
                 <thead>
@@ -134,35 +134,42 @@ echo "</tr>";
 
             <!-- DELETE -->
 
- <?php
-     if(isset($_POST['delete']))
-{
+ 
+
+<?php
+if (isset($_POST['delete'])) {
     $all_id = $_POST['check'];
-    $extract_id = implode(',' , $all_id);
-  				 
-	// Perform the delete operation
-    $query = "DELETE FROM reviewtbl WHERE reviewsID IN($extract_id) ";
+
+    if (empty($all_id)) {
+        echo '<script>alert("Please select item/s to archive");</script>';
+        exit();
+    }
+
+    $extract_id = implode(',', $all_id);
+
+    // Perform the insert operation to transfer data to reviewtblarchive
+    $insert_query = "INSERT INTO reviewtblarchive (reviewsID, Account_ID, Comments, datesubmitted)
+                     SELECT reviewsID, Account_ID, Comments, datesubmitted
+                     FROM reviewtbl
+                     WHERE reviewsID IN($extract_id)";
+    $insert_query_run = mysqli_query($conn, $insert_query);
+
+    // Perform the delete operation
+    $query = "DELETE FROM reviewtbl WHERE reviewsID IN($extract_id)";
     $query_run = mysqli_query($conn, $query);
 
     // Check if both operations were successful
-    if($query_run)
-    {
-        echo "Multiple Data Deleted and Archived Successfully";
-        header('Location: Feedback.php');
+    if ($query_run && $insert_query_run) {
+        echo '<script>alert("Record Archived Successfully");</script>';
+        echo '<script>window.location.href = "Feedback.php";</script>';
         exit();
-    }
-    else if(!$query_run)
-    {
-        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
-    }
-    else
-    {
-        echo "Multiple Data Not Deleted or Archived";
+    } elseif (!$insert_query_run) {
+        echo '<script>alert("Multiple Data Deletion Failed, Archive Failed: ' . mysqli_error($conn) . '");</script>';
+    } else {
+        echo '<script>alert("Multiple Data Deletion Failed");</script>';
     }
 }
-
-
-       ?>  
+?>
 
 
             </table>
@@ -181,3 +188,4 @@ echo "</tr>";
 </body>
 
 </html>
+
