@@ -6,7 +6,10 @@ include 'connection.php';
 
 <!DOCTYPE html>
 <html>
+<?php
+$conn = mysqli_connect("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
 
+?>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -60,68 +63,65 @@ include 'connection.php';
                     <button><img src="images/search.png"></button>
                 </div>
             </div>
+            <!--container-->
             <div class="products">
                 <div class="table-container">
-
-
-                    <!-- DELETE MODAL-->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="delete-modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <p><b>Are you sure you want to delete the selected transaction/s?</b></p>
-                                    </div>
-                                    <div class="delete-confirmation">
-                                        <button type="button" class="dlt-confirm2">Confirm</button>
-                                        <button type="button" class="close-btn" data-bs-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <table>
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>TRANSACTION ID</th>
-                                <th>CUSTOMER NAME</th>
-                                <th>PRODUCT ID</th>
-                                <th>PRODUCT NAME</th>
+                                <th>         </th>
+                                <th>         </th>
+                              
+                                <th style="text-align: center;">TRANSACTION ID</th>
+                                <th style="text-align: center;">CUSTOMER NAME</th>
+                                <th style="text-align: center;">PRODUCT ID</th>
+                                <th style="text-align: center;">PRODUCT NAME</th>
                                 <th>CATERGORY</th>
                                 <th>QUANTITY</th>
-                                <th>PRICE</th>
+                                <th style="text-align: center;">PRICE</th>
                                 <th>TOTAL</th>
 
                             </tr>
                         </thead>
                         <tbody>
                         <?php
-                            $sql="SELECT * FROM transaction LEFT JOIN account ON transaction.Account_ID = account.Account_ID LEFT JOIN products ON transaction.Product_ID = products.id LEFT JOIN category ON products.Category_ID = category.Category_ID";
+                            $sql = "SELECT t.Transaction_ID, t.Name, t.Product_ID, p.name, p.category_id, t.Qty, t.Price, t.Total
+                            FROM transaction t
+                            JOIN products p ON p.id = t.Product_ID";
+
                             $result = mysqli_query($conn, $sql);
 
-                                // Display data in HTML table
+                            // Display data in HTML table
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td><?= $row['Transaction_ID'] ?></td>
-                                    <td><?= $row['Name'] ?></td>
-                                    <td><?= $row['Product_ID'] ?></td>
-                                    <td><?= $row['name'] ?></td>
-                                    <td><?= $row['Ctgry_Name'] ?></td>
-                                    <td><?= $row['Qty'] ?></td>
-                                    <td><?= $row['price'] ?></td>
-                                    <td><?= $row['Price'] ?></td>
-                                </tr>
-                            <?php
+                                    $id = $row['Transaction_ID'];
+                                    $name = $row['Name'];
+                                    $pid = $row['Product_ID'];
+                                    $pname = $row['name'];
+                                    $category = $row['category_id'];
+                                    $qty = $row['Qty'];
+                                    $price = $row['Price'];
+                                    $total = $row['Total'];
+
+                                    echo "<tr>";
+                                    echo "<td></td>";
+                                    echo "<td><input type='checkbox' name='check[]' value='" . $row['Transaction_ID'] . "'> &nbsp;&nbsp;&nbsp;";
+                                
+                                    echo "<td style='text-align: center;'>" . $row['Transaction_ID'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['Name'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['Product_ID'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['name'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['category_id'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['Qty'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['Price'] . "</td>";
+                                    echo "<td style='text-align: center;'>" . $row['Total'] . "</td>";
+                                    echo "</tr>";
                                 }
                             } else {
                                 echo "<tr><td colspan='4'>No data found</td></tr>";
                             }
-                        ?>
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
