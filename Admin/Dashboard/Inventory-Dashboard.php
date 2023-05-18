@@ -29,7 +29,7 @@ $data1 = array(
     )
 );
 
-$query = "SELECT COUNT(*) AS total, Message FROM membertbl GROUP BY Message";
+$query = "SELECT COUNT(*) AS total, Message FROM suppliers GROUP BY Message";
 $result = mysqli_query($conn, $query);
 
 $labels = array();
