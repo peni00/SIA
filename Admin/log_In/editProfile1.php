@@ -44,7 +44,9 @@ if (isset($_POST['edit'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        $sql = "SELECT * FROM admin WHERE id = '$id'";
+        echo "<script type='text/javascript'>alert('Profile Updated!');
+                    window.location='Profile1.php';
+                </script>"; $sql = "SELECT * FROM admin WHERE id = '$id'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($result);
         $adminID = $row['adminID'];
