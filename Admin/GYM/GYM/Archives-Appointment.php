@@ -70,6 +70,8 @@ if (mysqli_connect_errno()) {
                 <a href="Archives-Staff.php"><Button
                         class="stabtn">STAFF</Button></a>
                 <a href="#"><Button class="appbtn1">APPOINTMENT</Button></a>
+				<a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Feedback.php"><Button
+                        class="feedbtn">FEEDBACK</Button></a>
             </div>
         </div>
         <!--container-->
