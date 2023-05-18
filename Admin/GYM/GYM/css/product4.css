@@ -13,7 +13,7 @@
 	width: 230px;
 	color: #349EFF;
 	font-family: 'lato', sans-serif;
-	position: relative;
+	position: fixed;
 }
 .sidebar a{
 	color: white;
