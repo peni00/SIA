@@ -19,7 +19,7 @@ if (mysqli_connect_errno()) {
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Archive</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/product4.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/product2.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='transaction.css'>
 
     <link rel="icon" type="image/x-icon" href="images/logo.png">
@@ -33,48 +33,41 @@ if (mysqli_connect_errno()) {
                 <h1>RFG ELITE</h1>
             </header>
             <ul class="sname">
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Services.php">
+                <a href="Services.php">
                     <li>SERVICES</li>
                 </a>
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Staffs.php">
+                <a href="Staffs.php">
                     <li>STAFFS</li>
                 </a>
 
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Appointment.php">
+                <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
                 </a>
                 <a href="" style="color:#349EFF">
                     <li>ARCHIVES</li>
                 </a>
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Feedback.php">
+                <a href="Feedback.php">
                     <li>FEEDBACK</li>
                 </a>
             </ul>
             <div class="admin">
-                <img src="images/image10.png" class="user" style="width: 40px ">
-                <button style="font-weight: 700"> <?php include 'admin_info.php'; ?><div class="dropdown">
-                        <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
-                        <div class="dropdown-content">
-                            <a class="dropdown-item"
-                                href="http://18.136.105.108:81/SIA/SIA/Admin/log_In/Profile1.php">View&nbsp;&nbsp;Profile</a>
-                            <a class="dropdown-item" onclick="return confirm('Are you sure to logout?');"
-                                href="http://18.136.105.108:81/SIA/Admin/log_In/logout.php">Logout</a>
-                        </div>
-                    </div>
+                <img src="images/image10.png" class="user" style="width: 40px">
+                <button style="font-weight: 700">Admin Rod
+                    <img src=" images/dropd.png" style="width:25px">
                 </button>
             </div>
         </div>
         <!--sidebar-->
 
         <div class="container">
-            <a href="http://18.136.105.108:81/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
+            <a href="homepage.php" type="button" class="back-btn"><img
                     src="images/back-btn-gray.png" style="width: 30px"> </a>
             <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
             <div class="ARCHIVE">
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Services.php"><button
+                <a href="Archives-Services.php"><button
                         class="serbtn1">SERVICE</button></a>
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Staff.php"><Button
+                <a href="Archives-Staff.php"><Button
                         class="stabtn">STAFF</Button></a>
                 <a href="#"><Button class="appbtn1">APPOINTMENT</Button></a>
             </div>
@@ -102,6 +95,8 @@ if (mysqli_connect_errno()) {
                         <th style="text-align: center;">            </th>
                         <th style="text-align: center;">APPOINTMENT ID</th>
                         <th style="text-align: center;">CLIENT NAME</th>
+						<th style="text-align: center;">EMAIL</th>
+						<th style="text-align: center;">MEMBERSHIP</th>
                         <th style="text-align: center;">STAFF NAME</th>
                         <th style="text-align: center;">SERVICE</th>
                         <th style="text-align: center;">DATE AND TIME</th>
@@ -122,7 +117,7 @@ if (mysqli_connect_errno()) {
                      // Modify the $sql query and $sortOption depending on the selected option
                      if ($sortOption == 'option1') {
 							 $sortOption = 'appointmenttblarchive.start_datetime ASC';
-							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+							$sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, account.Email_Add, account.Status, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
                              FROM appointmenttblarchive
                              JOIN account ON appointmenttblarchive.email = account.Email_Add
                              JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
@@ -130,7 +125,7 @@ if (mysqli_connect_errno()) {
                              ORDER BY $sortOption";
                      } elseif ($sortOption == 'option3') {
                              $sortOption = 'appointmenttblarchive.start_datetime ASC';
-							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+							$sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, account.Email_Add, account.Status, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
                              FROM appointmenttblarchive
                              JOIN account ON appointmenttblarchive.email = account.Email_Add
                              JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
@@ -139,7 +134,7 @@ if (mysqli_connect_errno()) {
                                  ORDER BY $sortOption";
                      } elseif ($sortOption == 'option4') {
                              $sortOption = 'appointmenttblarchive.start_datetime ASC';
-							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+							$sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, account.Email_Add, account.Status, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
                              FROM appointmenttblarchive
                              JOIN account ON appointmenttblarchive.email = account.Email_Add
                              JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
@@ -148,7 +143,7 @@ if (mysqli_connect_errno()) {
                                  ORDER BY $sortOption";
                      } elseif ($sortOption == 'option5') {
                              $sortOption = 'appointmenttblarchive.start_datetime ASC';
-							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+							$sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, account.Email_Add, account.Status, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
                              FROM appointmenttblarchive
                              JOIN account ON appointmenttblarchive.email = account.Email_Add
                              JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
@@ -157,7 +152,7 @@ if (mysqli_connect_errno()) {
                              ORDER BY $sortOption";
                      } else {
                              $sortOption = 'appointmenttblarchive.id ASC';
-							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
+							 $sql = "SELECT appointmenttblarchive.id, account.Name, staff_tbl.staffName, account.Email_Add, account.Status, servicetypetbl.serviceType, appointmenttblarchive.start_datetime, appointmenttblarchive.status
                              FROM appointmenttblarchive
                              JOIN account ON appointmenttblarchive.email = account.Email_Add
                              JOIN staff_tbl ON appointmenttblarchive.staffID = staff_tbl.staffID 
@@ -171,6 +166,8 @@ if (mysqli_connect_errno()) {
                     while ($row = mysqli_fetch_assoc($result)) {
                     $appointmentid = $row['id'];
                     $cname = $row['Name'];
+					$email = $row['Email_Add'];
+					$Status = $row['Status'];
                     $sname = $row['staffName'];
 					$service = $row['serviceType'];
 					$dnt = $row['start_datetime'];
@@ -181,6 +178,8 @@ if (mysqli_connect_errno()) {
                     echo "<td><input type='checkbox' name='check[]' value='" . $row['id'] . "'> &nbsp;&nbsp;&nbsp;";
                     echo "<td style='text-align: center;'>" . $row['id'] . "</td>";
                     echo "<td style='text-align: center;'>" . $row['Name'] . "</td>";
+					echo "<td style='text-align: center;'>" . $row['Email_Add'] . "</td>";
+					echo "<td style='text-align: center;'>" . $row['Status'] . "</td>";
                     echo "<td style='text-align: center;'>" . $row['staffName'] . "</td>";
                     echo "<td style='text-align: center;'>" . $row['serviceType'] . "</td>";
                     echo "<td style='text-align: center;'>" . $row['start_datetime'] . "</td>";
