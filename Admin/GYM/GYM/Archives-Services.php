@@ -77,6 +77,8 @@ if (mysqli_connect_errno()) {
                         class="stabtn">STAFF</Button></a>
                 <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Appointment.php"><Button
                         class="appbtn">APPOINTMENT</Button></a>
+						<a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Feedback.php"><Button
+                        class="feedbtn">FEEDBACK</Button></a>
             </div>
         </div>
        <!--container-->
