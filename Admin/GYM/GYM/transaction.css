@@ -250,5 +250,34 @@
    border-radius: 5px;
  }
 
+.feedbtn{
+  position: absolute;
+  width: 165px;
+  height: 30px;
+  left: 480px;
+  top: 45px;
+  background: #D0D0D0;
+  border-radius: 5px;
+  font-family: 'Lato',  sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #000000;
+ }
+
+ .feedbtn1{
+  position: absolute;
+  width: 165px;
+  height: 30px;
+  left: 480px;
+  top: 45px;
+  background: #004385;
+  border-radius: 5px;
+  font-family: 'Lato',  sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #FFFFFF;
+
+ }
+
 
  
