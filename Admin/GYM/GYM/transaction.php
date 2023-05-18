@@ -1,3 +1,9 @@
+<?php
+
+include 'connection.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -54,18 +60,6 @@
                     <button><img src="images/search.png"></button>
                 </div>
             </div>
-            <!--container-->
-            <div class="sortby">
-
-                <button for="sort">SORT BY</button>
-                <select class="sort">
-                    <option value="option0"></option>
-                    <option value="option1">Date</option>
-                    <option value="option2">Category</option>
-                    <option value="option3">Customer Name</option>
-                </select>
-            </div>
-
             <div class="products">
                 <div class="table-container">
 
@@ -87,9 +81,6 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="unbtn" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        for="click">
-                        DELETE </button>
                     <table>
                         <thead>
                             <tr>
@@ -106,28 +97,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>0001</td>
-                                <td>Juan Dela Cruz</td>
-                                <td>001</td>
-                                <td>Kitkat</td>
-                                <td>Chocolates</td>
-                                <td>50</td>
-                                <td>25</td>
-                                <td>1250</td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>002</td>
-                                <td>John Doe</td>
-                                <td>002</td>
-                                <td>Snickers</td>
-                                <td>Chocolates</td>
-                                <td>25</td>
-                                <td>15</td>
-                                <td>375</td>
-                            </tr>
+                        <?php
+                            $sql="SELECT * FROM transaction LEFT JOIN account ON transaction.Account_ID = account.Account_ID LEFT JOIN products ON transaction.Product_ID = products.id LEFT JOIN category ON products.Category_ID = category.Category_ID";
+                            $result = mysqli_query($conn, $sql);
+
+                                // Display data in HTML table
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><?= $row['Transaction_ID'] ?></td>
+                                    <td><?= $row['Name'] ?></td>
+                                    <td><?= $row['Product_ID'] ?></td>
+                                    <td><?= $row['name'] ?></td>
+                                    <td><?= $row['Ctgry_Name'] ?></td>
+                                    <td><?= $row['Qty'] ?></td>
+                                    <td><?= $row['price'] ?></td>
+                                    <td><?= $row['Price'] ?></td>
+                                </tr>
+                            <?php
+                                }
+                            } else {
+                                echo "<tr><td colspan='4'>No data found</td></tr>";
+                            }
+                        ?>
                         </tbody>
                     </table>
                 </div>
