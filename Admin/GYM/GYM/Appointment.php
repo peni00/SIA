@@ -99,7 +99,7 @@ if (mysqli_connect_errno())
         </div>
         <div class="table-container">
 
-        <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO UNARCHIVED THIS ITEM/S!')">UNARCHIVED</button>
+        <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('ARE YOU SURE YOU WANT TO Delete THIS ITEM/S!')">Delete</button>
 
 
             <table>
@@ -107,13 +107,16 @@ if (mysqli_connect_errno())
                     <tr>
                         <th>
                         </th>
-                        <th style="text-align: center;">            </th>
+                        <th style="text-align: center;" >            </th>
                         <th style="text-align: center;">APPOINTMENT ID</th>
                         <th style="text-align: center;">CLIENT NAME</th>
+						<th style="text-align: center;">EMAIL</th>
+						<th style="text-align: center;">MEMBERSHIP</th>
                         <th style="text-align: center;">STAFF NAME</th>
                         <th style="text-align: center;">SERVICE</th>
                         <th style="text-align: center;">DATE AND TIME</th>
                         <th style="text-align: center;">APPOINTMENT STATUS</th>
+						<th style="text-align: center;">            </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,7 +133,7 @@ if (empty($sortOption)) {
 // Modify the $sql query and $sortOption depending on the selected option
 if ($sortOption == 'option1') {
     $sortOption = 'appointmenttbl.start_datetime ASC';
-	$sql = "SELECT appointmenttbl.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
+	$sql = "SELECT appointmenttbl.id, account.Name, account.Email_Add, account.Status,	 staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
         FROM appointmenttbl
         JOIN account ON appointmenttbl.email = account.Email_Add
         JOIN staff_tbl ON appointmenttbl.staffID = staff_tbl.staffID 
@@ -138,7 +141,7 @@ if ($sortOption == 'option1') {
         ORDER BY $sortOption";
 } elseif ($sortOption == 'option3') {
        $sortOption = 'appointmenttbl.start_datetime ASC';
-	$sql = "SELECT appointmenttbl.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
+	$sql = "SELECT appointmenttbl.id, account.Name, account.Email_Add, account.Status,	 staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
         FROM appointmenttbl
         JOIN account ON appointmenttbl.email = account.Email_Add
         JOIN staff_tbl ON appointmenttbl.staffID = staff_tbl.staffID 
@@ -147,7 +150,7 @@ if ($sortOption == 'option1') {
             ORDER BY $sortOption";
 } elseif ($sortOption == 'option4') {
     $sortOption = 'appointmenttbl.start_datetime ASC';
-	$sql = "SELECT appointmenttbl.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
+	$sql = "SELECT appointmenttbl.id, account.Name, account.Email_Add, account.Status,	 staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
         FROM appointmenttbl
         JOIN account ON appointmenttbl.email = account.Email_Add
         JOIN staff_tbl ON appointmenttbl.staffID = staff_tbl.staffID 
@@ -156,7 +159,7 @@ if ($sortOption == 'option1') {
             ORDER BY $sortOption";
 } elseif ($sortOption == 'option5') {
     $sortOption = 'appointmenttbl.start_datetime ASC';
-	$sql = "SELECT appointmenttbl.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
+	$sql = "SELECT appointmenttbl.id, account.Name, account.Email_Add, account.Status,	 staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
         FROM appointmenttbl
         JOIN account ON appointmenttbl.email = account.Email_Add
         JOIN staff_tbl ON appointmenttbl.staffID = staff_tbl.staffID 
@@ -165,7 +168,7 @@ if ($sortOption == 'option1') {
             ORDER BY $sortOption";
 } else {
       $sortOption = 'appointmenttbl.id ASC';
-	$sql = "SELECT appointmenttbl.id, account.Name, staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
+		$sql = "SELECT appointmenttbl.id, account.Name, account.Email_Add, account.Status,	 staff_tbl.staffName, servicetypetbl.serviceType, appointmenttbl.start_datetime, appointmenttbl.status
         FROM appointmenttbl
         JOIN account ON appointmenttbl.email = account.Email_Add
         JOIN staff_tbl ON appointmenttbl.staffID = staff_tbl.staffID 
@@ -179,6 +182,8 @@ if ($sortOption == 'option1') {
                 while ($row = mysqli_fetch_assoc($result)) {
                     $appointmentid = $row['id'];
                     $cname = $row['Name'];
+					$email = $row['Email_Add'];
+					$Status = $row['Status'];
                     $sname = $row['staffName'];
 					$service = $row['serviceType'];
 					$dnt = $row['start_datetime'];
@@ -187,10 +192,11 @@ if ($sortOption == 'option1') {
                      echo "<tr>";
             echo "<td></td>";
             echo "<td><input type='checkbox' name='check[]' value='" . $row['id'] . "'> &nbsp;&nbsp;&nbsp;";
-
             echo "<button type='button' name='editBtn' class='deleteBtn' data-bs-toggle='modal' data-bs-target='#exampleModal2'>EDIT</button></td>";
             echo "<td style='text-align: center;'>" . $row['id'] . "</td>";
             echo "<td style='text-align: center;'>" . $row['Name'] . "</td>";
+			echo "<td style='text-align: center;'>" . $row['Email_Add'] . "</td>";
+			echo "<td style='text-align: center;'>" . $row['Status'] . "</td>";
             echo "<td style='text-align: center;'>" . $row['staffName'] . "</td>";
             echo "<td style='text-align: center;'>" . $row['serviceType'] . "</td>";
             echo "<td style='text-align: center;'>" . $row['start_datetime'] . "</td>";
@@ -224,6 +230,10 @@ if ($sortOption == 'option1') {
                             <input type="hidden" class="txt" name="txtid" ><br />
                             <label>Client Name: </label>
                             <input type="text" class="txt" name="txtcname" readonly><br />
+							<label>Email:</label>
+                            <input type="text" class="txt" name="txtemail" readonly><br />
+							<label>Membership:</label>
+                            <input type="text" class="txt" name="txtmembership" readonly><br />
                             <label>Staff Name: </label>
                             <input type="text" class="txt" name="txtsname" readonly><br />
                             <label>Services: </label>
@@ -335,14 +345,18 @@ for (var i = 0; i < editBtns.length; i++) {
         // Get the values of serviceType and serviceDescription from the row
         var id = row.cells[2].textContent;
         var name= row.cells[3].textContent;
-        var staffName = row.cells[4].textContent;
-        var serviceType = row.cells[5].textContent;
-        var start_datetime = row.cells[6].textContent;
-        var status  = row.cells[7].textContent;
+		var email= row.cells[4].textContent;
+		var Status= row.cells[5].textContent;
+        var staffName = row.cells[6].textContent;
+        var serviceType = row.cells[7].textContent;
+        var start_datetime = row.cells[8].textContent;
+        var status  = row.cells[9].textContent;
 
         // Assign the values to the textboxes in the modal
         document.getElementsByName('txtid')[0].value = id;
         document.getElementsByName('txtcname')[0].value = name;
+		document.getElementsByName('txtemail')[0].value = email;
+		document.getElementsByName('txtmembership')[0].value = Status;
         document.getElementsByName('txtsname')[0].value = staffName;
         document.getElementsByName('txtservices')[0].value = serviceType;
         document.getElementsByName('txtdt')[0].value = start_datetime;
