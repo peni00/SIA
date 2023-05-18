@@ -8,6 +8,7 @@
         $slug = slugify($name);
         $category = $_POST['category'];
         $quantity = $_POST['quantity'];
+        $remarks = $_POST['remarks'];
         $description = $_POST['description'];
 
 		$conn = new mysqli("sbit3f-gym-2.ctwnycxphco9.ap-southeast-1.rds.amazonaws.com","admin","sbit3fruben","sbit3f");
@@ -16,8 +17,8 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $stmt = $conn->prepare("UPDATE equiparchive SET name=?, slug=?, category_id=?, quantity=?, description=? WHERE id=?");
-        $stmt->bind_param("sssisi", $name, $slug, $category, $quantity, $description, $id);
+        $stmt = $conn->prepare("UPDATE equiparchive SET name=?, slug=?, category_id=?, quantity=?, remarks=?, description=? WHERE id=?");
+        $stmt->bind_param("sssissi", $name, $slug, $category, $quantity, $remarks, $description, $id);
         if($stmt->execute()){
             $_SESSION['status'] = 'Equipment updated successfully';
             $_SESSION['status_code'] = 'success';

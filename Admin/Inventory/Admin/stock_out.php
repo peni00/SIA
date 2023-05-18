@@ -39,7 +39,7 @@ include('includes/menubar.php');
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4><b>Stock Out</b>&nbsp; <!--<a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat" id="managesupplyout"><i class="fa fa-plus"></i> Outcoming Supply</a></h4> -->
+                <h4><b>Stock Out</b>&nbsp; <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat" id="managesupplyout"><i class="fa fa-plus"></i> Outcoming Supply</a></h4>
             </div>
             <div class="card-body">
                 <table class="table table-bordered" id="example2">
@@ -264,8 +264,7 @@ $(function(){
 $(document).on('change', '.supply', function() {
   var selectedSupplyId = $(this).val();
   var availableStockInput = $(this).closest('.form-group').nextAll().find('#total_stock');
-  var productPriceInput = $(this).closest('.form-group').prev().find('#total_amount');
-  var pro_price_input = $(this).closest('.form-group').next().find('#pro_price');
+  var proPriceInput = $(this).closest('.form-group').next().find('#pro_price');
 
   $.ajax({
     url: 'get_total_stock.php',
@@ -274,8 +273,11 @@ $(document).on('change', '.supply', function() {
     data: {supply_id: selectedSupplyId},
     success: function(response) {
       availableStockInput.val(response.total_stock);
-      pro_price_input.val(response.product_price);
+      proPriceInput.val(response.product_price);
       availableStockInput.data('original-value', response.total_stock);
+
+      // Calculate total price separately
+      updateTotalPrice();
     },
     error: function(xhr, status, error) {
       console.log(error);
@@ -284,22 +286,25 @@ $(document).on('change', '.supply', function() {
 });
 
 $(document).on('input', '#quantity', function() {
-  var stockInQuantity = $(this).val();
-  var availableStockInput = $(this).closest('.form-group').next().find('#total_stock');
-  var buyingPriceInput = $(this).closest('.form-group').next().next().find('#pro_price');
-  var productPriceInput = $(this).closest('.form-group').next().next().next().find('#total_amount');
+  updateTotalPrice();
+});
 
-  var buyingPrice = buyingPriceInput.val();
-  var availableStock = availableStockInput.val();
-
-  productPriceInput.val(buyingPrice * stockInQuantity);
+function updateTotalPrice() {
+  var stockInQuantity = $('#quantity').val();
+  var buyingPrice = $('#pro_price').val();
+  var totalAmountInput = $('#total_price');
 
   if (stockInQuantity === '') {
-    availableStockInput.val(availableStockInput.data('original-value'));
+    totalAmountInput.val(0);
   } else {
-    availableStockInput.val(parseInt(availableStockInput.data('original-value')) - parseInt(stockInQuantity)); // Subtract stockInQuantity from availableStock
+    var totalAmount = buyingPrice * stockInQuantity;
+    totalAmountInput.val(totalAmount);
   }
-});
+}
+
+
+
+
 });
 
 </script>

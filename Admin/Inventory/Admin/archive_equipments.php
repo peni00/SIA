@@ -197,6 +197,7 @@ function getRow(id){
       $('#edit_name').val(response.equiparchivename);
       $('#edit_quantity').val(response.quantity);
       $('#edit_price').val(response.price);
+      $('#edit_remarks').val(response.remarks);
       CKEDITOR.instances["editor2"].setData(response.description);
       getCategory();
     }
