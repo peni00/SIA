@@ -96,7 +96,7 @@ function sendEmailNotification($adminEmail , $fullname, $adminID)
     // Set email content
     $mail->isHTML(true); // Set email format to HTML
     $mail->Subject = 'Login Attempts Exceeded';
-	$mail->Body = "Dear $fullname,<br><br>We regret to inform you that our system has detected multiple unsuccessful login attempts associated with your account, surpassing the maximum allowed limit. To ensure the security of your account and enable immediate access, we kindly request that you reset your password. To proceed with the password reset immediately, please click on the following link:  <a href='http://localhost:8080/SIA/Admin/log_In/changepassword.php?adminID=$adminID'>Change Password</a><br><br>Regards,<br>Your Application";
+	$mail->Body = "Dear $fullname,<br><br>We regret to inform you that our system has detected multiple unsuccessful login attempts associated with your account, surpassing the maximum allowed limit. To ensure the security of your account and enable immediate access, we kindly request that you reset your password. To proceed with the password reset immediately, please click on the following link:  <a href='http://18.136.105.108:81/SIA/Admin/log_In/changepassword.php?adminID=$adminID'>Change Password</a><br><br>Regards,<br>Your Application";
 
 }
 ?>
