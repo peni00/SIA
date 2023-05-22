@@ -279,5 +279,34 @@
 
  }
 
+.membtn{
+  position: absolute;
+  width: 165px;
+  height: 30px;
+  left: 1006px;
+  top: 85px;
+  background: #D0D0D0;
+  border-radius: 5px;
+  font-family: 'Lato',  sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #000000;
+ }
+
+ .membtn1{
+  position: absolute;
+  width: 165px;
+  height: 30px;
+   left: 1006px;
+  top: 85px;
+  background: #004385;
+  border-radius: 5px;
+  font-family: 'Lato',  sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #FFFFFF;
+
+ }
+
 
  
