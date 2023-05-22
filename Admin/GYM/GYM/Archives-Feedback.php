@@ -43,6 +43,11 @@ if (mysqli_connect_errno()) {
                 <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
+		 
+		 <a href="Membership.php">
+                    <li>MEMBERSHIP</li>
+                </a>   
+		    
                 </a>
                  <a href="#" style="color:#349EFF">
                     <li>ARCHIVES</li>
@@ -78,7 +83,9 @@ if (mysqli_connect_errno()) {
                         class="stabtn">STAFF</Button></a>
                 <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Appointment.php"><Button
                         class="appbtn">APPOINTMENT</Button></a>
-						<a href="#"><Button class="feedbtn1">FEEDBACK</Button></a>
+		<a href="#"><Button class="feedbtn1">FEEDBACK</Button></a>
+		<a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Membership.php"><Button
+                        class="membtn">MEMBERSHIP</Button></a>
             </div>
         </div>
         <!--container-->
