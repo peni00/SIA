@@ -67,6 +67,7 @@ mysqli_close($conn);
                   <ul>
                       <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
                       <li><a class="list-item" href="addaccount.php">Add &nbsp;Account</a></li>
+                      <li><a class="list-item" href="manageAcc.php">Manage &nbsp;Users</a></li>
                       <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                               Logout</a></li>
                   </ul>
