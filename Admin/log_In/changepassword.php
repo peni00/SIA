@@ -55,15 +55,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h1>RFG​ ELITE</h1>
                     <p>CHANGE PASSWORD</p>
                 </div>
-                <form id="passwordForm"  method="POST" style=" padding: 50px;" name="form">
+                <form id="passwordForm"  method="POST" style=" padding: 50px;">
 
                     <div for="newPassword" class="u-form-group u-form-name u-label-none ">
-                        <input  type="password" placeholder="New Password" id="newPassword" name="adminID" class="u-input u-input-rectangle u-text-black" required>
+                        <input  type="password" placeholder="New Password" id="newPassword" name="newPassword" class="u-input u-input-rectangle u-text-black" required>
                     </div>
                     <div for="confirmPassword" class="u-form-group u-form-name u-label-none">
-                        <input  type="password" placeholder="Confirm Password" id="confirmPassword" name="password" class="u-input u-input-rectangle u-text-black" required>
+                        <input  type="password" placeholder="Confirm Password" id="confirmPassword" class="u-input u-input-rectangle u-text-black" required>
                     </div>
-                    <p id="passwordMatchError" style="color: red; display: none;">Passwords do not match</p><br>
+              
                     <div class="u-form-checkbox u-form-group u-label-none">
                         <label class="label-showpass u-custom-font u-field-label u-font-lato u-text-body-alt-color" >
                             <input type="checkbox"  onchange="togglePasswordVisibility()"  id="showPassword" class=" u-border-2 u-border-white border-radius-10 u
@@ -71,10 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <button class="button-sign u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-3
-                            u-custom-font u-font-lato u-radius-3 u-btn-1" type="submit" name="form"  value="Change Password">CHANGE PASSWORD</button>
-                        <?php if (isset($_SESSION['error'])) { ?>
-                            <h6> <?= $_SESSION['error'] ?>  </h6> 
-                        <?php }?>
+                            u-custom-font u-font-lato u-radius-3 u-btn-1" type="submit"  value="Change Password">CHANGE PASSWORD</button>
+                            <p id="passwordMatchError" style="color: red; display: none;">Passwords do not match</p><br>
                 </form>
             </div>
 
@@ -121,6 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             alert("Password successfully changed!");
             document.getElementById("passwordForm").reset();
+
+            
         }
     </script>
 </body>
