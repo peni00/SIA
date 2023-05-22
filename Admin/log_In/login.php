@@ -27,7 +27,7 @@ if (isset($_POST['form'])) {
         $row = mysqli_fetch_assoc($query);
 
         // Check if the adminID has exceeded the maximum number of failed login attempts
-        if ($row['failed_attempts'] >= 5) {
+        if ($row['failed_attempts'] >= 2) {
           $_SESSION['error'] = '</br><span style="color: red; font-size: 14px;">
 								The maximum number of login attempts for this adminID has been exceeded. We have sent you an email containing instructions to change your password. Please follow the instructions in the email and you will be able to login again immediately.</span>';
 		  
