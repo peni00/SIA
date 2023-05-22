@@ -28,28 +28,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
-<html>
+<html style="font-size: 16px;" lang="en">
+
 <head>
-    <title>Change Password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>RFG ELITE | Change Password</title>
+    <link rel="stylesheet" href="changepass.css" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
 </head>
-<body>
-    <h2>Change Password</h2>
-    <form id="passwordForm"  method="POST">
-       
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" name="newPassword" required><br><br>
 
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" required><br>
-        <p id="passwordMatchError" style="color: red; display: none;">Passwords do not match</p><br>
+<body class="u-body u-xl-mode" data-lang="en">
+    <section class="Anton Antonio C1C1C1 D9D9D9 EFF Ellipse FFFFFF Lato Rectangle absolute admin align-items background border border-box border-radius box box-shadow box-sizing calc50 center color copyright display enter-email flex font-family font-size font-style font-weight height identical left line-height normal password position px px2 rfg rgba0 rgba70 show-pass sign-in solid text-align to top u-clearfix u-custom-color-4 width u-section-1" id="sec-5ff7">
 
-        <label>Show Password:</label>
-        <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()"><br><br>
+        <div class="background-img">
+            <img class="u-expanded-height u-image u-image-contain u-image-1" src="images/gym2.png" data-image-width="672" data-image-height="371">
+        </div>
+        
+        <div class="parent-box">
+            <div class="box-form ">
+                <div class="box-form-head">
+                    <img class="logo-img" src="images/logo-modified.png" alt="" data-image-width="362" data-image-height="362">
+                    <h1>RFG​ ELITE</h1>
+                    <p>CHANGE PASSWORD</p>
+                </div>
+                <form id="passwordForm"  method="POST" style=" padding: 50px;" name="form">
 
-        <input type="submit" value="Change Password">
-    </form>
+                    <div for="newPassword" class="u-form-group u-form-name u-label-none ">
+                        <input  type="password" placeholder="New Password" id="newPassword" name="adminID" class="u-input u-input-rectangle u-text-black" required>
+                    </div>
+                    <div for="confirmPassword" class="u-form-group u-form-name u-label-none">
+                        <input  type="password" placeholder="Confirm Password" id="confirmPassword" name="password" class="u-input u-input-rectangle u-text-black" required>
+                    </div>
+                    <p id="passwordMatchError" style="color: red; display: none;">Passwords do not match</p><br>
+                    <div class="u-form-checkbox u-form-group u-label-none">
+                        <label class="label-showpass u-custom-font u-field-label u-font-lato u-text-body-alt-color" >
+                            <input type="checkbox"  onchange="togglePasswordVisibility()"  id="showPassword" class=" u-border-2 u-border-white border-radius-10 u
+                                u-field-input u-hover-grey-40">&nbsp;&nbsp;Show Password</label>
+                    </div>
 
+                    <button class="button-sign u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-3
+                            u-custom-font u-font-lato u-radius-3 u-btn-1" type="submit" name="form"  value="Change Password">CHANGE PASSWORD</button>
+                        <?php if (isset($_SESSION['error'])) { ?>
+                            <h6> <?= $_SESSION['error'] ?>  </h6> 
+                        <?php }?>
+                </form>
+            </div>
+
+
+
+            <div class="footer">
+                <p> © Copyright 2023, RFG Elite - Rod’s
+                    Fitness Gym<br>All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </section>
     <script>
         function togglePasswordVisibility() {
             var newPasswordInput = document.getElementById("newPassword");
@@ -87,4 +124,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </script>
 </body>
+
 </html>
