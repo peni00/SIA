@@ -53,6 +53,11 @@ if (mysqli_connect_errno())
                 <a href="#" style="color:#349EFF">
                     <li>APPOINTMENTS</li>
                 </a>
+		    
+		<a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Membership.php">
+                    <li>MEMBERSHIP</li>
+                </a>
+		    
                 </a>
                 <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Services.php">
                     <li>ARCHIVES</li>
