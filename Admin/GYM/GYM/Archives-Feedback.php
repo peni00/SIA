@@ -44,10 +44,10 @@ if (mysqli_connect_errno()) {
                     <li>APPOINTMENTS</li>
                 </a>
                 </a>
-                <a href="Archives-Services.php">
+                 <a href="#" style="color:#349EFF">
                     <li>ARCHIVES</li>
                 </a>
-                <a href="#" style="color:#349EFF">
+                <a href="Feedback.php" >
                     <li>FEEDBACK</li>
                 </a>
             </ul>
