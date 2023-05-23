@@ -163,7 +163,7 @@ if (isset($_POST['edit'])) {
 
 
                         <button type="submit" name="edit" class="savebtn" onclick="submitForm()">SAVE CHANGES</button>
-                        <div class="cancel"><button><a href="ManageAcc.php">CANCEL</a></button>
+                        <div class="cancel"><button><a href="manageAcc.php">CANCEL</a></button>
 </div>
                     </div>
     
