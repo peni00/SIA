@@ -1,22 +1,37 @@
 <?php
 session_start();
 require('../connection.php');
+?>
+<?php
+if(isset($_POST['delete']))
+{
+    $all_id = $_POST['check'];
+    $extract_id = implode(',' , $all_id);
 
-// Check if the delete button was clicked
-if (isset($_POST['delete']) && isset($_POST['adminIDs'])) {
-    // Get the selected adminIDs from the checkboxes
-    $adminIDs = $_POST['adminIDs'];
 
-    // Loop through the selected adminIDs and delete the corresponding records
-    foreach ($adminIDs as $adminID) {
-        $deleteQuery = "DELETE FROM admin WHERE id = '$adminID'";
-        mysqli_query($conn, $deleteQuery);
+	// Perform the delete operation
+    $query = "DELETE FROM admin WHERE id IN($extract_id) ";
+    $query_run = mysqli_query($conn, $query);
+
+    // Check if both operations were successful
+    if($query_run )
+    {
+        echo "Data Deleted Successfully";
+        header('Location: manageAcc.php');
+        exit();
     }
+    else if(!$query_run)
+    {
+        echo "Multiple Data Deleted, but Archive Failed: " . mysqli_error($conn);
+    }
+    else
+    {
+        echo "Multiple Data Not Deleted or Archived";
+    }
+	mysqli_close($conn);
 }
 
-// Perform a database query to fetch the admin records
-$query = "SELECT * FROM admin";
-$result = mysqli_query($conn, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +97,7 @@ $result = mysqli_query($conn, $query);
             require('../connection.php');
 
             // Perform a database query to fetch the admin records
-            $query = "SELECT * FROM admin";
+            $query = "SELECT * FROM admin WHERE category = 'Administrator'";
             $result = mysqli_query($conn, $query);
 
             // Check if the query was successful
@@ -90,8 +105,8 @@ $result = mysqli_query($conn, $query);
                 // Loop through the rows and generate table rows
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<td><input type='checkbox'>&nbsp;&nbsp;&nbsp;<button class='deleteBtn' data-bs-toggle='modal' data-bs-target='#exampleModal2' for='click'>";
-                    echo "<a href='editProfile1.php?editid=" . $row['id'] . "'>EDIT</a></button></td>";
+					echo "<td><input type='checkbox' name='check[]' value='" . $row['id'] . "'> &nbsp;&nbsp;&nbsp;";
+                    echo "<a class='delete-btn' href='manageAccedit.php?editid=" . $row['id'] . "'>EDIT</a></button></td>";
                     echo "<td>" . $row['adminID'] . "</td>";
                     echo "<td>" . $row['fullname'] . "</td>";
                     echo "<td>" . $row['category'] . "</td>";
@@ -105,7 +120,7 @@ $result = mysqli_query($conn, $query);
                     echo "</tr>";
                 }
             }
-            $conn->close();
+
             ?>
 
                
@@ -114,6 +129,7 @@ $result = mysqli_query($conn, $query);
     </table>
     
 </form>
+
 
             <script>
         var icon = document.getElementById("user-icon");
