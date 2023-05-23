@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-
+ob_start();
 include 'connection.php';
 ?>
 
