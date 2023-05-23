@@ -43,6 +43,11 @@ if (mysqli_connect_errno()) {
                 <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
+              
+               <a href="Membership.php">
+                    <li>MEMBERSHIP</li>
+                </a>
+              
                 </a>
                 <a href="Archives-Services.php">
                     <li>ARCHIVES</li>

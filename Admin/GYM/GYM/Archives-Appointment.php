@@ -43,10 +43,15 @@ if (mysqli_connect_errno()) {
                 <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
+		<a href="Membership.php">
+                    <li>MEMBERSHI[</li>
+                </a>
+
                 </a>
                 <a href="" style="color:#349EFF">
                     <li>ARCHIVES</li>
                 </a>
+		
                 <a href="Feedback.php">
                     <li>FEEDBACK</li>
                 </a>
@@ -61,7 +66,7 @@ if (mysqli_connect_errno()) {
         <!--sidebar-->
 
         <div class="container">
-            <a href="homepage.php" type="button" class="back-btn"><img
+            <a href="http://18.136.105.108:81/SIA/Admin/log_In/homepage.php" type="button" class="back-btn"><img
                     src="images/back-btn-gray.png" style="width: 30px"> </a>
             <h3>Home / <a href="#" style="color:#349EFF">Appointment</a></h3>
             <div class="ARCHIVE">
@@ -69,9 +74,12 @@ if (mysqli_connect_errno()) {
                         class="serbtn1">SERVICE</button></a>
                 <a href="Archives-Staff.php"><Button
                         class="stabtn">STAFF</Button></a>
-                <a href="#"><Button class="appbtn1">APPOINTMENT</Button></a>
-				<a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Feedback.php"><Button
+                <a href="#"><Button 
+			class="appbtn1">APPOINTMENT</Button></a>
+		<a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Feedback.php"><Button
                         class="feedbtn">FEEDBACK</Button></a>
+		<a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archives-Membership.php"><Button
+                        class="membtn">MEMBERSHIP</Button></a>    
             </div>
         </div>
         <!--container-->

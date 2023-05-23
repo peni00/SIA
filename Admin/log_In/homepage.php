@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>RFG ELITE | Home</title>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="homepage2.css" media="screen">
+    <link rel="stylesheet" href="homepage3.css" media="screen">
 
 </head>
 
@@ -27,6 +27,7 @@
                     <ul>
                         <li><a class="list-item" href="Profile1.php">View &nbsp;Profile</a></li>
                         <li><a class="list-item" href="addAcc.php">Add &nbsp;Account</a></li>
+                        <li><a class="list-item" href="manageAcc.php">Manage &nbsp;Users</a></li>
                         <li><a class="list-item" onclick="return confirm('Are you sure to logout?');" href="logout.php">
                                 Logout</a></li>
                     </ul>

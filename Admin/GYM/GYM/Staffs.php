@@ -132,6 +132,11 @@ if(isset($_POST['update'])) {
                 <a href="Appointment.php">
                     <li>APPOINTMENTS</li>
                 </a>
+		    
+		 <a href="Membership.php">
+                    <li>MEMBERSHIP</li>
+                </a>
+		    
                 <a href="Archives-Services.php">
                     <li>ARCHIVES</li>
                 </a>
