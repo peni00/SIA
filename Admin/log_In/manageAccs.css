@@ -251,11 +251,13 @@ nav .left-nav p {
     text-align: left;
     font-family: 'lato', sans-serif;
     color:black;
+    position: center;
   }
   
   .table-container th {
     background-color: #3498db;
     color: white;
+    position: center;
   }
   
   .table-container  tr:nth-child(even) {
@@ -334,7 +336,7 @@ nav .left-nav p {
     color: white;
   }
   
-  .deleteBtn {
+  .delete-btn  {
       background-color: #004385;
       color: white;
       font-family: 'Lato', sans-serif;
@@ -343,7 +345,11 @@ nav .left-nav p {
       height: 30px;
       border: none;
       cursor: pointer;
-  
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
     }
   
    .serbtn{

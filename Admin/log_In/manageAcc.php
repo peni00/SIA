@@ -106,7 +106,7 @@ if(isset($_POST['delete']))
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
 					echo "<td><input type='checkbox' name='check[]' value='" . $row['id'] . "'> &nbsp;&nbsp;&nbsp;";
-                    echo "<a class='delete-btn' href='manageAccedit.php?editid=" . $row['id'] . "'>EDIT</a></button></td>";
+                    echo "<button class='delete-btn'><a  href='manageAccedit.php?editid=" . $row['id'] . "'>EDIT</a></button></td>";
                     echo "<td>" . $row['adminID'] . "</td>";
                     echo "<td>" . $row['fullname'] . "</td>";
                     echo "<td>" . $row['category'] . "</td>";
