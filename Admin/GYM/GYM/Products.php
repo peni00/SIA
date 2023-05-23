@@ -139,6 +139,8 @@ if (isset($_POST['add_product'])) {
                 </div>
             </div>
 
+            <!--container-->
+
             <div class="products" id="scrollbar1">
                 <?php
 
@@ -239,8 +241,6 @@ if (isset($_POST['add_product'])) {
                 }
                 ?>
             </div>
-        </div>
-
 
         <!-- Delete -->
 

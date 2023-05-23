@@ -113,18 +113,14 @@ include 'connection.php';
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT p.category_id, p.name, c.ctgry_name, p.price, p.photo 
-                        FROM prodarchive p 
-                        JOIN category c ON p.category_id = c.Category_ID";
+                        $query = mysqli_query($conn, "SELECT * FROM prodarchive");
 
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($row = mysqli_fetch_assoc($result)) {
+                        while ($row = mysqli_fetch_assoc($query)) {
                             echo "<tr>";
-                            echo "<td><input type='checkbox' name='ids[]' value='" . $row['category_id'] . "'></td>";
+                            echo "<td><input type='checkbox' name='ids[]' value='" . $row['id'] . "'></td>";
                             echo "<td>" . $row['category_id'] . "</td>";
                             echo "<td>" . $row['name'] . "</td>";
-                            echo "<td>" . $row['ctgry_name'] . "</td>";
+                            echo "<td>" . $row['category_id'] . "</td>";
                             echo "<td>₱ " . $row['price'] . "</td>";
                             $p_img_src = "data:image/jpeg;base64," . $row['photo'];
                             echo "<td><img src='" . $p_img_src . "' class='product-img'></td>";
