@@ -27,7 +27,7 @@ $result = mysqli_query($conn, $query);
     <meta charset="utf-8">
     <title>RFG ELITE | Manage Accounts</title>
     <script src="https://kit.fontawesome.com/a1366662c0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="manageAcc.css" media="screen">
+    <link rel="stylesheet" href="manageAccs.css" media="screen">
 
 </head>
 
@@ -64,7 +64,7 @@ $result = mysqli_query($conn, $query);
         <thead>
         
             <tr>
-                <th width="250"></th>
+                <th width="220"></th>
                 <th>ADMIN ID</th>
                 <th>NAME</th>
                 <th>POSITION</th>
