@@ -28,8 +28,18 @@ var myChart = new Chart(ctx, {
                 top: 0,
                 bottom: 0
             }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'white'
+                }
+            },
+            y: {
+                ticks: {
+                    color: 'white'
+                }
+            }
         }
-        
     }
 });
-

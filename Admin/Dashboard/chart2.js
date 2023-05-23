@@ -36,7 +36,7 @@ var myChart = new Chart(ctx, {
         },
         plugins: {
             datalabels: {
-                color: '#fff',
+                color: 'white',
                 formatter: function(value, context) {
                     return context.chart.data.labels[context.dataIndex] + ': ' + value;
                 }
@@ -45,7 +45,7 @@ var myChart = new Chart(ctx, {
                 display: true,
                 position: 'right',
                 labels: {
-                    fontColor: 'black'
+                    color: 'white'
                 }
             },
             tooltips: {
