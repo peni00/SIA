@@ -1,3 +1,24 @@
+<?php
+session_start();
+require('../connection.php');
+
+// Check if the delete button was clicked
+if (isset($_POST['delete']) && isset($_POST['adminIDs'])) {
+    // Get the selected adminIDs from the checkboxes
+    $adminIDs = $_POST['adminIDs'];
+
+    // Loop through the selected adminIDs and delete the corresponding records
+    foreach ($adminIDs as $adminID) {
+        $deleteQuery = "DELETE FROM admin WHERE id = '$adminID'";
+        mysqli_query($conn, $deleteQuery);
+    }
+}
+
+// Perform a database query to fetch the admin records
+$query = "SELECT * FROM admin";
+$result = mysqli_query($conn, $query);
+?>
+
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
 
@@ -33,13 +54,12 @@
                     </ul>
                 </div>
             </div>
-            </nav>
+        </nav>
 
-            <form method="POST">
-<div class="table-container">
-
-<button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('are you sure want to delete?')">DELETE</button>
-    <table>
+        <form method="POST">
+            <div class="table-container">
+                <button type="submit" class="unbtn" name="delete" value="Delete" onclick="return confirm('Are you sure you want to delete?')">DELETE</button>
+                <table>
    
         <thead>
         
@@ -51,7 +71,6 @@
                 <th>STATUS</th>
                 <th>CONTACT NUMBER</th>
                 <th>EMAIL</th>
-                <th>PASSWORD</th>
                 <th>IMAGE</th>
 
             </tr>
@@ -59,45 +78,37 @@
         </thead>
 
         <tbody>
-        <tr>
-                    <td><input type="checkbox">&nbsp;&nbsp;&nbsp;<button class="deleteBtn" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal2" for="click">EDIT
-                        </button></td>
-                    <td>20-2327</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox">&nbsp;&nbsp;&nbsp;<button class="deleteBtn" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal2" for="click">EDIT
-                        </button></td>
-                    <td>20-2327</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox">&nbsp;&nbsp;&nbsp;<button class="deleteBtn" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal2" for="click">EDIT
-                        </button></td>
-                    <td>20-2327</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                    <td>Sample</td>
-                </tr>
+        <?php
+            require('../connection.php');
+
+            // Perform a database query to fetch the admin records
+            $query = "SELECT * FROM admin";
+            $result = mysqli_query($conn, $query);
+
+            // Check if the query was successful
+            if ($result) {
+                // Loop through the rows and generate table rows
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td><input type='checkbox'>&nbsp;&nbsp;&nbsp;<button class='deleteBtn' data-bs-toggle='modal' data-bs-target='#exampleModal2' for='click'>";
+                    echo "<a href='editProfile1.php?editid=" . $row['id'] . "'>EDIT</a></button></td>";
+                    echo "<td>" . $row['adminID'] . "</td>";
+                    echo "<td>" . $row['fullname'] . "</td>";
+                    echo "<td>" . $row['category'] . "</td>";
+                    echo "<td>" . $row['status'] . "</td>";
+                    echo "<td>" . $row['contactnum'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
+
+                    // Display the image
+                    echo "<td><img src='data:image/jpeg;base64," . $row['photo'] . "' alt='Admin Photo' width='100'></td>";
+
+                    echo "</tr>";
+                }
+            }
+            $conn->close();
+            ?>
+
+               
         </tbody> 
         
     </table>
