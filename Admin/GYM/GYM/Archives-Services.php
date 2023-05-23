@@ -44,7 +44,7 @@ if (mysqli_connect_errno()) {
                     <li>APPOINTMENTS</li>
                 </a>
 		 
-		 a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Membership.php">
+		 <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Membership.php">
                     <li>MEMBERSHIP</li>
                 </a>
 		  
