@@ -37,7 +37,9 @@ include 'connection.php';
             </ul>
             <div class="admin">
                 <img src="images/image10.png" class="user" style="width: 40px ">
-                <button style="font-weight: 700"> <?php include 'admin_info.php'; ?><div class="dropdown">
+                <button style="font-weight: 700">
+                    <?php include 'admin_info.php'; ?>
+                    <div class="dropdown">
                         <img src="images/dropd.png" alt="dropdown icon" class="dropdown-icon">
                         <div class="dropdown-content">
                             <a class="dropdown-item"
@@ -57,8 +59,6 @@ include 'connection.php';
             <div class="ARCHIVE">
                 <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archive-Product.php"><button
                         class="stabtn1">PRODUCTS</button></a>
-                <a href="http://18.136.105.108:81/SIA/Admin/GYM/GYM/Archive-Transaction.php"><Button
-                        class="appbtn">TRANSACTIONS</Button></a>
             </div>
         </div>
 
@@ -113,14 +113,18 @@ include 'connection.php';
                     </thead>
                     <tbody>
                         <?php
-                        $query = mysqli_query($conn, "SELECT * FROM prodarchive");
+                        $sql = "SELECT p.category_id, p.name, c.ctgry_name, p.price, p.photo 
+                        FROM prodarchive p 
+                        JOIN category c ON p.category_id = c.Category_ID";
 
-                        while ($row = mysqli_fetch_assoc($query)) {
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
-                            echo "<td><input type='checkbox' name='ids[]' value='" . $row['id'] . "'></td>";
+                            echo "<td><input type='checkbox' name='ids[]' value='" . $row['category_id'] . "'></td>";
                             echo "<td>" . $row['category_id'] . "</td>";
                             echo "<td>" . $row['name'] . "</td>";
-                            echo "<td>" . $row['category_id'] . "</td>";
+                            echo "<td>" . $row['ctgry_name'] . "</td>";
                             echo "<td>₱ " . $row['price'] . "</td>";
                             $p_img_src = "data:image/jpeg;base64," . $row['photo'];
                             echo "<td><img src='" . $p_img_src . "' class='product-img'></td>";
