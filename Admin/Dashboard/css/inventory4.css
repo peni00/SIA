@@ -55,6 +55,11 @@
 
 }
 
+#graph1-chart {
+  color: white;
+}
+
+
 .dropdown-menu ul {
   list-style-type: none;
   border-radius: 10px;

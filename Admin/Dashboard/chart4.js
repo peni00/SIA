@@ -1,32 +1,6 @@
 var ctx = document.getElementById('graph1-chart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
-    // data: {
-    //     labels: ['Item1', 'Item2', 'Item3', 'Item4', 'Item5'],
-    //     datasets: [{
-    //         label: 'Data',
-    //         data: [100, 19, 34, 5, 34],
-    //         backgroundColor: [
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)'
-
-           
-    //         ],
-    //         borderColor: [
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)'
-
-
-    //         ],
-    //         borderWidth: 1
-    //     }]
-    // },
     data: {
         labels: barChartLabels,
         datasets: [{
@@ -74,7 +48,20 @@ var myChart = new Chart(ctx, {
                     borderWidth: 0
                 }
             }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'white' // Set x-axis ticks color to white
+                },
+               
+            },
+            y: {
+                ticks: {
+                    color: 'white' // Set y-axis ticks color to white
+                },
+                
+            }
         }
     }
-    
 });
