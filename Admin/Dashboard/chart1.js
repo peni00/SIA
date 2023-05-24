@@ -1,5 +1,4 @@
 var ctx = document.getElementById('lineChart').getContext('2d');
-
 var myChart = new Chart(ctx, {
     type: 'line',
     // data: {
@@ -38,6 +37,15 @@ var myChart = new Chart(ctx, {
             y: {
                 ticks: {
                     color: 'white'
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    color: 'white' // Set legend text color to white
                 }
             }
         }

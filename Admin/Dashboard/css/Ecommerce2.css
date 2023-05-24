@@ -126,7 +126,9 @@
     text-decoration: none;
 }
 
-
+canvas {
+    color: white;
+  }
 
 /* Style the main content */
 .main-content {

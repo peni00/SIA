@@ -20,12 +20,6 @@ var myChart = new Chart(ctx, {
             }
         },
         plugins: {
-            datalabels: {
-                color: 'white',
-                formatter: function(value, context) {
-                    return context.chart.data.labels[context.dataIndex] + ': ' + value;
-                }
-            },
             legend: {
                 display: true,
                 position: 'right',
@@ -33,8 +27,10 @@ var myChart = new Chart(ctx, {
                     color: 'white'
                 }
             },
-            tooltips: {
+            tooltip: {
                 enabled: true,
+                mode: 'index',
+                intersect: false,
                 callbacks: {
                     label: function(tooltipItem, data) {
                         var label = data.labels[tooltipItem.index];
@@ -42,25 +38,24 @@ var myChart = new Chart(ctx, {
                         return label + ': ' + value;
                     }
                 }
-            },
-            elements: {
-                arc: {
-                    borderWidth: 0
-                }
             }
         },
         scales: {
             x: {
                 ticks: {
-                    color: 'white' // Set x-axis ticks color to white
+                    color: 'white'
                 },
-               
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'
+                }
             },
             y: {
                 ticks: {
-                    color: 'white' // Set y-axis ticks color to white
+                    color: 'white'
                 },
-                
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'
+                }
             }
         }
     }
