@@ -1,32 +1,6 @@
 var ctx = document.getElementById('graph1-chart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
-    // data: {
-    //     labels: ['Item1', 'Item2', 'Item3', 'Item4', 'Item5'],
-    //     datasets: [{
-    //         label: 'Data',
-    //         data: [100, 19, 34, 5, 34],
-    //         backgroundColor: [
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)'
-
-           
-    //         ],
-    //         borderColor: [
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)',
-    //             'rgba(52, 158, 255, 1)'
-
-
-    //         ],
-    //         borderWidth: 1
-    //     }]
-    // },
     data: {
         labels: barChartLabels,
         datasets: [{
@@ -46,12 +20,6 @@ var myChart = new Chart(ctx, {
             }
         },
         plugins: {
-            datalabels: {
-                color: 'white',
-                formatter: function(value, context) {
-                    return context.chart.data.labels[context.dataIndex] + ': ' + value;
-                }
-            },
             legend: {
                 display: true,
                 position: 'right',
@@ -59,8 +27,10 @@ var myChart = new Chart(ctx, {
                     color: 'white'
                 }
             },
-            tooltips: {
+            tooltip: {
                 enabled: true,
+                mode: 'index',
+                intersect: false,
                 callbacks: {
                     label: function(tooltipItem, data) {
                         var label = data.labels[tooltipItem.index];
@@ -68,13 +38,25 @@ var myChart = new Chart(ctx, {
                         return label + ': ' + value;
                     }
                 }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'white'
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'
+                }
             },
-            elements: {
-                arc: {
-                    borderWidth: 0
+            y: {
+                ticks: {
+                    color: 'white'
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'
                 }
             }
         }
     }
-    
 });

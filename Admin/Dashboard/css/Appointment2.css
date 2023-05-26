@@ -1,6 +1,4 @@
-
-
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
 * {
   padding: 0;
@@ -18,11 +16,12 @@
 }
 
 .box-logout {
-  padding: 0.44rem 1rem 0.44rem 1rem;
+  padding: .44rem 1rem .44rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #349eff;
+  background-color: #349EFF;
+  ;
 }
 
 .user-name {
@@ -83,6 +82,11 @@
 .dropdown-menu.show {
   display: block;
 }
+
+canvas {
+  color: white;
+}
+
 /* Set the height of the sidebar to 100% of the viewport height */
 .sidebar {
   height: 100vh;
@@ -171,25 +175,26 @@
   gap: 0.44rem;
 }
 
-.button-selection .invbtn {
-    background-color: #004385;
-    color: white;
-    border: none;
-    padding: 0.44rem 1rem 0.44rem 1rem;
-    font-weight: 600;
-    font-size: 15px;
-    border-radius: 0.22rem;
-  }
-  
-  .button-selection .stabtn,
-  .app-btn button {
-    border: none;
-    background-color: #d0d0d0;
-    padding: 0.44rem 1rem 0.44rem 1rem;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 0.22rem;
-  }
+.app-btn button {
+  background-color: #004385;
+  color: white;
+  border: none;
+  padding: 0.44rem 1rem 0.44rem 1rem;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 0.22rem;
+}
+
+.button-selection .stabtn,
+.button-selection .appbtn {
+  border: none;
+  background-color: #d0d0d0;
+  padding: 0.44rem 1rem 0.44rem 1rem;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 0.22rem;
+}
+
 /*dashboard-appointment*/
 .data-chartdag {
   margin-top: 1rem;
@@ -418,7 +423,7 @@
   /* create 2 rows */
   gap: 20px;
   width: 100%;
-
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -440,9 +445,8 @@
 }
 
 .right-column {
-  width: 100%;
-  height: 400px;
-  background: #0C0C0C;
+  width: 680px;
+  background: #0c0c0c;
   border-radius: 15px;
   color: white;
 }
@@ -468,6 +472,7 @@
 
 .box-gym {
   padding: 2rem 4rem 2rem 4rem;
+  height: 285px;
 }
 
 .data-gym {
@@ -509,8 +514,5 @@
 
   .left-column {
     grid-column: 1;
-  }
-  .right-column{
-    height: 340px;
   }
 }
